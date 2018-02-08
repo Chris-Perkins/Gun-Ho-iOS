@@ -51,6 +51,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let node = sceneView.scene.rootNode.childNode(withName: "ship", recursively: false)!
+        SCNTransaction.animationDuration = 1
+        node.position = SCNVector3(1, 1, 1)
+        /*node.addAnimation(
+            CABasicAnimation.createAnimation(withKeyPath: #keyPath(SCNNode.transform),
+                                             startPosition: SCNVector3(0, 0, 0),
+                                             endPosition: SCNVector3(1, 1, 1),
+                                             duration: 5),
+            forKey: nil)*/
+        
+    }
 
     // MARK: - ARSCNViewDelegate
     
