@@ -10,9 +10,15 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class GameViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    private var floorHeight: Float {
+        guard let floorNode = sceneView.scene.rootNode.childNode(withName: "floor", recursively: false) else {
+            fatalError("Floor Node could not be found for the sceneview's scene!")
+        }
+        return floorNode.position.y
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +30,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene(named: "art.scnassets/main-game.scn")!
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        let medBoat = Boat(type: .medium)
+        medBoat.position = SCNVector3(0, floorHeight - 0.1, -2)
+        sceneView.scene.rootNode.addChildNode(medBoat)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +45,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
+        configuration.planeDetection = .horizontal
+        
         // Run the view's session
         sceneView.session.run(configuration)
     }
