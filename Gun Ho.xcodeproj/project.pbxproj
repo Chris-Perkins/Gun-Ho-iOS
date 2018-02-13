@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2204201820328A7A00303B61 /* SmallBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2204201720328A7A00303B61 /* SmallBoat.swift */; };
+		225815FA20328EA900F546DD /* MediumBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815F920328EA900F546DD /* MediumBoat.swift */; };
+		225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815FB20328F3D00F546DD /* VikingBoat.swift */; };
 		228AB9352030D28500FEC484 /* Boat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228AB9342030D28500FEC484 /* Boat.swift */; };
 		22E1A875202AAB5E009A5BFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1A874202AAB5E009A5BFC /* AppDelegate.swift */; };
 		22E1A877202AAB5E009A5BFC /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A876202AAB5E009A5BFC /* art.scnassets */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2204201720328A7A00303B61 /* SmallBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBoat.swift; sourceTree = "<group>"; };
+		225815F920328EA900F546DD /* MediumBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumBoat.swift; sourceTree = "<group>"; };
+		225815FB20328F3D00F546DD /* VikingBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VikingBoat.swift; sourceTree = "<group>"; };
 		228AB9342030D28500FEC484 /* Boat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boat.swift; sourceTree = "<group>"; };
 		22E1A871202AAB5E009A5BFC /* Gun Ho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gun Ho.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E1A874202AAB5E009A5BFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +45,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		225815FD2032906F00F546DD /* Boats */ = {
+			isa = PBXGroup;
+			children = (
+				228AB9342030D28500FEC484 /* Boat.swift */,
+				2204201720328A7A00303B61 /* SmallBoat.swift */,
+				225815F920328EA900F546DD /* MediumBoat.swift */,
+				225815FB20328F3D00F546DD /* VikingBoat.swift */,
+			);
+			path = Boats;
+			sourceTree = "<group>";
+		};
 		22E1A868202AAB5E009A5BFC = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +75,7 @@
 		22E1A873202AAB5E009A5BFC /* Gun Ho */ = {
 			isa = PBXGroup;
 			children = (
+				225815FD2032906F00F546DD /* Boats */,
 				22E1A874202AAB5E009A5BFC /* AppDelegate.swift */,
 				22E1A876202AAB5E009A5BFC /* art.scnassets */,
 				22E1A878202AAB5E009A5BFC /* GameViewController.swift */,
@@ -65,7 +83,6 @@
 				22E1A87D202AAB5E009A5BFC /* Assets.xcassets */,
 				22E1A87F202AAB5E009A5BFC /* LaunchScreen.storyboard */,
 				22E1A882202AAB5E009A5BFC /* Info.plist */,
-				228AB9342030D28500FEC484 /* Boat.swift */,
 			);
 			path = "Gun Ho";
 			sourceTree = "<group>";
@@ -143,9 +160,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				225815FA20328EA900F546DD /* MediumBoat.swift in Sources */,
 				228AB9352030D28500FEC484 /* Boat.swift in Sources */,
+				2204201820328A7A00303B61 /* SmallBoat.swift in Sources */,
 				22E1A879202AAB5E009A5BFC /* GameViewController.swift in Sources */,
 				22E1A875202AAB5E009A5BFC /* AppDelegate.swift in Sources */,
+				225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
