@@ -103,14 +103,16 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
     }
 */
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        /*guard let frame = sceneView.session.currentFrame,
-            let lightIntensity = frame.lightEstimate?.ambientIntensity else {
-                fatalError("Could not get light estimate")
+        if !Platform.isSimulator {
+            guard let frame = sceneView.session.currentFrame,
+                let lightIntensity = frame.lightEstimate?.ambientIntensity else {
+                    fatalError("Could not get light estimate")
+            }
+            
+            for light in lights {
+                light.intensity = lightIntensity
+            }
         }
-        
-        for light in lights {
-            light.intensity = lightIntensity
-        }*/
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
