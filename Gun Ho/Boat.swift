@@ -14,6 +14,7 @@ final class Boat: SCNNode {
     public enum type {
         case small
         case medium
+        case viking
     }
     
     var boatNode: SCNNode?
@@ -25,14 +26,23 @@ final class Boat: SCNNode {
         switch (type) {
         case .small:
             guard let scene = SCNScene(named: "art.scnassets/boat-small.scn"),
-                let boatNode = scene.rootNode.childNode(withName: "boat-small", recursively: true) else {
+                let boatNode = scene.rootNode.childNode(withName: "boat",
+                                                        recursively: true) else {
                     fatalError("Could not find small boat")
             }
             addChildNode(boatNode)
         case .medium:
             guard let scene = SCNScene(named: "art.scnassets/boat-medium.scn"),
-                let boatNode = scene.rootNode.childNode(withName: "boat-medium", recursively: true) else {
-                    fatalError("Could not find small boat")
+                let boatNode = scene.rootNode.childNode(withName: "boat",
+                                                        recursively: true) else {
+                    fatalError("Could not find medium boat")
+            }
+            addChildNode(boatNode)
+        case .viking:
+            guard let scene = SCNScene(named: "art.scnassets/boat-viking.scn"),
+                let boatNode = scene.rootNode.childNode(withName: "boat",
+                                                        recursively: true) else {
+                    fatalError("Could not find viking boat")
             }
             addChildNode(boatNode)
         default:

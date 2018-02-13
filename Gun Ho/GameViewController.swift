@@ -35,8 +35,8 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
-        let medBoat = Boat(type: .medium)
-        medBoat.position = SCNVector3(0, floorHeight - 0.1, -2)
+        let medBoat = Boat(type: .viking)
+        medBoat.position = SCNVector3(0, floorHeight - 0.05, -10)
         sceneView.scene.rootNode.addChildNode(medBoat)
     }
     
