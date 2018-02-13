@@ -13,11 +13,24 @@ import ARKit
 class GameViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    // Gets the y-position of the ocean's top
     private var floorHeight: Float {
         guard let floorNode = sceneView.scene.rootNode.childNode(withName: "floor", recursively: false) else {
             fatalError("Floor Node could not be found for the sceneview's scene!")
         }
         return floorNode.position.y
+    }
+    // Gets the lights in the scene
+    private var lights: [SCNLight] {
+        guard let lightsNode
+            = sceneView.scene.rootNode.childNode(withName: "Lights", recursively: false) else  {
+            fatalError("Could not find lights node")
+        }
+        
+        return lightsNode.childNodes.map({ (node) -> SCNLight in
+            return node.light!
+        })
     }
     
     override func viewDidLoad() {
@@ -46,6 +59,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
+        configuration.isLightEstimationEnabled = true
         
         // Run the view's session
         sceneView.session.run(configuration)
@@ -88,6 +102,16 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         return node
     }
 */
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        /*guard let frame = sceneView.session.currentFrame,
+            let lightIntensity = frame.lightEstimate?.ambientIntensity else {
+                fatalError("Could not get light estimate")
+        }
+        
+        for light in lights {
+            light.intensity = lightIntensity
+        }*/
+    }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
