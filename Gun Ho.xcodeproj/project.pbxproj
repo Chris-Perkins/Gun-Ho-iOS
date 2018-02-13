@@ -75,9 +75,9 @@
 		22E1A873202AAB5E009A5BFC /* Gun Ho */ = {
 			isa = PBXGroup;
 			children = (
-				225815FD2032906F00F546DD /* Boats */,
 				22E1A874202AAB5E009A5BFC /* AppDelegate.swift */,
 				22E1A876202AAB5E009A5BFC /* art.scnassets */,
+				225815FD2032906F00F546DD /* Boats */,
 				22E1A878202AAB5E009A5BFC /* GameViewController.swift */,
 				22E1A87A202AAB5E009A5BFC /* Main.storyboard */,
 				22E1A87D202AAB5E009A5BFC /* Assets.xcassets */,
