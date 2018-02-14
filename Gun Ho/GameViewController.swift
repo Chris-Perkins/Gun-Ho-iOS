@@ -14,6 +14,8 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    var boat: Boat?
+    
     // Gets the y-position of the ocean's top
     private var floorHeight: Float {
         guard let floorNode = sceneView.scene.rootNode.childNode(withName: "floor", recursively: false) else {
@@ -42,6 +44,11 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+        let tapGesture =
+            UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tapGesture.delegate = self
+        sceneView.addGestureRecognizer(tapGesture)
+        
         // Create a new scene
         let scene = SCNScene(named: "art.scnassets/main-game.scn")!
         
@@ -49,6 +56,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene = scene
         
         let boat = VikingBoat()
+        self.boat = boat
         boat.position = SCNVector3(0, floorHeight + boat.floatHeight, -5)
         sceneView.scene.rootNode.addChildNode(boat)
     }
@@ -128,5 +136,19 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+}
+
+// MARK: UIGestureRecognizerDelegate
+
+extension GameViewController: UIGestureRecognizerDelegate {
+    @objc func handleTap(_ tapGesture: UITapGestureRecognizer) {
+        let location = tapGesture.location(in: sceneView)
+        let hits = sceneView.hitTest(location, options: nil)
+        if let hitObject = hits.first?.node {
+            if let boat = hitObject.getAsBoat() {
+                boat.decrementHealth()
+            }
+        }
     }
 }
