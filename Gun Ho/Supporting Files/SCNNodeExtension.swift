@@ -9,7 +9,7 @@
 import SceneKit
 
 extension SCNNode {
-    func getAsBoat() -> Boat? {
+    var boatParent: Boat? {
         return parent?.parent as? Boat
     }
 }

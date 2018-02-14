@@ -55,7 +55,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
-        let boat = VikingBoat()
+        let boat = SmallBoat()
         self.boat = boat
         boat.position = SCNVector3(0, floorHeight + boat.floatHeight, -5)
         sceneView.scene.rootNode.addChildNode(boat)
@@ -146,7 +146,7 @@ extension GameViewController: UIGestureRecognizerDelegate {
         let location = tapGesture.location(in: sceneView)
         let hits = sceneView.hitTest(location, options: nil)
         if let hitObject = hits.first?.node {
-            if let boat = hitObject.getAsBoat() {
+            if let boat = hitObject.boatParent {
                 boat.decrementHealth()
             }
         }

@@ -40,6 +40,6 @@ class Boat: SCNNode {
     }
     
     public func destroy() {
-        fatalError("Override me!")
+        removeFromParentNode()
     }
 }

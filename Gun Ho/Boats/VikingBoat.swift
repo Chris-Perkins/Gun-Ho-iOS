@@ -24,8 +24,4 @@ final class VikingBoat: Boat {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override public func destroy() {
-        removeFromParentNode()
-    }
 }
