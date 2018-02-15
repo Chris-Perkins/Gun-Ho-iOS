@@ -103,11 +103,14 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        if !Platform.isSimulator {
-            guard let frame = sceneView.session.currentFrame,
-                let lightIntensity = frame.lightEstimate?.ambientIntensity else {
-                    fatalError("Could not get light estimate")
-            }
+        /*
+            Running below in the simulator does not work since we can never get
+            the ambitient light intensity.
+            However, on a physical device, this causes the light intensity of the
+            normal lights to match the camera's captured intensity.
+        */
+        if let frame = sceneView.session.currentFrame,
+            let lightIntensity = frame.lightEstimate?.ambientIntensity {
             
             for light in lights {
                 light.intensity = lightIntensity
