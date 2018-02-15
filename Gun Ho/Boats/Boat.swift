@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-class Boat: SCNNode {
+class Boat: GameObject {
     var maxHealth: Int
     var floatHeight: Float
     
