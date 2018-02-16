@@ -14,8 +14,6 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
-    var boat: Boat?
-    
     // Gets the y-position of the ocean's top
     private var floorHeight: Float {
         guard let floorNode = sceneView.scene.rootNode.childNode(withName: "floor", recursively: false) else {
@@ -55,9 +53,8 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
-        let boat = SmallBoat()
-        self.boat = boat
-        boat.position = SCNVector3(0, floorHeight + boat.floatHeight, -5)
+        let boat = SailBoat()
+        boat.position = SCNVector3(2, floorHeight + boat.floatHeight, -10)
         sceneView.scene.rootNode.addChildNode(boat)
     }
     
