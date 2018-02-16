@@ -19,6 +19,7 @@
 		22E1A877202AAB5E009A5BFC /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A876202AAB5E009A5BFC /* art.scnassets */; };
 		22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87A202AAB5E009A5BFC /* Main.storyboard */; };
 		22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87F202AAB5E009A5BFC /* LaunchScreen.storyboard */; };
+		35BE87A72036620D004EA2CF /* SailBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE87A62036620D004EA2CF /* SailBoat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		22E1A87B202AAB5E009A5BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22E1A880202AAB5E009A5BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22E1A882202AAB5E009A5BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35BE87A62036620D004EA2CF /* SailBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailBoat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				2204201720328A7A00303B61 /* SmallBoat.swift */,
 				225815F920328EA900F546DD /* MediumBoat.swift */,
 				225815FB20328F3D00F546DD /* VikingBoat.swift */,
+				35BE87A62036620D004EA2CF /* SailBoat.swift */,
 			);
 			path = Boats;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			files = (
 				227F984C2034CA7D007FF294 /* SCNNodeExtension.swift in Sources */,
 				2245B61020336A8B00F1369B /* GameViewController.swift in Sources */,
+				35BE87A72036620D004EA2CF /* SailBoat.swift in Sources */,
 				222BE22E203605D40036E867 /* GameObject.swift in Sources */,
 				225815FA20328EA900F546DD /* MediumBoat.swift in Sources */,
 				228AB9352030D28500FEC484 /* Boat.swift in Sources */,

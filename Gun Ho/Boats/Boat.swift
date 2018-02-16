@@ -15,7 +15,7 @@ class Boat: GameObject {
     
     var health: Int {
         didSet {
-            if health == 0 {
+            if health <= 0 {
                 destroy()
             }
         }
