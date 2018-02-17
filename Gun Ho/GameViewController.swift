@@ -16,19 +16,12 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
     
     // Gets the y-position of the ocean's top
     private var floorHeight: Float {
-        guard let floorNode = sceneView.scene.rootNode.childNode(withName: "floor", recursively: false) else {
-            fatalError("Floor Node could not be found for the sceneview's scene!")
-        }
-        return floorNode.position.y
+        return sceneView.getNode(withName: "floor").position.y
     }
+    
     // Gets the lights in the scene
     private var lights: [SCNLight] {
-        guard let lightsNode
-            = sceneView.scene.rootNode.childNode(withName: "Lights", recursively: false) else  {
-            fatalError("Could not find lights node")
-        }
-        
-        return lightsNode.childNodes.map({ (node) -> SCNLight in
+        return sceneView.getNode(withName: "Lights").childNodes.map({ (node) -> SCNLight in
             return node.light!
         })
     }

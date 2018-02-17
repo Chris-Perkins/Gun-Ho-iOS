@@ -13,6 +13,8 @@
 		2245B61020336A8B00F1369B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245B60F20336A8B00F1369B /* GameViewController.swift */; };
 		225815FA20328EA900F546DD /* MediumBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815F920328EA900F546DD /* MediumBoat.swift */; };
 		225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815FB20328F3D00F546DD /* VikingBoat.swift */; };
+		2261C1092037D805003E580C /* SceneViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C1082037D805003E580C /* SceneViewExtensions.swift */; };
+		2261C10B2037D960003E580C /* SCNTransactionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */; };
 		227F984C2034CA7D007FF294 /* SCNNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F984B2034CA7D007FF294 /* SCNNodeExtension.swift */; };
 		228AB9352030D28500FEC484 /* Boat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228AB9342030D28500FEC484 /* Boat.swift */; };
 		22E1A875202AAB5E009A5BFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1A874202AAB5E009A5BFC /* AppDelegate.swift */; };
@@ -30,6 +32,8 @@
 		2245B60F20336A8B00F1369B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		225815F920328EA900F546DD /* MediumBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumBoat.swift; sourceTree = "<group>"; };
 		225815FB20328F3D00F546DD /* VikingBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VikingBoat.swift; sourceTree = "<group>"; };
+		2261C1082037D805003E580C /* SceneViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewExtensions.swift; sourceTree = "<group>"; };
+		2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNTransactionExtensions.swift; sourceTree = "<group>"; };
 		227F984B2034CA7D007FF294 /* SCNNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtension.swift; sourceTree = "<group>"; };
 		228AB9342030D28500FEC484 /* Boat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boat.swift; sourceTree = "<group>"; };
 		22E1A871202AAB5E009A5BFC /* Gun Ho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gun Ho.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,7 +68,9 @@
 		2245B60D20336A2B00F1369B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2261C1082037D805003E580C /* SceneViewExtensions.swift */,
 				227F984B2034CA7D007FF294 /* SCNNodeExtension.swift */,
+				2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -200,6 +206,8 @@
 				222BE22E203605D40036E867 /* GameObject.swift in Sources */,
 				225815FA20328EA900F546DD /* MediumBoat.swift in Sources */,
 				228AB9352030D28500FEC484 /* Boat.swift in Sources */,
+				2261C1092037D805003E580C /* SceneViewExtensions.swift in Sources */,
+				2261C10B2037D960003E580C /* SCNTransactionExtensions.swift in Sources */,
 				2204201820328A7A00303B61 /* SmallBoat.swift in Sources */,
 				22E1A875202AAB5E009A5BFC /* AppDelegate.swift in Sources */,
 				225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */,
