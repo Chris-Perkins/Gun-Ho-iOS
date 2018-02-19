@@ -21,7 +21,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
     
     // Gets the lights in the scene
     private var lights: [SCNLight] {
-        return sceneView.getNode(withName: "Lights").childNodes.map({ (node) -> SCNLight in
+        return sceneView.getNode(withName: "lights").childNodes.map({ (node) -> SCNLight in
             return node.light!
         })
     }
@@ -46,10 +46,21 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
-        let boat = MediumBoat()
-        boat.position = SCNVector3(0.5, floorHeight + boat.floatHeight, -3)
-        sceneView.scene.rootNode.addChildNode(boat)
-        boat.look(at: sceneView.getNode(withName: "island").position)
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (timer) in
+            let boat = MediumBoat()
+            
+            let randomNum = Double(arc4random())
+            let randomUnitVector = SCNVector3(sin(randomNum), 0, cos(randomNum))
+            
+            boat.position = SCNVector3(randomUnitVector.x * 0.45, -1, randomUnitVector.z * 0.45)
+            self.sceneView.scene.rootNode.addChildNode(boat)
+            boat.look(at: self.sceneView.getNode(withName: "island").position)
+            
+            SCNTransaction.perform {
+                SCNTransaction.animationDuration = 5
+                boat.position = SCNVector3(0, -1, 0)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
