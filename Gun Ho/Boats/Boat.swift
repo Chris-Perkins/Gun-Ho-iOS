@@ -39,6 +39,12 @@ class Boat: GameObject {
         health -= 1
     }
     
+    override func performLogicForFrame() {
+        if position.length() < 0.1 {
+            print("AHHHHHHHHH")
+        }
+    }
+    
     public func destroy() {
         removeFromParentNode()
     }
