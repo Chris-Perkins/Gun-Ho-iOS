@@ -10,21 +10,9 @@ import UIKit
 import SceneKit
 import ARKit
 
-class GameViewController: UIViewController, ARSCNViewDelegate {
+class GameViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
-    
-    // Gets the y-position of the ocean's top
-    private var floorHeight: Float {
-        return sceneView.getNode(withName: "floor").position.y
-    }
-    
-    // Gets the lights in the scene
-    private var lights: [SCNLight] {
-        return sceneView.getNode(withName: "lights").childNodes.map({ (node) -> SCNLight in
-            return node.light!
-        })
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +33,12 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        guard let worldScene =
+            scene.rootNode.childNode(withName: "worldScene", recursively: false) else {
+                fatalError("Could not find world scene. Was it renamed?")
+        }
+        GameManager.shared.worldScene = worldScene
         
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (timer) in
             let boat = MediumBoat()
@@ -89,34 +83,23 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        /*let node = sceneView.scene.rootNode.childNode(withName: "ship", recursively: false)!
-        SCNTransaction.animationDuration = 1
-        node.position = SCNVector3(1, 1, 1)*/
-        /*node.addAnimation(
-            CABasicAnimation.createAnimation(withKeyPath: #keyPath(SCNNode.transform),
-                                             startPosition: SCNVector3(0, 0, 0),
-                                             endPosition: SCNVector3(1, 1, 1),
-                                             duration: 5),
-            forKey: nil)*/
-        
     }
+}
 
-    // MARK: - ARSCNViewDelegate
-    
+// MARK: - ARSCNViewDelegate
+
+extension GameViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         /*
-            Running below in the simulator does not work since we can never get
-            the ambitient light intensity.
-            However, on a physical device, this causes the light intensity of the
-            normal lights to match the camera's captured intensity.
-        */
+         Running below in the simulator does not work since we can never get
+         the ambitient light intensity.
+         However, on a physical device, this causes the light intensity of the
+         normal lights to match the camera's captured intensity.
+         */
         if let frame = sceneView.session.currentFrame,
             let lightIntensity = frame.lightEstimate?.ambientIntensity {
             
-            for light in lights {
-                light.intensity = lightIntensity
-            }
+            GameManager.shared.updateLightingIntensity(toLightIntensity: lightIntensity)
         }
         
         for object in GameManager.shared.getAllGameObjects() {

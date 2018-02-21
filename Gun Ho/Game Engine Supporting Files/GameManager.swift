@@ -12,7 +12,23 @@
  The GameManager takes care of this.
  */
 
+import SceneKit
+import ARKit
+
 public class GameManager {
+    // Gets the y-position of the ocean's top
+    public var worldScene: SCNNode?
+    
+    // Gets the lights in the scene
+    private var lights: [SCNLight]? {
+        guard let worldScene = worldScene,
+            let lightsNode = worldScene.childNode(withName: "lights", recursively: true) else {
+            return nil
+        }
+        return lightsNode.childNodes.map({ (node) -> SCNLight in
+            return node.light!
+        })
+    }
     private static var activeInstance: GameManager?
     
     // Returns or creates and returns the shared instance
@@ -41,6 +57,14 @@ public class GameManager {
     
     public func getAllGameObjects() -> [GameObject] {
         return Array(gameObjectDictionary.values)
+    }
+    
+    public func updateLightingIntensity(toLightIntensity lightIntensity: CGFloat) {
+        if let lights = lights {
+            for light in lights {
+                light.intensity = lightIntensity
+            }
+        }
     }
     
     private init() {
