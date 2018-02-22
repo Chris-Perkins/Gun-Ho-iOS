@@ -102,7 +102,7 @@ extension GameViewController: ARSCNViewDelegate {
             GameManager.shared.updateLightingIntensity(toLightIntensity: lightIntensity)
         }
         
-        for object in GameManager.shared.getAllGameObjects() {
+        for object in GameManager.shared.gameObjects {
             object.performLogicForFrame()
         }
     }

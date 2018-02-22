@@ -24,7 +24,7 @@ public class GameObject: SCNNode {
         super.init()
         
         name = UUID().uuidString
-        GameManager.shared.addGameObject(self)
+        GameManager.shared.gameObjects.append(self)
     }
     
     public required init?(coder aDecoder: NSCoder) {
