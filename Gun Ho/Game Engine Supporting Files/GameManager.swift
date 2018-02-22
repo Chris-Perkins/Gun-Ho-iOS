@@ -15,9 +15,9 @@
 import SceneKit
 import ARKit
 
+// MARK: Singleton logic
+
 public class GameManager {
-    
-    // MARK: Singleton logic
     
     private static var activeInstance: GameManager?
     
@@ -42,11 +42,19 @@ public class GameManager {
     // Stores all game objects so we can check logic for each frame
     public var gameObjects = [GameObject]()
     
+    // The current wave we're on
+    // Nullable since we may not be in an active game
+    private var curWave: Int?
+}
+
+// MARK: Core Game Logic
+
+extension GameManager {
     // Gets the lights in the scene
     private var lights: [SCNLight]? {
         guard let worldScene = worldScene,
             let lightsNode = worldScene.childNode(withName: "lights", recursively: true) else {
-            return nil
+                return nil
         }
         return lightsNode.childNodes.map({ (node) -> SCNLight in
             return node.light!
@@ -59,5 +67,33 @@ public class GameManager {
                 light.intensity = lightIntensity
             }
         }
+    }
+    
+    // Should be called to start the game
+    public func performGameStartSequence(atWave wave: Int = 0) {
+        curWave = wave
+        
+        spawn(waveNumber: curWave!)
+    }
+    
+    // Should be called whenever the game should end
+    public func performGameOverSequence() {
+        curWave = nil
+    }
+    
+    // Should be called whenever the user defeats a wave
+    public func performWaveCompleteSequence() {
+        guard let wave = curWave else {
+            fatalError("Wave cannot be complete; the game was never started!")
+        }
+        curWave = wave + 1
+    }
+}
+
+// MARK: Spawning logic
+
+extension GameManager {
+    func spawn(waveNumber: Int) {
+        
     }
 }
