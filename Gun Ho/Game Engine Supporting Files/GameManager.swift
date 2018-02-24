@@ -45,6 +45,10 @@ public class GameManager {
     // The current wave we're on
     // Nullable since we may not be in an active game
     private var curWave: Int?
+    
+    // The current number of boats we've destroyed
+    // Nullable since we may not be in an active game
+    private var curPoints: Int?
 }
 
 // MARK: Core Game Logic
@@ -61,6 +65,14 @@ extension GameManager {
         })
     }
     
+    private var island: SCNNode {
+        guard let islandNode = worldScene?.childNode(withName: "island", recursively: false) else {
+            fatalError("Could not find island in the worldScene")
+        }
+        
+        return islandNode
+    }
+    
     public func updateLightingIntensity(toLightIntensity lightIntensity: CGFloat) {
         if let lights = lights {
             for light in lights {
@@ -71,14 +83,21 @@ extension GameManager {
     
     // Should be called to start the game
     public func performGameStartSequence(atWave wave: Int = 0) {
-        curWave = wave
+        curWave   = wave
+        curPoints = 0
         
         spawn(waveNumber: curWave!)
     }
     
     // Should be called whenever the game should end
     public func performGameOverSequence() {
-        curWave = nil
+        curWave   = nil
+        curPoints = nil
+        
+        for node in gameObjects {
+            node.removeFromParentNode()
+        }
+        gameObjects.removeAll()
     }
     
     // Should be called whenever the user defeats a wave
@@ -87,6 +106,16 @@ extension GameManager {
             fatalError("Wave cannot be complete; the game was never started!")
         }
         curWave = wave + 1
+        
+        spawn(waveNumber: curWave!)
+    }
+    
+    public func addPoints(_ points: Int) {
+        guard var curPoints = curPoints else {
+            fatalError("Cannot add points; the game was never started!")
+        }
+        
+        curPoints += points
     }
 }
 
@@ -94,6 +123,20 @@ extension GameManager {
 
 extension GameManager {
     func spawn(waveNumber: Int) {
-        
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (timer) in
+            let boat = MediumBoat()
+            
+            let randomNum = Double(arc4random())
+            let randomUnitVector = SCNVector3(sin(randomNum), 0, cos(randomNum))
+            
+            boat.position = SCNVector3(randomUnitVector.x * 0.45, -1, randomUnitVector.z * 0.45)
+            self.worldScene!.addChildNode(boat)
+            boat.look(at: self.island.position)
+            
+            SCNTransaction.perform {
+                SCNTransaction.animationDuration = 5
+                boat.position = SCNVector3(0, -1, 0)
+            }
+        }
     }
 }

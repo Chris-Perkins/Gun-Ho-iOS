@@ -11,7 +11,7 @@ import SceneKit
 
 final class SmallBoat: Boat {
     init() {
-        super.init(maxHealth: 1, floatHeight: -0.05)
+        super.init(maxHealth: 1, floatHeight: -0.05, points: 1)
         
         guard let scene = SCNScene(named: "art.scnassets/boat-small.scn"),
             let boatNode = scene.rootNode.childNode(withName: "boat",

@@ -11,7 +11,12 @@ import SceneKit
 
 class Boat: GameObject {
     var maxHealth: Int
+    
+    // How high the boat floats (negative is sync)
     var floatHeight: Float
+    
+    // How many points the boat is worth
+    let pointValue: Int
     
     var health: Int {
         didSet {
@@ -22,9 +27,10 @@ class Boat: GameObject {
     }
     
     // MARK: - Lifecycle
-    init(maxHealth: Int, floatHeight: Float) {
+    init(maxHealth: Int, floatHeight: Float, points: Int) {
         self.maxHealth   = maxHealth
         self.floatHeight = floatHeight
+        self.pointValue  = points
         
         health = maxHealth
         
@@ -46,6 +52,7 @@ class Boat: GameObject {
     }
     
     public func destroy() {
+        GameManager.shared.addPoints(pointValue)
         removeFromParentNode()
     }
 }

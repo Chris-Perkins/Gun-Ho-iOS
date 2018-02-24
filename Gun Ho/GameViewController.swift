@@ -39,22 +39,6 @@ class GameViewController: UIViewController {
                 fatalError("Could not find world scene. Was it renamed?")
         }
         GameManager.shared.worldScene = worldScene
-        
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (timer) in
-            let boat = MediumBoat()
-            
-            let randomNum = Double(arc4random())
-            let randomUnitVector = SCNVector3(sin(randomNum), 0, cos(randomNum))
-            
-            boat.position = SCNVector3(randomUnitVector.x * 0.45, -1, randomUnitVector.z * 0.45)
-            self.sceneView.scene.rootNode.addChildNode(boat)
-            boat.look(at: self.sceneView.getNode(withName: "island").position)
-            
-            SCNTransaction.perform {
-                SCNTransaction.animationDuration = 5
-                boat.position = SCNVector3(0, -1, 0)
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
