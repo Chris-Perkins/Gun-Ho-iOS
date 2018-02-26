@@ -37,7 +37,7 @@ public class GameManager {
     // MARK: Game properties
     
     // Gets the y-position of the ocean's top
-    public var worldScene: SCNNode?
+    public var rootNode: SCNNode?
     
     // Stores all game objects so we can check logic for each frame
     public var gameObjects = [GameObject]()
@@ -59,8 +59,7 @@ public class GameManager {
 extension GameManager {
     // Gets the lights in the scene
     private var lights: [SCNLight]? {
-        guard let worldScene = worldScene,
-            let lightsNode = worldScene.childNode(withName: "lights", recursively: true) else {
+        guard let lightsNode = worldScene.childNode(withName: "lights", recursively: true) else {
                 return nil
         }
         return lightsNode.childNodes.map({ (node) -> SCNLight in
@@ -68,13 +67,27 @@ extension GameManager {
         })
     }
     
+    private var worldScene: SCNNode {
+        guard let worldSceneNode = rootNode?.childNode(withName: "worldScene", recursively: false) else {
+            fatalError("Could not get worldScene!")
+        }
+        return worldSceneNode
+    }
+    
     // Gets the island from the worldscene
     private var island: SCNNode {
-        guard let islandNode = worldScene?.childNode(withName: "island", recursively: false) else {
+        guard let islandNode = worldScene.childNode(withName: "island", recursively: false) else {
             fatalError("Could not find island in the worldScene")
         }
-        
         return islandNode
+    }
+    
+    // Gets the ocean from the worldscene
+    private var ocean: SCNNode {
+        guard let oceanNode = worldScene.childNode(withName: "ocean", recursively: false) else {
+            fatalError("Could not find ocean in the worldScene")
+        }
+        return oceanNode
     }
     
     // Called on every frame to update the lighting to the provided lighting intensity
@@ -142,22 +155,29 @@ extension GameManager {
     
     // Spawns boats and recursively spawns more boats again
     func spawnBoats(withRemainingPoints remainingPoints: Int) {
+        // Recursive definition ended; we can no longer spawn boats
+        if remainingPoints <= 0 {
+            return
+        }
+        
         let spawnableBoats = getSpawnableBoats(withPointsCount: remainingPoints)
-        let boat = spawnableBoats[Int.random(min: 0, max: spawnableBoats.count - 1)].init()
+        let randIndex = Int.random(min: 0, max: spawnableBoats.count - 1)
+        print(randIndex)
+        let boat = spawnableBoats[randIndex].init()
         
         let randomNum = Double(arc4random())
         let randomUnitVector = SCNVector3(sin(randomNum), 0, cos(randomNum))
         
         boat.position = SCNVector3(randomUnitVector.x * 0.45,
-                                   self.worldScene!.position.y,
+                                   self.worldScene.position.y,
                                    randomUnitVector.z * 0.45)
-        worldScene?.addChildNode(boat)
+        boat.look(at: island.position)
+        rootNode?.addChildNode(boat)
+        
         SCNTransaction.perform {
             SCNTransaction.animationDuration = 5
-            boat.position = SCNVector3(0, -1, 0)
+            boat.position = SCNVector3(0, boat.position.y, 0)
         }
-        
-        boat.look(at: island.position)
         
         Timer.scheduledTimer(withTimeInterval: Double.random(min: 0, max: 2), repeats: false) { (timer) in
             self.spawnBoats(withRemainingPoints: remainingPoints - boat.pointValue)
@@ -179,7 +199,7 @@ extension GameManager {
             possibleBoats.append(VikingBoat.self)
         }
         if pointsCount >= SailBoat.pointsCount {
-            possibleBoats.append(SailBoat.self)
+            //possibleBoats.append(SailBoat.self)
         }
         
         return possibleBoats

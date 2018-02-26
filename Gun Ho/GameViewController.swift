@@ -33,12 +33,7 @@ class GameViewController: UIViewController {
         
         // Set the scene to the view
         sceneView.scene = scene
-        
-        guard let worldScene =
-            scene.rootNode.childNode(withName: "worldScene", recursively: false) else {
-                fatalError("Could not find world scene. Was it renamed?")
-        }
-        GameManager.shared.worldScene = worldScene
+        GameManager.shared.rootNode = sceneView.scene.rootNode
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +62,8 @@ class GameViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        GameManager.shared.performGameStartSequence(atWave: 10)
     }
 }
 
