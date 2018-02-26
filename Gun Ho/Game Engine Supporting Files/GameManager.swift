@@ -34,13 +34,16 @@ public class GameManager {
     private init() {
     }
     
-    // MARK: Game logic
+    // MARK: Game properties
     
     // Gets the y-position of the ocean's top
     public var worldScene: SCNNode?
     
     // Stores all game objects so we can check logic for each frame
     public var gameObjects = [GameObject]()
+    
+    // The maximum wave we can go to
+    private let maxWave = 40
     
     // The current wave we're on
     // Nullable since we may not be in an active game
@@ -65,6 +68,7 @@ extension GameManager {
         })
     }
     
+    // Gets the island from the worldscene
     private var island: SCNNode {
         guard let islandNode = worldScene?.childNode(withName: "island", recursively: false) else {
             fatalError("Could not find island in the worldScene")
@@ -73,6 +77,7 @@ extension GameManager {
         return islandNode
     }
     
+    // Called on every frame to update the lighting to the provided lighting intensity
     public func updateLightingIntensity(toLightIntensity lightIntensity: CGFloat) {
         if let lights = lights {
             for light in lights {
@@ -122,21 +127,61 @@ extension GameManager {
 // MARK: Spawning logic
 
 extension GameManager {
+    
+    // Returns the number of points necessary to pass a wave
+    func pointsPerWave(_ wave: Int) -> Int {
+        let linearFactor      = 3 * wave
+        let exponentialFactor = 3^^(wave / 10 - 3)
+        return linearFactor + exponentialFactor
+    }
+    
+    // Starts spawning for a given wave number
     func spawn(waveNumber: Int) {
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (timer) in
-            let boat = MediumBoat()
-            
-            let randomNum = Double(arc4random())
-            let randomUnitVector = SCNVector3(sin(randomNum), 0, cos(randomNum))
-            
-            boat.position = SCNVector3(randomUnitVector.x * 0.45, -1, randomUnitVector.z * 0.45)
-            self.worldScene!.addChildNode(boat)
-            boat.look(at: self.island.position)
-            
-            SCNTransaction.perform {
-                SCNTransaction.animationDuration = 5
-                boat.position = SCNVector3(0, -1, 0)
-            }
+        spawnBoats(withRemainingPoints: pointsPerWave(waveNumber))
+    }
+    
+    // Spawns boats and recursively spawns more boats again
+    func spawnBoats(withRemainingPoints remainingPoints: Int) {
+        let spawnableBoats = getSpawnableBoats(withPointsCount: remainingPoints)
+        let boat = spawnableBoats[Int.random(min: 0, max: spawnableBoats.count - 1)].init()
+        
+        let randomNum = Double(arc4random())
+        let randomUnitVector = SCNVector3(sin(randomNum), 0, cos(randomNum))
+        
+        boat.position = SCNVector3(randomUnitVector.x * 0.45,
+                                   self.worldScene!.position.y,
+                                   randomUnitVector.z * 0.45)
+        worldScene?.addChildNode(boat)
+        SCNTransaction.perform {
+            SCNTransaction.animationDuration = 5
+            boat.position = SCNVector3(0, -1, 0)
         }
+        
+        boat.look(at: island.position)
+        
+        Timer.scheduledTimer(withTimeInterval: Double.random(min: 0, max: 2), repeats: false) { (timer) in
+            self.spawnBoats(withRemainingPoints: remainingPoints - boat.pointValue)
+        }
+    }
+    
+    // Returns a list of all possible boats that we can spawn
+    func getSpawnableBoats(withPointsCount pointsCount: Int) -> [Boat.Type] {
+        var possibleBoats = [Boat.Type]()
+        
+        // TODO: Make this nicer if possible.
+        if pointsCount >= SmallBoat.pointsCount {
+            possibleBoats.append(SmallBoat.self)
+        }
+        if pointsCount >= MediumBoat.pointsCount {
+            possibleBoats.append(MediumBoat.self)
+        }
+        if pointsCount >= VikingBoat.pointsCount {
+            possibleBoats.append(VikingBoat.self)
+        }
+        if pointsCount >= SailBoat.pointsCount {
+            possibleBoats.append(SailBoat.self)
+        }
+        
+        return possibleBoats
     }
 }

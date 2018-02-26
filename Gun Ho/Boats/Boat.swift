@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 
 class Boat: GameObject {
+    
     var maxHealth: Int
     
     // How high the boat floats (negative is sync)
@@ -35,6 +36,10 @@ class Boat: GameObject {
         health = maxHealth
         
         super.init()
+    }
+    
+    required override init() {
+        fatalError("Cannot initialize a boat directly!")
     }
     
     required init?(coder aDecoder: NSCoder) {
