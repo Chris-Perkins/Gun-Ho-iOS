@@ -51,7 +51,22 @@ public class GameManager {
     
     // The current number of boats we've destroyed
     // Nullable since we may not be in an active game
-    private var curPoints: Int?
+    /*
+     Due to the setter observer, curWave should be set
+     before curPoints is set
+    */
+    private var curPoints: Int? {
+        didSet {
+            guard let curPoints = curPoints,
+                let curWave = curWave else {
+                return
+            }
+            
+            if curPoints >= pointsPerWave(curWave) {
+                performWaveCompleteSequence()
+            }
+        }
+    }
 }
 
 // MARK: Core Game Logic
@@ -123,17 +138,23 @@ extension GameManager {
         guard let wave = curWave else {
             fatalError("Wave cannot be complete; the game was never started!")
         }
-        curWave = wave + 1
         
+        // We shouldn't create the next wave is the wave was completed
+        if wave >= maxWave {
+            return
+        }
+        
+        curWave = wave + 1
+        curPoints = 0
         spawn(waveNumber: curWave!)
     }
     
     public func addPoints(_ points: Int) {
-        guard var curPoints = curPoints else {
+        guard let curPoints = curPoints else {
             fatalError("Cannot add points; the game was never started!")
         }
         
-        curPoints += points
+        self.curPoints = curPoints + points
     }
 }
 
@@ -162,7 +183,6 @@ extension GameManager {
         
         let spawnableBoats = getSpawnableBoats(withPointsCount: remainingPoints)
         let randIndex = Int.random(min: 0, max: spawnableBoats.count - 1)
-        print(randIndex)
         let boat = spawnableBoats[randIndex].init()
         
         let randomNum = Double(arc4random())
