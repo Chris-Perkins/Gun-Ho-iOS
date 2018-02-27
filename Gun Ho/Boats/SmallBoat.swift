@@ -11,7 +11,7 @@ import SceneKit
 
 final class SmallBoat: Boat {
     
-    public static let pointsCount = 1
+    override class var pointsCount: Int { return  1 }
     
     required init() {
         super.init(maxHealth: 1, floatHeight: -0.05, points: SmallBoat.pointsCount)

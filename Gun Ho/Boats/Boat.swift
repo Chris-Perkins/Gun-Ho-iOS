@@ -11,6 +11,8 @@ import SceneKit
 
 class Boat: GameObject {
     
+    class var pointsCount: Int { return  0 }
+    
     var maxHealth: Int
     
     // How high the boat floats (negative is sync)

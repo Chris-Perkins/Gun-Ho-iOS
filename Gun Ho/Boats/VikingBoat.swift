@@ -10,7 +10,8 @@ import Foundation
 import SceneKit
 
 final class VikingBoat: Boat {
-    public static let pointsCount = 10
+    
+    override class var pointsCount: Int { return  7 }
     
     required init() {
         super.init(maxHealth: 10, floatHeight: -0.175, points: VikingBoat.pointsCount)

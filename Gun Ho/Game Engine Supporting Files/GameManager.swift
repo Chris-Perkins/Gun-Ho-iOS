@@ -35,7 +35,7 @@ public class GameManager {
     
     // MARK: Game properties
     
-    // Gets the y-position of the ocean's top
+    // The root node for use in spawning and finding the worldScene node
     public var rootNode: SCNNode?
     
     // Stores all game objects so we can check logic for each frame
@@ -48,11 +48,16 @@ public class GameManager {
      */
     private let maxWave = 100
     
-    private var requiredPointsForWaveComplete: Int?
+    // A reference to the object that is currently spawning boats
+    private var boatSpawner: BoatSpawner?
     
     // The current wave we're on
     // Nullable since we may not be in an active game
     private var curWave: Int?
+    
+    // The total points we've earned in this session of the game
+    // Nullable since we may not be in an active game
+    private var totalPoints: Int?
     
     // The current number of boats we've destroyed
     // Nullable since we may not be in an active game
@@ -62,12 +67,16 @@ public class GameManager {
     */
     private var curPoints: Int? {
         didSet {
+            /*
+             If the game started or ended, don't bother checking
+             if we moved to the next level.
+            */
             guard let curPoints = curPoints,
-                let reqPoints = requiredPointsForWaveComplete else {
+                let curWave = curWave else {
                 return
             }
             
-            if curPoints >= reqPoints {
+            if curPoints >= pointsPerWave(curWave) {
                 performWaveCompleteSequence()
             }
         }
@@ -78,7 +87,7 @@ public class GameManager {
 
 extension GameManager {
     // Gets the lights in the scene
-    private var lights: [SCNLight]? {
+    public var lights: [SCNLight]? {
         guard let lightsNode = worldScene.childNode(withName: "lights", recursively: true) else {
                 return nil
         }
@@ -87,7 +96,8 @@ extension GameManager {
         })
     }
     
-    private var worldScene: SCNNode {
+    // Gets the worldScene from the rootnode
+    public var worldScene: SCNNode {
         guard let worldSceneNode = rootNode?.childNode(withName: "worldScene", recursively: false) else {
             fatalError("Could not get worldScene!")
         }
@@ -95,7 +105,7 @@ extension GameManager {
     }
     
     // Gets the island from the worldscene
-    private var island: SCNNode {
+    public var island: SCNNode {
         guard let islandNode = worldScene.childNode(withName: "island", recursively: false) else {
             fatalError("Could not find island in the worldScene")
         }
@@ -103,7 +113,7 @@ extension GameManager {
     }
     
     // Gets the ocean from the worldscene
-    private var ocean: SCNNode {
+    public var ocean: SCNNode {
         guard let oceanNode = worldScene.childNode(withName: "ocean", recursively: false) else {
             fatalError("Could not find ocean in the worldScene")
         }
@@ -125,17 +135,18 @@ extension GameManager {
             fatalError("Waves are 1-indexed. Please use a wave value > 0")
         }
         
-        curWave   = wave
-        curPoints = 0
+        totalPoints = 0
+        curPoints   = 0
+        curWave     = wave
         
-        spawn(waveNumber: curWave!)
+        createAndStartCurrentWaveBoatSpawner()
     }
     
     // Should be called whenever the game should end
     public func performGameOverSequence() {
-        requiredPointsForWaveComplete = nil
-        curWave   = nil
-        curPoints = nil
+        totalPoints = nil
+        curWave     = nil
+        curPoints   = nil
         
         for node in gameObjects {
             node.removeFromParentNode()
@@ -154,91 +165,40 @@ extension GameManager {
             performGameOverSequence()
         }
         
-        curWave = wave + 1
-        spawn(waveNumber: curWave!)
+        curPoints = 0
+        curWave   = wave + 1
+        createAndStartCurrentWaveBoatSpawner()
     }
     
+    // Adds the input points to the current and totalPoints variables
     public func addPoints(_ points: Int) {
-        guard let curPoints = curPoints else {
+        guard let curPoints = curPoints,
+            let totalPoints = totalPoints else {
             fatalError("Cannot add points; the game was never started!")
         }
         
-        self.curPoints = curPoints + points
+        self.curPoints   = curPoints + points
+        self.totalPoints = totalPoints + points
     }
-}
-
-// MARK: Spawning logic
-
-extension GameManager {
     
     // Returns the number of points necessary to pass a wave
-    func pointsPerWave(_ wave: Int) -> Int {
+    private func pointsPerWave(_ wave: Int) -> Int {
         let linearFactor      = 3 * wave
         let exponentialFactor = 3^^(wave / 10 - 3)
+        
         return linearFactor + exponentialFactor
     }
     
-    // Starts spawning for a given wave number
-    func spawn(waveNumber: Int) {
-        let waveRequiredPoints = pointsPerWave(waveNumber)
-        
-        if let reqPoints = requiredPointsForWaveComplete {
-            requiredPointsForWaveComplete = reqPoints + waveRequiredPoints
-        } else {
-            requiredPointsForWaveComplete = waveRequiredPoints
+    // Creates a boat spawner from the current wave's info.
+    // Requires a node to spawn on
+    private func createAndStartCurrentWaveBoatSpawner() {
+        guard let curWave = curWave,
+            let spawnNode = rootNode else {
+                fatalError("Cannot create a spawner without the wave and spawnNode")
         }
         
-        spawnBoats(withRemainingPoints: waveRequiredPoints)
-    }
-    
-    // Spawns boats and recursively spawns more boats again
-    func spawnBoats(withRemainingPoints remainingPoints: Int) {
-        // Recursive definition ended; we can no longer spawn boats
-        if remainingPoints <= 0 {
-            return
-        }
-        
-        let spawnableBoats = getSpawnableBoats(withPointsCount: remainingPoints)
-        let randIndex = Int.random(min: 0, max: spawnableBoats.count - 1)
-        let boat = spawnableBoats[randIndex].init()
-        
-        let randomNum = Double(arc4random())
-        let randomUnitVector = SCNVector3(sin(randomNum), 0, cos(randomNum))
-        
-        boat.position = SCNVector3(randomUnitVector.x * 0.45,
-                                   self.worldScene.position.y,
-                                   randomUnitVector.z * 0.45)
-        boat.look(at: island.position)
-        rootNode?.addChildNode(boat)
-        
-        SCNTransaction.perform {
-            SCNTransaction.animationDuration = 5
-            boat.position = SCNVector3(0, boat.position.y, 0)
-        }
-        
-        Timer.scheduledTimer(withTimeInterval: Double.random(min: 0, max: 2), repeats: false) { (timer) in
-            self.spawnBoats(withRemainingPoints: remainingPoints - boat.pointValue)
-        }
-    }
-    
-    // Returns a list of all possible boats that we can spawn
-    func getSpawnableBoats(withPointsCount pointsCount: Int) -> [Boat.Type] {
-        var possibleBoats = [Boat.Type]()
-        
-        // TODO: Make this nicer if possible.
-        if pointsCount >= SmallBoat.pointsCount {
-            possibleBoats.append(SmallBoat.self)
-        }
-        if pointsCount >= MediumBoat.pointsCount {
-            possibleBoats.append(MediumBoat.self)
-        }
-        if pointsCount >= VikingBoat.pointsCount {
-            possibleBoats.append(VikingBoat.self)
-        }
-        if pointsCount >= SailBoat.pointsCount {
-            //possibleBoats.append(SailBoat.self)
-        }
-        
-        return possibleBoats
+        boatSpawner = BoatSpawner(withPoints: pointsPerWave(curWave),
+                                  andSpawningNode: spawnNode)
+        boatSpawner?.startSpawning()
     }
 }
