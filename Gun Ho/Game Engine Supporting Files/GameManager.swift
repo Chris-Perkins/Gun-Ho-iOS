@@ -31,8 +31,7 @@ public class GameManager {
         }
     }
     
-    private init() {
-    }
+    private init() {}
     
     // MARK: Game properties
     
@@ -43,7 +42,13 @@ public class GameManager {
     public var gameObjects = [GameObject]()
     
     // The maximum wave we can go to
-    private let maxWave = 40
+    /*
+     NOTE: Make sure the summation from 0 to maxWave
+     of pointsPerWave is < 2^32
+     */
+    private let maxWave = 100
+    
+    private var requiredPointsForWaveComplete: Int?
     
     // The current wave we're on
     // Nullable since we may not be in an active game
@@ -58,11 +63,11 @@ public class GameManager {
     private var curPoints: Int? {
         didSet {
             guard let curPoints = curPoints,
-                let curWave = curWave else {
+                let reqPoints = requiredPointsForWaveComplete else {
                 return
             }
             
-            if curPoints >= pointsPerWave(curWave) {
+            if curPoints >= reqPoints {
                 performWaveCompleteSequence()
             }
         }
@@ -115,7 +120,11 @@ extension GameManager {
     }
     
     // Should be called to start the game
-    public func performGameStartSequence(atWave wave: Int = 0) {
+    public func performGameStartSequence(atWave wave: Int = 1) {
+        if wave <= 0 {
+            fatalError("Waves are 1-indexed. Please use a wave value > 0")
+        }
+        
         curWave   = wave
         curPoints = 0
         
@@ -124,6 +133,7 @@ extension GameManager {
     
     // Should be called whenever the game should end
     public func performGameOverSequence() {
+        requiredPointsForWaveComplete = nil
         curWave   = nil
         curPoints = nil
         
@@ -141,11 +151,10 @@ extension GameManager {
         
         // We shouldn't create the next wave is the wave was completed
         if wave >= maxWave {
-            return
+            performGameOverSequence()
         }
         
         curWave = wave + 1
-        curPoints = 0
         spawn(waveNumber: curWave!)
     }
     
@@ -171,7 +180,15 @@ extension GameManager {
     
     // Starts spawning for a given wave number
     func spawn(waveNumber: Int) {
-        spawnBoats(withRemainingPoints: pointsPerWave(waveNumber))
+        let waveRequiredPoints = pointsPerWave(waveNumber)
+        
+        if let reqPoints = requiredPointsForWaveComplete {
+            requiredPointsForWaveComplete = reqPoints + waveRequiredPoints
+        } else {
+            requiredPointsForWaveComplete = waveRequiredPoints
+        }
+        
+        spawnBoats(withRemainingPoints: waveRequiredPoints)
     }
     
     // Spawns boats and recursively spawns more boats again

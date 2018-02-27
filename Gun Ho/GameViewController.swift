@@ -63,7 +63,7 @@ class GameViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        GameManager.shared.performGameStartSequence(atWave: 10)
+        GameManager.shared.performGameStartSequence()
     }
 }
 
