@@ -14,7 +14,10 @@ final class MediumBoat: Boat {
     override class var pointsCount: Int { return  3 }
     
     required init() {
-        super.init(maxHealth: 3, floatHeight: -0.05, points: MediumBoat.pointsCount)
+        super.init(maxHealth: 3,
+                   floatHeight: -0.05,
+                   points: MediumBoat.pointsCount,
+                   speed: 3)
         
         guard let scene = SCNScene(named: "art.scnassets/boat-medium.scn"),
             let boatNode = scene.rootNode.childNode(withName: "boat",
