@@ -148,10 +148,18 @@ extension GameManager {
         curWave     = nil
         curPoints   = nil
         
+        boatSpawner?.pauseSpawning()
+        boatSpawner = nil
+        
         for node in gameObjects {
             node.removeFromParentNode()
         }
         gameObjects.removeAll()
+        
+        print("GAME OVER U LOSE")
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
+            self.performGameStartSequence()
+        }
     }
     
     // Should be called whenever the user defeats a wave
