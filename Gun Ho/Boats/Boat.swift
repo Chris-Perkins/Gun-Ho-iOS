@@ -55,22 +55,15 @@ class Boat: GameObject {
     // MARK: GameObject operations
     
     override func performLogicForFrame() {
+        /*guard let environmentNode = GameManager.shared.island.childNode(withName: "environment", recursively: false),
+            let environmentBox = environmentNode.geometry?.boundingBox else {
+            fatalError("Could not get island's environment geometry!")
+        }
+        let islandRadius = (environmentBox.max.x - environmentBox.min.x) / 2
         
-        let islandDistance = abs(Double((GameManager.shared.island.geometry?.boundingBox.min.x)!))
-        var distanceToCenterX : Double
-        var distanceToCenterY : Double
-        
-        distanceToCenterX = abs(Double(self.position.x))
-        distanceToCenterY = abs(Double(self.position.y))
-        
-        let length = sqrt( pow(distanceToCenterX, 2.0) + pow(distanceToCenterY, 2.0))
-        
-        if(length < islandDistance) {
+        if(position.distance(vector: GameManager.shared.island.position) < islandRadius) {
             GameManager.shared.performGameOverSequence()
-        }
-        else {
-            return
-        }
+        }*/
     }
     
     // MARK: Boat operations
@@ -97,8 +90,8 @@ class Boat: GameObject {
         look(at: GameManager.shared.island.position)
         
         /*
-         Springs the boat up. After the boat is at the original scale,
-         it moves towards the island.
+         Springs the boat up. While springing up, the boat will start
+         moving towards the island.
          */
         SCNTransaction.perform {
             SCNTransaction.animationDuration = 1
