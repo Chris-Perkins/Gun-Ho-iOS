@@ -55,8 +55,21 @@ class Boat: GameObject {
     // MARK: GameObject operations
     
     override func performLogicForFrame() {
-        if position.length() < 0.1 {
-            print("AHHHHHHHHH")
+        
+        let islandDistance = abs(Double((GameManager.shared.island.geometry?.boundingBox.min.x)!))
+        var distanceToCenterX : Double
+        var distanceToCenterY : Double
+        
+        distanceToCenterX = abs(Double(self.position.x))
+        distanceToCenterY = abs(Double(self.position.y))
+        
+        let length = sqrt( pow(distanceToCenterX, 2.0) + pow(distanceToCenterY, 2.0))
+        
+        if(length < islandDistance) {
+            GameManager.shared.performGameOverSequence()
+        }
+        else {
+            return
         }
     }
     
