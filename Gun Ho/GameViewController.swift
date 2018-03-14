@@ -14,6 +14,9 @@ class GameViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    var planes: [ARAnchor: HorizontalPlane] = [:]
+    var selectedPlane: HorizontalPlane?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +68,20 @@ class GameViewController: UIViewController {
         
         GameManager.shared.performGameStartSequence()
     }
+    
+    func addToNode(rootNode: SCNNode) {
+        GameManager.shared.worldScene.removeFromParentNode()
+        sceneView.scene.rootNode.addChildNode(GameManager.shared.worldScene)
+        GameManager.shared.worldScene.scale = SCNVector3(0.1, 0.1, 0.1)
+    }
+    
+    func updateGameSceneForAnchor(anchor: ARPlaneAnchor) {
+        let worldSize: Float = 20.0
+        let minSize = min(anchor.extent.x, anchor.extent.z)
+        let scale = minSize / worldSize
+        GameManager.shared.worldScene.scale = SCNVector3(x: scale, y: scale, z: scale)
+        GameManager.shared.worldScene.position = SCNVector3(anchor.center)
+    }
 }
 
 // MARK: - ARSCNViewDelegate
@@ -87,6 +104,35 @@ extension GameViewController: ARSCNViewDelegate {
             object.performLogicForFrame()
         }
     }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        if let anchor = anchor as? ARPlaneAnchor {
+            let plane = HorizontalPlane(anchor: anchor)
+            planes[anchor] = plane
+            node.addChildNode(plane)
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        if let anchor = anchor as? ARPlaneAnchor,
+            let plane = planes[anchor] {
+            plane.update(for: anchor)
+            if selectedPlane?.anchor == anchor {
+                updateGameSceneForAnchor(anchor: anchor)
+            }
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        if let plane = planes.removeValue(forKey: anchor) {
+            if plane == self.selectedPlane {
+                let nextPlane = planes.values.first!
+                addToNode(rootNode: nextPlane)
+                updateGameSceneForAnchor(anchor: nextPlane.anchor)
+            }
+            plane.removeFromParentNode()
+        }
+    }
 }
 
 // MARK: UIGestureRecognizerDelegate
@@ -98,6 +144,11 @@ extension GameViewController: UIGestureRecognizerDelegate {
         if let hitObject = hits.first?.node {
             if let boat = hitObject.boatParent {
                 boat.decrementHealth()
+            }
+            if let selectedPlane = hitObject as? HorizontalPlane {
+                self.selectedPlane = selectedPlane
+                addToNode(rootNode: selectedPlane.parent!)
+                updateGameSceneForAnchor(anchor: selectedPlane.anchor)
             }
         }
     }
