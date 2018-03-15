@@ -70,9 +70,13 @@ class GameViewController: UIViewController {
     }
     
     func addToNode(rootNode: SCNNode) {
-        GameManager.shared.worldScene.removeFromParentNode()
-        sceneView.scene.rootNode.addChildNode(GameManager.shared.worldScene)
-        GameManager.shared.worldScene.scale = SCNVector3(0.1, 0.1, 0.1)
+        SCNTransaction.perform {
+            let worldScene = GameManager.shared.worldScene
+            GameManager.shared.rootNode = rootNode
+            worldScene.removeFromParentNode()
+            rootNode.addChildNode(worldScene)
+            GameManager.shared.worldScene.scale = SCNVector3(0.1, 0.1, 0.1)
+        }
     }
     
     func updateGameSceneForAnchor(anchor: ARPlaneAnchor) {
