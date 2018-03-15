@@ -71,20 +71,19 @@ class GameViewController: UIViewController {
     
     func addToNode(rootNode: SCNNode) {
         SCNTransaction.perform {
-            let worldScene = GameManager.shared.worldScene
             GameManager.shared.rootNode = rootNode
-            worldScene.removeFromParentNode()
-            rootNode.addChildNode(worldScene)
-            GameManager.shared.worldScene.scale = SCNVector3(0.1, 0.1, 0.1)
+            GameManager.shared.gameNode.removeFromParentNode()
+            rootNode.addChildNode(GameManager.shared.gameNode)
+            //GameManager.shared.gameNode.scale = SCNVector3(0.1, 0.1, 0.1)
         }
     }
     
     func updateGameSceneForAnchor(anchor: ARPlaneAnchor) {
-        let worldSize: Float = 20.0
+        let worldSize: Float = 60
         let minSize = min(anchor.extent.x, anchor.extent.z)
         let scale = minSize / worldSize
-        GameManager.shared.worldScene.scale = SCNVector3(x: scale, y: scale, z: scale)
-        GameManager.shared.worldScene.position = SCNVector3(anchor.center)
+        //GameManager.shared.gameNode.scale = SCNVector3(x: scale, y: scale, z: scale)
+        GameManager.shared.gameNode.position = SCNVector3(anchor.center)
     }
 }
 
@@ -150,7 +149,9 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 boat.decrementHealth()
             }
             if let selectedPlane = hitObject as? HorizontalPlane {
+                self.selectedPlane?.isHidden = false
                 self.selectedPlane = selectedPlane
+                self.selectedPlane?.isHidden = true
                 addToNode(rootNode: selectedPlane.parent!)
                 updateGameSceneForAnchor(anchor: selectedPlane.anchor)
             }

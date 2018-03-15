@@ -42,6 +42,8 @@ class Boat: GameObject {
         health = maxHealth
         
         super.init()
+        
+        GameManager.shared.addPoints(points)
     }
     
     required override init() {
@@ -82,12 +84,14 @@ class Boat: GameObject {
     // Causes boat to look at the island, pop up, then move towards the island
     public func performSpawnOperations() {
         // Keep a reference to the original scale for popping boat up
-        let originalScale = scale
+        let originalScale = GameManager.shared.gameNode.scale
         
         // Set the boat to be invisble and then "pop" it out.
         scale = SCNVector3(0, 0, 0)
         // The boat looks at the island on spawn for realistic movement
-        look(at: GameManager.shared.island.position)
+        look(at: SCNVector3(GameManager.shared.island.position.x + 2,
+                            position.y,
+                            GameManager.shared.island.position.z + 2))
         
         /*
          Springs the boat up. While springing up, the boat will start
@@ -103,7 +107,8 @@ class Boat: GameObject {
             SCNTransaction.animationTimingFunction =
                 CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
             
-            let distanceToCenter = GameManager.shared.ocean.scale.x / 2.0
+            // The 60 in this equation is a fake unit saying our ocean has a diameter of 60
+            let distanceToCenter = 60.0 * GameManager.shared.ocean.scale.x / 2.0
             let timeToCenter = distanceToCenter / Float(self.speed)
             
             SCNTransaction.animationDuration = CFTimeInterval(timeToCenter)

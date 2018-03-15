@@ -81,44 +81,53 @@ public class GameManager {
             }
         }
     }
+    
+    // The object which holds all objects relevant to the game
+    lazy public var gameNode: SCNNode = {
+        guard let gameNode = rootNode?.childNode(withName: "gameNode", recursively: false) else {
+            fatalError("Could not get gameNode!")
+        }
+        return gameNode
+    }()
+    
+    // Gets the lights in the scene
+    lazy public var lights: [SCNLight]? = {
+        guard let lightsNode = gameNode.childNode(withName: "lights", recursively: true) else {
+            return nil
+        }
+        return lightsNode.childNodes.map({ (node) -> SCNLight in
+            return node.light!
+        })
+    }()
+    
+    // Gets the worldScene from the rootnode
+    lazy public var worldScene: SCNNode = {
+        guard let worldSceneNode = gameNode.childNode(withName: "worldScene", recursively: false) else {
+            fatalError("Could not get worldScene!")
+        }
+        return worldSceneNode
+    }()
+    
+    // Gets the island from the worldscene
+    lazy public var island: SCNNode = {
+        guard let islandNode = worldScene.childNode(withName: "island", recursively: false) else {
+            fatalError("Could not find island in the worldScene")
+        }
+        return islandNode
+    }()
+    
+    // Gets the ocean from the worldscene
+    lazy public var ocean: SCNNode = {
+        guard let oceanNode = worldScene.childNode(withName: "ocean", recursively: false) else {
+            fatalError("Could not find ocean in the worldScene")
+        }
+        return oceanNode
+    }()
 }
 
 // MARK: Core Game Logic
 
 extension GameManager {
-    // Gets the lights in the scene
-    public var lights: [SCNLight]? {
-        guard let lightsNode = worldScene.childNode(withName: "lights", recursively: true) else {
-                return nil
-        }
-        return lightsNode.childNodes.map({ (node) -> SCNLight in
-            return node.light!
-        })
-    }
-    
-    // Gets the worldScene from the rootnode
-    public var worldScene: SCNNode {
-        guard let worldSceneNode = rootNode?.childNode(withName: "worldScene", recursively: false) else {
-            fatalError("Could not get worldScene!")
-        }
-        return worldSceneNode
-    }
-    
-    // Gets the island from the worldscene
-    public var island: SCNNode {
-        guard let islandNode = worldScene.childNode(withName: "island", recursively: false) else {
-            fatalError("Could not find island in the worldScene")
-        }
-        return islandNode
-    }
-    
-    // Gets the ocean from the worldscene
-    public var ocean: SCNNode {
-        guard let oceanNode = worldScene.childNode(withName: "ocean", recursively: false) else {
-            fatalError("Could not find ocean in the worldScene")
-        }
-        return oceanNode
-    }
     
     // Called on every frame to update the lighting to the provided lighting intensity
     public func updateLightingIntensity(toLightIntensity lightIntensity: CGFloat) {
@@ -200,13 +209,12 @@ extension GameManager {
     // Creates a boat spawner from the current wave's info.
     // Requires a node to spawn on
     private func createAndStartCurrentWaveBoatSpawner() {
-        guard let curWave = curWave,
-            let spawnNode = rootNode else {
-                fatalError("Cannot create a spawner without the wave and spawnNode")
+        guard let curWave = curWave else {
+                fatalError("Cannot create a spawner without the wave number")
         }
         
         boatSpawner = BoatSpawner(withPoints: pointsPerWave(curWave),
-                                  andSpawningNode: spawnNode)
+                                  andSpawningNode: gameNode)
         boatSpawner?.startSpawning()
     }
 }
