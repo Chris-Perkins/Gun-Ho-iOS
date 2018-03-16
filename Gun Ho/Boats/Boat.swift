@@ -42,8 +42,6 @@ class Boat: GameObject {
         health = maxHealth
         
         super.init()
-        
-        GameManager.shared.addPoints(points)
     }
     
     required override init() {

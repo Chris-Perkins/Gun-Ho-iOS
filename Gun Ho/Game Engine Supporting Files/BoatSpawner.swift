@@ -62,7 +62,7 @@ public class BoatSpawner {
         { (timer) in
             // This is here because the user may pause in the middle of an active cycle
             if !self.paused {
-                self.spawnBoat(ofType: self.boatsToSpawn[self.currentSpawningIndex])
+                self.spawnBoat(ofType: VikingBoat.self)//self.boatsToSpawn[self.currentSpawningIndex])
                 self.currentSpawningIndex += 1
                 
                 // If we did not finish spawning, loop back around and perform another cycle
@@ -80,9 +80,10 @@ public class BoatSpawner {
         let randomUnitVector = SCNVector3(sin(randomNum), 0, cos(randomNum))
         
         // Spawns the boat on a random edge of the ocean
-        boat.position = SCNVector3(randomUnitVector.x * (GameManager.shared.worldScene.scale.x / 2) * 0.95,
-                                   GameManager.shared.worldScene.position.y,
-                                   randomUnitVector.z * (GameManager.shared.worldScene.scale.z / 2) * 0.95)
+        boat.position =
+            SCNVector3(randomUnitVector.x * (GameManager.shared.worldScene.scale.x / 2) * 0.95,
+                       GameManager.shared.worldScene.position.y,
+                       randomUnitVector.z * (GameManager.shared.worldScene.scale.z / 2) * 0.95)
         
         // Finally, add it to the scene.
         spawningNode.addChildNode(boat)

@@ -58,17 +58,6 @@ class GameViewController: UIViewController {
         sceneView.session.pause()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        GameManager.shared.performGameStartSequence()
-    }
-    
     func addToNode(rootNode: SCNNode) {
         SCNTransaction.perform {
             GameManager.shared.rootNode = rootNode
@@ -105,6 +94,10 @@ extension GameViewController: ARSCNViewDelegate {
         
         for object in GameManager.shared.gameObjects {
             object.performLogicForFrame()
+        }
+        
+        if let vikingboat = GameManager.shared.gameObjects.first?.childNodes.first {
+            print(sceneView.scene.physicsWorld.contactTest(with: vikingboat.physicsBody!, options: nil).first?.penetrationDistance ?? "### No Collision")
         }
     }
     
@@ -154,6 +147,7 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 self.selectedPlane?.isHidden = true
                 addToNode(rootNode: selectedPlane.parent!)
                 updateGameSceneForAnchor(anchor: selectedPlane.anchor)
+                GameManager.shared.performGameStartSequence()
             }
         }
     }
