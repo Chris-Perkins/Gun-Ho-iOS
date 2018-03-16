@@ -89,9 +89,11 @@ class Boat: GameObject {
         // Set the boat to be invisble and then "pop" it out.
         scale = SCNVector3(0, 0, 0)
         // The boat looks at the island on spawn for realistic movement
-        look(at: SCNVector3(GameManager.shared.island.position.x + 2,
-                            position.y,
-                            GameManager.shared.island.position.z + 2))
+        /* NOTE: This uses global position because the look function
+         looks at the GLOBAL position, not a local one. */
+        look(at: SCNVector3(GameManager.shared.island.worldPosition.x,
+                            worldPosition.y, // Look straight ahead
+                            GameManager.shared.island.worldPosition.z))
         
         /*
          Springs the boat up. While springing up, the boat will start

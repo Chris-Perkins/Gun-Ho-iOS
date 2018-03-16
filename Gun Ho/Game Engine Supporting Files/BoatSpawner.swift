@@ -80,9 +80,9 @@ public class BoatSpawner {
         let randomUnitVector = SCNVector3(sin(randomNum), 0, cos(randomNum))
         
         // Spawns the boat on a random edge of the ocean
-        boat.position = SCNVector3(randomUnitVector.x * GameManager.shared.worldScene.scale.x * 0.95 * 0,
+        boat.position = SCNVector3(randomUnitVector.x * (GameManager.shared.worldScene.scale.x / 2) * 0.95,
                                    GameManager.shared.worldScene.position.y,
-                                   randomUnitVector.z * GameManager.shared.worldScene.scale.x * 0.95 * 0)
+                                   randomUnitVector.z * (GameManager.shared.worldScene.scale.z / 2) * 0.95)
         
         // Finally, add it to the scene.
         spawningNode.addChildNode(boat)
