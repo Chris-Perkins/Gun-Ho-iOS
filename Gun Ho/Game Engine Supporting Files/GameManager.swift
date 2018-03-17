@@ -17,7 +17,7 @@ import ARKit
 
 // MARK: Singleton logic
 
-public class GameManager {
+public class GameManager: NSObject {
     
     private static var activeInstance: GameManager?
     
@@ -31,7 +31,7 @@ public class GameManager {
         }
     }
     
-    private init() {}
+    override private init() {}
     
     // MARK: Game properties
     
@@ -216,5 +216,11 @@ extension GameManager {
         boatSpawner = BoatSpawner(withPoints: pointsPerWave(curWave),
                                   andSpawningNode: gameNode)
         boatSpawner?.startSpawning()
+    }
+}
+
+extension GameManager: SCNPhysicsContactDelegate {
+    public func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        print(contact)
     }
 }

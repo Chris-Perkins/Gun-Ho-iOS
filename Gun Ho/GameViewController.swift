@@ -36,6 +36,8 @@ class GameViewController: UIViewController {
         
         // Set the scene to the view
         sceneView.scene = scene
+        sceneView.scene.physicsWorld.contactDelegate = GameManager.shared
+        
         GameManager.shared.rootNode = sceneView.scene.rootNode
     }
     
@@ -94,10 +96,6 @@ extension GameViewController: ARSCNViewDelegate {
         
         for object in GameManager.shared.gameObjects {
             object.performLogicForFrame()
-        }
-        
-        if let vikingboat = GameManager.shared.gameObjects.first?.childNodes.first {
-            print(sceneView.scene.physicsWorld.contactTest(with: vikingboat.physicsBody!, options: nil).first?.penetrationDistance ?? "### No Collision")
         }
     }
     

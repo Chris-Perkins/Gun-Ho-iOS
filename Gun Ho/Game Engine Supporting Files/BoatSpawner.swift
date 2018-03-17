@@ -62,7 +62,7 @@ public class BoatSpawner {
         { (timer) in
             // This is here because the user may pause in the middle of an active cycle
             if !self.paused {
-                self.spawnBoat(ofType: VikingBoat.self)//self.boatsToSpawn[self.currentSpawningIndex])
+                self.spawnBoat(ofType: self.boatsToSpawn[self.currentSpawningIndex])
                 self.currentSpawningIndex += 1
                 
                 // If we did not finish spawning, loop back around and perform another cycle
