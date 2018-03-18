@@ -33,7 +33,7 @@ class Boat: GameObject {
     }
     
     // MARK: - Lifecycle
-    init(maxHealth: Int, floatHeight: Float, points: Int, speed: Int) {
+    init(maxHealth: Int, floatHeight: Float, points: Int, speed: Int, withNode node: SCNNode) {
         self.maxHealth   = maxHealth
         self.floatHeight = floatHeight
         self.pointValue  = points
@@ -42,6 +42,14 @@ class Boat: GameObject {
         health = maxHealth
         
         super.init()
+        
+        addChildNode(node)
+        
+        guard let boatPhysicsBody = node.physicsBody else {
+            fatalError("Could not get boat physics body! Does it exist?")
+        }
+        boatPhysicsBody.categoryBitMask  = CollisionType.boat
+        boatPhysicsBody.collisionBitMask = CollisionType.boat
     }
     
     required override init() {

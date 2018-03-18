@@ -36,7 +36,17 @@ public class GameManager: NSObject {
     // MARK: Game properties
     
     // The root node for use in spawning and finding the worldScene node
-    public var rootNode: SCNNode?
+    public var rootNode: SCNNode? {
+        didSet {
+            guard let islandEnvironment = island.childNode(withName: "environment",
+                                                           recursively: false),
+                let islandPhysicsBody = islandEnvironment.physicsBody else {
+                fatalError("Could not get island/it's physics body!")
+            }
+            islandPhysicsBody.categoryBitMask  = CollisionType.island
+            islandPhysicsBody.collisionBitMask = CollisionType.island
+        }
+    }
     
     // Stores all game objects so we can check logic for each frame
     public var gameObjects = [GameObject]()
@@ -165,7 +175,6 @@ extension GameManager {
         }
         gameObjects.removeAll()
         
-        print("GAME OVER U LOSE")
         Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
             self.performGameStartSequence()
         }
@@ -221,6 +230,19 @@ extension GameManager {
 
 extension GameManager: SCNPhysicsContactDelegate {
     public func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        print(contact)
+        let collisionMask = contact.nodeA.physicsBody!.collisionBitMask | contact.nodeB.physicsBody!.collisionBitMask
+        
+        switch collisionMask {
+        case CollisionType.boat | CollisionType.island:
+            performGameOverSequence()
+        case CollisionType.boat | CollisionType.boat:
+            contact.nodeA.boatParent?.destroy()
+            contact.nodeB.boatParent?.destroy()
+        default:
+            // Unhandled collision, but not necessarily an error.
+            break
+        }
+        print(collisionMask)
+        //performGameOverSequence()
     }
 }

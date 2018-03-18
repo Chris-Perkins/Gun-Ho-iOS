@@ -14,17 +14,17 @@ final class SmallBoat: Boat {
     override class var pointsCount: Int { return  1 }
     
     required init() {
-        super.init(maxHealth: 1,
-                   floatHeight: -0.05,
-                   points: SmallBoat.pointsCount,
-                   speed: 5)
-        
         guard let scene = SCNScene(named: "art.scnassets/boat-small.scn"),
             let boatNode = scene.rootNode.childNode(withName: "boat",
                                                     recursively: true) else {
                                                         fatalError("Could not find small boat")
         }
-        addChildNode(boatNode)
+        
+        super.init(maxHealth: 1,
+                   floatHeight: -0.05,
+                   points: SmallBoat.pointsCount,
+                   speed: 5,
+                   withNode: boatNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
