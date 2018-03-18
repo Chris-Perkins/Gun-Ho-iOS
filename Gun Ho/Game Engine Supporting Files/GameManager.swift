@@ -236,8 +236,10 @@ extension GameManager: SCNPhysicsContactDelegate {
         case CollisionType.boat | CollisionType.island:
             performGameOverSequence()
         case CollisionType.boat | CollisionType.boat:
-            contact.nodeA.boatParent?.destroy()
-            contact.nodeB.boatParent?.destroy()
+            /* The 'parent' is here since the physicsbody of the boat
+                is attached to the immediate child of the boat object */
+            (contact.nodeA.parent as? Boat)?.destroy()
+            (contact.nodeA.parent as? Boat)?.destroy()
         default:
             // Unhandled collision, but not necessarily an error.
             break

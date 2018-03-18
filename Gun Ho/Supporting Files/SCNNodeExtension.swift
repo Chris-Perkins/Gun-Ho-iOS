@@ -10,6 +10,6 @@ import SceneKit
 
 extension SCNNode {
     var boatParent: Boat? {
-        return parent as? Boat
+        return parent?.parent as? Boat
     }
 }
