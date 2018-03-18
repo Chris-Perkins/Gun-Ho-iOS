@@ -138,6 +138,7 @@ extension GameViewController: UIGestureRecognizerDelegate {
         if let hitObject = hits.first?.node {
             if let boat = hitObject.boatParent {
                 boat.decrementHealth()
+                boat.shake()
             }
             if let selectedPlane = hitObject as? HorizontalPlane {
                 self.selectedPlane?.isHidden = false

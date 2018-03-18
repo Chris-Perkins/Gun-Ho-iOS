@@ -174,10 +174,6 @@ extension GameManager {
             node.removeFromParentNode()
         }
         gameObjects.removeAll()
-        
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
-            self.performGameStartSequence()
-        }
     }
     
     // Should be called whenever the user defeats a wave

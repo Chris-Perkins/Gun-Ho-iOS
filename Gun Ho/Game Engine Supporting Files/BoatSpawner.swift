@@ -57,7 +57,7 @@ public class BoatSpawner {
     // Performs a cycle of spawning.
     // Recursively calls if there are remaining boats to spawn.
     private func performSpawnCycle() {
-        Timer.scheduledTimer(withTimeInterval: Double.random(min: 0, max: 2),
+        Timer.scheduledTimer(withTimeInterval: Double.random(min: 3, max: 5),
                              repeats: false)
         { (timer) in
             // This is here because the user may pause in the middle of an active cycle

@@ -80,6 +80,32 @@ class Boat: GameObject {
         health -= 1
     }
     
+    // Does nothing besides shake the boat object. called on boat tap.
+    public func shake() {
+        let shakeTime = 0.2
+        let shakeAmount = SCNVector3((10 / 180) * 3.14159, (10 / 180) * 3.14159, (10 / 180) * 3.14159)
+        
+        SCNTransaction.perform {
+            SCNTransaction.animationDuration = shakeTime
+            self.eulerAngles += shakeAmount
+            
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: shakeTime, repeats: false) { (timer) in
+            SCNTransaction.perform {
+                SCNTransaction.animationDuration = shakeTime * 2
+                self.eulerAngles -= shakeAmount * 2
+            }
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: shakeTime * 3, repeats: false) { (timer) in
+            SCNTransaction.perform {
+                SCNTransaction.animationDuration = shakeTime
+                self.eulerAngles += shakeAmount
+            }
+        }
+    }
+    
     // Should be called whenever the boat should be deleted
     public func destroy() {
         GameManager.shared.addPoints(pointValue)

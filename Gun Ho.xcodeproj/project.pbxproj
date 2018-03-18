@@ -16,6 +16,7 @@
 		2261C1092037D805003E580C /* SceneViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C1082037D805003E580C /* SceneViewExtensions.swift */; };
 		2261C10B2037D960003E580C /* SCNTransactionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */; };
 		226D9D0C205EE47A002F05DD /* CollisionMasksForGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D9D0B205EE47A002F05DD /* CollisionMasksForGame.swift */; };
+		226D9D0E205EFAB4002F05DD /* SCNVector4Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */; };
 		227F984C2034CA7D007FF294 /* SCNNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F984B2034CA7D007FF294 /* SCNNodeExtension.swift */; };
 		228AB9352030D28500FEC484 /* Boat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228AB9342030D28500FEC484 /* Boat.swift */; };
 		22A3F5E62045D5AB00D89358 /* BoatSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3F5E52045D5AB00D89358 /* BoatSpawner.swift */; };
@@ -40,6 +41,7 @@
 		2261C1082037D805003E580C /* SceneViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewExtensions.swift; sourceTree = "<group>"; };
 		2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNTransactionExtensions.swift; sourceTree = "<group>"; };
 		226D9D0B205EE47A002F05DD /* CollisionMasksForGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionMasksForGame.swift; sourceTree = "<group>"; };
+		226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector4Extensions.swift; sourceTree = "<group>"; };
 		227F984B2034CA7D007FF294 /* SCNNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtension.swift; sourceTree = "<group>"; };
 		228AB9342030D28500FEC484 /* Boat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boat.swift; sourceTree = "<group>"; };
 		22A3F5E52045D5AB00D89358 /* BoatSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatSpawner.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				22B301D4203C9FDA0020CA46 /* SCNVector3Extensions.swift */,
 				22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */,
 				22AC2AF220535F7700645CC5 /* HorizontalPlane.swift */,
+				226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				22A3F5E62045D5AB00D89358 /* BoatSpawner.swift in Sources */,
 				2245B61020336A8B00F1369B /* GameViewController.swift in Sources */,
 				226D9D0C205EE47A002F05DD /* CollisionMasksForGame.swift in Sources */,
+				226D9D0E205EFAB4002F05DD /* SCNVector4Extensions.swift in Sources */,
 				35BE87A72036620D004EA2CF /* SailBoat.swift in Sources */,
 				222BE22E203605D40036E867 /* GameObject.swift in Sources */,
 				225815FA20328EA900F546DD /* MediumBoat.swift in Sources */,
