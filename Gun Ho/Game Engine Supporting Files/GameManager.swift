@@ -240,7 +240,5 @@ extension GameManager: SCNPhysicsContactDelegate {
             // Unhandled collision, but not necessarily an error.
             break
         }
-        print(collisionMask)
-        //performGameOverSequence()
     }
 }

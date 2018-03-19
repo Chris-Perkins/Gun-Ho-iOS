@@ -60,20 +60,6 @@ class Boat: GameObject {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: GameObject operations
-    
-    override func performLogicForFrame() {
-        /*guard let environmentNode = GameManager.shared.island.childNode(withName: "environment", recursively: false),
-            let environmentBox = environmentNode.geometry?.boundingBox else {
-            fatalError("Could not get island's environment geometry!")
-        }
-        let islandRadius = (environmentBox.max.x - environmentBox.min.x) / 2
-        
-        if(position.distance(vector: GameManager.shared.island.position) < islandRadius) {
-            GameManager.shared.performGameOverSequence()
-        }*/
-    }
-    
     // MARK: Boat operations
     
     public func decrementHealth() {
@@ -82,8 +68,16 @@ class Boat: GameObject {
     
     // Does nothing besides shake the boat object. called on boat tap.
     public func shake() {
+        // TODO: Import my custom animation queue and use that here.
+        // FURTHER TODO: What the heck is up with gimbal lock?
+        // Can we mathematically make this rotate nicely?
+        // Is this even worth doing?
+        
         let shakeTime = 0.2
-        let shakeAmount = SCNVector3((10 / 180) * 3.14159, (10 / 180) * 3.14159, (10 / 180) * 3.14159)
+        let shakeMax  = (10 / 180) * 3.14159
+        let shakeAmount = SCNVector3(Double.random * shakeMax * 1/2,
+                                     Double.random * shakeMax * 1/2,
+                                     Double.random * shakeMax)
         
         SCNTransaction.perform {
             SCNTransaction.animationDuration = shakeTime
