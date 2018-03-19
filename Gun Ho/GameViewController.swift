@@ -39,6 +39,7 @@ class GameViewController: UIViewController {
         sceneView.scene.physicsWorld.contactDelegate = GameManager.shared
         
         GameManager.shared.rootNode = sceneView.scene.rootNode
+        GameManager.shared.gameNode.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,6 +145,7 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 self.selectedPlane?.isHidden = false
                 self.selectedPlane = selectedPlane
                 self.selectedPlane?.isHidden = true
+                GameManager.shared.gameNode.isHidden = false
                 addToNode(rootNode: selectedPlane.parent!)
                 updateGameSceneForAnchor(anchor: selectedPlane.anchor)
                 GameManager.shared.performGameStartSequence()
