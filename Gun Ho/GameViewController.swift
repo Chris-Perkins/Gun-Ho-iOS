@@ -52,6 +52,13 @@ class GameViewController: UIViewController {
         
         // Run the view's session
         sceneView.session.run(configuration)
+        
+        /*
+         Debug Code for Authentication View Testing
+        let authView = AuthenticationView.initFromXib()
+        view.addSubview(authView)
+        NSLayoutConstraint.clingViewToView(view: authView, toView: self.view)
+         */
     }
     
     override func viewWillDisappear(_ animated: Bool) {
