@@ -39,6 +39,7 @@ class GameViewController: UIViewController {
         sceneView.scene = scene
         sceneView.scene.physicsWorld.contactDelegate = GameManager.shared
         
+        GameManager.shared.delegate = self
         GameManager.shared.rootNode = sceneView.scene.rootNode
         GameManager.shared.gameNode.isHidden = true
     }
@@ -77,6 +78,19 @@ class GameViewController: UIViewController {
         let scale = minSize / worldSize
         //GameManager.shared.gameNode.scale = SCNVector3(x: scale, y: scale, z: scale)
         GameManager.shared.gameNode.position = SCNVector3(anchor.center)
+    }
+}
+
+// MARK: Notification Listener
+
+extension GameViewController: GameManagerDelegate {
+    @objc func gameDidEnd() {
+        let authView = AuthenticationView.loadViewFromXib()
+        
+        DispatchQueue.main.sync {
+            self.view.addSubview(authView)
+            NSLayoutConstraint.clingViewToView(view: authView, toView: self.view)
+        }
     }
 }
 
@@ -149,7 +163,7 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 self.selectedPlane?.isHidden = true
                 GameManager.shared.gameNode.isHidden = false
                 
-                guideView.setLabelTextToStep(type: .startGame)
+                //guideView.setLabelTextToStep(type: .startGame)
                 addToNode(rootNode: selectedPlane.parent!)
                 updateGameSceneForAnchor(anchor: selectedPlane.anchor)
                 GameManager.shared.performGameStartSequence()

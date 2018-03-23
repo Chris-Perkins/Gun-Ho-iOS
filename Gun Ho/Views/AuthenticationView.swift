@@ -36,15 +36,10 @@ class AuthenticationView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        let authView = loadViewFromXib()
-        addSubview(authView)
-        NSLayoutConstraint.clingViewToView(view: authView,
-                                           toView: self)
     }
     
     // Initializes the view from the xib
-    private func loadViewFromXib() -> AuthenticationView {
+    static func loadViewFromXib() -> AuthenticationView {
         guard let authView = Bundle.main.loadNibNamed("AuthenticationView",
                                                       owner: nil,
                                                       options: nil)?.first as? AuthenticationView else {

@@ -48,6 +48,8 @@ public class GameManager: NSObject {
         }
     }
     
+    internal var delegate: GameManagerDelegate?
+    
     // Stores all game objects so we can check logic for each frame
     public var gameObjects = [GameObject]()
     
@@ -159,6 +161,8 @@ extension GameManager {
         curWave     = wave
         
         createAndStartCurrentWaveBoatSpawner()
+        
+        delegate?.gameDidStart?()
     }
     
     // Should be called whenever the game should end
@@ -174,6 +178,8 @@ extension GameManager {
             node.removeFromParentNode()
         }
         gameObjects.removeAll()
+        
+        delegate?.gameDidEnd?()
     }
     
     // Should be called whenever the user defeats a wave
