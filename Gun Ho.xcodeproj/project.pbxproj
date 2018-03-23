@@ -13,6 +13,9 @@
 		222D6403206452550030196C /* AuthenticationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222D6402206452550030196C /* AuthenticationView.xib */; };
 		222D6406206457AF0030196C /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D6405206457AF0030196C /* AuthenticationView.swift */; };
 		222D640820645DEE0030196C /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */; };
+		222D640A2064A6700030196C /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D64092064A6700030196C /* GuideView.swift */; };
+		222D640C2064A7020030196C /* GuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222D640B2064A7020030196C /* GuideView.xib */; };
+		222D640E2064ACBE0030196C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 222D640D2064ACBE0030196C /* Localizable.strings */; };
 		2245B61020336A8B00F1369B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245B60F20336A8B00F1369B /* GameViewController.swift */; };
 		225815FA20328EA900F546DD /* MediumBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815F920328EA900F546DD /* MediumBoat.swift */; };
 		225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815FB20328F3D00F546DD /* VikingBoat.swift */; };
@@ -40,6 +43,9 @@
 		222D6402206452550030196C /* AuthenticationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationView.xib; sourceTree = "<group>"; };
 		222D6405206457AF0030196C /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
+		222D64092064A6700030196C /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		222D640B2064A7020030196C /* GuideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuideView.xib; sourceTree = "<group>"; };
+		222D640D2064ACBE0030196C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		2245B60E20336A4B00F1369B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2245B60F20336A8B00F1369B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		225815F920328EA900F546DD /* MediumBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumBoat.swift; sourceTree = "<group>"; };
@@ -88,6 +94,8 @@
 		222D6404206457930030196C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				222D640B2064A7020030196C /* GuideView.xib */,
+				222D64092064A6700030196C /* GuideView.swift */,
 				222D6402206452550030196C /* AuthenticationView.xib */,
 				222D6405206457AF0030196C /* AuthenticationView.swift */,
 			);
@@ -157,6 +165,7 @@
 				2245B61120336A9800F1369B /* Storyboards */,
 				222D6404206457930030196C /* Views */,
 				2245B60F20336A8B00F1369B /* GameViewController.swift */,
+				222D640D2064ACBE0030196C /* Localizable.strings */,
 				22E1A882202AAB5E009A5BFC /* Info.plist */,
 				2245B60D20336A2B00F1369B /* Supporting Files */,
 			);
@@ -223,9 +232,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E1A877202AAB5E009A5BFC /* art.scnassets in Resources */,
+				222D640E2064ACBE0030196C /* Localizable.strings in Resources */,
 				22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */,
 				222D6403206452550030196C /* AuthenticationView.xib in Resources */,
 				22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */,
+				222D640C2064A7020030196C /* GuideView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +265,7 @@
 				22E1A875202AAB5E009A5BFC /* AppDelegate.swift in Sources */,
 				225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */,
 				222D640820645DEE0030196C /* NSLayoutConstraintExtensions.swift in Sources */,
+				222D640A2064A6700030196C /* GuideView.swift in Sources */,
 				222BE22F203605D40036E867 /* GameManager.swift in Sources */,
 				22B301D5203C9FDA0020CA46 /* SCNVector3Extensions.swift in Sources */,
 			);

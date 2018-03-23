@@ -13,6 +13,7 @@ import ARKit
 class GameViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var guideView: GuideView!
     
     var planes: [ARAnchor: HorizontalPlane] = [:]
     var selectedPlane: HorizontalPlane?
@@ -52,13 +53,6 @@ class GameViewController: UIViewController {
         
         // Run the view's session
         sceneView.session.run(configuration)
-        
-        /*
-         Debug Code for Authentication View Testing
-        let authView = AuthenticationView.initFromXib()
-        view.addSubview(authView)
-        NSLayoutConstraint.clingViewToView(view: authView, toView: self.view)
-         */
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -149,10 +143,13 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 boat.shake()
             }
             if let selectedPlane = hitObject as? HorizontalPlane {
+                // TODO: Put this into a function...
                 self.selectedPlane?.isHidden = false
                 self.selectedPlane = selectedPlane
                 self.selectedPlane?.isHidden = true
                 GameManager.shared.gameNode.isHidden = false
+                
+                guideView.setLabelTextToStep(type: .startGame)
                 addToNode(rootNode: selectedPlane.parent!)
                 updateGameSceneForAnchor(anchor: selectedPlane.anchor)
                 GameManager.shared.performGameStartSequence()

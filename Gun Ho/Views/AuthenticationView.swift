@@ -30,23 +30,28 @@ class AuthenticationView: UIView {
     
     // MARK: Initializers
     
-    // Initializes the view from the xib
-    static func initFromXib() -> AuthenticationView {
-        guard let authView = Bundle.main.loadNibNamed("AuthenticationView",
-                                                      owner: nil,
-                                                      options: nil)?.first as? AuthenticationView else {
-            fatalError("Could not get the auth view from the xib. Does it exist?")
-        }
-        
-        return authView
-    }
-    
-    override init(frame: CGRect) {
+    private override init(frame: CGRect) {
         fatalError("Cannot initialize AuthenticationView directly!")
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+        let authView = loadViewFromXib()
+        addSubview(authView)
+        NSLayoutConstraint.clingViewToView(view: authView,
+                                           toView: self)
+    }
+    
+    // Initializes the view from the xib
+    private func loadViewFromXib() -> AuthenticationView {
+        guard let authView = Bundle.main.loadNibNamed("AuthenticationView",
+                                                      owner: nil,
+                                                      options: nil)?.first as? AuthenticationView else {
+                                                        fatalError("Could not get the auth view from the xib. Does it exist?")
+        }
+        
+        return authView
     }
     
     // MARK: View actions

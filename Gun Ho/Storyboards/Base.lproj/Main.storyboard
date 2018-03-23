@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,16 +14,40 @@
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
+                    <view key="view" contentMode="scaleToFill" id="sBt-Tc-OmU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVO-k1-xv9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-Ay-5Og" customClass="GuideView" customModule="Gun_Ho" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="pmB-yM-tK4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oFS-Ay-5Og" firstAttribute="leading" secondItem="epb-T0-NZ5" secondAttribute="leading" id="4Ai-XU-DVJ"/>
+                            <constraint firstItem="EVO-k1-xv9" firstAttribute="trailing" secondItem="epb-T0-NZ5" secondAttribute="trailing" id="dOF-Eu-XT0"/>
+                            <constraint firstItem="oFS-Ay-5Og" firstAttribute="bottom" secondItem="epb-T0-NZ5" secondAttribute="bottom" id="f5c-AY-BJo"/>
+                            <constraint firstItem="EVO-k1-xv9" firstAttribute="leading" secondItem="epb-T0-NZ5" secondAttribute="leading" id="lYd-7l-mSd"/>
+                            <constraint firstItem="EVO-k1-xv9" firstAttribute="bottom" secondItem="epb-T0-NZ5" secondAttribute="bottom" id="nnh-tz-JvN"/>
+                            <constraint firstItem="EVO-k1-xv9" firstAttribute="top" secondItem="sBt-Tc-OmU" secondAttribute="top" id="p2V-Zb-tEq"/>
+                            <constraint firstItem="oFS-Ay-5Og" firstAttribute="trailing" secondItem="epb-T0-NZ5" secondAttribute="trailing" id="yWw-jB-G11"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="epb-T0-NZ5"/>
+                    </view>
                     <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="guideView" destination="oFS-Ay-5Og" id="L6s-PF-A1W"/>
+                        <outlet property="sceneView" destination="EVO-k1-xv9" id="ucI-lo-EhQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="40.799999999999997" y="88.605697151424295"/>
         </scene>
     </scenes>
 </document>
