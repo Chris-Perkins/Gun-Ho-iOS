@@ -18,15 +18,34 @@ class AuthenticationView: UIView {
     @IBOutlet var signupConstraints: [NSLayoutConstraint]!
     
     // Username/Password/Confirm fields; just references for validation.
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmTextField: UITextField!
     
     // The toggle state button reference
     @IBOutlet weak var toggleStateButton: UIButton!
+    @IBOutlet weak var postScoreButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     
     // Start out on the login screen
-    var isLoginState = true
+    var isLoginState: Bool = true {
+        didSet {
+            setToggleTitle()
+            
+            for constraint in loginConstraints {
+                constraint.isActive = isLoginState
+            }
+            
+            for constraint in signupConstraints {
+                constraint.isActive = !isLoginState
+            }
+            
+            UIView.animate(withDuration: 0.25) {
+                self.layoutIfNeeded()
+            }
+        }
+    }
     
     // MARK: Initializers
     
@@ -52,21 +71,18 @@ class AuthenticationView: UIView {
     // MARK: View actions
     
     // Called whenever the toggle button is pressed
-    @IBAction func toggleStateButtonPress(_ sender: Any) {
-        isLoginState = !isLoginState
-        setToggleTitle()
-        
-        for constraint in loginConstraints {
-            constraint.isActive = isLoginState
+    @IBAction func buttonPress(_ sender: Any) {
+        switch sender as? UIButton {
+        case toggleStateButton:
+            isLoginState = !isLoginState
+        case postScoreButton:
+            print("LOGIN/VALIDATE/POST SCORE HERE")
+        case closeButton:
+            removeFromSuperview()
+        default:
+            fatalError("Unhandled button pressed in authentication view")
         }
         
-        for constraint in signupConstraints {
-            constraint.isActive = !isLoginState
-        }
-        
-        UIView.animate(withDuration: 0.25) {
-            self.layoutIfNeeded()
-        }
     }
     
     // MARK: View life-cycle
@@ -76,6 +92,10 @@ class AuthenticationView: UIView {
     }
     
     // MARK: Misc helper functions
+    
+    func toggleLoginState() {
+        
+    }
     
     // Sets the toggle button's title based on login state
     func setToggleTitle() {

@@ -84,10 +84,13 @@ class GameViewController: UIViewController {
 // MARK: Notification Listener
 
 extension GameViewController: GameManagerDelegate {
+    @objc func gameDidStart() {
+        guideView.alpha = 0
+    }
+    
     @objc func gameDidEnd() {
-        let authView = AuthenticationView.loadViewFromXib()
-        
-        DispatchQueue.main.sync {
+        DispatchQueue.main.async {
+            let authView = AuthenticationView.loadViewFromXib()
             self.view.addSubview(authView)
             NSLayoutConstraint.clingViewToView(view: authView, toView: self.view)
         }
@@ -163,7 +166,7 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 self.selectedPlane?.isHidden = true
                 GameManager.shared.gameNode.isHidden = false
                 
-                //guideView.setLabelTextToStep(type: .startGame)
+                guideView.setLabelTextToStep(type: .startGame)
                 addToNode(rootNode: selectedPlane.parent!)
                 updateGameSceneForAnchor(anchor: selectedPlane.anchor)
                 GameManager.shared.performGameStartSequence()
