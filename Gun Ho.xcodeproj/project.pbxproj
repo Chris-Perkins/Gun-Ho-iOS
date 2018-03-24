@@ -36,6 +36,7 @@
 		22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87A202AAB5E009A5BFC /* Main.storyboard */; };
 		22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87F202AAB5E009A5BFC /* LaunchScreen.storyboard */; };
 		35BE87A72036620D004EA2CF /* SailBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE87A62036620D004EA2CF /* SailBoat.swift */; };
+		6916399EB0EF7D759FD33A5B /* Pods_Gun_Ho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,9 @@
 		22E1A880202AAB5E009A5BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22E1A882202AAB5E009A5BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35BE87A62036620D004EA2CF /* SailBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailBoat.swift; sourceTree = "<group>"; };
+		4A73BA3E658AB3189835D6AB /* Pods-Gun Ho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gun Ho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho.release.xcconfig"; sourceTree = "<group>"; };
+		74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gun_Ho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B912BCDDBC095BF4310C5AA3 /* Pods-Gun Ho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gun Ho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6916399EB0EF7D759FD33A5B /* Pods_Gun_Ho.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +154,8 @@
 			children = (
 				22E1A873202AAB5E009A5BFC /* Gun Ho */,
 				22E1A872202AAB5E009A5BFC /* Products */,
+				F7E0D06A68280D4E6205D4FE /* Pods */,
+				BFCB48FF62AC77EF34424576 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +185,23 @@
 			path = "Gun Ho";
 			sourceTree = "<group>";
 		};
+		BFCB48FF62AC77EF34424576 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7E0D06A68280D4E6205D4FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B912BCDDBC095BF4310C5AA3 /* Pods-Gun Ho.debug.xcconfig */,
+				4A73BA3E658AB3189835D6AB /* Pods-Gun Ho.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -185,9 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22E1A885202AAB5E009A5BFC /* Build configuration list for PBXNativeTarget "Gun Ho" */;
 			buildPhases = (
+				15295355A37AE0EEAEB4222B /* [CP] Check Pods Manifest.lock */,
 				22E1A86D202AAB5E009A5BFC /* Sources */,
 				22E1A86E202AAB5E009A5BFC /* Frameworks */,
 				22E1A86F202AAB5E009A5BFC /* Resources */,
+				51151634787A1B0D71AABDF8 /* [CP] Embed Pods Frameworks */,
+				9892429802F8D2BA598F9C23 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,6 +274,66 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15295355A37AE0EEAEB4222B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gun Ho-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51151634787A1B0D71AABDF8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CDAlertView/CDAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CDAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9892429802F8D2BA598F9C23 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		22E1A86D202AAB5E009A5BFC /* Sources */ = {
@@ -414,6 +501,7 @@
 		};
 		22E1A886202AAB5E009A5BFC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B912BCDDBC095BF4310C5AA3 /* Pods-Gun Ho.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -429,6 +517,7 @@
 		};
 		22E1A887202AAB5E009A5BFC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A73BA3E658AB3189835D6AB /* Pods-Gun Ho.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
