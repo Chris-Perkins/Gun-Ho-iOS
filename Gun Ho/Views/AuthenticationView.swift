@@ -46,6 +46,7 @@ class AuthenticationView: UIView {
                 constraint.isActive = !isLoginState
             }
             
+            // Animates constraint changes
             UIView.animate(withDuration: 0.25) {
                 self.layoutIfNeeded()
             }
