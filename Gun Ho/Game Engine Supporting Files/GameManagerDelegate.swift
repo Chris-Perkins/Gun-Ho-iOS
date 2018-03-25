@@ -10,5 +10,5 @@ import Foundation
 
 @objc protocol GameManagerDelegate {
     @objc optional func gameDidStart()
-    @objc optional func gameDidEnd()
+    @objc optional func gameWillEnd(withPointTotal points: Int)
 }

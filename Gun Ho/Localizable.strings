@@ -6,6 +6,10 @@
   Copyright © 2018 Christopher Perkins. All rights reserved.
 */
 
+/* Guide Strings */
 "Guide.SelectPlane" = "Before you can begin, scan the room for a flat surface.\nSelect the surface by tapping it.";
 "Guide.StartGame" = "Start the game by tapping anywhere on the island.";
 "Guide.DestroyBoat" = "An invader!\nDestroy it before it gets to your treasure by tapping it!";
+
+/* Authentication View Strings */
+"AuthenticationView.ScoreLabel.Text" = "Your Score: {0}";

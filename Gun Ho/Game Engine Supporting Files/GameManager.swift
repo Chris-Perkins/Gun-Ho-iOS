@@ -150,8 +150,12 @@ extension GameManager {
         }
     }
     
+    public func startGame() {
+        performGameStartSequence()
+    }
+    
     // Should be called to start the game
-    public func performGameStartSequence(atWave wave: Int = 1) {
+    private func performGameStartSequence(atWave wave: Int = 1) {
         if wave <= 0 {
             fatalError("Waves are 1-indexed. Please use a wave value > 0")
         }
@@ -166,7 +170,9 @@ extension GameManager {
     }
     
     // Should be called whenever the game should end
-    public func performGameOverSequence() {
+    private func performGameOverSequence() {
+        delegate?.gameWillEnd?(withPointTotal: totalPoints!)
+        
         totalPoints = nil
         curWave     = nil
         curPoints   = nil
@@ -179,11 +185,11 @@ extension GameManager {
         }
         gameObjects.removeAll()
         
-        delegate?.gameDidEnd?()
+        
     }
     
     // Should be called whenever the user defeats a wave
-    public func performWaveCompleteSequence() {
+    private func performWaveCompleteSequence() {
         guard let wave = curWave else {
             fatalError("Wave cannot be complete; the game was never started!")
         }

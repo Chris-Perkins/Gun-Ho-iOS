@@ -88,11 +88,13 @@ extension GameViewController: GameManagerDelegate {
         guideView.alpha = 0
     }
     
-    @objc func gameDidEnd() {
+    @objc func gameWillEnd(withPointTotal points: Int) {
         DispatchQueue.main.async {
             let authView = AuthenticationView.loadViewFromXib()
             self.view.addSubview(authView)
             NSLayoutConstraint.clingViewToView(view: authView, toView: self.view)
+            
+            authView.displayScore = points
         }
     }
 }
@@ -169,7 +171,7 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 guideView.setLabelTextToStep(type: .startGame)
                 addToNode(rootNode: selectedPlane.parent!)
                 updateGameSceneForAnchor(anchor: selectedPlane.anchor)
-                GameManager.shared.performGameStartSequence()
+                GameManager.shared.startGame()
             }
         }
     }

@@ -29,9 +29,14 @@ class AuthenticationView: UIView {
     @IBOutlet weak var closeButton: UIButton!
     
     // Start out on the login screen
-    var isLoginState: Bool = true {
+    private var isLoginState: Bool = true {
         didSet {
             setToggleTitle()
+            
+            if isLoginState {
+                // Resign since we are no longer logging in (hidden text field)
+                passwordConfirmTextField.resignFirstResponder()
+            }
             
             for constraint in loginConstraints {
                 constraint.isActive = isLoginState
@@ -45,6 +50,37 @@ class AuthenticationView: UIView {
                 self.layoutIfNeeded()
             }
         }
+    }
+    
+    public var displayScore: Int = 0 {
+        didSet {
+            let scoreString = NSLocalizedString("AuthenticationView.ScoreLabel.Text", comment: "")
+            
+            scoreLabel.text = scoreString.replacingOccurrences(of: "{0}",
+                                                               with: "\(displayScore)")
+        }
+    }
+    
+    // MARK: Computed variables
+    
+    // Determines if we can login based on username textfield & password textfield
+    private var canLogin: Bool {
+        if let userText = usernameTextField.text,
+            let passwordText = passwordTextField.text {
+            
+            return userText.count > 0 && passwordText.count > 0
+        }
+        return false
+    }
+    
+    // Determines if we can sign up based on canLogin & confirmPasswordField
+    private var canSignup: Bool {
+        if let passwordText = passwordTextField.text,
+            let passwordConfirmText = passwordConfirmTextField.text {
+            
+            return canLogin && passwordText == passwordConfirmText
+        }
+        return false
     }
     
     // MARK: Initializers
@@ -76,7 +112,46 @@ class AuthenticationView: UIView {
         case toggleStateButton:
             isLoginState = !isLoginState
         case postScoreButton:
-            print("LOGIN/VALIDATE/POST SCORE HERE")
+            let postScoreHandler: (Bool) -> () = { (success) in
+                print("WOOHOO!")
+            }
+            
+            if isLoginState {
+                if canLogin {
+                    let username = usernameTextField.text!
+                    let password = passwordTextField.text!
+                    WebRequestHandler.shared.attemptLogin(withUsername: username,
+                                                          andPassword: password)
+                    { (success) in
+                        if success {
+                            WebRequestHandler.shared.attemptPostScore(toUsername: username,
+                                                                      andScore: self.displayScore, actionOnCompleteWithSuccess: postScoreHandler)
+                        } else {
+                            // TODO: Handler
+                        }
+                    }
+                    
+                } else {
+                    // TODO: Handler
+                }
+            } else {
+                if canSignup {
+                    let username = usernameTextField.text!
+                    let password = passwordTextField.text!
+                    WebRequestHandler.shared.attemptSignUp(withUsername: username,
+                                                           andPassword: password)
+                    { (success) in
+                        if success {
+                            WebRequestHandler.shared.attemptPostScore(toUsername: username,
+                                                                      andScore: self.displayScore, actionOnCompleteWithSuccess: postScoreHandler)
+                        } else {
+                            // TODO: HANDLER
+                        }
+                    }
+                } else {
+                    // TODO: Handler
+                }
+            }
         case closeButton:
             removeFromSuperview()
         default:
@@ -88,14 +163,16 @@ class AuthenticationView: UIView {
     // MARK: View life-cycle
     
     override func layoutSubviews() {
+        // TODO: Can we do these elsewhere?
+        // Works for now, but is bad practice.
         setToggleTitle()
+        
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        passwordConfirmTextField.delegate = self
     }
     
     // MARK: Misc helper functions
-    
-    func toggleLoginState() {
-        
-    }
     
     // Sets the toggle button's title based on login state
     func setToggleTitle() {
@@ -103,5 +180,25 @@ class AuthenticationView: UIView {
                                     "New? Sign Up!":
                                     "I want to login",
                                    for: .normal)
+    }
+}
+
+extension AuthenticationView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case usernameTextField:
+            return true
+        case passwordTextField:
+            if isLoginState {
+                textField.resignFirstResponder()
+                return false
+            }
+            return true
+        case passwordConfirmTextField:
+            textField.resignFirstResponder()
+            return false
+        default:
+            fatalError("Error: unhandled text field")
+        }
     }
 }
