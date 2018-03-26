@@ -15,8 +15,18 @@ class GameViewController: UIViewController {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var guideView: GuideView!
     
-    var planes: [ARAnchor: HorizontalPlane] = [:]
-    var selectedPlane: HorizontalPlane?
+    // The planes we're showing
+    private var planeForAnchor: [ARAnchor: HorizontalPlane] = [:]
+    // The selected planes we have
+    private var selectedPlane: HorizontalPlane?
+    // Whether or not we should show horizontal planes
+    private var showHorizontalPlanes = true {
+        didSet {
+            for plane in planeForAnchor.values {
+                plane.isHidden = !showHorizontalPlanes
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,11 +95,12 @@ extension GameViewController {
     }
 }
 
-// MARK: Notification Listener
+// MARK: GameManagerDelegate functions
 
 extension GameViewController: GameManagerDelegate {
     @objc func gameDidStart() {
         guideView.alpha = 0
+        showHorizontalPlanes = false
     }
     
     @objc func gameWillEnd(withPointTotal points: Int) {
@@ -99,6 +110,9 @@ extension GameViewController: GameManagerDelegate {
             NSLayoutConstraint.clingViewToView(view: authView, toView: self.view)
             
             authView.displayScore = points
+            
+            self.showHorizontalPlanes = true
+            GameManager.shared.gameNode.isHidden = true
         }
     }
 }
@@ -127,14 +141,15 @@ extension GameViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let anchor = anchor as? ARPlaneAnchor {
             let plane = HorizontalPlane(anchor: anchor)
-            planes[anchor] = plane
+            plane.isHidden = !showHorizontalPlanes
+            planeForAnchor[anchor] = plane
             node.addChildNode(plane)
         }
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         if let anchor = anchor as? ARPlaneAnchor,
-            let plane = planes[anchor] {
+            let plane = planeForAnchor[anchor] {
             plane.update(for: anchor)
             if selectedPlane?.anchor == anchor {
                 updateGameSceneForAnchor(anchor: anchor)
@@ -143,9 +158,9 @@ extension GameViewController: ARSCNViewDelegate {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
-        if let plane = planes.removeValue(forKey: anchor) {
+        if let plane = planeForAnchor.removeValue(forKey: anchor) {
             if plane == self.selectedPlane {
-                let nextPlane = planes.values.first!
+                let nextPlane = planeForAnchor.values.first!
                 addToNode(rootNode: nextPlane)
                 updateGameSceneForAnchor(anchor: nextPlane.anchor)
             }
