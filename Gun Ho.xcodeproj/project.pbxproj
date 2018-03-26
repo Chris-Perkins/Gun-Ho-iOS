@@ -36,6 +36,7 @@
 		22E1A877202AAB5E009A5BFC /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A876202AAB5E009A5BFC /* art.scnassets */; };
 		22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87A202AAB5E009A5BFC /* Main.storyboard */; };
 		22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87F202AAB5E009A5BFC /* LaunchScreen.storyboard */; };
+		22EC7D7E2069880F0097E02B /* CDAlertViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC7D7D2069880F0097E02B /* CDAlertViewExtensions.swift */; };
 		35BE87A72036620D004EA2CF /* SailBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE87A62036620D004EA2CF /* SailBoat.swift */; };
 		6916399EB0EF7D759FD33A5B /* Pods_Gun_Ho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		22E1A87B202AAB5E009A5BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22E1A880202AAB5E009A5BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22E1A882202AAB5E009A5BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22EC7D7D2069880F0097E02B /* CDAlertViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDAlertViewExtensions.swift; sourceTree = "<group>"; };
 		35BE87A62036620D004EA2CF /* SailBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailBoat.swift; sourceTree = "<group>"; };
 		4A73BA3E658AB3189835D6AB /* Pods-Gun Ho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gun Ho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho.release.xcconfig"; sourceTree = "<group>"; };
 		74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gun_Ho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 		2245B60D20336A2B00F1369B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				22EC7D7D2069880F0097E02B /* CDAlertViewExtensions.swift */,
 				22AC2AF220535F7700645CC5 /* HorizontalPlane.swift */,
 				22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */,
 				222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */,
@@ -376,6 +379,7 @@
 				222D640A2064A6700030196C /* GuideView.swift in Sources */,
 				22AE4EC920681C120012089D /* StringExtensions.swift in Sources */,
 				222BE22F203605D40036E867 /* GameManager.swift in Sources */,
+				22EC7D7E2069880F0097E02B /* CDAlertViewExtensions.swift in Sources */,
 				22B301D5203C9FDA0020CA46 /* SCNVector3Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

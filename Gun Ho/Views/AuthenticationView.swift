@@ -122,7 +122,7 @@ class AuthenticationView: UIView {
                                                          comment: ""),
                                 message: NSLocalizedString("Server.Messages.PostScore.Success.Desc",
                                                            comment: ""),
-                                type: CDAlertViewType.success).show()
+                                type: CDAlertViewType.success).showAfterAddingOkayAction()
                     self.removeFromSuperview()
                 } else {
                     // Unsuccessful score post; tell the user.
@@ -141,7 +141,7 @@ class AuthenticationView: UIView {
                     
                     CDAlertView(title: title,
                                 message: desc,
-                                type: CDAlertViewType.success).show()
+                                type: CDAlertViewType.success).showAfterAddingOkayAction()
                 }
             }
             
@@ -174,7 +174,7 @@ class AuthenticationView: UIView {
                             
                             CDAlertView(title: title,
                                         message: desc,
-                                        type: CDAlertViewType.error).show()
+                                        type: CDAlertViewType.error).showAfterAddingOkayAction()
                         }
                     }
                     
@@ -185,7 +185,7 @@ class AuthenticationView: UIView {
                                                          comment: ""),
                                 message: NSLocalizedString("AuthenticationView.Messages.Login.Fail.Desc",
                                                            comment: ""),
-                                type: CDAlertViewType.error).show()
+                                type: CDAlertViewType.error).showAfterAddingOkayAction()
                 }
             } else {
                 if canSignup {
@@ -215,7 +215,7 @@ class AuthenticationView: UIView {
                             
                             CDAlertView(title: title,
                                         message: desc,
-                                        type: CDAlertViewType.error).show()
+                                        type: CDAlertViewType.error).showAfterAddingOkayAction()
                         }
                     }
                 } else {
@@ -225,7 +225,7 @@ class AuthenticationView: UIView {
                                                          comment: ""),
                                 message: NSLocalizedString("AuthenticationView.Messages.Signup.Fail.Desc",
                                                            comment: ""),
-                                type: CDAlertViewType.error).show()
+                                type: CDAlertViewType.error).showAfterAddingOkayAction()
                 }
             }
         case closeButton:
