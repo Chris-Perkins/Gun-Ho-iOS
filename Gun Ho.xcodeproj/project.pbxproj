@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2204201820328A7A00303B61 /* SmallBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2204201720328A7A00303B61 /* SmallBoat.swift */; };
-		22291334206559890044CF0F /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22291333206559890044CF0F /* NotificationExtensions.swift */; };
 		2229133620655C3E0044CF0F /* GameManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229133520655C3E0044CF0F /* GameManagerDelegate.swift */; };
 		222BE22E203605D40036E867 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE22C203605D40036E867 /* GameObject.swift */; };
 		222BE22F203605D40036E867 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE22D203605D40036E867 /* GameManager.swift */; };
@@ -25,7 +24,7 @@
 		2261C10B2037D960003E580C /* SCNTransactionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */; };
 		226D9D0C205EE47A002F05DD /* CollisionMasksForGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D9D0B205EE47A002F05DD /* CollisionMasksForGame.swift */; };
 		226D9D0E205EFAB4002F05DD /* SCNVector4Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */; };
-		227F984C2034CA7D007FF294 /* SCNNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F984B2034CA7D007FF294 /* SCNNodeExtension.swift */; };
+		227F984C2034CA7D007FF294 /* SCNNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F984B2034CA7D007FF294 /* SCNNodeExtensions.swift */; };
 		228AB9352030D28500FEC484 /* Boat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228AB9342030D28500FEC484 /* Boat.swift */; };
 		22A3F5E62045D5AB00D89358 /* BoatSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3F5E52045D5AB00D89358 /* BoatSpawner.swift */; };
 		22AC2AF320535F7700645CC5 /* HorizontalPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC2AF220535F7700645CC5 /* HorizontalPlane.swift */; };
@@ -43,10 +42,9 @@
 
 /* Begin PBXFileReference section */
 		2204201720328A7A00303B61 /* SmallBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBoat.swift; sourceTree = "<group>"; };
-		22291333206559890044CF0F /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
 		2229133520655C3E0044CF0F /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
-		222BE22C203605D40036E867 /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameObject.swift; path = "Gun Ho/Game Engine Supporting Files/GameObject.swift"; sourceTree = SOURCE_ROOT; };
-		222BE22D203605D40036E867 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameManager.swift; path = "Gun Ho/Game Engine Supporting Files/GameManager.swift"; sourceTree = SOURCE_ROOT; };
+		222BE22C203605D40036E867 /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameObject.swift; path = "Gun Ho/Game Engine/Supporting Files/GameObject.swift"; sourceTree = SOURCE_ROOT; };
+		222BE22D203605D40036E867 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameManager.swift; path = "Gun Ho/Game Engine/GameManager.swift"; sourceTree = SOURCE_ROOT; };
 		222D6402206452550030196C /* AuthenticationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationView.xib; sourceTree = "<group>"; };
 		222D6405206457AF0030196C /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
@@ -61,7 +59,7 @@
 		2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNTransactionExtensions.swift; sourceTree = "<group>"; };
 		226D9D0B205EE47A002F05DD /* CollisionMasksForGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionMasksForGame.swift; sourceTree = "<group>"; };
 		226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector4Extensions.swift; sourceTree = "<group>"; };
-		227F984B2034CA7D007FF294 /* SCNNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtension.swift; sourceTree = "<group>"; };
+		227F984B2034CA7D007FF294 /* SCNNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtensions.swift; sourceTree = "<group>"; };
 		228AB9342030D28500FEC484 /* Boat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boat.swift; sourceTree = "<group>"; };
 		22A3F5E52045D5AB00D89358 /* BoatSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatSpawner.swift; sourceTree = "<group>"; };
 		22AC2AF220535F7700645CC5 /* HorizontalPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPlane.swift; sourceTree = "<group>"; };
@@ -94,16 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		222BE230203617530036E867 /* Game Engine Supporting Files */ = {
+		222BE230203617530036E867 /* Game Engine */ = {
 			isa = PBXGroup;
 			children = (
 				222BE22D203605D40036E867 /* GameManager.swift */,
 				2229133520655C3E0044CF0F /* GameManagerDelegate.swift */,
-				22A3F5E52045D5AB00D89358 /* BoatSpawner.swift */,
-				222BE22C203605D40036E867 /* GameObject.swift */,
-				226D9D0B205EE47A002F05DD /* CollisionMasksForGame.swift */,
+				22EC7D7A20696D1A0097E02B /* Supporting Files */,
 			);
-			path = "Game Engine Supporting Files";
+			path = "Game Engine";
 			sourceTree = "<group>";
 		};
 		222D6404206457930030196C /* Views */ = {
@@ -120,15 +116,14 @@
 		2245B60D20336A2B00F1369B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				22AC2AF220535F7700645CC5 /* HorizontalPlane.swift */,
+				22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */,
+				222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */,
 				2261C1082037D805003E580C /* SceneViewExtensions.swift */,
-				227F984B2034CA7D007FF294 /* SCNNodeExtension.swift */,
+				227F984B2034CA7D007FF294 /* SCNNodeExtensions.swift */,
 				2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */,
 				22B301D4203C9FDA0020CA46 /* SCNVector3Extensions.swift */,
-				22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */,
-				22AC2AF220535F7700645CC5 /* HorizontalPlane.swift */,
 				226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */,
-				222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */,
-				22291333206559890044CF0F /* NotificationExtensions.swift */,
 				22AE4EC820681C120012089D /* StringExtensions.swift */,
 			);
 			path = "Supporting Files";
@@ -179,18 +174,28 @@
 			children = (
 				22E1A874202AAB5E009A5BFC /* AppDelegate.swift */,
 				225815FD2032906F00F546DD /* Boats */,
-				222BE230203617530036E867 /* Game Engine Supporting Files */,
+				222BE230203617530036E867 /* Game Engine */,
 				22E1A876202AAB5E009A5BFC /* art.scnassets */,
 				2245B60E20336A4B00F1369B /* Assets.xcassets */,
 				2245B61120336A9800F1369B /* Storyboards */,
 				222D6404206457930030196C /* Views */,
 				2245B60F20336A8B00F1369B /* GameViewController.swift */,
+				22AE4EC6206819EB0012089D /* WebRequestHandler.swift */,
 				222D640D2064ACBE0030196C /* Localizable.strings */,
 				22E1A882202AAB5E009A5BFC /* Info.plist */,
 				2245B60D20336A2B00F1369B /* Supporting Files */,
-				22AE4EC6206819EB0012089D /* WebRequestHandler.swift */,
 			);
 			path = "Gun Ho";
+			sourceTree = "<group>";
+		};
+		22EC7D7A20696D1A0097E02B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22A3F5E52045D5AB00D89358 /* BoatSpawner.swift */,
+				226D9D0B205EE47A002F05DD /* CollisionMasksForGame.swift */,
+				222BE22C203605D40036E867 /* GameObject.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		BFCB48FF62AC77EF34424576 /* Frameworks */ = {
@@ -349,7 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22AE4EC7206819EB0012089D /* WebRequestHandler.swift in Sources */,
-				227F984C2034CA7D007FF294 /* SCNNodeExtension.swift in Sources */,
+				227F984C2034CA7D007FF294 /* SCNNodeExtensions.swift in Sources */,
 				22A3F5E62045D5AB00D89358 /* BoatSpawner.swift in Sources */,
 				2245B61020336A8B00F1369B /* GameViewController.swift in Sources */,
 				226D9D0C205EE47A002F05DD /* CollisionMasksForGame.swift in Sources */,
@@ -368,7 +373,6 @@
 				22E1A875202AAB5E009A5BFC /* AppDelegate.swift in Sources */,
 				225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */,
 				222D640820645DEE0030196C /* NSLayoutConstraintExtensions.swift in Sources */,
-				22291334206559890044CF0F /* NotificationExtensions.swift in Sources */,
 				222D640A2064A6700030196C /* GuideView.swift in Sources */,
 				22AE4EC920681C120012089D /* StringExtensions.swift in Sources */,
 				222BE22F203605D40036E867 /* GameManager.swift in Sources */,
@@ -504,7 +508,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};

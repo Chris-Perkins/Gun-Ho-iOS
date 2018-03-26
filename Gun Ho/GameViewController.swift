@@ -62,7 +62,11 @@ class GameViewController: UIViewController {
         // Pause the view's session
         sceneView.session.pause()
     }
-    
+}
+
+// MARK: HorizontalPlane functioning
+
+extension GameViewController {
     func addToNode(rootNode: SCNNode) {
         SCNTransaction.perform {
             GameManager.shared.rootNode = rootNode
@@ -99,7 +103,7 @@ extension GameViewController: GameManagerDelegate {
     }
 }
 
-// MARK: - ARSCNViewDelegate
+// MARK: ARSCNViewDelegate functions
 
 extension GameViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {

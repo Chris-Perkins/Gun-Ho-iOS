@@ -30,7 +30,7 @@ class WebRequestHandler {
     private let baseURL     = "http://64.37.54.24/"
     private let addUserURL  = "addUser.php/"
     private let loginURL    = "login.php/"
-    private let addScoreURL = "addUserScore.php"
+    private let addScoreURL = "addUserScore.php/"
 
     // MARK: Interfaces for performWebRequest method
     
@@ -41,6 +41,7 @@ class WebRequestHandler {
         let json = JSON(["username":username,
                          "nickname":username,
                          "password":password.md5])
+        
         performWebRequest(toURLString: baseURL + addUserURL,
                           withJSON: json,
                           actionOnCompleteWithSuccess: actionOnCompleteWithSuccess)
@@ -49,6 +50,7 @@ class WebRequestHandler {
     func attemptLogin(withUsername username: String,
                       andPassword password:String,
                       actionOnCompleteWithSuccess: @escaping (Bool, Error?) -> ()) {
+        
         let json = JSON(["username":username, "password":password.md5])
         
         performWebRequest(toURLString: baseURL + loginURL,

@@ -120,6 +120,7 @@ public class BoatSpawner {
             possibleBoats.append(VikingBoat.self)
         }
         if pointsCount >= SailBoat.pointsCount {
+            // Currently commented out due to weird sailboat scaling/etc behavior.
             //possibleBoats.append(SailBoat.self)
         }
         

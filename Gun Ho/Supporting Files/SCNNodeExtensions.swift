@@ -1,5 +1,5 @@
 //
-//  SCNNodeExtension.swift
+//  SCNNodeExtensions.swift
 //  Gun Ho
 //
 //  Created by Christopher Perkins on 2/14/18.

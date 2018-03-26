@@ -15,9 +15,11 @@
 import SceneKit
 import ARKit
 
-// MARK: Singleton logic
+// MARK: Main declaration (Singleton / Properties)
 
 public class GameManager: NSObject {
+    
+    // MARK: Singleton logic
     
     private static var activeInstance: GameManager?
     
@@ -35,6 +37,9 @@ public class GameManager: NSObject {
     
     // MARK: Game properties
     
+    // The delegate we inform of game state changes
+    internal var delegate: GameManagerDelegate?
+    
     // The root node for use in spawning and finding the worldScene node
     public var rootNode: SCNNode? {
         didSet {
@@ -48,10 +53,11 @@ public class GameManager: NSObject {
         }
     }
     
-    internal var delegate: GameManagerDelegate?
-    
     // Stores all game objects so we can check logic for each frame
     public var gameObjects = [GameObject]()
+    
+    // Whether or not the game has started
+    private var hasStartedGame = false
     
     // The maximum wave we can go to
     /*
@@ -60,15 +66,16 @@ public class GameManager: NSObject {
      */
     private let maxWave = 100
     
-    // A reference to the object that is currently spawning boats
+    /* A reference to the object that is currently spawning boats
+        Nullable since we may not be in an active game */
     private var boatSpawner: BoatSpawner?
     
-    // The current wave we're on
-    // Nullable since we may not be in an active game
+    /* The current wave we're on
+        Nullable since we may not be in an active game */
     private var curWave: Int?
     
-    // The total points we've earned in this session of the game
-    // Nullable since we may not be in an active game
+    /* The total points we've earned in this session of the game
+        Nullable since we may not be in an active game */
     private var totalPoints: Int?
     
     // The current number of boats we've destroyed
@@ -94,7 +101,8 @@ public class GameManager: NSObject {
         }
     }
     
-    // The object which holds all objects relevant to the game
+    /* The object which holds all objects relevant to the game
+        Throws if the gameNode cannot be retrieved */
     lazy public var gameNode: SCNNode = {
         guard let gameNode = rootNode?.childNode(withName: "gameNode", recursively: false) else {
             fatalError("Could not get gameNode!")
@@ -102,7 +110,8 @@ public class GameManager: NSObject {
         return gameNode
     }()
     
-    // Gets the lights in the scene
+    /* Gets the lights in the scene
+        Throws if the lights cannot be retrieved */
     lazy public var lights: [SCNLight]? = {
         guard let lightsNode = gameNode.childNode(withName: "lights", recursively: true) else {
             return nil
@@ -112,7 +121,8 @@ public class GameManager: NSObject {
         })
     }()
     
-    // Gets the worldScene from the rootnode
+    /* Gets the worldScene from the rootnode
+        Throws if the worldScene cannot be retrieved */
     lazy public var worldScene: SCNNode = {
         guard let worldSceneNode = gameNode.childNode(withName: "worldScene", recursively: false) else {
             fatalError("Could not get worldScene!")
@@ -120,7 +130,8 @@ public class GameManager: NSObject {
         return worldSceneNode
     }()
     
-    // Gets the island from the worldscene
+    /* Gets the island from the worldscene
+        Throws if the island cannot be retrieved*/
     lazy public var island: SCNNode = {
         guard let islandNode = worldScene.childNode(withName: "island", recursively: false) else {
             fatalError("Could not find island in the worldScene")
@@ -128,7 +139,8 @@ public class GameManager: NSObject {
         return islandNode
     }()
     
-    // Gets the ocean from the worldscene
+    /* Gets the ocean from the worldscene
+        Throws if the ocean cannot be retrieved */
     lazy public var ocean: SCNNode = {
         guard let oceanNode = worldScene.childNode(withName: "ocean", recursively: false) else {
             fatalError("Could not find ocean in the worldScene")
@@ -150,11 +162,19 @@ extension GameManager {
         }
     }
     
+    /* Starts the game if it hasn't been started
+        Throws if the game was already started */
     public func startGame() {
-        performGameStartSequence()
+        if !hasStartedGame {
+            performGameStartSequence()
+            hasStartedGame = true
+        } else {
+            fatalError("Game was declared to start twice, but this cannot happen.")
+        }
     }
     
-    // Should be called to start the game
+    /* Should be called to start the game
+        Throws if wave is < 0 */
     private func performGameStartSequence(atWave wave: Int = 1) {
         if wave <= 0 {
             fatalError("Waves are 1-indexed. Please use a wave value > 0")
@@ -183,12 +203,14 @@ extension GameManager {
         for node in gameObjects {
             node.removeFromParentNode()
         }
+        
         gameObjects.removeAll()
         
-        
+        hasStartedGame = false
     }
     
-    // Should be called whenever the user defeats a wave
+    /* Should be called whenever the user defeats a wave
+        Throws if curWave is nil */
     private func performWaveCompleteSequence() {
         guard let wave = curWave else {
             fatalError("Wave cannot be complete; the game was never started!")
@@ -199,12 +221,14 @@ extension GameManager {
             performGameOverSequence()
         }
         
+        // Reset the points since we use this to check against current wave requirements
         curPoints = 0
         curWave   = wave + 1
         createAndStartCurrentWaveBoatSpawner()
     }
     
-    // Adds the input points to the current and totalPoints variables
+    /* Adds the input points to the current and totalPoints variables
+        Throws if curPoints or totalPoints is nil */
     public func addPoints(_ points: Int) {
         guard let curPoints = curPoints,
             let totalPoints = totalPoints else {
@@ -223,8 +247,9 @@ extension GameManager {
         return linearFactor + exponentialFactor
     }
     
-    // Creates a boat spawner from the current wave's info.
-    // Requires a node to spawn on
+    /* Creates a boat spawner from the current wave's info.
+        Requires a node to spawn on
+        Throws if curWave is nil */
     private func createAndStartCurrentWaveBoatSpawner() {
         guard let curWave = curWave else {
                 fatalError("Cannot create a spawner without the wave number")
@@ -235,6 +260,8 @@ extension GameManager {
         boatSpawner?.startSpawning()
     }
 }
+
+// MARK: Physics delegate
 
 extension GameManager: SCNPhysicsContactDelegate {
     public func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {

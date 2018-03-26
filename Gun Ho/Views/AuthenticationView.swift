@@ -116,6 +116,8 @@ class AuthenticationView: UIView {
         case postScoreButton:
             let postScoreHandler: (Bool, Error?) -> () = { (success, error) in
                 if success {
+                    // Successful post; let the user know they're good.
+                    
                     CDAlertView(title: NSLocalizedString("Server.Messages.PostScore.Success.Title",
                                                          comment: ""),
                                 message: NSLocalizedString("Server.Messages.PostScore.Success.Desc",
@@ -123,12 +125,14 @@ class AuthenticationView: UIView {
                                 type: CDAlertViewType.success).show()
                     self.removeFromSuperview()
                 } else {
+                    // Unsuccessful score post; tell the user.
+                    
                     var title = NSLocalizedString("Server.Messages.PostScore.Fail.Title",
                                                   comment: "")
                     var desc  = NSLocalizedString("Server.Messages.PostScore.Fail.Desc",
                                                   comment: "")
                     
-                    // If we can be more descriptive, do it!
+                    // If we can be more descriptive, be more descriptive.
                     if let error = error {
                         title = NSLocalizedString("Server.Messages.Error.Title",
                                                   comment: "")
@@ -149,15 +153,19 @@ class AuthenticationView: UIView {
                                                           andPassword: password)
                     { (success, error) in
                         if success {
+                            // Successfully authenticated, now post the score.
+                            
                             WebRequestHandler.shared.attemptPostScore(toUsername: username,
                                                                       andScore: self.displayScore, actionOnCompleteWithSuccess: postScoreHandler)
                         } else {
+                            // Login failed; tell the user that we failed.
+                            
                             var title = NSLocalizedString("Server.Messages.Login.Fail.Title",
                                                           comment: "")
                             var desc  = NSLocalizedString("Server.Messages.Login.Fail.Desc",
                                                           comment: "")
                             
-                            // If we can be more descriptive, do it!
+                            // If we can be more descriptive, be more descriptive.
                             if let error = error {
                                 title = NSLocalizedString("Server.Messages.Error.Title",
                                                           comment: "")
@@ -171,6 +179,8 @@ class AuthenticationView: UIView {
                     }
                     
                 } else {
+                    // User cannot log in; let the user know.
+                    
                     CDAlertView(title: NSLocalizedString("AuthenticationView.Messages.Login.Fail.Title",
                                                          comment: ""),
                                 message: NSLocalizedString("AuthenticationView.Messages.Login.Fail.Desc",
@@ -185,15 +195,18 @@ class AuthenticationView: UIView {
                                                            andPassword: password)
                     { (success, error) in
                         if success {
+                            // User successfully logged in; now try to post their score.
                             WebRequestHandler.shared.attemptPostScore(toUsername: username,
                                                                       andScore: self.displayScore, actionOnCompleteWithSuccess: postScoreHandler)
                         } else {
+                            // User could not log in; let them know.
+                            
                             var title = NSLocalizedString("Server.Messages.Signup.Fail.Title",
                                                           comment: "")
                             var desc  = NSLocalizedString("Server.Messages.Signup.Fail.Desc",
                                                           comment: "")
                             
-                            // If we can be more descriptive, do it!
+                            // If we can be more descriptive, be more descriptive.
                             if let error = error {
                                 title = NSLocalizedString("Server.Messages.Error.Title",
                                                           comment: "")
@@ -206,6 +219,8 @@ class AuthenticationView: UIView {
                         }
                     }
                 } else {
+                    // User's credentials didn't match; let them know why.
+                    
                     CDAlertView(title: NSLocalizedString("AuthenticationView.Messages.Signup.Fail.Title",
                                                          comment: ""),
                                 message: NSLocalizedString("AuthenticationView.Messages.Signup.Fail.Desc",
@@ -216,7 +231,7 @@ class AuthenticationView: UIView {
         case closeButton:
             removeFromSuperview()
         default:
-            fatalError("Unhandled button pressed in authentication view")
+            fatalError("Unhandled button pressed in authentication view.")
         }
         
     }
@@ -245,6 +260,7 @@ class AuthenticationView: UIView {
 }
 
 extension AuthenticationView: UITextFieldDelegate {
+    // Simply used for dismissing keyboards when necessary.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case usernameTextField:
