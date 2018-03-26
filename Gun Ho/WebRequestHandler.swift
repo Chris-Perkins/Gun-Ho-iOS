@@ -36,7 +36,7 @@ class WebRequestHandler {
     
     func attemptSignUp(withUsername username: String,
                        andPassword password: String,
-                       actionOnCompleteWithSuccess: @escaping (Bool) -> ()) {
+                       actionOnCompleteWithSuccess: @escaping (Bool, Error?) -> ()) {
         
         let json = JSON(["username":username,
                          "nickname":username,
@@ -48,7 +48,7 @@ class WebRequestHandler {
     
     func attemptLogin(withUsername username: String,
                       andPassword password:String,
-                      actionOnCompleteWithSuccess: @escaping (Bool) -> ()) {
+                      actionOnCompleteWithSuccess: @escaping (Bool, Error?) -> ()) {
         let json = JSON(["username":username, "password":password.md5])
         
         performWebRequest(toURLString: baseURL + loginURL,
@@ -58,7 +58,7 @@ class WebRequestHandler {
     
     func attemptPostScore(toUsername username: String,
                           andScore score: Int,
-                          actionOnCompleteWithSuccess: @escaping (Bool) -> ()) {
+                          actionOnCompleteWithSuccess: @escaping (Bool, Error?) -> ()) {
         
         let json = JSON(["username":username, "score":"\(score)"])
         
@@ -73,7 +73,7 @@ class WebRequestHandler {
     // Created this function due to redundancy in above functions.
     func performWebRequest(toURLString urlString: String,
                            withJSON json: JSON,
-                           actionOnCompleteWithSuccess: @escaping (Bool) -> ()) {
+                           actionOnCompleteWithSuccess: @escaping (Bool, Error?) -> ()) {
         
         let webURL     = URL(string: urlString)!
         var webRequest = URLRequest(url: webURL)
@@ -87,11 +87,11 @@ class WebRequestHandler {
         let task = URLSession.shared.dataTask(with: webRequest) { data, response, error in
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 200 {
                 OperationQueue.main.addOperation {
-                    actionOnCompleteWithSuccess(true)
+                    actionOnCompleteWithSuccess(true, error)
                 }
             } else {
                 OperationQueue.main.addOperation {
-                    actionOnCompleteWithSuccess(false)
+                    actionOnCompleteWithSuccess(false, error)
                 }
             }
         }
