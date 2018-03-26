@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CDAlertView
 
 class AuthenticationView: UIView {
     
@@ -114,7 +115,20 @@ class AuthenticationView: UIView {
             isLoginState = !isLoginState
         case postScoreButton:
             let postScoreHandler: (Bool) -> () = { (success) in
-                print("WOOHOO!")
+                if success {
+                    CDAlertView(title: NSLocalizedString("Server.Messages.PostScore.Success.Title",
+                                                         comment: ""),
+                                message: NSLocalizedString("Server.Messages.PostScore.Success.Desc",
+                                                           comment: ""),
+                                type: CDAlertViewType.success).show()
+                    self.removeFromSuperview()
+                } else {
+                    CDAlertView(title: NSLocalizedString("Server.Messages.PostScore.Fail.Title",
+                                                         comment: ""),
+                                message: NSLocalizedString("Server.Messages.PostScore.Fail.Desc",
+                                                           comment: ""),
+                                type: CDAlertViewType.success).show()
+                }
             }
             
             if isLoginState {
@@ -128,12 +142,20 @@ class AuthenticationView: UIView {
                             WebRequestHandler.shared.attemptPostScore(toUsername: username,
                                                                       andScore: self.displayScore, actionOnCompleteWithSuccess: postScoreHandler)
                         } else {
-                            // TODO: Handler
+                            CDAlertView(title: NSLocalizedString("Server.Messages.Login.Fail.Title",
+                                                                 comment: ""),
+                                        message: NSLocalizedString("Server.Messages.Login.Fail.Desc",
+                                                                   comment: ""),
+                                        type: CDAlertViewType.error).show()
                         }
                     }
                     
                 } else {
-                    // TODO: Handler
+                    CDAlertView(title: NSLocalizedString("AuthenticationView.Messages.Login.Fail.Title",
+                                                         comment: ""),
+                                message: NSLocalizedString("AuthenticationView.Messages.Login.Fail.Desc",
+                                                           comment: ""),
+                                type: CDAlertViewType.error).show()
                 }
             } else {
                 if canSignup {
@@ -146,11 +168,19 @@ class AuthenticationView: UIView {
                             WebRequestHandler.shared.attemptPostScore(toUsername: username,
                                                                       andScore: self.displayScore, actionOnCompleteWithSuccess: postScoreHandler)
                         } else {
-                            // TODO: HANDLER
+                            CDAlertView(title: NSLocalizedString("Server.Messages.Signup.Fail.Title",
+                                                                 comment: ""),
+                                        message: NSLocalizedString("Server.Messages.Signup.Fail.Desc",
+                                                                   comment: ""),
+                                        type: CDAlertViewType.error).show()
                         }
                     }
                 } else {
-                    // TODO: Handler
+                    CDAlertView(title: NSLocalizedString("AuthenticationView.Messages.Signup.Fail.Title",
+                                                         comment: ""),
+                                message: NSLocalizedString("AuthenticationView.Messages.Signup.Fail.Desc",
+                                                           comment: ""),
+                                type: CDAlertViewType.error).show()
                 }
             }
         case closeButton:

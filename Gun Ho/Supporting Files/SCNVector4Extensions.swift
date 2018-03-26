@@ -28,7 +28,7 @@ public func *(left: SCNVector4, right: Float) -> SCNVector4 {
     let y = left.y * right
     let z = left.z * right
     
-    return SCNVector4(x: x, y: y, z: z, w: left.w) // TODO: Is the w part correct?
+    return SCNVector4(x: x, y: y, z: z, w: left.w)
 }
 
 public func *(left: Float, right: SCNVector4) -> SCNVector4 {

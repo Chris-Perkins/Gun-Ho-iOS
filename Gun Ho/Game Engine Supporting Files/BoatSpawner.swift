@@ -110,7 +110,6 @@ public class BoatSpawner {
     private func getSpawnableBoats(withPointsCount pointsCount: Int) -> [Boat.Type] {
         var possibleBoats = [Boat.Type]()
         
-        // TODO: Make this nicer if possible.
         if pointsCount >= SmallBoat.pointsCount {
             possibleBoats.append(SmallBoat.self)
         }

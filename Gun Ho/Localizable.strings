@@ -13,3 +13,21 @@
 
 /* Authentication View Strings */
 "AuthenticationView.ScoreLabel.Text" = "Your Score: {0}";
+
+"AuthenticationView.Messages.Login.Fail.Title"  = "Cannot Login";
+"AuthenticationView.Messages.Login.Fail.Desc"   = "Please verify that all fields are filled out.";
+
+"AuthenticationView.Messages.Signup.Fail.Title" = "Cannot Signup";
+"AuthenticationView.Messages.Signup.Fail.Desc"  = "Please verify that all fields are filled out correctly and that the given passwords match.";
+
+/* Server Responses */
+"Server.Messages.PostScore.Success.Title" = "Score Posted";
+"Server.Messages.PostScore.Success.Desc"  = "Your score was uploaded and posted successfully.";
+"Server.Messages.PostScore.Fail.Title" = "Score not Posted";
+"Server.Messages.PostScore.Fail.Desc"  = "Your score could not be posted due to an internal error.";
+
+"Server.Messages.Login.Fail.Title" = "Could not Login";
+"Server.Messages.Login.Fail.Desc"  = "Authentication failed with the provided credentials.";
+
+"Server.Messages.Signup.Fail.Title" = "Could not Signup";
+"Server.Messages.Signup.Fail.Desc"  = "The username provided is already in use.";
