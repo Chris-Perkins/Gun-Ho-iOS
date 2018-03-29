@@ -9,6 +9,9 @@
 import SceneKit
 
 public class Bird: GameObject {
+    
+    // MARK: Initializations
+    
     required public override init() {
         guard let scene = SCNScene(named: "art.scnassets/bird.scn"),
             let birdNode = scene.rootNode.childNode(withName: "bird",
@@ -29,5 +32,45 @@ public class Bird: GameObject {
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Custom functions
+    
+    /* Starts the bird flying cycle */
+    public func startFlying() {
+        flyToRandomPoint(andRepeat: true)
+    }
+    
+    /* Flies the bird to a random point within the ocean's bounds.
+     May repeat this action by setting the */
+    private func flyToRandomPoint(andRepeat repeatAnimation: Bool) {
+        let destinationPoint = SCNVector3(Float.random(min: -GameManager.shared.ocean.scale.x / 2,
+                                                       max: GameManager.shared.ocean.scale.x / 2),
+                                          // Chosen arbitrarily; I just found 0.25 and 0.3 look nice.
+                                          Float.random(min: 0.25,
+                                                       max: 0.3),
+                                          Float.random(min: -GameManager.shared.ocean.scale.z / 2,
+                                                       max: GameManager.shared.ocean.scale.z / 2))
+        
+        // Get the position the bird is flying to relative to the world's terms
+        look(at: GameManager.shared.gameNode.worldPosition + destinationPoint)
+        
+        // The bird should be strolling, not flying like its tail is on fire.
+        let flySpeed = Double.random(min: 0.05,
+                                     max: 0.15)
+        
+        let flyTime = Double(destinationPoint.distance(vector: position)) / flySpeed
+        
+        
+        SCNTransaction.perform {
+            SCNTransaction.animationDuration = flyTime
+            position = destinationPoint
+            
+            SCNTransaction.completionBlock = {
+                if repeatAnimation {
+                    self.flyToRandomPoint(andRepeat: repeatAnimation)
+                }
+            }
+        }
     }
 }

@@ -184,8 +184,7 @@ extension GameManager {
         curPoints   = 0
         curWave     = wave
         
-        createAndStartCurrentWaveBoatSpawner()
-        
+        startCurrentWave()
         delegate?.gameDidStart?()
     }
     
@@ -209,6 +208,12 @@ extension GameManager {
         hasStartedGame = false
     }
     
+    private func startCurrentWave() {
+        // Spawn a bird just for minor aesthetics
+        spawnBird()
+        createAndStartCurrentWaveBoatSpawner()
+    }
+    
     /* Should be called whenever the user defeats a wave
         Throws if curWave is nil */
     private func performWaveCompleteSequence() {
@@ -224,7 +229,8 @@ extension GameManager {
         // Reset the points since we use this to check against current wave requirements
         curPoints = 0
         curWave   = wave + 1
-        createAndStartCurrentWaveBoatSpawner()
+        
+        startCurrentWave()
     }
     
     /* Adds the input points to the current and totalPoints variables
@@ -258,6 +264,13 @@ extension GameManager {
         boatSpawner = BoatSpawner(withPoints: pointsPerWave(curWave),
                                   andSpawningNode: gameNode)
         boatSpawner?.startSpawning()
+    }
+    
+    // Creates a bird that flies around
+    private func spawnBird() {
+        let bird = Bird()
+        worldScene.addChildNode(bird)
+        bird.startFlying()
     }
 }
 
