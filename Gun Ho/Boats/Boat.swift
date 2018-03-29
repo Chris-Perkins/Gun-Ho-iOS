@@ -68,7 +68,6 @@ class Boat: GameObject {
     
     // Does nothing besides shake the boat object. called on boat tap.
     public func shake() {
-        // TODO: Import my custom animation queue and use that here.
         // FURTHER TODO: What the heck is up with gimbal lock?
         // Can we mathematically make this rotate nicely?
         // Is this even worth doing?
@@ -79,25 +78,33 @@ class Boat: GameObject {
                                      Double.random * shakeMax * 1/2,
                                      Double.random * shakeMax)
         
-        SCNTransaction.perform {
-            SCNTransaction.animationDuration = shakeTime
-            self.eulerAngles += shakeAmount
-            
-        }
-        
-        Timer.scheduledTimer(withTimeInterval: shakeTime, repeats: false) { (timer) in
-            SCNTransaction.perform {
-                SCNTransaction.animationDuration = shakeTime * 2
-                self.eulerAngles -= shakeAmount * 2
-            }
-        }
-        
-        Timer.scheduledTimer(withTimeInterval: shakeTime * 3, repeats: false) { (timer) in
-            SCNTransaction.perform {
-                SCNTransaction.animationDuration = shakeTime
-                self.eulerAngles += shakeAmount
-            }
-        }
+        ActionQueue(withActions: [
+            // Tip the boat
+            Action(actionTime: shakeTime,
+                            withActions: {
+                                SCNTransaction.perform {
+                                    SCNTransaction.animationDuration = shakeTime
+                                    self.eulerAngles += shakeAmount
+                                }
+            }),
+            // Tip the boat back to the other side
+            // * 2 as we have 2 times the distance to cover
+            Action(actionTime: shakeTime * 2,
+                   withActions: {
+                        SCNTransaction.perform {
+                            SCNTransaction.animationDuration = shakeTime * 2
+                            self.eulerAngles -= shakeAmount * 2
+                        }
+            }),
+            // Bring back to neutral position
+            Action(actionTime: shakeTime,
+                   withActions: {
+                        SCNTransaction.perform {
+                            SCNTransaction.animationDuration = shakeTime
+                            self.eulerAngles += shakeAmount
+                        }
+            })
+        ]).start()
     }
     
     // Should be called whenever the boat should be deleted
