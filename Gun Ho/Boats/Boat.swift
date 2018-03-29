@@ -143,6 +143,7 @@ class Boat: GameObject {
                 CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
             
             // The 60 in this equation is a fake unit saying our ocean has a diameter of 60
+            // Note... It doesn't.
             let distanceToCenter = 60.0 * GameManager.shared.ocean.scale.x / 2.0
             let timeToCenter = distanceToCenter / Float(self.speed)
             
