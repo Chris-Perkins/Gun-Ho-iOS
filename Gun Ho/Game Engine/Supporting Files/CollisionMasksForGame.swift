@@ -18,4 +18,5 @@ public class CollisionType {
     public static let boat   = 1 << 0
     public static let island = 1 << 1
     public static let whale  = 1 << 2
+    public static let bird   = 1 << 3
 }

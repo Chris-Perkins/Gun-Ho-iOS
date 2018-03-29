@@ -1,28 +1,27 @@
 //
-//  SmallBoat.swift
+//  SailBoat.swift
 //  Gun Ho
 //
-//  Created by Christopher Perkins on 2/12/18.
+//  Created by Joelle Beverly on 2/15/18.
 //  Copyright © 2018 Christopher Perkins. All rights reserved.
 //
 
-import Foundation
 import SceneKit
 
-final class SmallBoat: Boat {
+final class SailBoat: Boat {
     
-    override class var pointsCount: Int { return  1 }
+    override class var pointsCount: Int { return  7 }
     
     required init() {
-        guard let scene = SCNScene(named: "art.scnassets/boat-small.scn"),
+        guard let scene = SCNScene(named: "art.scnassets/boat-sail.scn"),
             let boatNode = scene.rootNode.childNode(withName: "boat",
                                                     recursively: true) else {
-                                                        fatalError("Could not find small boat")
+                                                        fatalError("Could not find sail boat")
         }
         
-        super.init(maxHealth: 1,
-                   floatHeight: -0.05,
-                   points: SmallBoat.pointsCount,
+        super.init(maxHealth: 7,
+                   floatHeight: -0.175,
+                   points: SailBoat.pointsCount,
                    speed: 5,
                    withNode: boatNode)
     }
@@ -31,4 +30,3 @@ final class SmallBoat: Boat {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

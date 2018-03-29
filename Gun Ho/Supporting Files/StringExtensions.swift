@@ -6,8 +6,6 @@
 //  Copyright © 2018 Christopher Perkins. All rights reserved.
 //
 
-import Foundation
-
 extension String {
     public var md5: String {
         let context = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: 1)

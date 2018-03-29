@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SceneKit
 import ARKit
 
 class GameViewController: UIViewController {

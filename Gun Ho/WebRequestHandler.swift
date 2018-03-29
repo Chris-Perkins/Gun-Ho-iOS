@@ -7,7 +7,6 @@
 //
 // A simple class that creates web requests to our server using the singleton pattern
 
-import Foundation
 import SwiftyJSON
 
 class WebRequestHandler {

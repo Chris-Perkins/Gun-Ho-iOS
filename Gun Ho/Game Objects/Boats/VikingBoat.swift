@@ -6,7 +6,6 @@
 //  Copyright © 2018 Christopher Perkins. All rights reserved.
 //
 
-import Foundation
 import SceneKit
 
 final class VikingBoat: Boat {

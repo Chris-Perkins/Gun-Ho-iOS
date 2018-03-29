@@ -6,8 +6,6 @@
 //  Copyright © 2018 Christopher Perkins. All rights reserved.
 //
 
-import Foundation
-
 precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
 infix operator ^^ : PowerPrecedence
 func ^^ (radix: Int, power: Int) -> Int {

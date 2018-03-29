@@ -8,7 +8,6 @@
 //
 // Modified by Chris Perkins on 3/18/18
 
-import Foundation
 import SceneKit
 
 // Equality and equivalence

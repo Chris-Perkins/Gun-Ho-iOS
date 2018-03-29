@@ -18,6 +18,7 @@
 		222D640C2064A7020030196C /* GuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222D640B2064A7020030196C /* GuideView.xib */; };
 		222D640E2064ACBE0030196C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 222D640D2064ACBE0030196C /* Localizable.strings */; };
 		22454653206D4D4E00F85ADA /* ActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22454652206D4D4D00F85ADA /* ActionQueue.swift */; };
+		22454657206D5A6600F85ADA /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22454656206D5A6600F85ADA /* Bird.swift */; };
 		2245B61020336A8B00F1369B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245B60F20336A8B00F1369B /* GameViewController.swift */; };
 		225815FA20328EA900F546DD /* MediumBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815F920328EA900F546DD /* MediumBoat.swift */; };
 		225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815FB20328F3D00F546DD /* VikingBoat.swift */; };
@@ -56,6 +57,7 @@
 		222D640B2064A7020030196C /* GuideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuideView.xib; sourceTree = "<group>"; };
 		222D640D2064ACBE0030196C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		22454652206D4D4D00F85ADA /* ActionQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionQueue.swift; sourceTree = "<group>"; };
+		22454656206D5A6600F85ADA /* Bird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
 		2245B60E20336A4B00F1369B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2245B60F20336A8B00F1369B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		225815F920328EA900F546DD /* MediumBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumBoat.swift; sourceTree = "<group>"; };
@@ -123,6 +125,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		22454654206D5A4200F85ADA /* Game Objects */ = {
+			isa = PBXGroup;
+			children = (
+				225815FD2032906F00F546DD /* Boats */,
+				22454655206D5A5300F85ADA /* Misc */,
+			);
+			path = "Game Objects";
+			sourceTree = "<group>";
+		};
+		22454655206D5A5300F85ADA /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				22454656206D5A6600F85ADA /* Bird.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		2245B60D20336A2B00F1369B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,8 +203,8 @@
 		22E1A873202AAB5E009A5BFC /* Gun Ho */ = {
 			isa = PBXGroup;
 			children = (
+				22454654206D5A4200F85ADA /* Game Objects */,
 				22E1A874202AAB5E009A5BFC /* AppDelegate.swift */,
-				225815FD2032906F00F546DD /* Boats */,
 				222BE230203617530036E867 /* Game Engine */,
 				22E1A876202AAB5E009A5BFC /* art.scnassets */,
 				2245B60E20336A4B00F1369B /* Assets.xcassets */,
@@ -388,6 +407,7 @@
 				22E1A875202AAB5E009A5BFC /* AppDelegate.swift in Sources */,
 				225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */,
 				222D640820645DEE0030196C /* NSLayoutConstraintExtensions.swift in Sources */,
+				22454657206D5A6600F85ADA /* Bird.swift in Sources */,
 				222D640A2064A6700030196C /* GuideView.swift in Sources */,
 				22AE4EC920681C120012089D /* StringExtensions.swift in Sources */,
 				222BE22F203605D40036E867 /* GameManager.swift in Sources */,
