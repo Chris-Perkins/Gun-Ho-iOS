@@ -60,7 +60,7 @@ public class GameManager: NSObject {
     private var hasStartedGame = false
     
     // Whether or not the game is paused
-    public var paused = false {
+    private var paused = false {
         didSet {
             if paused {
                 pauseGame()
@@ -184,6 +184,23 @@ extension GameManager {
         }
     }
     
+    /* Note: logic for pausing is handled by the didSet handler */
+    public func setPauseState(to state: Bool) {
+        if paused != state {
+            paused = state
+        }
+    }
+    
+    // Toggles the pause state
+    public func togglePauseState() {
+        paused = !paused
+    }
+    
+    // Returns the pause state
+    public func getPauseState() -> Bool {
+        return paused
+    }
+    
     /* Pauses the game; all objects stop moving.
         NOTE: This does not stop active timers or non-movement animations */
     private func pauseGame() {
@@ -238,6 +255,7 @@ extension GameManager {
         hasStartedGame = false
     }
     
+    // Starts the current wave
     private func startCurrentWave() {
         // Spawn a bird just for minor aesthetics
         spawnBird()

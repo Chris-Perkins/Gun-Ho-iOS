@@ -67,7 +67,7 @@ public class Bird: GameObject {
             self.position = destinationPoint
             
             SCNTransaction.completionBlock = {
-                if repeatAnimation && !GameManager.shared.paused {
+                if repeatAnimation && !GameManager.shared.getPauseState() {
                     self.flyToRandomPoint(andRepeat: repeatAnimation)
                 }
             }

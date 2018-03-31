@@ -21,8 +21,12 @@ import SceneKit
 
 public class GameObject: SCNNode {
     
+    // MARK: Properties
+    
     /* Marks the current action the boat is taking */
     private var currentMovementAction: (() -> ())?
+    
+    // MARK: Initializations
     
     override public init() {
         super.init()
@@ -35,6 +39,9 @@ public class GameObject: SCNNode {
         fatalError("Init not set up for this!")
     }
     
+    // MARK: Custom functions
+    
+    // Overrides this area for the frame logic
     public func performLogicForFrame() { /* Override me! */}
     
     /* NOTE: This isn't built to scale to handle multiple movement operations at one time.
@@ -50,10 +57,17 @@ public class GameObject: SCNNode {
         transaction()
     }
     
+    /* Pauses movement of the object */
     public func pauseMovement() {
+        /* NOTE: To understand why this works for pausing,
+            You would need to understand specifically how SCNTransactions
+            are performed. SCNTransactions set the position of the object
+            to the end point of the movement, but simply moves the presented
+            view along the path (the position, however, remains static) */
         position = presentation.position
     }
     
+    /* Resumes movement after a pause */
     public func resumeMovement() {
         currentMovementAction?()
     }
