@@ -17,7 +17,13 @@ public class BoatSpawner {
     private var boatsToSpawn: [Boat.Type]
     
     // The index in the spawningList we're spawning from
-    private var currentSpawningIndex: Int
+    private var currentSpawningIndex: Int {
+        didSet {
+            if currentSpawningIndex < 0 {
+                currentSpawningIndex = 0
+            }
+        }
+    }
     
     // The timer we keep reference of for spawning.
     // Invalidate to pause
