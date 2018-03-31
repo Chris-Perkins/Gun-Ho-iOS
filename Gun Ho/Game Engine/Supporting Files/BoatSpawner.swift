@@ -54,6 +54,9 @@ public class BoatSpawner {
     // Performs a cycle of spawning.
     // Recursively calls if there are remaining boats to spawn.
     private func performSpawnCycle() {
+        // Base case: If we're out of index, then we're done.
+        if currentSpawningIndex >= boatsToSpawn.count { return }
+        
         performingSpawnCycle = true
         
         Timer.scheduledTimer(withTimeInterval: Double.random(min: 2, max: 4),
@@ -63,13 +66,13 @@ public class BoatSpawner {
                 self.spawnBoat(ofType: self.boatsToSpawn[self.currentSpawningIndex])
                 self.currentSpawningIndex += 1
                 
+                // We finished this spawn cycle
                 self.performingSpawnCycle = false
                 
-                // If we did not finish spawning, loop back around and perform another cycle
-                if self.currentSpawningIndex < self.boatsToSpawn.count {
-                    self.performSpawnCycle()
-                }
+                // Recursively call the next cycle
+                self.performSpawnCycle()
             } else {
+                // Unable to spawn
                 self.performingSpawnCycle = false
             }
         }

@@ -191,7 +191,7 @@ extension GameManager {
             object.pauseMovement()
         }
         
-        //boatSpawner?.spawning = false
+        boatSpawner?.spawning = false
     }
     
     /* Resumes the game; all objects resume their original movement */
@@ -200,7 +200,7 @@ extension GameManager {
             object.resumeMovement()
         }
         
-        //boatSpawner?.spawning = true
+        boatSpawner?.spawning = true
     }
     
     /* Should be called to start the game
