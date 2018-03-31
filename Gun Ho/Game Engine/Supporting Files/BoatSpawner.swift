@@ -21,7 +21,16 @@ public class BoatSpawner {
     
     // The timer we keep reference of for spawning.
     // Invalidate to pause
-    private var paused = true
+    public var spawning = false {
+        didSet {
+            if spawning && !performingSpawnCycle {
+                performSpawnCycle()
+            }
+        }
+    }
+    // Tells us if we're already performing a spawn cycle
+    // Used so that we don't perform spawn cycles twice
+    private var performingSpawnCycle = false
     
     public init(withPoints points: Int, andSpawningNode spawningNode: SCNNode) {
         self.spawningNode = spawningNode
@@ -30,18 +39,6 @@ public class BoatSpawner {
         currentSpawningIndex = 0
         
         setSpawningList(withTotalPoints: points)
-    }
-    
-    // Starts spawning boats. Can be paused
-    public func startSpawning() {
-        paused = false
-        
-        performSpawnCycle()
-    }
-    
-    // Pauses the spawning
-    public func pauseSpawning() {
-        paused = true
     }
     
     // Returns amount of boats that have been spawned
@@ -57,18 +54,23 @@ public class BoatSpawner {
     // Performs a cycle of spawning.
     // Recursively calls if there are remaining boats to spawn.
     private func performSpawnCycle() {
-        Timer.scheduledTimer(withTimeInterval: Double.random(min: 3, max: 5),
+        performingSpawnCycle = true
+        
+        Timer.scheduledTimer(withTimeInterval: Double.random(min: 2, max: 4),
                              repeats: false)
         { (timer) in
-            // This is here because the user may pause in the middle of an active cycle
-            if !self.paused {
+            if self.spawning {
                 self.spawnBoat(ofType: self.boatsToSpawn[self.currentSpawningIndex])
                 self.currentSpawningIndex += 1
+                
+                self.performingSpawnCycle = false
                 
                 // If we did not finish spawning, loop back around and perform another cycle
                 if self.currentSpawningIndex < self.boatsToSpawn.count {
                     self.performSpawnCycle()
                 }
+            } else {
+                self.performingSpawnCycle = false
             }
         }
     }

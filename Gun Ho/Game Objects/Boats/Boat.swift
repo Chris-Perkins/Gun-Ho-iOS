@@ -136,15 +136,16 @@ class Boat: GameObject {
             self.scale = originalScale
         }
         
-        SCNTransaction.perform {
+        // The 60 in this equation is a fake unit saying our ocean has a diameter of 60
+        // Note... It doesn't.
+        let distanceToCenter = 60.0 * GameManager.shared.ocean.scale.x / 2.0
+        let timeToCenter = distanceToCenter / Float(self.speed)
+        
+        // Move the boat to the island!
+        performMovementOperation {
             // Move linearly (default is ease in/out)
             SCNTransaction.animationTimingFunction =
                 CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
-            
-            // The 60 in this equation is a fake unit saying our ocean has a diameter of 60
-            // Note... It doesn't.
-            let distanceToCenter = 60.0 * GameManager.shared.ocean.scale.x / 2.0
-            let timeToCenter = distanceToCenter / Float(self.speed)
             
             SCNTransaction.animationDuration = CFTimeInterval(timeToCenter)
             self.position = SCNVector3(0, self.position.y, 0)

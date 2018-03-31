@@ -176,6 +176,12 @@ extension GameViewController: UIGestureRecognizerDelegate {
         let hits = sceneView.hitTest(location, options: nil)
         if let hitObject = hits.first?.node {
             if let boat = hitObject.boatParent {
+                if boat.health != 1 {
+                    GameManager.shared.paused = !GameManager.shared.paused
+                } else if GameManager.shared.paused {
+                    GameManager.shared.paused = false
+                }
+                
                 boat.decrementHealth()
                 boat.shake()
             }

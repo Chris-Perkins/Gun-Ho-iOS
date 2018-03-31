@@ -59,15 +59,15 @@ public class Bird: GameObject {
         let flySpeed = Double.random(min: 0.05,
                                      max: 0.15)
         
-        let flyTime = Double(destinationPoint.distance(vector: position)) / flySpeed
-        
-        
-        SCNTransaction.perform {
+        // Flies the bird to the destination
+        performMovementOperation {
+            let flyTime = Double(destinationPoint.distance(vector: self.position)) / flySpeed
+            
             SCNTransaction.animationDuration = flyTime
-            position = destinationPoint
+            self.position = destinationPoint
             
             SCNTransaction.completionBlock = {
-                if repeatAnimation {
+                if repeatAnimation && !GameManager.shared.paused {
                     self.flyToRandomPoint(andRepeat: repeatAnimation)
                 }
             }

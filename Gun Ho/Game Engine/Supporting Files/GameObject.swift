@@ -20,6 +20,10 @@
 import SceneKit
 
 public class GameObject: SCNNode {
+    
+    /* Marks the current action the boat is taking */
+    private var currentMovementAction: (() -> ())?
+    
     override public init() {
         super.init()
         
@@ -31,7 +35,26 @@ public class GameObject: SCNNode {
         fatalError("Init not set up for this!")
     }
     
-    public func performLogicForFrame() {
+    public func performLogicForFrame() { /* Override me! */}
+    
+    /* NOTE: This isn't built to scale to handle multiple movement operations at one time.
+     It only handles one movement operation at any given time. */
+    public func performMovementOperation(movementOperation: @escaping () -> ()) {
+        let transaction = {
+            SCNTransaction.perform {
+                movementOperation()
+            }
+        }
         
+        self.currentMovementAction = transaction
+        transaction()
+    }
+    
+    public func pauseMovement() {
+        position = presentation.position
+    }
+    
+    public func resumeMovement() {
+        currentMovementAction?()
     }
 }

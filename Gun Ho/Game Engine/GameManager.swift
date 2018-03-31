@@ -59,6 +59,17 @@ public class GameManager: NSObject {
     // Whether or not the game has started
     private var hasStartedGame = false
     
+    // Whether or not the game is paused
+    public var paused = false {
+        didSet {
+            if paused {
+                pauseGame()
+            } else {
+                resumeGame()
+            }
+        }
+    }
+    
     // The maximum wave we can go to
     /*
      NOTE: Make sure the summation from 0 to maxWave
@@ -173,6 +184,25 @@ extension GameManager {
         }
     }
     
+    /* Pauses the game; all objects stop moving.
+        NOTE: This does not stop active timers or non-movement animations */
+    private func pauseGame() {
+        for object in gameObjects {
+            object.pauseMovement()
+        }
+        
+        //boatSpawner?.spawning = false
+    }
+    
+    /* Resumes the game; all objects resume their original movement */
+    private func resumeGame() {
+        for object in gameObjects {
+            object.resumeMovement()
+        }
+        
+        //boatSpawner?.spawning = true
+    }
+    
     /* Should be called to start the game
         Throws if wave is < 0 */
     private func performGameStartSequence(atWave wave: Int = 1) {
@@ -196,7 +226,7 @@ extension GameManager {
         curWave     = nil
         curPoints   = nil
         
-        boatSpawner?.pauseSpawning()
+        boatSpawner?.spawning = false
         boatSpawner = nil
         
         for node in gameObjects {
@@ -263,7 +293,7 @@ extension GameManager {
         
         boatSpawner = BoatSpawner(withPoints: pointsPerWave(curWave),
                                   andSpawningNode: gameNode)
-        boatSpawner?.startSpawning()
+        boatSpawner?.spawning = true
     }
     
     // Creates a bird that flies around
