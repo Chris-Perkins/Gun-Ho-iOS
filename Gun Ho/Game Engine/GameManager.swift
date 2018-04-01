@@ -257,8 +257,6 @@ extension GameManager {
     
     // Starts the current wave
     private func startCurrentWave() {
-        // Spawn a bird just for minor aesthetics
-        spawnBird()
         createAndStartCurrentWaveBoatSpawner()
     }
     
@@ -268,6 +266,12 @@ extension GameManager {
         guard let wave = curWave else {
             fatalError("Wave cannot be complete; the game was never started!")
         }
+        
+        // Inform the delegate that we completed the wave
+        delegate?.waveDidComplete?(waveNumber: wave)
+        
+        // Spawn a bird just for minor aesthetics
+        spawnBird()
         
         // We shouldn't create the next wave is the wave was completed
         if wave >= maxWave {

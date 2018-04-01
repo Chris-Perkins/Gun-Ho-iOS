@@ -20,6 +20,7 @@
 		22454653206D4D4E00F85ADA /* ActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22454652206D4D4D00F85ADA /* ActionQueue.swift */; };
 		22454657206D5A6600F85ADA /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22454656206D5A6600F85ADA /* Bird.swift */; };
 		2245B61020336A8B00F1369B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245B60F20336A8B00F1369B /* GameViewController.swift */; };
+		224C5DFF20718CCE006ED4BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2245B60E20336A4B00F1369B /* Assets.xcassets */; };
 		225815FA20328EA900F546DD /* MediumBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815F920328EA900F546DD /* MediumBoat.swift */; };
 		225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815FB20328F3D00F546DD /* VikingBoat.swift */; };
 		2261C1092037D805003E580C /* SceneViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C1082037D805003E580C /* SceneViewExtensions.swift */; };
@@ -314,6 +315,7 @@
 				22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */,
 				222D6403206452550030196C /* AuthenticationView.xib in Resources */,
 				22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */,
+				224C5DFF20718CCE006ED4BE /* Assets.xcassets in Resources */,
 				222D640C2064A7020030196C /* GuideView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

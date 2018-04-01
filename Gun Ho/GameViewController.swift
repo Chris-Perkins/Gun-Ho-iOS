@@ -10,9 +10,12 @@ import UIKit
 import ARKit
 
 class GameViewController: UIViewController {
-
+    
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var guideView: GuideView!
+    @IBOutlet var gameViews: [UIView]!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var birdCountLabel: UILabel!
     
     // The planes we're showing
     private var planeForAnchor: [ARAnchor: HorizontalPlane] = [:]
@@ -63,6 +66,9 @@ class GameViewController: UIViewController {
         
         // Run the view's session
         sceneView.session.run(configuration)
+        
+        // Hide the gameView by default
+        for view in gameViews { view.alpha = 0 }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,6 +76,16 @@ class GameViewController: UIViewController {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+    
+    // MARK: Actions
+    @IBAction func buttonPress(_ sender: UIButton) {
+        switch sender {
+        case pauseButton:
+            GameManager.shared.togglePauseState()
+        default:
+            fatalError("Button press unhandled in GameViewController")
+        }
     }
 }
 
@@ -100,10 +116,18 @@ extension GameViewController: GameManagerDelegate {
     @objc func gameDidStart() {
         guideView.alpha = 0
         showHorizontalPlanes = false
+        
+        // show the gameView
+        for view in gameViews { view.alpha = 1 }
+    }
+    
+    @objc func waveDidComplete(waveNumber: Int) {
+        birdCountLabel.text = "\(waveNumber)"
     }
     
     @objc func gameWillEnd(withPointTotal points: Int) {
         DispatchQueue.main.async {
+            // Create an authentication view so the user can post their scores
             let authView = AuthenticationView.loadViewFromXib()
             self.view.addSubview(authView)
             NSLayoutConstraint.clingViewToView(view: authView, toView: self.view)
@@ -112,6 +136,9 @@ extension GameViewController: GameManagerDelegate {
             
             self.showHorizontalPlanes = true
             GameManager.shared.gameNode.isHidden = true
+            
+            // Hide the gameViews
+            for view in self.gameViews { view.alpha = 0 }
         }
     }
 }
@@ -174,7 +201,11 @@ extension GameViewController: UIGestureRecognizerDelegate {
     @objc func handleTap(_ tapGesture: UITapGestureRecognizer) {
         let location = tapGesture.location(in: sceneView)
         let hits = sceneView.hitTest(location, options: nil)
-        if let hitObject = hits.first?.node {
+        
+        // If we hit a node and the game isn't paused...
+        if let hitObject = hits.first?.node,
+            !GameManager.shared.getPauseState() {
+            
             if let boat = hitObject.boatParent {
                 boat.decrementHealth()
                 boat.shake()
