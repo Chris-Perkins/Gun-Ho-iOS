@@ -29,6 +29,7 @@
 		226D9D0E205EFAB4002F05DD /* SCNVector4Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */; };
 		227F984C2034CA7D007FF294 /* SCNNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F984B2034CA7D007FF294 /* SCNNodeExtensions.swift */; };
 		228AB9352030D28500FEC484 /* Boat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228AB9342030D28500FEC484 /* Boat.swift */; };
+		2297EFCD2072BDB4006717DF /* Whale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297EFCC2072BDB4006717DF /* Whale.swift */; };
 		22A3F5E62045D5AB00D89358 /* BoatSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3F5E52045D5AB00D89358 /* BoatSpawner.swift */; };
 		22AC2AF320535F7700645CC5 /* HorizontalPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC2AF220535F7700645CC5 /* HorizontalPlane.swift */; };
 		22AE4EC7206819EB0012089D /* WebRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4EC6206819EB0012089D /* WebRequestHandler.swift */; };
@@ -40,7 +41,6 @@
 		22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87A202AAB5E009A5BFC /* Main.storyboard */; };
 		22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87F202AAB5E009A5BFC /* LaunchScreen.storyboard */; };
 		22EC7D7E2069880F0097E02B /* CDAlertViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC7D7D2069880F0097E02B /* CDAlertViewExtensions.swift */; };
-		35BE87A72036620D004EA2CF /* SailBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE87A62036620D004EA2CF /* SailBoat.swift */; };
 		35E422BD206C0DEB0057B422 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E422BC206C0DEB0057B422 /* MenuView.xib */; };
 		35E422BF206C0DFA0057B422 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E422BE206C0DFA0057B422 /* MenuView.swift */; };
 		6916399EB0EF7D759FD33A5B /* Pods_Gun_Ho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */; };
@@ -69,6 +69,7 @@
 		226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector4Extensions.swift; sourceTree = "<group>"; };
 		227F984B2034CA7D007FF294 /* SCNNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtensions.swift; sourceTree = "<group>"; };
 		228AB9342030D28500FEC484 /* Boat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boat.swift; sourceTree = "<group>"; };
+		2297EFCC2072BDB4006717DF /* Whale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whale.swift; sourceTree = "<group>"; };
 		22A3F5E52045D5AB00D89358 /* BoatSpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatSpawner.swift; sourceTree = "<group>"; };
 		22AC2AF220535F7700645CC5 /* HorizontalPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPlane.swift; sourceTree = "<group>"; };
 		22AE4EC6206819EB0012089D /* WebRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestHandler.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		22E1A880202AAB5E009A5BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22E1A882202AAB5E009A5BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22EC7D7D2069880F0097E02B /* CDAlertViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDAlertViewExtensions.swift; sourceTree = "<group>"; };
-		35BE87A62036620D004EA2CF /* SailBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailBoat.swift; sourceTree = "<group>"; };
 		35E422BC206C0DEB0057B422 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		35E422BE206C0DFA0057B422 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		4A73BA3E658AB3189835D6AB /* Pods-Gun Ho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gun Ho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				22454656206D5A6600F85ADA /* Bird.swift */,
+				2297EFCC2072BDB4006717DF /* Whale.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -177,7 +178,6 @@
 				2204201720328A7A00303B61 /* SmallBoat.swift */,
 				225815F920328EA900F546DD /* MediumBoat.swift */,
 				225815FB20328F3D00F546DD /* VikingBoat.swift */,
-				35BE87A62036620D004EA2CF /* SailBoat.swift */,
 			);
 			path = Boats;
 			sourceTree = "<group>";
@@ -393,7 +393,6 @@
 				2245B61020336A8B00F1369B /* GameViewController.swift in Sources */,
 				226D9D0C205EE47A002F05DD /* CollisionMasksForGame.swift in Sources */,
 				226D9D0E205EFAB4002F05DD /* SCNVector4Extensions.swift in Sources */,
-				35BE87A72036620D004EA2CF /* SailBoat.swift in Sources */,
 				35E422BF206C0DFA0057B422 /* MenuView.swift in Sources */,
 				222BE22E203605D40036E867 /* GameObject.swift in Sources */,
 				2229133620655C3E0044CF0F /* GameManagerDelegate.swift in Sources */,
@@ -412,6 +411,7 @@
 				22454657206D5A6600F85ADA /* Bird.swift in Sources */,
 				222D640A2064A6700030196C /* GuideView.swift in Sources */,
 				22AE4EC920681C120012089D /* StringExtensions.swift in Sources */,
+				2297EFCD2072BDB4006717DF /* Whale.swift in Sources */,
 				222BE22F203605D40036E867 /* GameManager.swift in Sources */,
 				22EC7D7E2069880F0097E02B /* CDAlertViewExtensions.swift in Sources */,
 				22B301D5203C9FDA0020CA46 /* SCNVector3Extensions.swift in Sources */,

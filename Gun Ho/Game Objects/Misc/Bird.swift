@@ -13,10 +13,11 @@ public class Bird: GameObject {
     // MARK: Initializations
     
     required public override init() {
-        guard let scene = SCNScene(named: "art.scnassets/bird.scn"),
+        guard let scene = SCNScene(named: "art.scnassets/animal-bird.scn"),
             let birdNode = scene.rootNode.childNode(withName: "bird",
-                                                    recursively: true) else {
-            fatalError("Could not find small boat")
+                                                    recursively: true)
+            else {
+                fatalError("Could not find bird in provided scene")
         }
         
         super.init()

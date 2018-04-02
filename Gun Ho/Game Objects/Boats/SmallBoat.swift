@@ -10,13 +10,18 @@ import SceneKit
 
 final class SmallBoat: Boat {
     
+    // MARK: Properties
+    
     override class var pointsCount: Int { return  1 }
+    
+    // MARK: Life Cycle
     
     required init() {
         guard let scene = SCNScene(named: "art.scnassets/boat-small.scn"),
             let boatNode = scene.rootNode.childNode(withName: "boat",
-                                                    recursively: true) else {
-                                                        fatalError("Could not find small boat")
+                                                    recursively: true)
+            else {
+                fatalError("Could not find small boat in provided scene")
         }
         
         super.init(maxHealth: 1,

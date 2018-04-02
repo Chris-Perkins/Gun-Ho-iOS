@@ -10,6 +10,8 @@ import SceneKit
 
 class Boat: GameObject {
     
+    // MARK: Properties
+    
     class var pointsCount: Int { return  0 }
     
     var maxHealth: Int
@@ -32,6 +34,7 @@ class Boat: GameObject {
     }
     
     // MARK: - Lifecycle
+    
     init(maxHealth: Int, floatHeight: Float, points: Int, speed: Int, withNode node: SCNNode) {
         self.maxHealth   = maxHealth
         self.floatHeight = floatHeight

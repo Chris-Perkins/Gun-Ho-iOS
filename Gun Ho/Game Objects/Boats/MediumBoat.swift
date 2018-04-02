@@ -10,13 +10,18 @@ import SceneKit
 
 final class MediumBoat: Boat {
     
+    // MARK: Properties
+    
     override class var pointsCount: Int { return  3 }
+    
+    // MARK: Life Cycle
     
     required init() {
         guard let scene = SCNScene(named: "art.scnassets/boat-medium.scn"),
             let boatNode = scene.rootNode.childNode(withName: "boat",
-                                                    recursively: true) else {
-                                                        fatalError("Could not find medium boat")
+                                                    recursively: true)
+            else {
+                fatalError("Could not find medium boat in provided scene")
         }
         
         super.init(maxHealth: 3,
