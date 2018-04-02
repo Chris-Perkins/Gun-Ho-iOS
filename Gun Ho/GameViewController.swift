@@ -83,6 +83,9 @@ class GameViewController: UIViewController {
         switch sender {
         case pauseButton:
             GameManager.shared.togglePauseState()
+            // Show a button to denote the other state (e.g. if paused, show play)
+            pauseButton.setImage(GameManager.shared.getPauseState() ? #imageLiteral(resourceName: "play") : #imageLiteral(resourceName: "pause"),
+                                 for: .normal)
         default:
             fatalError("Button press unhandled in GameViewController")
         }
