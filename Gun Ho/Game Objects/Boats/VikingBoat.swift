@@ -19,7 +19,7 @@ final class VikingBoat: Boat {
     required init() {
         guard let scene = SCNScene(named: "art.scnassets/boat-viking.scn"),
             let boatNode = scene.rootNode.childNode(withName: "boat",
-                                                    recursively: true)
+                                                    recursively: false)
             else {
                 fatalError("Could not find viking boat in provided scene")
         }

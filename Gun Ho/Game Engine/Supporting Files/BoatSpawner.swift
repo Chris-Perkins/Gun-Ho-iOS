@@ -65,6 +65,8 @@ public class BoatSpawner {
         
         performingSpawnCycle = true
         
+        // 2, 4 are chosen arbitrarily. However, I found it typically gives the user
+        // enough time.
         Timer.scheduledTimer(withTimeInterval: Double.random(min: 2, max: 4),
                              repeats: false)
         { (timer) in

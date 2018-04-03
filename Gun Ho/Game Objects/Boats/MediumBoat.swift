@@ -19,7 +19,7 @@ final class MediumBoat: Boat {
     required init() {
         guard let scene = SCNScene(named: "art.scnassets/boat-medium.scn"),
             let boatNode = scene.rootNode.childNode(withName: "boat",
-                                                    recursively: true)
+                                                    recursively: false)
             else {
                 fatalError("Could not find medium boat in provided scene")
         }

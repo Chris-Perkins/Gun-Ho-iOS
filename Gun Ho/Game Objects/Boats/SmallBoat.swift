@@ -19,7 +19,7 @@ final class SmallBoat: Boat {
     required init() {
         guard let scene = SCNScene(named: "art.scnassets/boat-small.scn"),
             let boatNode = scene.rootNode.childNode(withName: "boat",
-                                                    recursively: true)
+                                                    recursively: false)
             else {
                 fatalError("Could not find small boat in provided scene")
         }

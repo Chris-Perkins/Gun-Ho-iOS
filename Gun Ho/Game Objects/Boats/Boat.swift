@@ -33,6 +33,11 @@ class Boat: GameObject {
         }
     }
     
+    /* REASONING: Due to some asynchronous calls, we may call
+     `destroy()` twice. This causes points to be added twice, which is no good!
+     This flag simply makes sure we don't add points twice. */
+    var didDie: Bool = false
+    
     // MARK: - Lifecycle
     
     init(maxHealth: Int, floatHeight: Float, points: Int, speed: Int, withNode node: SCNNode) {
@@ -50,8 +55,8 @@ class Boat: GameObject {
         guard let boatPhysicsBody = node.physicsBody else {
             fatalError("Could not get boat physics body! Does it exist?")
         }
-        boatPhysicsBody.categoryBitMask  = CollisionType.boat
-        boatPhysicsBody.collisionBitMask = CollisionType.boat
+        boatPhysicsBody.categoryBitMask    = CollisionType.boat | CollisionType.whale
+        boatPhysicsBody.collisionBitMask   = CollisionType.boat
     }
     
     required override init() {
@@ -111,8 +116,13 @@ class Boat: GameObject {
     
     // Should be called whenever the boat should be deleted
     public func destroy() {
-        GameManager.shared.addPoints(pointValue)
-        removeFromParentNode()
+        // Check if the boat was previously marked as dead...
+        if !didDie {
+            pauseMovement()
+            GameManager.shared.addPoints(pointValue)
+            removeFromParentNode()
+            didDie = true
+        }
     }
     
     // Should be called when the boat is spawned

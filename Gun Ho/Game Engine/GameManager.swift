@@ -48,8 +48,8 @@ public class GameManager: NSObject {
                 let islandPhysicsBody = islandEnvironment.physicsBody else {
                 fatalError("Could not get island/it's physics body!")
             }
-            islandPhysicsBody.categoryBitMask  = CollisionType.island
-            islandPhysicsBody.collisionBitMask = CollisionType.island
+            islandPhysicsBody.categoryBitMask    = CollisionType.island
+            islandPhysicsBody.collisionBitMask   = CollisionType.island | CollisionType.boat
         }
     }
     
@@ -177,7 +177,11 @@ extension GameManager {
         Throws if the game was already started */
     public func startGame() {
         if !hasStartedGame {
-            performGameStartSequence()
+            // While seemingly arbitrary, this timer prevents an asynchronous crash
+            // caused by objects still deleting in a previous game's thread.
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+                self.performGameStartSequence(atWave: 1)
+            }
             hasStartedGame = true
         } else {
             fatalError("Game was declared to start twice, but this cannot happen.")
@@ -282,15 +286,21 @@ extension GameManager {
         curPoints = 0
         curWave   = wave + 1
         
-        startCurrentWave()
+        // Give the user some time before the next wave
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (timer) in
+            self.startCurrentWave()
+        }
     }
     
     /* Adds the input points to the current and totalPoints variables
         Throws if curPoints or totalPoints is nil */
     public func addPoints(_ points: Int) {
         guard let curPoints = curPoints,
-            let totalPoints = totalPoints else {
-            fatalError("Cannot add points; the game was never started!")
+            let totalPoints = totalPoints
+            else {
+                // Chances are that we got here from the mainqueue after a game over sequence was called.
+                // This isn't necessarily an error.
+                return
         }
         
         self.curPoints   = curPoints + points
@@ -334,12 +344,24 @@ extension GameManager: SCNPhysicsContactDelegate {
         
         switch collisionMask {
         case CollisionType.boat | CollisionType.island:
-            performGameOverSequence()
+            OperationQueue.main.addOperation {
+                self.performGameOverSequence()
+            }
         case CollisionType.boat | CollisionType.boat:
-            /* The 'parent' is here since the physicsbody of the boat
-                is attached to the immediate child of the boat object */
-            (contact.nodeA.parent as? Boat)?.destroy()
-            (contact.nodeA.parent as? Boat)?.destroy()
+            OperationQueue.main.addOperation {
+                /* The 'parent' is here since the physicsbody of the boat
+                    is attached to the immediate child of the boat object */
+                (contact.nodeA.parent as? Boat)?.destroy()
+                (contact.nodeA.parent as? Boat)?.destroy()
+            }
+        case CollisionType.boat | CollisionType.whale:
+            OperationQueue.main.addOperation {
+                /* The 'parent' is here since the physicsbody of the boat
+                 is attached to the immediate child of the boat object
+                 NOTE: Destroy either since we check on boats only */
+                (contact.nodeA.parent as? Boat)?.destroy()
+                (contact.nodeA.parent as? Boat)?.destroy()
+            }
         default:
             // Unhandled collision, but not necessarily an error.
             break
