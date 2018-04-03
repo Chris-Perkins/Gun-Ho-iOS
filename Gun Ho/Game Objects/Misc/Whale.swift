@@ -10,6 +10,10 @@ import SceneKit
 
 public class Whale: GameObject {
     
+    // MARK: Properties
+    
+    public static let longevity: CFTimeInterval = 10
+    
     // MARK: Life Cycle
     
     required public override init() {
@@ -17,7 +21,7 @@ public class Whale: GameObject {
               let whaleNode = scene.rootNode.childNode(withName: "whale",
                                                     recursively: false)
             else {
-                fatalError("Could not find small boat in provided scene")
+                fatalError("Could not find whale in provided scene")
         }
         
         super.init()
@@ -28,9 +32,8 @@ public class Whale: GameObject {
             fatalError("Could not get boat physics body! Does it exist?")
         }
         DispatchQueue.main.async {
-            whalePhysicsBody.categoryBitMask    = CollisionType.whale | CollisionType.boat
+            whalePhysicsBody.categoryBitMask    = CollisionType.whale
             whalePhysicsBody.collisionBitMask   = CollisionType.whale
-            whalePhysicsBody.contactTestBitMask = CollisionType.whale
         }
     }
     

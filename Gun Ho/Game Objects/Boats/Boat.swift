@@ -38,7 +38,7 @@ class Boat: GameObject {
      This flag simply makes sure we don't add points twice. */
     var didDie: Bool = false
     
-    // MARK: - Lifecycle
+    // MARK: Life Cycle
     
     init(maxHealth: Int, floatHeight: Float, points: Int, speed: Int, withNode node: SCNNode) {
         self.maxHealth   = maxHealth
@@ -55,7 +55,7 @@ class Boat: GameObject {
         guard let boatPhysicsBody = node.physicsBody else {
             fatalError("Could not get boat physics body! Does it exist?")
         }
-        boatPhysicsBody.categoryBitMask    = CollisionType.boat | CollisionType.whale
+        boatPhysicsBody.categoryBitMask    = CollisionType.boat | CollisionType.whale | CollisionType.bomb
         boatPhysicsBody.collisionBitMask   = CollisionType.boat
     }
     
@@ -71,6 +71,7 @@ class Boat: GameObject {
     
     public func decrementHealth() {
         health -= 1
+        attachWoodRemoveParticle()
     }
     
     // Does nothing besides shake the boat object. called on boat tap.
@@ -131,37 +132,58 @@ class Boat: GameObject {
         // Keep a reference to the original scale for popping boat up
         let originalScale = GameManager.shared.gameNode.scale
         
-        // Set the boat to be invisble and then "pop" it out.
-        scale = SCNVector3(0, 0, 0)
-        // The boat looks at the island on spawn for realistic movement
-        /* NOTE: This uses global position because the look function
-         looks at the GLOBAL position, not a local one. */
-        look(at: SCNVector3(GameManager.shared.island.worldPosition.x,
-                            worldPosition.y, // Look straight ahead
-                            GameManager.shared.island.worldPosition.z))
-        
-        /*
-         Springs the boat up. While springing up, the boat will start
-         moving towards the island.
-         */
-        SCNTransaction.perform {
-            SCNTransaction.animationDuration = 1
-            self.scale = originalScale
-        }
-        
         // The 60 in this equation is a fake unit saying our ocean has a diameter of 60
         // Note... It doesn't.
         let distanceToCenter = 60.0 * GameManager.shared.ocean.scale.x / 2.0
-        let timeToCenter = distanceToCenter / Float(self.speed)
+        let timeToCenter = CFTimeInterval(distanceToCenter / Float(self.speed))
         
-        // Move the boat to the island!
-        performMovementOperation {
-            // Move linearly (default is ease in/out)
-            SCNTransaction.animationTimingFunction =
-                CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
-            
-            SCNTransaction.animationDuration = CFTimeInterval(timeToCenter)
-            self.position = SCNVector3(0, self.position.y, 0)
+        // A queue to perform spawn operations
+        ActionQueue(withActions: [
+            Action(actionTime: 0, withActions: {
+                // Set the boat to be invisible (by scale) and then "pop" it out.
+                // Also, look at the island.
+                SCNTransaction.perform {
+                    SCNTransaction.animationDuration = 0
+                    self.scale = SCNVector3(0, 0, 0)
+                    
+                    /* NOTE: This uses global position because the look function
+                     looks at the GLOBAL position, not a local one. */
+                    self.look(at: SCNVector3(GameManager.shared.island.worldPosition.x,
+                                             self.worldPosition.y, // Look straight ahead
+                                             GameManager.shared.island.worldPosition.z))
+                }
+            }),
+            /* Springs the boat up. While springing up, the boat will start
+                moving towards the island. */
+            Action(actionTime: max(1, timeToCenter), withActions: {
+                SCNTransaction.perform {
+                    SCNTransaction.animationDuration = 1
+                    self.scale = originalScale
+                }
+                
+                // Move the boat to the island!
+                self.performMovementOperation {
+                    // Move linearly (default is ease in/out)
+                    SCNTransaction.animationTimingFunction =
+                        CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
+                    
+                    SCNTransaction.animationDuration = timeToCenter
+                    self.position = SCNVector3(0, self.position.y, 0)
+                }
+            })
+        ]).start()
+        
+        attachWoodRemoveParticle()
+    }
+    
+    // Adds particles to the boat
+    // Used intuitively to denote that the boat took damage
+    private func attachWoodRemoveParticle() {
+        let woodParticles = SCNParticleSystem(named: "boat-damage", inDirectory: nil)!
+        self.addParticleSystem(woodParticles)
+        
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+            self.removeAllParticleSystems()
         }
     }
 }

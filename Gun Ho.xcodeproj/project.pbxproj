@@ -25,7 +25,7 @@
 		225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815FB20328F3D00F546DD /* VikingBoat.swift */; };
 		2261C1092037D805003E580C /* SceneViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C1082037D805003E580C /* SceneViewExtensions.swift */; };
 		2261C10B2037D960003E580C /* SCNTransactionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */; };
-		226D9D0C205EE47A002F05DD /* CollisionMasksForGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D9D0B205EE47A002F05DD /* CollisionMasksForGame.swift */; };
+		226D9D0C205EE47A002F05DD /* CollisionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D9D0B205EE47A002F05DD /* CollisionType.swift */; };
 		226D9D0E205EFAB4002F05DD /* SCNVector4Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */; };
 		227F984C2034CA7D007FF294 /* SCNNodeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F984B2034CA7D007FF294 /* SCNNodeExtensions.swift */; };
 		228AB9352030D28500FEC484 /* Boat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228AB9342030D28500FEC484 /* Boat.swift */; };
@@ -41,6 +41,9 @@
 		22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87A202AAB5E009A5BFC /* Main.storyboard */; };
 		22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87F202AAB5E009A5BFC /* LaunchScreen.storyboard */; };
 		22EC7D7E2069880F0097E02B /* CDAlertViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC7D7D2069880F0097E02B /* CDAlertViewExtensions.swift */; };
+		22F212772073E8EB00518DAF /* WaterMine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F212762073E8EB00518DAF /* WaterMine.swift */; };
+		22F2127D2073EEB500518DAF /* boat-damage.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 22F2127B2073EEB500518DAF /* boat-damage.scnp */; };
+		22F2127F2073EFE500518DAF /* wood.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F2127E2073EFE500518DAF /* wood.png */; };
 		35E422BD206C0DEB0057B422 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E422BC206C0DEB0057B422 /* MenuView.xib */; };
 		35E422BF206C0DFA0057B422 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E422BE206C0DFA0057B422 /* MenuView.swift */; };
 		6916399EB0EF7D759FD33A5B /* Pods_Gun_Ho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */; };
@@ -65,7 +68,7 @@
 		225815FB20328F3D00F546DD /* VikingBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VikingBoat.swift; sourceTree = "<group>"; };
 		2261C1082037D805003E580C /* SceneViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewExtensions.swift; sourceTree = "<group>"; };
 		2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNTransactionExtensions.swift; sourceTree = "<group>"; };
-		226D9D0B205EE47A002F05DD /* CollisionMasksForGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionMasksForGame.swift; sourceTree = "<group>"; };
+		226D9D0B205EE47A002F05DD /* CollisionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionType.swift; sourceTree = "<group>"; };
 		226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector4Extensions.swift; sourceTree = "<group>"; };
 		227F984B2034CA7D007FF294 /* SCNNodeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtensions.swift; sourceTree = "<group>"; };
 		228AB9342030D28500FEC484 /* Boat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boat.swift; sourceTree = "<group>"; };
@@ -84,6 +87,9 @@
 		22E1A880202AAB5E009A5BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22E1A882202AAB5E009A5BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22EC7D7D2069880F0097E02B /* CDAlertViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDAlertViewExtensions.swift; sourceTree = "<group>"; };
+		22F212762073E8EB00518DAF /* WaterMine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterMine.swift; sourceTree = "<group>"; };
+		22F2127B2073EEB500518DAF /* boat-damage.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = "boat-damage.scnp"; sourceTree = "<group>"; };
+		22F2127E2073EFE500518DAF /* wood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood.png; sourceTree = "<group>"; };
 		35E422BC206C0DEB0057B422 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		35E422BE206C0DFA0057B422 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		4A73BA3E658AB3189835D6AB /* Pods-Gun Ho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gun Ho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 		22454654206D5A4200F85ADA /* Game Objects */ = {
 			isa = PBXGroup;
 			children = (
+				22F212792073EE9400518DAF /* Particles */,
 				225815FD2032906F00F546DD /* Boats */,
 				22454655206D5A5300F85ADA /* Misc */,
 			);
@@ -139,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				22454656206D5A6600F85ADA /* Bird.swift */,
+				22F212762073E8EB00518DAF /* WaterMine.swift */,
 				2297EFCC2072BDB4006717DF /* Whale.swift */,
 			);
 			path = Misc;
@@ -224,10 +232,19 @@
 			isa = PBXGroup;
 			children = (
 				22A3F5E52045D5AB00D89358 /* BoatSpawner.swift */,
-				226D9D0B205EE47A002F05DD /* CollisionMasksForGame.swift */,
+				226D9D0B205EE47A002F05DD /* CollisionType.swift */,
 				222BE22C203605D40036E867 /* GameObject.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22F212792073EE9400518DAF /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				22F2127E2073EFE500518DAF /* wood.png */,
+				22F2127B2073EEB500518DAF /* boat-damage.scnp */,
+			);
+			path = Particles;
 			sourceTree = "<group>";
 		};
 		BFCB48FF62AC77EF34424576 /* Frameworks */ = {
@@ -310,6 +327,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E1A877202AAB5E009A5BFC /* art.scnassets in Resources */,
+				22F2127D2073EEB500518DAF /* boat-damage.scnp in Resources */,
+				22F2127F2073EFE500518DAF /* wood.png in Resources */,
 				222D640E2064ACBE0030196C /* Localizable.strings in Resources */,
 				35E422BD206C0DEB0057B422 /* MenuView.xib in Resources */,
 				22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */,
@@ -391,7 +410,8 @@
 				227F984C2034CA7D007FF294 /* SCNNodeExtensions.swift in Sources */,
 				22A3F5E62045D5AB00D89358 /* BoatSpawner.swift in Sources */,
 				2245B61020336A8B00F1369B /* GameViewController.swift in Sources */,
-				226D9D0C205EE47A002F05DD /* CollisionMasksForGame.swift in Sources */,
+				226D9D0C205EE47A002F05DD /* CollisionType.swift in Sources */,
+				22F212772073E8EB00518DAF /* WaterMine.swift in Sources */,
 				226D9D0E205EFAB4002F05DD /* SCNVector4Extensions.swift in Sources */,
 				35E422BF206C0DFA0057B422 /* MenuView.swift in Sources */,
 				222BE22E203605D40036E867 /* GameObject.swift in Sources */,

@@ -207,7 +207,7 @@ extension GameViewController: UIGestureRecognizerDelegate {
         
         // If we hit a node and the game isn't paused...
         if let hitObject = hits.first?.node,
-            true {//}!GameManager.shared.getPauseState() {
+           !GameManager.shared.getPauseState() {
             
             if let boat = hitObject.boatParent {
                 boat.decrementHealth()
@@ -226,10 +226,10 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 GameManager.shared.startGame()
             }
             if hitObject == GameManager.shared.ocean {
-                let whale = Whale()
-                whale.position = GameManager.shared.ocean.convertPosition(hits.first!.localCoordinates,
-                                                                              to: GameManager.shared.worldScene)
-                GameManager.shared.worldScene.addChildNode(whale)
+                // Gets the tapped position relative to the worldScene so we can add the whale there
+                let tapPos = GameManager.shared.ocean.convertPosition(hits.first!.localCoordinates,
+                                                                      to: GameManager.shared.worldScene)
+                GameManager.shared.spawnWhale(atWorldScenePosition: tapPos)
             }
         }
     }
