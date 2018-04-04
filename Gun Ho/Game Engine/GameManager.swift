@@ -342,23 +342,30 @@ extension GameManager {
         
         let whale = Whale()
         whale.position = spawnPosition
-        island.addChildNode(whale)
+        worldScene.addChildNode(whale)
+        whale.look(at: island.worldPosition)
+        
+        Timer.scheduledTimer(withTimeInterval: Whale.longevity, repeats: false) { (timer) in
+            whale.removeFromParentNode()
+        }
+        
+        /*var originalScale: SCNVector3?
         
         ActionQueue(withActions: [
             // Start from nothing and look at the island
             // NOTE: Hitbox does not match
             Action(actionTime: 0, withActions: {
+                originalScale = whale.scale
                 SCNTransaction.perform {
                     SCNTransaction.animationDuration = 0
                     whale.scale = SCNVector3(0, 0, 0)
-                    whale.look(at: self.island.worldPosition)
                 }
             }),
             // Become a big boy whale (matches hitbox)
             Action(actionTime: scaleTime, withActions: {
                 SCNTransaction.perform {
                     SCNTransaction.animationDuration = scaleTime
-                    whale.scale = SCNVector3(1, 1, 1)
+                    whale.scale = originalScale!
                 }
             }),
             // Become a small boy again then disappear
@@ -373,7 +380,7 @@ extension GameManager {
                     }
                 }
             })
-        ]).start()
+        ]).start()*/
     }
 }
 
@@ -400,6 +407,7 @@ extension GameManager: SCNPhysicsContactDelegate {
                 // Boats collide with whales, not the other way around.
                 // So we don't need to check for nodeB as? Boat
                 (contact.nodeA.parent as? Boat)?.destroy()
+                (contact.nodeB.parent as? Boat)?.destroy()
             }
         case CollisionType.boat | CollisionType.bomb:
             OperationQueue.main.addOperation {

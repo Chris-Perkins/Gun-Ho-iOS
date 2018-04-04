@@ -121,6 +121,7 @@ class Boat: GameObject {
         if !didDie {
             pauseMovement()
             GameManager.shared.addPoints(pointValue)
+            removeAllParticleSystems()
             removeFromParentNode()
             didDie = true
         }
@@ -173,17 +174,28 @@ class Boat: GameObject {
             })
         ]).start()
         
-        attachWoodRemoveParticle()
+        attachBoatSpawnParticle()
     }
     
-    // Adds particles to the boat
+    // MARK: Particle adding
+    
     // Used intuitively to denote that the boat took damage
     private func attachWoodRemoveParticle() {
         let woodParticles = SCNParticleSystem(named: "boat-damage", inDirectory: nil)!
-        self.addParticleSystem(woodParticles)
+        addParticleSystem(woodParticles)
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+            self.removeParticleSystem(woodParticles)
+        }
+    }
+    
+    // Used to identify newly spawned boats
+    private func attachBoatSpawnParticle() {
+        let spawnParticles = SCNParticleSystem(named: "boat-spawn", inDirectory: nil)!
+        addParticleSystem(spawnParticles)
         
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
-            self.removeAllParticleSystems()
+            self.removeParticleSystem(spawnParticles)
         }
     }
 }
