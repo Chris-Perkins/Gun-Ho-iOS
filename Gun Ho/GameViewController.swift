@@ -59,6 +59,10 @@ class GameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let rulesView = RulesView.loadViewFromXib()
+        view.addSubview(rulesView)
+        NSLayoutConstraint.clingViewToView(view: rulesView, toView: view)
+        
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal

@@ -46,6 +46,8 @@
 		22F2127F2073EFE500518DAF /* wood.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F2127E2073EFE500518DAF /* wood.png */; };
 		22F2128120746A7500518DAF /* boat-spawn.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 22F2128020746A7400518DAF /* boat-spawn.scnp */; };
 		22F2128320746A8400518DAF /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F2128220746A8400518DAF /* spark.png */; };
+		351DCB162074B58900A692C8 /* RulesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351DCB152074B58900A692C8 /* RulesView.xib */; };
+		351DCB182074B5A600A692C8 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DCB172074B5A600A692C8 /* RulesView.swift */; };
 		35E422BD206C0DEB0057B422 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E422BC206C0DEB0057B422 /* MenuView.xib */; };
 		35E422BF206C0DFA0057B422 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E422BE206C0DFA0057B422 /* MenuView.swift */; };
 		6916399EB0EF7D759FD33A5B /* Pods_Gun_Ho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */; };
@@ -94,6 +96,8 @@
 		22F2127E2073EFE500518DAF /* wood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood.png; sourceTree = "<group>"; };
 		22F2128020746A7400518DAF /* boat-spawn.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = "boat-spawn.scnp"; sourceTree = "<group>"; };
 		22F2128220746A8400518DAF /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		351DCB152074B58900A692C8 /* RulesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RulesView.xib; sourceTree = "<group>"; };
+		351DCB172074B5A600A692C8 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		35E422BC206C0DEB0057B422 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		35E422BE206C0DFA0057B422 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		4A73BA3E658AB3189835D6AB /* Pods-Gun Ho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gun Ho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				222D6405206457AF0030196C /* AuthenticationView.swift */,
 				35E422BC206C0DEB0057B422 /* MenuView.xib */,
 				35E422BE206C0DFA0057B422 /* MenuView.swift */,
+				351DCB152074B58900A692C8 /* RulesView.xib */,
+				351DCB172074B5A600A692C8 /* RulesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 				22F2127F2073EFE500518DAF /* wood.png in Resources */,
 				222D640E2064ACBE0030196C /* Localizable.strings in Resources */,
 				35E422BD206C0DEB0057B422 /* MenuView.xib in Resources */,
+				351DCB162074B58900A692C8 /* RulesView.xib in Resources */,
 				22F2128120746A7500518DAF /* boat-spawn.scnp in Resources */,
 				22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */,
 				222D6403206452550030196C /* AuthenticationView.xib in Resources */,
@@ -430,6 +437,7 @@
 				228AB9352030D28500FEC484 /* Boat.swift in Sources */,
 				2261C1092037D805003E580C /* SceneViewExtensions.swift in Sources */,
 				2261C10B2037D960003E580C /* SCNTransactionExtensions.swift in Sources */,
+				351DCB182074B5A600A692C8 /* RulesView.swift in Sources */,
 				222D6406206457AF0030196C /* AuthenticationView.swift in Sources */,
 				22AC2AF320535F7700645CC5 /* HorizontalPlane.swift in Sources */,
 				2204201820328A7A00303B61 /* SmallBoat.swift in Sources */,
