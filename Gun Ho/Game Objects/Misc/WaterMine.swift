@@ -8,7 +8,7 @@
 
 import SceneKit
 
-public class WaterMine: SCNNode {
+public class WaterMine: GameObject {
     // MARK: Life Cycle
     
     required public override init() {
@@ -24,7 +24,7 @@ public class WaterMine: SCNNode {
         addChildNode(bombNode)
         
         guard let bombPhysicsBody = bombNode.physicsBody else {
-            fatalError("Could not get boat physics body! Does it exist?")
+            fatalError("Could not get bomb physics body! Does it exist?")
         }
         DispatchQueue.main.async {
             bombPhysicsBody.categoryBitMask    = CollisionType.bomb

@@ -338,8 +338,6 @@ extension GameManager {
     
     // Spawns a whale that grows, stays a bit, then shrinks
     public func spawnWhale(atWorldScenePosition spawnPosition: SCNVector3 = SCNVector3(0, 0, 0)) {
-        let scaleTime = 0.5
-        
         let whale = Whale()
         whale.position = spawnPosition
         worldScene.addChildNode(whale)
@@ -348,39 +346,12 @@ extension GameManager {
         Timer.scheduledTimer(withTimeInterval: Whale.longevity, repeats: false) { (timer) in
             whale.removeFromParentNode()
         }
-        
-        /*var originalScale: SCNVector3?
-        
-        ActionQueue(withActions: [
-            // Start from nothing and look at the island
-            // NOTE: Hitbox does not match
-            Action(actionTime: 0, withActions: {
-                originalScale = whale.scale
-                SCNTransaction.perform {
-                    SCNTransaction.animationDuration = 0
-                    whale.scale = SCNVector3(0, 0, 0)
-                }
-            }),
-            // Become a big boy whale (matches hitbox)
-            Action(actionTime: scaleTime, withActions: {
-                SCNTransaction.perform {
-                    SCNTransaction.animationDuration = scaleTime
-                    whale.scale = originalScale!
-                }
-            }),
-            // Become a small boy again then disappear
-            Action(actionTime: Whale.longevity, withActions: {
-                Timer.scheduledTimer(withTimeInterval: Whale.longevity - scaleTime, repeats: false) { (timer) in
-                    SCNTransaction.perform {
-                        SCNTransaction.animationDuration = scaleTime
-                        whale.scale = SCNVector3(0, 0, 0)
-                        SCNTransaction.completionBlock = {
-                            whale.removeFromParentNode()
-                        }
-                    }
-                }
-            })
-        ]).start()*/
+    }
+    
+    public func spawnWaterMine(atWorldScenePosition spawnPosition: SCNVector3 = SCNVector3(0, 0, 0)) {
+        let waterMine = WaterMine()
+        waterMine.position = spawnPosition
+        worldScene.addChildNode(waterMine)
     }
 }
 
@@ -388,6 +359,8 @@ extension GameManager {
 
 extension GameManager: SCNPhysicsContactDelegate {
     public func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        print(contact)
+        
         let collisionMask = contact.nodeA.physicsBody!.collisionBitMask | contact.nodeB.physicsBody!.collisionBitMask
         
         switch collisionMask {
@@ -404,14 +377,14 @@ extension GameManager: SCNPhysicsContactDelegate {
             }
         case CollisionType.boat | CollisionType.whale:
             OperationQueue.main.addOperation {
-                // Boats collide with whales, not the other way around.
-                // So we don't need to check for nodeB as? Boat
                 (contact.nodeA.parent as? Boat)?.destroy()
                 (contact.nodeB.parent as? Boat)?.destroy()
             }
         case CollisionType.boat | CollisionType.bomb:
             OperationQueue.main.addOperation {
                 (contact.nodeA.parent as? Boat)?.destroy()
+                (contact.nodeB.parent as? Boat)?.destroy()
+                (contact.nodeA.parent as? WaterMine)?.removeFromParentNode()
                 (contact.nodeB.parent as? WaterMine)?.removeFromParentNode()
             }
         default:
