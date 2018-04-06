@@ -227,7 +227,7 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 // Gets the tapped position relative to the worldScene so we can add the whale there
                 let tapPos = GameManager.shared.ocean.convertPosition(hits.first!.localCoordinates,
                                                                       to: GameManager.shared.worldScene)
-                GameManager.shared.spawnWaterMine(atWorldScenePosition: tapPos)
+                GameManager.shared.spawnWhale(atWorldScenePosition: tapPos)
             }
         }
     }
