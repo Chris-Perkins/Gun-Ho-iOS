@@ -14,6 +14,7 @@ class GameViewController: UIViewController {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var guideView: GuideView!
     @IBOutlet var gameViews: [UIView]!
+    @IBOutlet var startViews: [UIView]!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var birdCountLabel: UILabel!
     
@@ -59,10 +60,6 @@ class GameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let rulesView = RulesView.loadViewFromXib()
-        view.addSubview(rulesView)
-        NSLayoutConstraint.clingViewToView(view: rulesView, toView: view)
-        
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
@@ -71,8 +68,9 @@ class GameViewController: UIViewController {
         // Run the view's session
         sceneView.session.run(configuration)
         
-        // Hide the gameView by default
+        // Hide the gameView by default, show uiview
         for view in gameViews { view.alpha = 0 }
+        for view in startViews { view.alpha = 1 }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -94,6 +92,8 @@ class GameViewController: UIViewController {
             fatalError("Button press unhandled in GameViewController")
         }
     }
+    
+    @IBAction func unwind(segue: UIStoryboardSegue) { }
 }
 
 // MARK: HorizontalPlane functioning
@@ -121,11 +121,11 @@ extension GameViewController {
 
 extension GameViewController: GameManagerDelegate {
     @objc func gameDidStart() {
-        guideView.alpha = 0
         showHorizontalPlanes = false
         
-        // show the gameView
+        // show the gameView, but hide the start buttons
         for view in gameViews { view.alpha = 1 }
+        for view in startViews { view.alpha = 0 }
     }
     
     @objc func waveDidComplete(waveNumber: Int) {
@@ -135,17 +135,15 @@ extension GameViewController: GameManagerDelegate {
     @objc func gameWillEnd(withPointTotal points: Int) {
         DispatchQueue.main.async {
             // Create an authentication view so the user can post their scores
-            let authView = AuthenticationView.loadViewFromXib()
-            self.view.addSubview(authView)
-            NSLayoutConstraint.clingViewToView(view: authView, toView: self.view)
-            
-            authView.displayScore = points
+            // CREATE VIEW CONTROLLER THING HERE
             
             self.showHorizontalPlanes = true
             GameManager.shared.gameNode.isHidden = true
             
             // Hide the gameViews
             for view in self.gameViews { view.alpha = 0 }
+            
+            self.performSegue(withIdentifier: "showAuthSegue", sender: self)
         }
     }
 }

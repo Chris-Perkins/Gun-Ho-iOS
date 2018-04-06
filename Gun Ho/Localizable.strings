@@ -12,13 +12,15 @@
 "Guide.DestroyBoat" = "An invader!\nDestroy it before it gets to your treasure by tapping it!";
 
 /* Authentication View Strings */
-"AuthenticationView.ScoreLabel.Text" = "Your Score: {0}";
+"Authentication.ScoreLabel.Text" = "Your Score: {0}";
 
-"AuthenticationView.Messages.Login.Fail.Title"  = "Cannot Login";
-"AuthenticationView.Messages.Login.Fail.Desc"   = "Please verify that all fields are filled out.";
+"Authentication.Messages.Login.Fail.Title"  = "Cannot Login";
+"Authentication.Messages.Login.Fail.Desc"   = "Please verify that all fields are filled out.";
 
-"AuthenticationView.Messages.Signup.Fail.Title" = "Cannot Signup";
-"AuthenticationView.Messages.Signup.Fail.Desc"  = "Please verify that all fields are filled out correctly and that the given passwords match.";
+"Authentication.Messages.Signup.Fail.Title" = "Cannot Signup";
+"Authentication.Messages.Signup.Fail.Desc"  = "Please verify that all fields are filled out correctly and that the given passwords match.";
+"Authentication.Login"  = "I want to login";
+"Authentication.SignUp" = "New? Sign Up!";
 
 /* Server Responses */
 "Server.Messages.PostScore.Success.Title" = "Score Posted";

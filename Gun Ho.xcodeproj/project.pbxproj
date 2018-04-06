@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2204201820328A7A00303B61 /* SmallBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2204201720328A7A00303B61 /* SmallBoat.swift */; };
+		221F87B02076FFC400EA464C /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F87AF2076FFC400EA464C /* InfoViewController.swift */; };
+		221F87B42077068A00EA464C /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F87B32077068A00EA464C /* AuthenticationViewController.swift */; };
 		2229133620655C3E0044CF0F /* GameManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229133520655C3E0044CF0F /* GameManagerDelegate.swift */; };
 		222BE22E203605D40036E867 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE22C203605D40036E867 /* GameObject.swift */; };
 		222BE22F203605D40036E867 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE22D203605D40036E867 /* GameManager.swift */; };
-		222D6403206452550030196C /* AuthenticationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222D6402206452550030196C /* AuthenticationView.xib */; };
-		222D6406206457AF0030196C /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D6405206457AF0030196C /* AuthenticationView.swift */; };
 		222D640820645DEE0030196C /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */; };
 		222D640A2064A6700030196C /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D64092064A6700030196C /* GuideView.swift */; };
 		222D640C2064A7020030196C /* GuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222D640B2064A7020030196C /* GuideView.xib */; };
@@ -46,20 +46,16 @@
 		22F2127F2073EFE500518DAF /* wood.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F2127E2073EFE500518DAF /* wood.png */; };
 		22F2128120746A7500518DAF /* boat-spawn.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 22F2128020746A7400518DAF /* boat-spawn.scnp */; };
 		22F2128320746A8400518DAF /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F2128220746A8400518DAF /* spark.png */; };
-		351DCB162074B58900A692C8 /* RulesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351DCB152074B58900A692C8 /* RulesView.xib */; };
-		351DCB182074B5A600A692C8 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DCB172074B5A600A692C8 /* RulesView.swift */; };
-		35E422BD206C0DEB0057B422 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E422BC206C0DEB0057B422 /* MenuView.xib */; };
-		35E422BF206C0DFA0057B422 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E422BE206C0DFA0057B422 /* MenuView.swift */; };
 		6916399EB0EF7D759FD33A5B /* Pods_Gun_Ho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2204201720328A7A00303B61 /* SmallBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBoat.swift; sourceTree = "<group>"; };
+		221F87AF2076FFC400EA464C /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		221F87B32077068A00EA464C /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		2229133520655C3E0044CF0F /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
 		222BE22C203605D40036E867 /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameObject.swift; path = "Gun Ho/Game Engine/Supporting Files/GameObject.swift"; sourceTree = SOURCE_ROOT; };
 		222BE22D203605D40036E867 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameManager.swift; path = "Gun Ho/Game Engine/GameManager.swift"; sourceTree = SOURCE_ROOT; };
-		222D6402206452550030196C /* AuthenticationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationView.xib; sourceTree = "<group>"; };
-		222D6405206457AF0030196C /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
 		222D64092064A6700030196C /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		222D640B2064A7020030196C /* GuideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuideView.xib; sourceTree = "<group>"; };
@@ -96,10 +92,6 @@
 		22F2127E2073EFE500518DAF /* wood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood.png; sourceTree = "<group>"; };
 		22F2128020746A7400518DAF /* boat-spawn.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = "boat-spawn.scnp"; sourceTree = "<group>"; };
 		22F2128220746A8400518DAF /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		351DCB152074B58900A692C8 /* RulesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RulesView.xib; sourceTree = "<group>"; };
-		351DCB172074B5A600A692C8 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
-		35E422BC206C0DEB0057B422 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
-		35E422BE206C0DFA0057B422 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		4A73BA3E658AB3189835D6AB /* Pods-Gun Ho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gun Ho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho.release.xcconfig"; sourceTree = "<group>"; };
 		74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gun_Ho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B912BCDDBC095BF4310C5AA3 /* Pods-Gun Ho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gun Ho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,12 +124,6 @@
 			children = (
 				222D640B2064A7020030196C /* GuideView.xib */,
 				222D64092064A6700030196C /* GuideView.swift */,
-				222D6402206452550030196C /* AuthenticationView.xib */,
-				222D6405206457AF0030196C /* AuthenticationView.swift */,
-				35E422BC206C0DEB0057B422 /* MenuView.xib */,
-				35E422BE206C0DFA0057B422 /* MenuView.swift */,
-				351DCB152074B58900A692C8 /* RulesView.xib */,
-				351DCB172074B5A600A692C8 /* RulesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,6 +216,8 @@
 				2245B61120336A9800F1369B /* Storyboards */,
 				222D6404206457930030196C /* Views */,
 				2245B60F20336A8B00F1369B /* GameViewController.swift */,
+				221F87B32077068A00EA464C /* AuthenticationViewController.swift */,
+				221F87AF2076FFC400EA464C /* InfoViewController.swift */,
 				22AE4EC6206819EB0012089D /* WebRequestHandler.swift */,
 				222D640D2064ACBE0030196C /* Localizable.strings */,
 				22E1A882202AAB5E009A5BFC /* Info.plist */,
@@ -343,11 +331,8 @@
 				22F2127D2073EEB500518DAF /* boat-damage.scnp in Resources */,
 				22F2127F2073EFE500518DAF /* wood.png in Resources */,
 				222D640E2064ACBE0030196C /* Localizable.strings in Resources */,
-				35E422BD206C0DEB0057B422 /* MenuView.xib in Resources */,
-				351DCB162074B58900A692C8 /* RulesView.xib in Resources */,
 				22F2128120746A7500518DAF /* boat-spawn.scnp in Resources */,
 				22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */,
-				222D6403206452550030196C /* AuthenticationView.xib in Resources */,
 				22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */,
 				224C5DFF20718CCE006ED4BE /* Assets.xcassets in Resources */,
 				222D640C2064A7020030196C /* GuideView.xib in Resources */,
@@ -425,10 +410,10 @@
 				227F984C2034CA7D007FF294 /* SCNNodeExtensions.swift in Sources */,
 				22A3F5E62045D5AB00D89358 /* BoatSpawner.swift in Sources */,
 				2245B61020336A8B00F1369B /* GameViewController.swift in Sources */,
+				221F87B02076FFC400EA464C /* InfoViewController.swift in Sources */,
 				226D9D0C205EE47A002F05DD /* CollisionType.swift in Sources */,
 				22F212772073E8EB00518DAF /* WaterMine.swift in Sources */,
 				226D9D0E205EFAB4002F05DD /* SCNVector4Extensions.swift in Sources */,
-				35E422BF206C0DFA0057B422 /* MenuView.swift in Sources */,
 				222BE22E203605D40036E867 /* GameObject.swift in Sources */,
 				2229133620655C3E0044CF0F /* GameManagerDelegate.swift in Sources */,
 				225815FA20328EA900F546DD /* MediumBoat.swift in Sources */,
@@ -437,13 +422,12 @@
 				228AB9352030D28500FEC484 /* Boat.swift in Sources */,
 				2261C1092037D805003E580C /* SceneViewExtensions.swift in Sources */,
 				2261C10B2037D960003E580C /* SCNTransactionExtensions.swift in Sources */,
-				351DCB182074B5A600A692C8 /* RulesView.swift in Sources */,
-				222D6406206457AF0030196C /* AuthenticationView.swift in Sources */,
 				22AC2AF320535F7700645CC5 /* HorizontalPlane.swift in Sources */,
 				2204201820328A7A00303B61 /* SmallBoat.swift in Sources */,
 				22E1A875202AAB5E009A5BFC /* AppDelegate.swift in Sources */,
 				225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */,
 				222D640820645DEE0030196C /* NSLayoutConstraintExtensions.swift in Sources */,
+				221F87B42077068A00EA464C /* AuthenticationViewController.swift in Sources */,
 				22454657206D5A6600F85ADA /* Bird.swift in Sources */,
 				222D640A2064A6700030196C /* GuideView.swift in Sources */,
 				22AE4EC920681C120012089D /* StringExtensions.swift in Sources */,

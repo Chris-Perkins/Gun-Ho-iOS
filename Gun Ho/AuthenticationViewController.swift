@@ -1,16 +1,15 @@
 //
-//  AuthenticationView.swift
+//  AuthenticationViewController.swift
 //  Gun Ho
 //
-//  Created by Christopher Perkins on 3/22/18.
+//  Created by Christopher Perkins on 4/5/18.
 //  Copyright © 2018 Christopher Perkins. All rights reserved.
 //
 
 import UIKit
 import CDAlertView
 
-class AuthenticationView: UIView {
-    
+class AuthenticationViewController: UIViewController {
     // MARK: View Properties
     
     // Constraints active when the login state is toggled
@@ -27,7 +26,6 @@ class AuthenticationView: UIView {
     // The toggle state button reference
     @IBOutlet weak var toggleStateButton: UIButton!
     @IBOutlet weak var postScoreButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
     
     // Start out on the login screen
     private var isLoginState: Bool = true {
@@ -49,14 +47,14 @@ class AuthenticationView: UIView {
             
             // Animates constraint changes
             UIView.animate(withDuration: 0.25) {
-                self.layoutIfNeeded()
+                self.view.layoutIfNeeded()
             }
         }
     }
     
     public var displayScore: Int = 0 {
         didSet {
-            let scoreString = NSLocalizedString("AuthenticationView.ScoreLabel.Text", comment: "")
+            let scoreString = NSLocalizedString("Authentication.ScoreLabel.Text", comment: "")
             
             scoreLabel.text = scoreString.replacingOccurrences(of: "{0}",
                                                                with: "\(displayScore)")
@@ -85,27 +83,6 @@ class AuthenticationView: UIView {
         return false
     }
     
-    // MARK: Initializers
-    
-    private override init(frame: CGRect) {
-        fatalError("Cannot initialize AuthenticationView directly!")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    // Initializes the view from the xib
-    static func loadViewFromXib() -> AuthenticationView {
-        guard let authView = Bundle.main.loadNibNamed("AuthenticationView",
-                                                      owner: nil,
-                                                      options: nil)?.first as? AuthenticationView else {
-                                                        fatalError("Could not get the auth view from the xib. Does it exist?")
-        }
-        
-        return authView
-    }
-    
     // MARK: View actions
     
     // Called whenever the toggle button is pressed
@@ -123,7 +100,7 @@ class AuthenticationView: UIView {
                                 message: NSLocalizedString("Server.Messages.PostScore.Success.Desc",
                                                            comment: ""),
                                 type: CDAlertViewType.success).showAfterAddingOkayAction()
-                    self.removeFromSuperview()
+                    self.performSegue(withIdentifier: "unwind", sender: self)
                 } else {
                     // Unsuccessful score post; tell the user.
                     
@@ -181,9 +158,9 @@ class AuthenticationView: UIView {
                 } else {
                     // User cannot log in; let the user know.
                     
-                    CDAlertView(title: NSLocalizedString("AuthenticationView.Messages.Login.Fail.Title",
+                    CDAlertView(title: NSLocalizedString("Authentication.Messages.Login.Fail.Title",
                                                          comment: ""),
-                                message: NSLocalizedString("AuthenticationView.Messages.Login.Fail.Desc",
+                                message: NSLocalizedString("Authentication.Messages.Login.Fail.Desc",
                                                            comment: ""),
                                 type: CDAlertViewType.error).showAfterAddingOkayAction()
                 }
@@ -221,24 +198,25 @@ class AuthenticationView: UIView {
                 } else {
                     // User's credentials didn't match; let them know why.
                     
-                    CDAlertView(title: NSLocalizedString("AuthenticationView.Messages.Signup.Fail.Title",
+                    CDAlertView(title: NSLocalizedString("Authentication.Messages.Signup.Fail.Title",
                                                          comment: ""),
-                                message: NSLocalizedString("AuthenticationView.Messages.Signup.Fail.Desc",
+                                message: NSLocalizedString("Authentication.Messages.Signup.Fail.Desc",
                                                            comment: ""),
                                 type: CDAlertViewType.error).showAfterAddingOkayAction()
                 }
             }
-        case closeButton:
-            removeFromSuperview()
         default:
             fatalError("Unhandled button pressed in authentication view.")
         }
         
     }
     
-    // MARK: View life-cycle
+    // MARK: Life-cycle
+        
     
-    override func layoutSubviews() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         // TODO: Can we do these elsewhere?
         // Works for now, but is bad practice.
         setToggleTitle()
@@ -246,6 +224,15 @@ class AuthenticationView: UIView {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         passwordConfirmTextField.delegate = self
+        
+        // Creates a blur and sends it to the back
+        let blurView = UIVisualEffectView(effect:
+            UIBlurEffect(style: UIBlurEffectStyle.light))
+        blurView.alpha = 0.5
+        view.addSubview(blurView)
+        NSLayoutConstraint.clingViewToView(view: blurView, toView: view)
+        
+        view.sendSubview(toBack: blurView)
     }
     
     // MARK: Misc helper functions
@@ -253,13 +240,15 @@ class AuthenticationView: UIView {
     // Sets the toggle button's title based on login state
     func setToggleTitle() {
         toggleStateButton.setTitle(isLoginState ?
-                                    "New? Sign Up!":
-                                    "I want to login",
+            NSLocalizedString("Authentication.SignUp",
+                              comment: ""):
+            NSLocalizedString("Authentication.Login",
+                              comment: ""),
                                    for: .normal)
     }
 }
 
-extension AuthenticationView: UITextFieldDelegate {
+extension AuthenticationViewController: UITextFieldDelegate {
     // Simply used for dismissing keyboards when necessary.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
