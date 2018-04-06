@@ -116,7 +116,7 @@ class Boat: GameObject {
     }
     
     // Should be called whenever the boat should be deleted
-    public func destroy() {
+    override public func destroy() {
         // Check if the boat was previously marked as dead...
         if !didDie {
             pauseMovement()
@@ -124,6 +124,8 @@ class Boat: GameObject {
             removeAllParticleSystems()
             removeFromParentNode()
             didDie = true
+            
+            super.destroy()
         }
     }
     

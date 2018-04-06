@@ -67,7 +67,7 @@ public class BoatSpawner {
         
         // 2, 4 are chosen arbitrarily. However, I found it typically gives the user
         // enough time.
-        Timer.scheduledTimer(withTimeInterval: Double.random(min: 0, max: 1),
+        Timer.scheduledTimer(withTimeInterval: Double.random(min: 1, max: 2),
                              repeats: false)
         { (timer) in
             if self.spawning {

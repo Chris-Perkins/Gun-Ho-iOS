@@ -273,7 +273,7 @@
                                 </constraints>
                                 <state key="normal" title="info"/>
                                 <connections>
-                                    <segue destination="wbB-Qc-O0E" kind="show" id="RE7-Gh-rgz"/>
+                                    <segue destination="wbB-Qc-O0E" kind="show" identifier="showInfoSegue" id="RE7-Gh-rgz"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -163,10 +163,6 @@ extension GameViewController: ARSCNViewDelegate {
             
             GameManager.shared.updateLightingIntensity(toLightIntensity: lightIntensity)
         }
-        
-        for object in GameManager.shared.gameObjects {
-            object.performLogicForFrame()
-        }
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {

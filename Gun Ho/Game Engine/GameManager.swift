@@ -250,11 +250,9 @@ extension GameManager {
         boatSpawner?.spawning = false
         boatSpawner = nil
         
-        for node in gameObjects {
-            node.removeFromParentNode()
+        for object in gameObjects {
+            object.destroy()
         }
-        
-        gameObjects.removeAll()
         
         hasStartedGame = false
     }
@@ -344,7 +342,7 @@ extension GameManager {
         whale.look(at: island.worldPosition)
         
         Timer.scheduledTimer(withTimeInterval: Whale.longevity, repeats: false) { (timer) in
-            whale.removeFromParentNode()
+            whale.destroy()
         }
     }
     
@@ -359,8 +357,6 @@ extension GameManager {
 
 extension GameManager: SCNPhysicsContactDelegate {
     public func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        print(contact)
-        
         let collisionMask = contact.nodeA.physicsBody!.collisionBitMask | contact.nodeB.physicsBody!.collisionBitMask
         
         switch collisionMask {
@@ -382,10 +378,8 @@ extension GameManager: SCNPhysicsContactDelegate {
             }
         case CollisionType.boat | CollisionType.bomb:
             OperationQueue.main.addOperation {
-                (contact.nodeA.parent as? Boat)?.destroy()
-                (contact.nodeB.parent as? Boat)?.destroy()
-                (contact.nodeA.parent as? WaterMine)?.removeFromParentNode()
-                (contact.nodeB.parent as? WaterMine)?.removeFromParentNode()
+                (contact.nodeA.parent as? GameObject)?.destroy()
+                (contact.nodeB.parent as? GameObject)?.destroy()
             }
         default:
             // Unhandled collision, but not necessarily an error.

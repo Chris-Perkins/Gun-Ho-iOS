@@ -41,9 +41,6 @@ public class GameObject: SCNNode {
     
     // MARK: Custom functions
     
-    // Overrides this area for the frame logic
-    public func performLogicForFrame() { /* Override me! */}
-    
     /* NOTE: This isn't built to scale to handle multiple movement operations at one time.
      It only handles one movement operation at any given time. */
     public func performMovementOperation(movementOperation: @escaping () -> ()) {
@@ -70,5 +67,13 @@ public class GameObject: SCNNode {
     /* Resumes movement after a pause */
     public func resumeMovement() {
         currentMovementAction?()
+    }
+    
+    public func destroy() {
+        removeFromParentNode()
+        
+        if let objectIndex = GameManager.shared.gameObjects.index(of: self) {
+            GameManager.shared.gameObjects.remove(at: objectIndex)
+        }
     }
 }
