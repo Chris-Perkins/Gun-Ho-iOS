@@ -10,6 +10,7 @@
 		2204201820328A7A00303B61 /* SmallBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2204201720328A7A00303B61 /* SmallBoat.swift */; };
 		221F87B02076FFC400EA464C /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F87AF2076FFC400EA464C /* InfoViewController.swift */; };
 		221F87B42077068A00EA464C /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F87B32077068A00EA464C /* AuthenticationViewController.swift */; };
+		221F87B62077CEAD00EA464C /* ToggleableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F87B52077CEAD00EA464C /* ToggleableButton.swift */; };
 		2229133620655C3E0044CF0F /* GameManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229133520655C3E0044CF0F /* GameManagerDelegate.swift */; };
 		222BE22E203605D40036E867 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE22C203605D40036E867 /* GameObject.swift */; };
 		222BE22F203605D40036E867 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE22D203605D40036E867 /* GameManager.swift */; };
@@ -53,6 +54,7 @@
 		2204201720328A7A00303B61 /* SmallBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBoat.swift; sourceTree = "<group>"; };
 		221F87AF2076FFC400EA464C /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		221F87B32077068A00EA464C /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		221F87B52077CEAD00EA464C /* ToggleableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleableButton.swift; sourceTree = "<group>"; };
 		2229133520655C3E0044CF0F /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
 		222BE22C203605D40036E867 /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameObject.swift; path = "Gun Ho/Game Engine/Supporting Files/GameObject.swift"; sourceTree = SOURCE_ROOT; };
 		222BE22D203605D40036E867 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameManager.swift; path = "Gun Ho/Game Engine/GameManager.swift"; sourceTree = SOURCE_ROOT; };
@@ -124,6 +126,7 @@
 			children = (
 				222D640B2064A7020030196C /* GuideView.xib */,
 				222D64092064A6700030196C /* GuideView.swift */,
+				221F87B52077CEAD00EA464C /* ToggleableButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22AE4EC7206819EB0012089D /* WebRequestHandler.swift in Sources */,
+				221F87B62077CEAD00EA464C /* ToggleableButton.swift in Sources */,
 				227F984C2034CA7D007FF294 /* SCNNodeExtensions.swift in Sources */,
 				22A3F5E62045D5AB00D89358 /* BoatSpawner.swift in Sources */,
 				2245B61020336A8B00F1369B /* GameViewController.swift in Sources */,
