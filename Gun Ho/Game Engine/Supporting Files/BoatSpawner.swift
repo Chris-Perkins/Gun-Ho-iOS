@@ -68,18 +68,20 @@ public class BoatSpawner {
         // TODO: Fix this so it doesn't crash if time interval is too small.
         Timer.scheduledTimer(withTimeInterval: Double.random(min: 0.5,
                                                              max: 2),
-                             repeats: true)
+                             repeats: false)
         { (timer) in
             // If we reached the end or are no longer spawning...
             if self.currentSpawningIndex >= self.boatsToSpawn.count
                 || !self.spawning {
                 // We no longer need to repeat the timer
-                timer.invalidate()
-                self.performingSpawnCycle = false
             } else {
                 self.spawnBoat(ofType: self.boatsToSpawn[self.currentSpawningIndex])
                 self.currentSpawningIndex += 1
+                self.performSpawnCycle()
             }
+            
+            timer.invalidate()
+            self.performingSpawnCycle = false
         }
     }
     

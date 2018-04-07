@@ -71,10 +71,7 @@ public class GameManager: NSObject {
     }
     
     // The maximum wave we can go to
-    /*
-     NOTE: Make sure the summation from 0 to maxWave
-     of pointsPerWave is < 2^32
-     */
+    /* NOTE: Make sure maxWave's point value is < 2^32 */
     private let maxWave = 100
     
     /* A reference to the object that is currently spawning boats
@@ -272,13 +269,14 @@ extension GameManager {
         // Inform the delegate that we completed the wave
         delegate?.waveDidComplete?(waveNumber: wave)
         
-        // Spawn a bird just for minor aesthetics
-        spawnBird()
-        
         // We shouldn't create the next wave is the wave was completed
         if wave >= maxWave {
             performGameOverSequence()
+            return
         }
+        
+        // Spawn a bird just for minor aesthetics
+        spawnBird()
         
         // Reset the points since we use this to check against current wave requirements
         curPoints = 0

@@ -135,46 +135,34 @@ class Boat: GameObject {
         // Keep a reference to the original scale for popping boat up
         let originalScale = GameManager.shared.gameNode.scale
         
-        // The 60 in this equation is a fake unit saying our ocean has a diameter of 60
-        // Note... It doesn't.
-        let distanceToCenter = 60.0 * GameManager.shared.ocean.scale.x / 2.0
-        let timeToCenter = CFTimeInterval(distanceToCenter / Float(self.speed))
+        // Set the boat to be invisble and then "pop" it out.
+        scale = SCNVector3(0, 0, 0)
+        // The boat looks at the island on spawn for realistic movement
+        look(at: GameManager.shared.island.worldPosition)
         
-        // A queue to perform spawn operations
-        ActionQueue(withActions: [
-            Action(actionTime: 0, withActions: {
-                // Set the boat to be invisible (by scale) and then "pop" it out.
-                // Also, look at the island.
-                SCNTransaction.perform {
-                    SCNTransaction.animationDuration = 0
-                    self.scale = SCNVector3(0, 0, 0)
-                    
-                    /* NOTE: This uses global position because the look function
-                     looks at the GLOBAL position, not a local one. */
-                    self.look(at: SCNVector3(GameManager.shared.island.worldPosition.x,
-                                             self.worldPosition.y, // Look straight ahead
-                                             GameManager.shared.island.worldPosition.z))
-                }
-            }),
-            /* Springs the boat up. While springing up, the boat will start
-                moving towards the island. */
-            Action(actionTime: max(1, timeToCenter), withActions: {
-                SCNTransaction.perform {
-                    SCNTransaction.animationDuration = 1
-                    self.scale = originalScale
-                }
-                
-                // Move the boat to the island!
-                self.performMovementOperation {
-                    // Move linearly (default is ease in/out)
-                    SCNTransaction.animationTimingFunction =
-                        CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
-                    
-                    SCNTransaction.animationDuration = timeToCenter
-                    self.position = SCNVector3(0, self.position.y, 0)
-                }
-            })
-        ]).start()
+        /*
+         Springs the boat up. After the boat is at the original scale,
+         it moves towards the island.
+         */
+        
+        SCNTransaction.perform {
+            SCNTransaction.animationDuration = 1
+            self.scale = originalScale
+        }
+        
+        performMovementOperation {
+            // Move linearly (default is ease in/out)
+            SCNTransaction.animationTimingFunction =
+                CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            
+            // The 69 just says that the island has a radius of 60 (chosen arbitrarily).
+            // Note: It doesn't a radius of 60
+            let distanceToCenter = 60 * self.position.distance(vector: GameManager.shared.island.position)
+            let timeToCenter = distanceToCenter / Float(self.speed)
+            
+            SCNTransaction.animationDuration = CFTimeInterval(timeToCenter)
+            self.position = SCNVector3(0, self.position.y, 0)
+        }
         
         attachBoatSpawnParticle()
     }
