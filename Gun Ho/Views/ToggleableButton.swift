@@ -75,6 +75,8 @@ public class ToggleableButton: UIButton {
             }
         }
     }
+    // The time between transition animations
+    @IBInspectable public var transitionTime: CFTimeInterval = 0.25
     
     // MARK: Inits
     
@@ -93,7 +95,7 @@ public class ToggleableButton: UIButton {
     // MARK: Event functions
     
     @objc public func buttonPress(sender: UIButton) {
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: transitionTime, animations: {
             self.isToggled = !self.isToggled
         })
     }

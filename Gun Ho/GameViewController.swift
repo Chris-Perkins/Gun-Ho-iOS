@@ -11,12 +11,22 @@ import ARKit
 
 class GameViewController: UIViewController {
     
+    // MARK: Properties
+    
+    public enum SpawningMode {
+        case whale
+        case watermine
+        case none
+    }
+    
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var guideView: GuideView!
     @IBOutlet var gameViews: [UIView]!
     @IBOutlet var startViews: [UIView]!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var birdCountLabel: UILabel!
+    @IBOutlet weak var waterMineToggleButton: ToggleableButton!
+    @IBOutlet weak var whaleToggleButton: ToggleableButton!
     
     // The planes we're showing
     private var planeForAnchor: [ARAnchor: HorizontalPlane] = [:]
@@ -30,6 +40,11 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
+    // The mode we currently spawn in
+    private var currentSpawningMode: SpawningMode = .none
+    
+    // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +96,7 @@ class GameViewController: UIViewController {
     }
     
     // MARK: Actions
+    
     @IBAction func buttonPress(_ sender: UIButton) {
         switch sender {
         case pauseButton:
@@ -88,6 +104,18 @@ class GameViewController: UIViewController {
             // Show a button to denote the other state (e.g. if paused, show play)
             pauseButton.setImage(GameManager.shared.getPauseState() ? #imageLiteral(resourceName: "play") : #imageLiteral(resourceName: "pause"),
                                  for: .normal)
+        case waterMineToggleButton:
+            // Can't spawn both whales and watermines
+            if whaleToggleButton.isToggled {
+                whaleToggleButton.isToggled = false
+            }
+            currentSpawningMode = waterMineToggleButton.isToggled ? .watermine : .none
+        case whaleToggleButton:
+            // Can't spawn both whales and watermines
+            if waterMineToggleButton.isToggled {
+                waterMineToggleButton.isToggled = false
+            }
+            currentSpawningMode = whaleToggleButton.isToggled ? .whale : .none
         default:
             fatalError("Button press unhandled in GameViewController")
         }
@@ -109,10 +137,6 @@ extension GameViewController {
     }
     
     func updateGameSceneForAnchor(anchor: ARPlaneAnchor) {
-        let worldSize: Float = 60
-        let minSize = min(anchor.extent.x, anchor.extent.z)
-        let scale = minSize / worldSize
-        //GameManager.shared.gameNode.scale = SCNVector3(x: scale, y: scale, z: scale)
         GameManager.shared.gameNode.position = SCNVector3(anchor.center)
     }
 }
@@ -227,7 +251,15 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 // Gets the tapped position relative to the worldScene so we can add the whale there
                 let tapPos = GameManager.shared.ocean.convertPosition(hits.first!.localCoordinates,
                                                                       to: GameManager.shared.worldScene)
-                GameManager.shared.spawnWhale(atWorldScenePosition: tapPos)
+                switch currentSpawningMode {
+                case .watermine:
+                    GameManager.shared.spawnWaterMine(atWorldScenePosition: tapPos)
+                case .whale:
+                    GameManager.shared.spawnWhale(atWorldScenePosition: tapPos)
+                default:
+                    // Do nothing (no spawning state called)
+                    break
+                }
             }
         }
     }
