@@ -176,6 +176,9 @@ extension GameViewController: GameManagerDelegate {
             self.waterMineToggleButton.isToggled = false
             self.whaleToggleButton.isToggled = false
             
+            // Reset the bird score
+            self.birdCountLabel.text = "\(0)"
+            
             self.performSegue(withIdentifier: "showAuthSegue", sender: self)
         }
     }
