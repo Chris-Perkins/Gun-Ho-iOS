@@ -8,4 +8,8 @@
 
 import UIKit
 
-class InfoViewController: UIViewController { }
+class InfoViewController: UIViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}

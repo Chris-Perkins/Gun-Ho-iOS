@@ -66,7 +66,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40p-Js-kq3">
-                                <rect key="frame" x="125" y="459.5" width="125" height="30"/>
+                                <rect key="frame" x="125" y="409.5" width="125" height="30"/>
                                 <color key="backgroundColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="HHu-U0-hgE"/>
@@ -80,7 +80,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqe-pi-Ro0">
-                                <rect key="frame" x="47" y="237.5" width="281" height="212"/>
+                                <rect key="frame" x="47" y="187.5" width="281" height="212"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score: []" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIp-Na-Bc6">
                                         <rect key="frame" x="8" y="15.5" width="265" height="30"/>
@@ -157,7 +157,7 @@
                                 <viewLayoutGuide key="safeArea" id="VpF-eT-qlb"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfL-ww-sih">
-                                <rect key="frame" x="304" y="229.5" width="32" height="32"/>
+                                <rect key="frame" x="304" y="179.5" width="32" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.91000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="nwc-Q3-PCa"/>
@@ -180,7 +180,7 @@
                             <constraint firstItem="40p-Js-kq3" firstAttribute="top" secondItem="Hqe-pi-Ro0" secondAttribute="bottom" constant="10" id="4Tu-JH-p6d"/>
                             <constraint firstItem="40p-Js-kq3" firstAttribute="centerX" secondItem="qfE-lY-t6x" secondAttribute="centerX" id="64w-NB-mzi"/>
                             <constraint firstItem="Hqe-pi-Ro0" firstAttribute="top" secondItem="pfL-ww-sih" secondAttribute="bottom" constant="-24" id="GHq-dw-aYB"/>
-                            <constraint firstItem="Hqe-pi-Ro0" firstAttribute="centerY" secondItem="qfE-lY-t6x" secondAttribute="centerY" id="UgE-oV-XTf"/>
+                            <constraint firstItem="Hqe-pi-Ro0" firstAttribute="centerY" secondItem="qfE-lY-t6x" secondAttribute="centerY" constant="-50" id="UgE-oV-XTf"/>
                             <constraint firstItem="Hqe-pi-Ro0" firstAttribute="centerX" secondItem="qfE-lY-t6x" secondAttribute="centerX" id="hVM-2h-NoM"/>
                             <constraint firstItem="Hqe-pi-Ro0" firstAttribute="width" secondItem="rHm-UI-LQQ" secondAttribute="width" multiplier="0.75" id="hY0-Zq-ppb"/>
                             <constraint firstItem="pfL-ww-sih" firstAttribute="leading" secondItem="Hqe-pi-Ro0" secondAttribute="trailing" constant="-24" id="zXU-jL-03N"/>

@@ -231,6 +231,10 @@ class AuthenticationViewController: UIViewController {
         view.sendSubview(toBack: blurView)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: Misc helper functions
     
     // Sets the toggle button's title based on login state

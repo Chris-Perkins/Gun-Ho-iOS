@@ -103,6 +103,10 @@ class GameViewController: UIViewController {
         }
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: Actions
     
     @IBAction func buttonPress(_ sender: UIButton) {
@@ -171,6 +175,7 @@ extension GameViewController: GameManagerDelegate {
             
             // Hide the gameViews
             for view in self.gameViews { view.alpha = 0 }
+            for view in self.startViews { view.alpha = 1 }
             
             // User should not be toggling any buttons anymore
             self.waterMineToggleButton.isToggled = false
@@ -254,7 +259,6 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 self.selectedPlane?.isHidden = true
                 GameManager.shared.gameNode.isHidden = false
                 
-                guideView.setLabelTextToStep(type: .startGame)
                 addToNode(rootNode: selectedPlane.parent!)
                 updateGameSceneForAnchor(anchor: selectedPlane.anchor)
                 GameManager.shared.startGame()
