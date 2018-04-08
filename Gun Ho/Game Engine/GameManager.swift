@@ -238,7 +238,7 @@ extension GameManager {
     
     // Should be called whenever the game should end
     private func performGameOverSequence() {
-        delegate?.gameWillEnd?(withPointTotal: totalPoints!)
+        delegate?.gameWillEnd?(withPointTotal: totalPoints ?? 0)
         
         totalPoints = nil
         curWave     = nil
