@@ -171,6 +171,10 @@ extension GameViewController: GameManagerDelegate {
             // Hide the gameViews
             for view in self.gameViews { view.alpha = 0 }
             
+            // User should not be toggling any buttons anymore
+            self.waterMineToggleButton.isToggled = false
+            self.whaleToggleButton.isToggled = false
+            
             self.performSegue(withIdentifier: "showAuthSegue", sender: self)
         }
     }
