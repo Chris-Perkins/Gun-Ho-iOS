@@ -92,6 +92,16 @@ class GameViewController: UIViewController {
         sceneView.session.pause()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let authVC = segue.destination as? AuthenticationViewController {
+            if previousScoresReference.count != 0 {
+                authVC.displayScore = previousScoresReference[previousScoresReference.count - 1]
+            } else {
+                authVC.displayScore = -1
+            }
+        }
+    }
+    
     // MARK: Actions
     
     @IBAction func buttonPress(_ sender: UIButton) {
@@ -129,7 +139,6 @@ extension GameViewController {
             GameManager.shared.rootNode = rootNode
             GameManager.shared.gameNode.removeFromParentNode()
             rootNode.addChildNode(GameManager.shared.gameNode)
-            //GameManager.shared.gameNode.scale = SCNVector3(0.1, 0.1, 0.1)
         }
     }
     
@@ -155,9 +164,7 @@ extension GameViewController: GameManagerDelegate {
     
     @objc func gameWillEnd(withPointTotal points: Int) {
         DispatchQueue.main.async {
-            // Create an authentication view so the user can post their scores
-            // CREATE VIEW CONTROLLER THING HERE
-            
+            // Show the horizontal planes for anchor selection
             self.showHorizontalPlanes = true
             GameManager.shared.gameNode.isHidden = true
             

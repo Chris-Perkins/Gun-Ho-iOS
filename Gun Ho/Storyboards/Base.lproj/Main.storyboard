@@ -191,7 +191,7 @@
                         <outlet property="passwordConfirmTextField" destination="wVu-1T-TlQ" id="xl9-2N-rA7"/>
                         <outlet property="passwordTextField" destination="01j-UW-Z4U" id="0Tr-rd-YNl"/>
                         <outlet property="postScoreButton" destination="40p-Js-kq3" id="CeG-Am-h5r"/>
-                        <outlet property="scoreLabel" destination="RIp-Na-Bc6" id="7Bo-oJ-R3n"/>
+                        <outlet property="scoreLabel" destination="RIp-Na-Bc6" id="8Nf-pV-MHd"/>
                         <outlet property="toggleStateButton" destination="Acj-g4-Reo" id="XS0-Wc-YXn"/>
                         <outlet property="usernameTextField" destination="NQt-mH-etb" id="jFY-K1-wBd"/>
                         <outletCollection property="signupConstraints" destination="XWo-kf-PSa" collectionClass="NSMutableArray" id="alF-CX-Qss"/>

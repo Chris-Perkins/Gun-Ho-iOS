@@ -22,6 +22,7 @@
 		22454657206D5A6600F85ADA /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22454656206D5A6600F85ADA /* Bird.swift */; };
 		2245B61020336A8B00F1369B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245B60F20336A8B00F1369B /* GameViewController.swift */; };
 		224C5DFF20718CCE006ED4BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2245B60E20336A4B00F1369B /* Assets.xcassets */; };
+		225282B5207A9C1900DE958B /* UserDefaultsVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225282B4207A9C1900DE958B /* UserDefaultsVariables.swift */; };
 		225815FA20328EA900F546DD /* MediumBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815F920328EA900F546DD /* MediumBoat.swift */; };
 		225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815FB20328F3D00F546DD /* VikingBoat.swift */; };
 		2261C1092037D805003E580C /* SceneViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C1082037D805003E580C /* SceneViewExtensions.swift */; };
@@ -66,6 +67,7 @@
 		22454656206D5A6600F85ADA /* Bird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
 		2245B60E20336A4B00F1369B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2245B60F20336A8B00F1369B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		225282B4207A9C1900DE958B /* UserDefaultsVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsVariables.swift; sourceTree = "<group>"; };
 		225815F920328EA900F546DD /* MediumBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumBoat.swift; sourceTree = "<group>"; };
 		225815FB20328F3D00F546DD /* VikingBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VikingBoat.swift; sourceTree = "<group>"; };
 		2261C1082037D805003E580C /* SceneViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewExtensions.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				221F87B32077068A00EA464C /* AuthenticationViewController.swift */,
 				221F87AF2076FFC400EA464C /* InfoViewController.swift */,
 				22AE4EC6206819EB0012089D /* WebRequestHandler.swift */,
+				225282B4207A9C1900DE958B /* UserDefaultsVariables.swift */,
 				222D640D2064ACBE0030196C /* Localizable.strings */,
 				22E1A882202AAB5E009A5BFC /* Info.plist */,
 				2245B60D20336A2B00F1369B /* Supporting Files */,
@@ -418,6 +421,7 @@
 				226D9D0C205EE47A002F05DD /* CollisionType.swift in Sources */,
 				22F212772073E8EB00518DAF /* WaterMine.swift in Sources */,
 				226D9D0E205EFAB4002F05DD /* SCNVector4Extensions.swift in Sources */,
+				225282B5207A9C1900DE958B /* UserDefaultsVariables.swift in Sources */,
 				222BE22E203605D40036E867 /* GameObject.swift in Sources */,
 				2229133620655C3E0044CF0F /* GameManagerDelegate.swift in Sources */,
 				225815FA20328EA900F546DD /* MediumBoat.swift in Sources */,

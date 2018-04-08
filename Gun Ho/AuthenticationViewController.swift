@@ -54,10 +54,7 @@ class AuthenticationViewController: UIViewController {
     
     public var displayScore: Int = 0 {
         didSet {
-            let scoreString = NSLocalizedString("Authentication.ScoreLabel.Text", comment: "")
-            
-            scoreLabel.text = scoreString.replacingOccurrences(of: "{0}",
-                                                               with: "\(displayScore)")
+            setScoreLabelTitle()
         }
     }
     
@@ -212,13 +209,12 @@ class AuthenticationViewController: UIViewController {
     }
     
     // MARK: Life-cycle
-        
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: Can we do these elsewhere?
-        // Works for now, but is bad practice.
+        // Sets the
+        setScoreLabelTitle()
         setToggleTitle()
         
         usernameTextField.delegate = self
@@ -238,13 +234,20 @@ class AuthenticationViewController: UIViewController {
     // MARK: Misc helper functions
     
     // Sets the toggle button's title based on login state
-    func setToggleTitle() {
+    private func setToggleTitle() {
         toggleStateButton.setTitle(isLoginState ?
             NSLocalizedString("Authentication.SignUp",
                               comment: ""):
             NSLocalizedString("Authentication.Login",
                               comment: ""),
                                    for: .normal)
+    }
+    
+    private func setScoreLabelTitle() {
+        let scoreString = NSLocalizedString("Authentication.ScoreLabel.Text", comment: "")
+        
+        scoreLabel?.text = scoreString.replacingOccurrences(of: "{0}",
+                                                           with: "\(displayScore)")
     }
 }
 

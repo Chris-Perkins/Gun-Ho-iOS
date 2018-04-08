@@ -238,6 +238,7 @@ extension GameManager {
     
     // Should be called whenever the game should end
     private func performGameOverSequence() {
+        appendNewScore(totalPoints ?? 0)
         delegate?.gameWillEnd?(withPointTotal: totalPoints ?? 0)
         
         totalPoints = nil
