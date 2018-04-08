@@ -94,6 +94,7 @@ class GameViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let authVC = segue.destination as? AuthenticationViewController {
+            // Sets the score for the authentication controller
             if previousScoresReference.count != 0 {
                 authVC.displayScore = previousScoresReference[previousScoresReference.count - 1]
             } else {
