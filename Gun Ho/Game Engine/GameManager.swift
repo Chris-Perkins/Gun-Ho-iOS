@@ -322,7 +322,8 @@ extension GameManager {
         }
         
         boatSpawner = BoatSpawner(withPoints: pointsPerWave(curWave),
-                                  andSpawningNode: gameNode)
+                                  andWave: curWave,
+                                  onSpawningNode: gameNode)
         boatSpawner?.spawning = true
     }
     

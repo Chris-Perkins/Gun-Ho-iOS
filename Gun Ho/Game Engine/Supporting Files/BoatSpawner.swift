@@ -13,6 +13,9 @@ public class BoatSpawner {
     // The node we spawn boats on
     private let spawningNode: SCNNode
     
+    // The wave we're spawning on
+    private let wave: Int
+    
     // The list of boats types we will spawn/have spawned
     private var boatsToSpawn: [Boat.Type]
     
@@ -38,8 +41,9 @@ public class BoatSpawner {
     // Used so that we don't perform spawn cycles twice
     private var performingSpawnCycle = false
     
-    public init(withPoints points: Int, andSpawningNode spawningNode: SCNNode) {
+    public init(withPoints points: Int, andWave wave: Int, onSpawningNode spawningNode: SCNNode) {
         self.spawningNode = spawningNode
+        self.wave = wave
         boatsToSpawn = [Boat.Type]()
         
         currentSpawningIndex = 0
@@ -65,9 +69,9 @@ public class BoatSpawner {
         
         performingSpawnCycle = true
         
-        // TODO: Fix this so it doesn't crash if time interval is too small.
-        Timer.scheduledTimer(withTimeInterval: Double.random(min: 1,
-                                                             max: 4),
+        // Speed up the time between boats depending on current wave
+        Timer.scheduledTimer(withTimeInterval: Double.random(min: 0.1 + 2.5 / Double(Int(1 + wave / 5)),
+                                                             max: 0.5 + 3.5 / Double(Int(1 + wave / 5))),
                              repeats: false)
         { (timer) in
             // If we reached the end or are no longer spawning...
