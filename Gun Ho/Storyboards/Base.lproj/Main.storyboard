@@ -218,7 +218,7 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVO-k1-xv9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-Ay-5Og" customClass="GuideView" customModule="Gun_Ho" customModuleProvider="target">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-Ay-5Og" customClass="GuideView" customModule="Gun_Ho" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="587" width="375" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="pmB-yM-tK4"/>
@@ -235,18 +235,18 @@
                                     <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="K1b-So-3Hl"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3a-9Y-d8j">
-                                <rect key="frame" x="255" y="40" width="100" height="48"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3a-9Y-d8j" userLabel="Bird Counter">
+                                <rect key="frame" x="235" y="40" width="120" height="48"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bird" translatesAutoresizingMaskIntoConstraints="NO" id="g6c-KT-bZt">
-                                        <rect key="frame" x="52" y="0.0" width="48" height="48"/>
+                                        <rect key="frame" x="72" y="0.0" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="g6c-KT-bZt" secondAttribute="height" multiplier="1:1" id="eHS-uV-9IP"/>
                                             <constraint firstAttribute="width" constant="48" id="lnU-Fe-7ES"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6L-ac-ixO">
-                                        <rect key="frame" x="0.0" y="0.0" width="36" height="48"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="j6L-ac-ixO">
+                                        <rect key="frame" x="0.0" y="0.0" width="56" height="48"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                                         <color key="textColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -261,7 +261,7 @@
                                     <constraint firstItem="g6c-KT-bZt" firstAttribute="top" secondItem="n3a-9Y-d8j" secondAttribute="top" id="XCf-C5-C2L"/>
                                     <constraint firstAttribute="height" constant="48" id="eV9-ev-RQc"/>
                                     <constraint firstAttribute="bottom" secondItem="j6L-ac-ixO" secondAttribute="bottom" id="ik1-ot-cb8"/>
-                                    <constraint firstAttribute="width" constant="100" id="qWR-H7-ocy"/>
+                                    <constraint firstAttribute="width" constant="120" id="qWR-H7-ocy"/>
                                     <constraint firstAttribute="trailing" secondItem="g6c-KT-bZt" secondAttribute="trailing" id="tvV-lb-mOR"/>
                                 </constraints>
                             </view>
@@ -276,71 +276,119 @@
                                     <segue destination="wbB-Qc-O0E" kind="show" identifier="showInfoSegue" id="RE7-Gh-rgz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMa-Vv-7Df" userLabel="Watermine Toggle" customClass="ToggleableButton" customModule="Gun_Ho" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZ9-lz-REX" userLabel="Bottom View Left">
                                 <rect key="frame" x="127.5" y="594" width="48" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMa-Vv-7Df" userLabel="Watermine Toggle" customClass="ToggleableButton" customModule="Gun_Ho" customModuleProvider="target">
+                                        <rect key="frame" x="-0.5" y="0.0" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="HMa-Vv-7Df" secondAttribute="height" multiplier="1:1" id="Cc9-OB-hZz"/>
+                                            <constraint firstAttribute="width" constant="48" id="xXL-si-4Qh"/>
+                                        </constraints>
+                                        <size key="titleShadowOffset" width="1" height="2"/>
+                                        <state key="normal" image="bird">
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isToggled" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="toggleViewColor">
+                                                <color key="value" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ltw-sw-uA1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtr-eW-SVE">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal" title="Whale +1"/>
+                                        <connections>
+                                            <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="BzE-gd-mQH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="HMa-Vv-7Df" secondAttribute="height" multiplier="1:1" id="Cc9-OB-hZz"/>
-                                    <constraint firstAttribute="width" constant="48" id="xXL-si-4Qh"/>
+                                    <constraint firstAttribute="trailing" secondItem="mtr-eW-SVE" secondAttribute="trailing" id="2rn-R0-4Iv"/>
+                                    <constraint firstAttribute="trailing" secondItem="HMa-Vv-7Df" secondAttribute="trailing" id="7C7-Yh-6Tt"/>
+                                    <constraint firstAttribute="width" secondItem="cZ9-lz-REX" secondAttribute="height" multiplier="1:1" id="8zJ-sb-1Cf"/>
+                                    <constraint firstItem="mtr-eW-SVE" firstAttribute="leading" secondItem="cZ9-lz-REX" secondAttribute="leading" id="Bc7-KK-cPG"/>
+                                    <constraint firstItem="HMa-Vv-7Df" firstAttribute="top" secondItem="cZ9-lz-REX" secondAttribute="top" id="GcT-PI-mYm"/>
+                                    <constraint firstAttribute="width" constant="48" id="HH4-Eh-XKF"/>
+                                    <constraint firstAttribute="bottom" secondItem="mtr-eW-SVE" secondAttribute="bottom" id="Qpp-OT-OLI"/>
+                                    <constraint firstItem="HMa-Vv-7Df" firstAttribute="leading" secondItem="cZ9-lz-REX" secondAttribute="leading" id="WwK-SD-CWy"/>
+                                    <constraint firstItem="mtr-eW-SVE" firstAttribute="top" secondItem="cZ9-lz-REX" secondAttribute="top" id="n8E-3p-C16"/>
+                                    <constraint firstAttribute="bottom" secondItem="HMa-Vv-7Df" secondAttribute="bottom" id="oli-Wb-aAU"/>
                                 </constraints>
-                                <size key="titleShadowOffset" width="1" height="2"/>
-                                <state key="normal" image="bird">
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isToggled" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="24"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="toggleViewColor">
-                                        <color key="value" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ltw-sw-uA1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyY-0V-CAr" userLabel="Whale Toggle" customClass="ToggleableButton" customModule="Gun_Ho" customModuleProvider="target">
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzf-Tc-auY" userLabel="Bottom View Right">
                                 <rect key="frame" x="199.5" y="594" width="48" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyY-0V-CAr" userLabel="Whale Toggle" customClass="ToggleableButton" customModule="Gun_Ho" customModuleProvider="target">
+                                        <rect key="frame" x="-0.5" y="0.0" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="DyY-0V-CAr" secondAttribute="height" multiplier="1:1" id="PD9-10-oVi"/>
+                                            <constraint firstAttribute="width" constant="48" id="UDd-ls-Ieh"/>
+                                        </constraints>
+                                        <size key="titleShadowOffset" width="1" height="2"/>
+                                        <state key="normal" image="bird">
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isToggled" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="toggleViewColor">
+                                                <color key="value" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="x5X-eg-nTS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzf-Lt-dxm">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="cgg-eo-1fo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="DyY-0V-CAr" secondAttribute="height" multiplier="1:1" id="PD9-10-oVi"/>
-                                    <constraint firstAttribute="width" constant="48" id="UDd-ls-Ieh"/>
+                                    <constraint firstItem="lzf-Lt-dxm" firstAttribute="leading" secondItem="dzf-Tc-auY" secondAttribute="leading" id="3Pb-5e-dno"/>
+                                    <constraint firstAttribute="bottom" secondItem="DyY-0V-CAr" secondAttribute="bottom" id="EZZ-yL-ZXu"/>
+                                    <constraint firstAttribute="trailing" secondItem="DyY-0V-CAr" secondAttribute="trailing" id="Fzm-JP-pIx"/>
+                                    <constraint firstAttribute="bottom" secondItem="lzf-Lt-dxm" secondAttribute="bottom" id="HZV-u0-TtP"/>
+                                    <constraint firstAttribute="width" constant="48" id="HlU-5i-UdX"/>
+                                    <constraint firstAttribute="width" secondItem="dzf-Tc-auY" secondAttribute="height" multiplier="1:1" id="KN0-Jw-rGN"/>
+                                    <constraint firstItem="lzf-Lt-dxm" firstAttribute="top" secondItem="dzf-Tc-auY" secondAttribute="top" id="WGz-p3-Rnq"/>
+                                    <constraint firstItem="DyY-0V-CAr" firstAttribute="leading" secondItem="dzf-Tc-auY" secondAttribute="leading" id="gC7-tH-2TJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="lzf-Lt-dxm" secondAttribute="trailing" id="hcd-M0-wGN"/>
+                                    <constraint firstItem="DyY-0V-CAr" firstAttribute="top" secondItem="dzf-Tc-auY" secondAttribute="top" id="v9L-J5-DWn"/>
                                 </constraints>
-                                <size key="titleShadowOffset" width="1" height="2"/>
-                                <state key="normal" image="bird">
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isToggled" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="24"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="toggleViewColor">
-                                        <color key="value" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="x5X-eg-nTS"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="epb-T0-NZ5" firstAttribute="trailing" secondItem="n3a-9Y-d8j" secondAttribute="trailing" constant="20" id="0yc-pI-BUe"/>
+                            <constraint firstItem="epb-T0-NZ5" firstAttribute="bottom" secondItem="cZ9-lz-REX" secondAttribute="bottom" constant="25" id="1BM-hw-FOD"/>
                             <constraint firstItem="b30-fj-A4Y" firstAttribute="top" secondItem="epb-T0-NZ5" secondAttribute="top" constant="20" id="3dC-9E-83z"/>
+                            <constraint firstItem="cZ9-lz-REX" firstAttribute="centerX" secondItem="EVO-k1-xv9" secondAttribute="centerX" constant="-36" id="3xk-Za-1lc"/>
                             <constraint firstItem="oFS-Ay-5Og" firstAttribute="leading" secondItem="epb-T0-NZ5" secondAttribute="leading" id="4Ai-XU-DVJ"/>
+                            <constraint firstItem="epb-T0-NZ5" firstAttribute="bottom" secondItem="dzf-Tc-auY" secondAttribute="bottom" constant="25" id="GNl-8F-OqM"/>
                             <constraint firstItem="Fkp-4W-blX" firstAttribute="top" secondItem="epb-T0-NZ5" secondAttribute="top" constant="20" id="Gxu-t5-ZTh"/>
-                            <constraint firstItem="DyY-0V-CAr" firstAttribute="centerX" secondItem="epb-T0-NZ5" secondAttribute="centerX" constant="36" id="LS7-ED-DNW"/>
                             <constraint firstItem="Fkp-4W-blX" firstAttribute="leading" secondItem="epb-T0-NZ5" secondAttribute="leading" constant="20" id="SjD-op-AV0"/>
                             <constraint firstItem="n3a-9Y-d8j" firstAttribute="top" secondItem="epb-T0-NZ5" secondAttribute="top" constant="20" id="Ykb-Jl-3LX"/>
                             <constraint firstItem="EVO-k1-xv9" firstAttribute="trailing" secondItem="epb-T0-NZ5" secondAttribute="trailing" id="dOF-Eu-XT0"/>
+                            <constraint firstItem="dzf-Tc-auY" firstAttribute="centerX" secondItem="epb-T0-NZ5" secondAttribute="centerX" constant="36" id="erv-Ii-6Pj"/>
                             <constraint firstItem="oFS-Ay-5Og" firstAttribute="bottom" secondItem="epb-T0-NZ5" secondAttribute="bottom" id="f5c-AY-BJo"/>
-                            <constraint firstItem="epb-T0-NZ5" firstAttribute="bottom" secondItem="HMa-Vv-7Df" secondAttribute="bottom" constant="25" id="jiE-gy-Hiq"/>
                             <constraint firstItem="EVO-k1-xv9" firstAttribute="leading" secondItem="epb-T0-NZ5" secondAttribute="leading" id="lYd-7l-mSd"/>
-                            <constraint firstItem="epb-T0-NZ5" firstAttribute="bottom" secondItem="DyY-0V-CAr" secondAttribute="bottom" constant="25" id="n03-kJ-4ao"/>
                             <constraint firstItem="EVO-k1-xv9" firstAttribute="bottom" secondItem="epb-T0-NZ5" secondAttribute="bottom" id="nnh-tz-JvN"/>
                             <constraint firstItem="EVO-k1-xv9" firstAttribute="top" secondItem="sBt-Tc-OmU" secondAttribute="top" id="p2V-Zb-tEq"/>
-                            <constraint firstItem="HMa-Vv-7Df" firstAttribute="centerX" secondItem="EVO-k1-xv9" secondAttribute="centerX" constant="-36" id="rO0-A5-oCg"/>
-                            <constraint firstItem="DyY-0V-CAr" firstAttribute="width" secondItem="DyY-0V-CAr" secondAttribute="height" multiplier="1:1" id="vW3-wq-Gyz"/>
                             <constraint firstItem="b30-fj-A4Y" firstAttribute="leading" secondItem="epb-T0-NZ5" secondAttribute="leading" constant="20" id="w2d-02-UvX"/>
                             <constraint firstItem="oFS-Ay-5Og" firstAttribute="trailing" secondItem="epb-T0-NZ5" secondAttribute="trailing" id="yWw-jB-G11"/>
                         </constraints>
@@ -348,17 +396,19 @@
                     </view>
                     <connections>
                         <outlet property="birdCountLabel" destination="j6L-ac-ixO" id="K3C-rM-uQc"/>
+                        <outlet property="buyWaterMineButton" destination="mtr-eW-SVE" id="iMm-Jz-hi3"/>
+                        <outlet property="buyWhaleButton" destination="lzf-Lt-dxm" id="erR-Hx-CUT"/>
                         <outlet property="guideView" destination="oFS-Ay-5Og" id="L6s-PF-A1W"/>
                         <outlet property="pauseButton" destination="b30-fj-A4Y" id="Bj6-8A-23g"/>
                         <outlet property="sceneView" destination="EVO-k1-xv9" id="ucI-lo-EhQ"/>
                         <outlet property="waterMineToggleButton" destination="HMa-Vv-7Df" id="aFL-qG-0Ix"/>
                         <outlet property="whaleToggleButton" destination="DyY-0V-CAr" id="Bi8-bI-rqR"/>
-                        <outletCollection property="gameViews" destination="n3a-9Y-d8j" collectionClass="NSMutableArray" id="7su-Pb-hCf"/>
                         <outletCollection property="gameViews" destination="b30-fj-A4Y" collectionClass="NSMutableArray" id="1qe-bz-RVM"/>
                         <outletCollection property="startViews" destination="Fkp-4W-blX" collectionClass="NSMutableArray" id="QmD-Yb-93u"/>
-                        <outletCollection property="startViews" destination="oFS-Ay-5Og" collectionClass="NSMutableArray" id="bxM-mp-WD9"/>
                         <outletCollection property="gameViews" destination="HMa-Vv-7Df" collectionClass="NSMutableArray" id="qQY-j8-LNB"/>
                         <outletCollection property="gameViews" destination="DyY-0V-CAr" collectionClass="NSMutableArray" id="2Yu-J1-bAE"/>
+                        <outletCollection property="startViews" destination="lzf-Lt-dxm" collectionClass="NSMutableArray" id="229-XX-I8N"/>
+                        <outletCollection property="startViews" destination="mtr-eW-SVE" collectionClass="NSMutableArray" id="992-jM-dG4"/>
                         <segue destination="hYc-aY-VED" kind="show" identifier="showAuthSegue" id="4bh-K1-j0A"/>
                     </connections>
                 </viewController>

@@ -66,8 +66,8 @@ public class BoatSpawner {
         performingSpawnCycle = true
         
         // TODO: Fix this so it doesn't crash if time interval is too small.
-        Timer.scheduledTimer(withTimeInterval: Double.random(min: 0.5,
-                                                             max: 2),
+        Timer.scheduledTimer(withTimeInterval: Double.random(min: 1,
+                                                             max: 4),
                              repeats: false)
         { (timer) in
             // If we reached the end or are no longer spawning...

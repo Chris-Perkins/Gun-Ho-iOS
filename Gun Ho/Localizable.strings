@@ -36,5 +36,9 @@
 
 "Server.Messages.Error.Title" = "An Error Occurred";
 
+/* Trading Messages */
+"Trading.Failure.Title" = "Cannot Trade for Item!";
+"Trading.Failure.Desc"  = "You do not have enough birds to trade for this item! Defend your treasure to gather more birds.";
+
 /* General String Messages */
 "Messages.Ok" = "Ok";

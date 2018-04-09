@@ -9,6 +9,11 @@
 import SceneKit
 
 public class WaterMine: GameObject {
+    
+    // MARK: Properties
+    
+    public static let birdPricePerFive = 3
+    
     // MARK: Life Cycle
     
     required public override init() {

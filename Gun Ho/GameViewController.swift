@@ -8,6 +8,7 @@
 
 import UIKit
 import ARKit
+import CDAlertView
 
 class GameViewController: UIViewController {
     
@@ -27,6 +28,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var birdCountLabel: UILabel!
     @IBOutlet weak var waterMineToggleButton: ToggleableButton!
     @IBOutlet weak var whaleToggleButton: ToggleableButton!
+    @IBOutlet weak var buyWaterMineButton: UIButton!
+    @IBOutlet weak var buyWhaleButton: UIButton!
     
     // The planes we're showing
     private var planeForAnchor: [ARAnchor: HorizontalPlane] = [:]
@@ -67,6 +70,13 @@ class GameViewController: UIViewController {
         GameManager.shared.delegate = self
         GameManager.shared.rootNode = sceneView.scene.rootNode
         GameManager.shared.gameNode.isHidden = true
+        
+        // Giving the toggle buttons toggle conditions
+        whaleToggleButton.canToggle = { return currentWhaleCount > 0 }
+        waterMineToggleButton.canToggle = { return currentWaterMineCount > 0 }
+        
+        // Update the bird label
+        setBirdLabelToTotalBirdsCount()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +126,16 @@ class GameViewController: UIViewController {
             // Show a button to denote the other state (e.g. if paused, show play)
             pauseButton.setImage(GameManager.shared.getPauseState() ? #imageLiteral(resourceName: "play") : #imageLiteral(resourceName: "pause"),
                                  for: .normal)
+        case buyWhaleButton:
+            attemptItemBuy(ofBirdPrice: Whale.birdPrice) {
+                setWhaleCount(to: currentWhaleCount + 1)
+                self.setBirdLabelToTotalBirdsCount()
+            }
+        case buyWaterMineButton:
+            attemptItemBuy(ofBirdPrice: WaterMine.birdPricePerFive) {
+                setWaterMineCount(to: currentWaterMineCount + 5)
+                self.setBirdLabelToTotalBirdsCount()
+            }
         case waterMineToggleButton:
             // Can't spawn both whales and watermines
             if whaleToggleButton.isToggled {
@@ -134,6 +154,25 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func unwind(segue: UIStoryboardSegue) { }
+    
+    // MARK: Custom functions
+    
+    private func setBirdLabelToTotalBirdsCount() {
+        birdCountLabel.text = "\(currentBirdsCount)"
+    }
+    
+    private func attemptItemBuy(ofBirdPrice price: Int, withSuccessCompletion successCompletion: @escaping () -> ()) {
+        if price <= currentBirdsCount {
+            setBirdCount(to: currentBirdsCount - price)
+            successCompletion()
+        } else {
+            CDAlertView(title: NSLocalizedString("Trading.Failure.Title",
+                                                 comment: ""),
+                        message: NSLocalizedString("Trading.Failure.Desc",
+                                                   comment: ""),
+                        type: CDAlertViewType.error).showAfterAddingOkayAction()
+        }
+    }
 }
 
 // MARK: HorizontalPlane functioning
@@ -157,6 +196,7 @@ extension GameViewController {
 extension GameViewController: GameManagerDelegate {
     @objc func gameDidStart() {
         showHorizontalPlanes = false
+        birdCountLabel.text = "+\(0)"
         
         // show the gameView, but hide the start buttons
         for view in gameViews { view.alpha = 1 }
@@ -164,7 +204,8 @@ extension GameViewController: GameManagerDelegate {
     }
     
     @objc func waveDidComplete(waveNumber: Int) {
-        birdCountLabel.text = "\(waveNumber)"
+        setBirdCount(to: currentBirdsCount + 1)
+        birdCountLabel.text = "+\(waveNumber)"
     }
     
     @objc func gameWillEnd() {
@@ -182,7 +223,7 @@ extension GameViewController: GameManagerDelegate {
             self.whaleToggleButton.isToggled = false
             
             // Reset the bird score
-            self.birdCountLabel.text = "\(0)"
+            self.setBirdLabelToTotalBirdsCount()
             
             self.performSegue(withIdentifier: "showAuthSegue", sender: self)
         }
@@ -269,9 +310,23 @@ extension GameViewController: UIGestureRecognizerDelegate {
                                                                       to: GameManager.shared.worldScene)
                 switch currentSpawningMode {
                 case .watermine:
-                    GameManager.shared.spawnWaterMine(atWorldScenePosition: tapPos)
+                    if currentWaterMineCount > 0 {
+                        GameManager.shared.spawnWaterMine(atWorldScenePosition: tapPos)
+                        setWaterMineCount(to: currentWaterMineCount - 1)
+                        
+                        if currentWaterMineCount <= 0 {
+                            waterMineToggleButton.isToggled = false
+                        }
+                    }
                 case .whale:
-                    GameManager.shared.spawnWhale(atWorldScenePosition: tapPos)
+                    if currentWhaleCount > 0 {
+                        GameManager.shared.spawnWhale(atWorldScenePosition: tapPos)
+                        setWhaleCount(to: currentWhaleCount - 1)
+                        
+                        if currentWhaleCount <= 0 {
+                            whaleToggleButton.isToggled = false
+                        }
+                    }
                 default:
                     // Do nothing (no spawning state called)
                     break

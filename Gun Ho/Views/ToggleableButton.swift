@@ -13,6 +13,9 @@ public class ToggleableButton: UIButton {
     
     // MARK: View properties
     
+    // A function to denote whether or not the button can toggle
+    public var canToggle: () -> (Bool) = { return true }
+    
     // Whether or not the button is toggled (default false)
     @IBInspectable public var isToggled: Bool = false {
         didSet {
@@ -96,7 +99,9 @@ public class ToggleableButton: UIButton {
     
     @objc public func buttonPress(sender: UIButton) {
         UIView.animate(withDuration: transitionTime, animations: {
-            self.isToggled = !self.isToggled
+            if self.canToggle() {
+                self.isToggled = !self.isToggled
+            }
         })
     }
 }
