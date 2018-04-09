@@ -38,6 +38,7 @@
 		22AE4EC920681C120012089D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4EC820681C120012089D /* StringExtensions.swift */; };
 		22B301D5203C9FDA0020CA46 /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B301D4203C9FDA0020CA46 /* SCNVector3Extensions.swift */; };
 		22BB2EB8204390A400CA71B3 /* MathExpressionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */; };
+		22C9F378207BE49E00AFE586 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9F377207BE49E00AFE586 /* NotificationNames.swift */; };
 		22E1A875202AAB5E009A5BFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1A874202AAB5E009A5BFC /* AppDelegate.swift */; };
 		22E1A877202AAB5E009A5BFC /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A876202AAB5E009A5BFC /* art.scnassets */; };
 		22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87A202AAB5E009A5BFC /* Main.storyboard */; };
@@ -84,6 +85,7 @@
 		22AE4ECA20681D620012089D /* Gun-Ho-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gun-Ho-Bridging-Header.h"; sourceTree = "<group>"; };
 		22B301D4203C9FDA0020CA46 /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
 		22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExpressionExtensions.swift; sourceTree = "<group>"; };
+		22C9F377207BE49E00AFE586 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		22E1A871202AAB5E009A5BFC /* Gun Ho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gun Ho.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E1A874202AAB5E009A5BFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E1A876202AAB5E009A5BFC /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				221F87AF2076FFC400EA464C /* InfoViewController.swift */,
 				22AE4EC6206819EB0012089D /* WebRequestHandler.swift */,
 				225282B4207A9C1900DE958B /* UserDefaultsVariables.swift */,
+				22C9F377207BE49E00AFE586 /* NotificationNames.swift */,
 				222D640D2064ACBE0030196C /* Localizable.strings */,
 				22E1A882202AAB5E009A5BFC /* Info.plist */,
 				2245B60D20336A2B00F1369B /* Supporting Files */,
@@ -439,6 +442,7 @@
 				22454657206D5A6600F85ADA /* Bird.swift in Sources */,
 				222D640A2064A6700030196C /* GuideView.swift in Sources */,
 				22AE4EC920681C120012089D /* StringExtensions.swift in Sources */,
+				22C9F378207BE49E00AFE586 /* NotificationNames.swift in Sources */,
 				2297EFCD2072BDB4006717DF /* Whale.swift in Sources */,
 				222BE22F203605D40036E867 /* GameManager.swift in Sources */,
 				22EC7D7E2069880F0097E02B /* CDAlertViewExtensions.swift in Sources */,
@@ -586,6 +590,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DB8SUTA9JU;
+				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = "Gun Ho/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.temporaryID.Gun-Ho";
@@ -603,6 +608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DB8SUTA9JU;
+				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = "Gun Ho/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.temporaryID.Gun-Ho";

@@ -30,6 +30,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var whaleToggleButton: ToggleableButton!
     @IBOutlet weak var buyWaterMineButton: UIButton!
     @IBOutlet weak var buyWhaleButton: UIButton!
+    @IBOutlet weak var waterMineCountLabel: UILabel!
+    @IBOutlet weak var whaleCountLabel: UILabel!
     
     // The planes we're showing
     private var planeForAnchor: [ARAnchor: HorizontalPlane] = [:]
@@ -55,11 +57,6 @@ class GameViewController: UIViewController {
         // Set the view's delegate
         sceneView.delegate = self
         
-        let tapGesture =
-            UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        tapGesture.delegate = self
-        sceneView.addGestureRecognizer(tapGesture)
-        
         // Create a new scene
         let scene = SCNScene(named: "art.scnassets/main-game.scn")!
         
@@ -67,6 +64,14 @@ class GameViewController: UIViewController {
         sceneView.scene = scene
         sceneView.scene.physicsWorld.contactDelegate = GameManager.shared
         
+        // Allows for tap gestures to be recognized in the scene
+        let tapGesture =
+            UITapGestureRecognizer(target: self,
+                                   action: #selector(handleTap(_:)))
+        tapGesture.delegate = self
+        sceneView.addGestureRecognizer(tapGesture)
+        
+        // Sets up the GameManager to host the game
         GameManager.shared.delegate = self
         GameManager.shared.rootNode = sceneView.scene.rootNode
         GameManager.shared.gameNode.isHidden = true
@@ -75,8 +80,22 @@ class GameViewController: UIViewController {
         whaleToggleButton.canToggle = { return currentWhaleCount > 0 }
         waterMineToggleButton.canToggle = { return currentWaterMineCount > 0 }
         
+        // Listen for changes in the whale count or the watermine count
+        // Function calls will respond accordingly
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateWhaleCountLabel),
+                                               name: whaleCountSet,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateWaterMineCountLabel),
+                                               name: waterMineCountSet,
+                                               object: nil)
+        
         // Update the bird label
         setBirdLabelToTotalBirdsCount()
+        // Update the labels to be what is currently stored
+        updateWaterMineCountLabel()
+        updateWhaleCountLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -172,6 +191,18 @@ class GameViewController: UIViewController {
                                                    comment: ""),
                         type: CDAlertViewType.error).showAfterAddingOkayAction()
         }
+    }
+}
+
+// MARK: NotificationCenter Listening
+
+extension GameViewController {
+    @objc internal func updateWaterMineCountLabel() {
+        waterMineCountLabel.text = "\(currentWaterMineCount)"
+    }
+    
+    @objc internal func updateWhaleCountLabel() {
+        whaleCountLabel.text = "\(currentWhaleCount)"
     }
 }
 

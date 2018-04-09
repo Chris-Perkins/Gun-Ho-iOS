@@ -1,5 +1,5 @@
 //
-//  MathExpressionExtensions.swift
+//  HorizontalPlanes.swift
 //  Gun Ho
 //
 //  Created by Christopher Perkins on 2/25/18.

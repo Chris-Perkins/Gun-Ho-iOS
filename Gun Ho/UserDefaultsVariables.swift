@@ -37,6 +37,8 @@ public var currentWhaleCount: Int {
 public func setWhaleCount(to value: Int) {
     UserDefaults.standard.set(value, forKey: whalesKey)
     UserDefaults.standard.synchronize()
+    
+    NotificationCenter.default.post(Notification(name: whaleCountSet))
 }
 
 // MARK: Water Mine Getter/Setter
@@ -48,6 +50,8 @@ public var currentWaterMineCount: Int {
 public func setWaterMineCount(to value: Int) {
     UserDefaults.standard.set(value, forKey: wMinesKey)
     UserDefaults.standard.synchronize()
+    
+    NotificationCenter.default.post(Notification(name: waterMineCountSet))
 }
 
 // MARK: Bird Setter/Getter
@@ -59,5 +63,7 @@ public var currentBirdsCount: Int {
 public func setBirdCount(to value: Int) {
     UserDefaults.standard.set(value, forKey: tBirdsKey)
     UserDefaults.standard.synchronize()
+    
+    NotificationCenter.default.post(Notification(name: birdCountSet))
 }
 

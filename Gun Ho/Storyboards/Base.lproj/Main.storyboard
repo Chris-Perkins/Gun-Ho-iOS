@@ -279,6 +279,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZ9-lz-REX" userLabel="Bottom View Left">
                                 <rect key="frame" x="127.5" y="594" width="48" height="48"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtr-eW-SVE">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal" title="Whale +1"/>
+                                        <connections>
+                                            <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="BzE-gd-mQH"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMa-Vv-7Df" userLabel="Watermine Toggle" customClass="ToggleableButton" customModule="Gun_Ho" customModuleProvider="target">
                                         <rect key="frame" x="-0.5" y="0.0" width="48" height="48"/>
                                         <constraints>
@@ -286,9 +294,7 @@
                                             <constraint firstAttribute="width" constant="48" id="xXL-si-4Qh"/>
                                         </constraints>
                                         <size key="titleShadowOffset" width="1" height="2"/>
-                                        <state key="normal" image="bird">
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <state key="normal" image="bird"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isToggled" value="NO"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -302,17 +308,18 @@
                                             <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ltw-sw-uA1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtr-eW-SVE">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <state key="normal" title="Whale +1"/>
-                                        <connections>
-                                            <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="BzE-gd-mQH"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SH2-Nj-vYV" userLabel="WaterMine Count">
+                                        <rect key="frame" x="0.0" y="-21" width="48" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="mtr-eW-SVE" secondAttribute="trailing" id="2rn-R0-4Iv"/>
+                                    <constraint firstItem="HMa-Vv-7Df" firstAttribute="top" secondItem="SH2-Nj-vYV" secondAttribute="bottom" id="6jq-Wu-0dg"/>
                                     <constraint firstAttribute="trailing" secondItem="HMa-Vv-7Df" secondAttribute="trailing" id="7C7-Yh-6Tt"/>
                                     <constraint firstAttribute="width" secondItem="cZ9-lz-REX" secondAttribute="height" multiplier="1:1" id="8zJ-sb-1Cf"/>
                                     <constraint firstItem="mtr-eW-SVE" firstAttribute="leading" secondItem="cZ9-lz-REX" secondAttribute="leading" id="Bc7-KK-cPG"/>
@@ -320,13 +327,22 @@
                                     <constraint firstAttribute="width" constant="48" id="HH4-Eh-XKF"/>
                                     <constraint firstAttribute="bottom" secondItem="mtr-eW-SVE" secondAttribute="bottom" id="Qpp-OT-OLI"/>
                                     <constraint firstItem="HMa-Vv-7Df" firstAttribute="leading" secondItem="cZ9-lz-REX" secondAttribute="leading" id="WwK-SD-CWy"/>
+                                    <constraint firstItem="SH2-Nj-vYV" firstAttribute="centerX" secondItem="cZ9-lz-REX" secondAttribute="centerX" id="dkN-qc-kTx"/>
                                     <constraint firstItem="mtr-eW-SVE" firstAttribute="top" secondItem="cZ9-lz-REX" secondAttribute="top" id="n8E-3p-C16"/>
                                     <constraint firstAttribute="bottom" secondItem="HMa-Vv-7Df" secondAttribute="bottom" id="oli-Wb-aAU"/>
+                                    <constraint firstItem="SH2-Nj-vYV" firstAttribute="width" secondItem="cZ9-lz-REX" secondAttribute="width" id="vlA-3S-55P"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzf-Tc-auY" userLabel="Bottom View Right">
                                 <rect key="frame" x="199.5" y="594" width="48" height="48"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzf-Lt-dxm">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="cgg-eo-1fo"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyY-0V-CAr" userLabel="Whale Toggle" customClass="ToggleableButton" customModule="Gun_Ho" customModuleProvider="target">
                                         <rect key="frame" x="-0.5" y="0.0" width="48" height="48"/>
                                         <constraints>
@@ -350,16 +366,18 @@
                                             <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="x5X-eg-nTS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzf-Lt-dxm">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="cgg-eo-1fo"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whale Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c1I-aY-XTD">
+                                        <rect key="frame" x="0.0" y="-21" width="48" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="lzf-Lt-dxm" firstAttribute="leading" secondItem="dzf-Tc-auY" secondAttribute="leading" id="3Pb-5e-dno"/>
+                                    <constraint firstItem="c1I-aY-XTD" firstAttribute="centerX" secondItem="dzf-Tc-auY" secondAttribute="centerX" id="AWR-Oc-YbS"/>
                                     <constraint firstAttribute="bottom" secondItem="DyY-0V-CAr" secondAttribute="bottom" id="EZZ-yL-ZXu"/>
                                     <constraint firstAttribute="trailing" secondItem="DyY-0V-CAr" secondAttribute="trailing" id="Fzm-JP-pIx"/>
                                     <constraint firstAttribute="bottom" secondItem="lzf-Lt-dxm" secondAttribute="bottom" id="HZV-u0-TtP"/>
@@ -368,6 +386,8 @@
                                     <constraint firstItem="lzf-Lt-dxm" firstAttribute="top" secondItem="dzf-Tc-auY" secondAttribute="top" id="WGz-p3-Rnq"/>
                                     <constraint firstItem="DyY-0V-CAr" firstAttribute="leading" secondItem="dzf-Tc-auY" secondAttribute="leading" id="gC7-tH-2TJ"/>
                                     <constraint firstAttribute="trailing" secondItem="lzf-Lt-dxm" secondAttribute="trailing" id="hcd-M0-wGN"/>
+                                    <constraint firstItem="c1I-aY-XTD" firstAttribute="width" secondItem="dzf-Tc-auY" secondAttribute="width" id="pwN-oF-qef"/>
+                                    <constraint firstItem="lzf-Lt-dxm" firstAttribute="top" secondItem="c1I-aY-XTD" secondAttribute="bottom" id="ujo-Oz-Gnj"/>
                                     <constraint firstItem="DyY-0V-CAr" firstAttribute="top" secondItem="dzf-Tc-auY" secondAttribute="top" id="v9L-J5-DWn"/>
                                 </constraints>
                             </view>
@@ -401,7 +421,9 @@
                         <outlet property="guideView" destination="oFS-Ay-5Og" id="L6s-PF-A1W"/>
                         <outlet property="pauseButton" destination="b30-fj-A4Y" id="Bj6-8A-23g"/>
                         <outlet property="sceneView" destination="EVO-k1-xv9" id="ucI-lo-EhQ"/>
+                        <outlet property="waterMineCountLabel" destination="SH2-Nj-vYV" id="naF-EC-ea7"/>
                         <outlet property="waterMineToggleButton" destination="HMa-Vv-7Df" id="aFL-qG-0Ix"/>
+                        <outlet property="whaleCountLabel" destination="c1I-aY-XTD" id="pbW-cx-m56"/>
                         <outlet property="whaleToggleButton" destination="DyY-0V-CAr" id="Bi8-bI-rqR"/>
                         <outletCollection property="gameViews" destination="b30-fj-A4Y" collectionClass="NSMutableArray" id="1qe-bz-RVM"/>
                         <outletCollection property="startViews" destination="Fkp-4W-blX" collectionClass="NSMutableArray" id="QmD-Yb-93u"/>
@@ -409,6 +431,8 @@
                         <outletCollection property="gameViews" destination="DyY-0V-CAr" collectionClass="NSMutableArray" id="2Yu-J1-bAE"/>
                         <outletCollection property="startViews" destination="lzf-Lt-dxm" collectionClass="NSMutableArray" id="229-XX-I8N"/>
                         <outletCollection property="startViews" destination="mtr-eW-SVE" collectionClass="NSMutableArray" id="992-jM-dG4"/>
+                        <outletCollection property="gameViews" destination="SH2-Nj-vYV" collectionClass="NSMutableArray" id="BT3-uT-vg4"/>
+                        <outletCollection property="gameViews" destination="c1I-aY-XTD" collectionClass="NSMutableArray" id="t2a-e2-tsQ"/>
                         <segue destination="hYc-aY-VED" kind="show" identifier="showAuthSegue" id="4bh-K1-j0A"/>
                     </connections>
                 </viewController>
