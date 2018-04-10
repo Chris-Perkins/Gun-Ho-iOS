@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -12,123 +12,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Info View Controller-->
-        <scene sceneID="gx8-hQ-ROh">
-            <objects>
-                <viewController id="wbB-Qc-O0E" customClass="InfoViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wXl-D5-Mcd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fu-Yc-PX4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gg-IB-j1O">
-                                        <rect key="frame" x="16" y="16" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="2Gg-IB-j1O" secondAttribute="height" multiplier="1:1" id="gQE-61-HzU"/>
-                                            <constraint firstAttribute="width" constant="48" id="ipB-KQ-whM"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <size key="titleShadowOffset" width="1" height="1"/>
-                                        <state key="normal" title="Back">
-                                            <color key="titleColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="RJk-t9-Nhy" kind="unwind" unwindAction="unwindWithSegue:" id="T5z-u7-m32"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XUl-wh-TeI">
-                                        <rect key="frame" x="84" y="28" width="207" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="cRZ-lq-dDc"/>
-                                        </constraints>
-                                        <string key="text">HELP NEEDED!
-PIRATES ARE INVADING!</string>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.40332847833633423" blue="0.38081318140029907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="2Gg-IB-j1O" firstAttribute="top" secondItem="7fu-Yc-PX4" secondAttribute="top" constant="16" id="6Ue-VW-LxU"/>
-                                    <constraint firstItem="XUl-wh-TeI" firstAttribute="centerX" secondItem="7fu-Yc-PX4" secondAttribute="centerX" id="FZD-sz-CQU"/>
-                                    <constraint firstItem="2Gg-IB-j1O" firstAttribute="leading" secondItem="7fu-Yc-PX4" secondAttribute="leading" constant="16" id="Osb-Yx-wZg"/>
-                                    <constraint firstItem="XUl-wh-TeI" firstAttribute="top" secondItem="7fu-Yc-PX4" secondAttribute="top" constant="28" id="R9m-W5-TKk"/>
-                                    <constraint firstItem="XUl-wh-TeI" firstAttribute="width" secondItem="7fu-Yc-PX4" secondAttribute="width" constant="-168" id="X30-ue-taU"/>
-                                    <constraint firstAttribute="height" constant="104" id="xzJ-0i-OgK"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWf-kM-jC3">
-                                <rect key="frame" x="187.5" y="613" width="187.5" height="34"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="View on GitHub">
-                                    <color key="titleColor" red="0.226419907" green="0.27255566910000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPress:" destination="wbB-Qc-O0E" eventType="touchUpInside" id="rez-PV-CzH"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTx-eL-gFH">
-                                <rect key="frame" x="0.0" y="104" width="375" height="501"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l78-mg-GTG">
-                                <rect key="frame" x="0.0" y="613" width="187.5" height="34"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="Email Us">
-                                    <color key="titleColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPress:" destination="wbB-Qc-O0E" eventType="touchUpInside" id="oP9-BH-riF"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="PIE-AF-AlW" firstAttribute="trailing" secondItem="DWf-kM-jC3" secondAttribute="trailing" id="0Cj-rb-I3o"/>
-                            <constraint firstItem="l78-mg-GTG" firstAttribute="width" secondItem="wXl-D5-Mcd" secondAttribute="width" multiplier="0.5" id="0ia-Ba-TsW"/>
-                            <constraint firstItem="DWf-kM-jC3" firstAttribute="top" secondItem="NTx-eL-gFH" secondAttribute="bottom" constant="8" id="2Vs-Tt-9zA"/>
-                            <constraint firstItem="l78-mg-GTG" firstAttribute="leading" secondItem="PIE-AF-AlW" secondAttribute="leading" id="510-6N-xnG"/>
-                            <constraint firstItem="7fu-Yc-PX4" firstAttribute="top" secondItem="wXl-D5-Mcd" secondAttribute="top" id="7KT-D7-RCf"/>
-                            <constraint firstItem="NTx-eL-gFH" firstAttribute="trailing" secondItem="PIE-AF-AlW" secondAttribute="trailing" id="FAf-9t-6Km"/>
-                            <constraint firstItem="l78-mg-GTG" firstAttribute="top" secondItem="NTx-eL-gFH" secondAttribute="bottom" constant="8" id="Gat-bj-rpI"/>
-                            <constraint firstItem="NTx-eL-gFH" firstAttribute="leading" secondItem="PIE-AF-AlW" secondAttribute="leading" id="LVh-8E-1SR"/>
-                            <constraint firstItem="DWf-kM-jC3" firstAttribute="width" secondItem="wXl-D5-Mcd" secondAttribute="width" multiplier="0.5" id="Wbj-1L-xiF"/>
-                            <constraint firstItem="PIE-AF-AlW" firstAttribute="bottom" secondItem="DWf-kM-jC3" secondAttribute="bottom" constant="20" id="aW2-7S-K33"/>
-                            <constraint firstItem="7fu-Yc-PX4" firstAttribute="leading" secondItem="PIE-AF-AlW" secondAttribute="leading" id="gGF-sy-IG0"/>
-                            <constraint firstItem="7fu-Yc-PX4" firstAttribute="width" secondItem="wXl-D5-Mcd" secondAttribute="width" id="jXR-Gh-3fd"/>
-                            <constraint firstItem="PIE-AF-AlW" firstAttribute="bottom" secondItem="l78-mg-GTG" secondAttribute="bottom" constant="20" id="l56-nV-G3d"/>
-                            <constraint firstItem="NTx-eL-gFH" firstAttribute="top" secondItem="7fu-Yc-PX4" secondAttribute="bottom" id="wLu-pd-8S0"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="PIE-AF-AlW"/>
-                    </view>
-                    <connections>
-                        <outlet property="emailUsButton" destination="l78-mg-GTG" id="KOh-Wl-sK8"/>
-                        <outlet property="githubButton" destination="DWf-kM-jC3" id="9Pn-mv-iJm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F6i-3s-bqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="RJk-t9-Nhy" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="816.79999999999995" y="453.82308845577217"/>
-        </scene>
         <!--Authentication View Controller-->
         <scene sceneID="CXv-pE-ja5">
             <objects>
                 <viewController modalPresentationStyle="overCurrentContext" id="hYc-aY-VED" customClass="AuthenticationViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rHm-UI-LQQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40p-Js-kq3">
-                                <rect key="frame" x="125" y="409.5" width="125" height="30"/>
+                                <rect key="frame" x="305.66666666666669" y="273" width="125" height="30"/>
                                 <color key="backgroundColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="HHu-U0-hgE"/>
@@ -142,10 +35,10 @@ PIRATES ARE INVADING!</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqe-pi-Ro0">
-                                <rect key="frame" x="47" y="187.5" width="281" height="212"/>
+                                <rect key="frame" x="92" y="51" width="552" height="212"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score: []" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIp-Na-Bc6">
-                                        <rect key="frame" x="8" y="15.5" width="265" height="30"/>
+                                        <rect key="frame" x="8" y="15.666666666666671" width="536" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="IOv-we-oAM"/>
                                         </constraints>
@@ -154,7 +47,7 @@ PIRATES ARE INVADING!</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NQt-mH-etb" userLabel="Username TextField">
-                                        <rect key="frame" x="16" y="61.5" width="249" height="40"/>
+                                        <rect key="frame" x="16" y="61.666666666666671" width="520" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="F3l-qK-fQz"/>
@@ -163,7 +56,7 @@ PIRATES ARE INVADING!</string>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="01j-UW-Z4U" userLabel="Password TextField">
-                                        <rect key="frame" x="16" y="109.5" width="249" height="40"/>
+                                        <rect key="frame" x="16" y="109.66666666666666" width="520" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="es9-sL-9Yk"/>
@@ -172,7 +65,7 @@ PIRATES ARE INVADING!</string>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVu-1T-TlQ" userLabel="Password Confirm TextField">
-                                        <rect key="frame" x="16" y="149.5" width="249" height="0.0"/>
+                                        <rect key="frame" x="16" y="149.66666666666666" width="520" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="999" constant="40" id="RF1-Xc-1n5"/>
@@ -182,7 +75,7 @@ PIRATES ARE INVADING!</string>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Acj-g4-Reo">
-                                        <rect key="frame" x="8" y="165.5" width="265" height="30"/>
+                                        <rect key="frame" x="8" y="165.66666666666666" width="536" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="hnX-Hs-c8e"/>
                                         </constraints>
@@ -219,7 +112,7 @@ PIRATES ARE INVADING!</string>
                                 <viewLayoutGuide key="safeArea" id="VpF-eT-qlb"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfL-ww-sih">
-                                <rect key="frame" x="304" y="179.5" width="32" height="32"/>
+                                <rect key="frame" x="620" y="43" width="32" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.91000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="nwc-Q3-PCa"/>
@@ -267,27 +160,27 @@ PIRATES ARE INVADING!</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnm-gd-5PF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nWu-NB-zUe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="816.34182908545733" y="-229.59999999999999"/>
+            <point key="canvasLocation" x="802" y="88"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sBt-Tc-OmU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVO-k1-xv9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                             </arscnView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-Ay-5Og" customClass="GuideView" customModule="Gun_Ho" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="334" width="736" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="pmB-yM-tK4"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b30-fj-A4Y">
-                                <rect key="frame" x="20" y="40" width="48" height="48"/>
+                                <rect key="frame" x="20" y="20" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="6Au-9f-Grh"/>
                                     <constraint firstAttribute="width" secondItem="b30-fj-A4Y" secondAttribute="height" multiplier="1:1" id="ywo-y5-zoP"/>
@@ -298,7 +191,7 @@ PIRATES ARE INVADING!</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3a-9Y-d8j" userLabel="Bird Counter">
-                                <rect key="frame" x="235" y="40" width="120" height="48"/>
+                                <rect key="frame" x="596" y="20" width="120" height="48"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bird" translatesAutoresizingMaskIntoConstraints="NO" id="g6c-KT-bZt">
                                         <rect key="frame" x="72" y="0.0" width="48" height="48"/>
@@ -328,18 +221,18 @@ PIRATES ARE INVADING!</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fkp-4W-blX">
-                                <rect key="frame" x="20" y="40" width="48" height="48"/>
+                                <rect key="frame" x="20" y="20" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fkp-4W-blX" secondAttribute="height" multiplier="1:1" id="KwL-XH-OiJ"/>
                                     <constraint firstAttribute="width" constant="48" id="PRC-1j-8U7"/>
                                 </constraints>
                                 <state key="normal" title="info"/>
                                 <connections>
-                                    <segue destination="wbB-Qc-O0E" kind="show" identifier="showInfoSegue" id="RE7-Gh-rgz"/>
+                                    <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="mCt-MQ-uqT"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZ9-lz-REX" userLabel="Bottom View Left">
-                                <rect key="frame" x="107.5" y="578" width="64" height="64"/>
+                                <rect key="frame" x="288" y="325" width="64" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtr-eW-SVE">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
@@ -349,7 +242,7 @@ PIRATES ARE INVADING!</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMa-Vv-7Df" userLabel="Watermine Toggle" customClass="ToggleableButton" customModule="Gun_Ho" customModuleProvider="target">
-                                        <rect key="frame" x="-0.5" y="0.0" width="64" height="64"/>
+                                        <rect key="frame" x="-0.33333333333331439" y="0.0" width="64" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="HMa-Vv-7Df" secondAttribute="height" multiplier="1:1" id="Cc9-OB-hZz"/>
                                         </constraints>
@@ -394,7 +287,7 @@ PIRATES ARE INVADING!</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzf-Tc-auY" userLabel="Bottom View Right">
-                                <rect key="frame" x="203.5" y="578" width="64" height="64"/>
+                                <rect key="frame" x="384" y="325" width="64" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzf-Lt-dxm">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
@@ -404,7 +297,7 @@ PIRATES ARE INVADING!</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyY-0V-CAr" userLabel="Whale Toggle" customClass="ToggleableButton" customModule="Gun_Ho" customModuleProvider="target">
-                                        <rect key="frame" x="-0.5" y="0.0" width="64" height="64"/>
+                                        <rect key="frame" x="-0.33333333333331439" y="0.0" width="64" height="64"/>
                                         <size key="titleShadowOffset" width="1" height="2"/>
                                         <state key="normal" image="whale-select">
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -475,6 +368,7 @@ PIRATES ARE INVADING!</string>
                         <outlet property="buyWaterMineButton" destination="mtr-eW-SVE" id="iMm-Jz-hi3"/>
                         <outlet property="buyWhaleButton" destination="lzf-Lt-dxm" id="erR-Hx-CUT"/>
                         <outlet property="guideView" destination="oFS-Ay-5Og" id="L6s-PF-A1W"/>
+                        <outlet property="infoButton" destination="Fkp-4W-blX" id="hfd-sS-4Ys"/>
                         <outlet property="pauseButton" destination="b30-fj-A4Y" id="Bj6-8A-23g"/>
                         <outlet property="sceneView" destination="EVO-k1-xv9" id="ucI-lo-EhQ"/>
                         <outlet property="waterMineCountLabel" destination="SH2-Nj-vYV" id="naF-EC-ea7"/>

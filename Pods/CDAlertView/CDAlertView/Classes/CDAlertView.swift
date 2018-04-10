@@ -21,6 +21,7 @@ open class CDAlertViewAction: NSObject {
     public var buttonTextColor: UIColor?
     public var buttonFont: UIFont?
     public var buttonBackgroundColor: UIColor?
+    public var shouldHideOnPress: Bool = true
 
     fileprivate weak var delegate: CDAlertViewActionDelegate?
 
@@ -644,7 +645,9 @@ open class CDAlertView: UIView {
 
 extension CDAlertView: CDAlertViewActionDelegate {
     internal func didTap(action: CDAlertViewAction) {
-        self.hide(animations: self.hideAnimations, isPopupAnimated: true)
+        if action.shouldHideOnPress {
+            self.hide(animations: self.hideAnimations, isPopupAnimated: true)
+        }
     }
 }
 

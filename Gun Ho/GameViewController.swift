@@ -35,6 +35,7 @@ class GameViewController: UIViewController {
     // The following are references to storyboard views for use in ease of passing information.
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var guideView: GuideView!
+    @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var birdCountLabel: UILabel!
     @IBOutlet weak var waterMineToggleButton: ToggleableButton!
@@ -147,6 +148,8 @@ class GameViewController: UIViewController {
     
     @IBAction func buttonPress(_ sender: UIButton) {
         switch sender {
+        case infoButton:
+            CDAlertView.createInfoAlert().show()
         case pauseButton:
             GameManager.shared.togglePauseState()
             // Show a button to denote the other state (e.g. if paused, show play)

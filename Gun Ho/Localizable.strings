@@ -6,11 +6,6 @@
   Copyright © 2018 Christopher Perkins. All rights reserved.
 */
 
-/* Guide Strings */
-"Guide.SelectPlane" = "Before you can begin, scan the room for a flat surface.\nSelect the surface by tapping it.";
-"Guide.StartGame" = "Start the game by tapping anywhere on the island.";
-"Guide.DestroyBoat" = "An invader!\nDestroy it before it gets to your treasure by tapping it!";
-
 /* Authentication View Strings */
 "Authentication.ScoreLabel.Text" = "Your Score: {0}";
 
@@ -21,6 +16,20 @@
 "Authentication.Messages.Signup.Fail.Desc"  = "Please verify that all fields are filled out correctly and that the given passwords match.";
 "Authentication.Login"  = "I want to login";
 "Authentication.SignUp" = "New? Sign Up!";
+
+/* Guide Strings */
+"Guide.SelectPlane" = "Before you can begin, scan the room for a flat surface.\nSelect the surface by tapping it.";
+"Guide.StartGame"   = "Start the game by tapping anywhere on the island.";
+"Guide.DestroyBoat" = "An invader!\nDestroy it before it gets to your treasure by tapping it!";
+
+/* Info Alert Strings */
+"Alert.Info.Title" = "Adventurers Needed!";
+"Alert.Info.Desc"  = "Pirates are invading for our treasure! Scare them off by tapping on them or by using watermines and whales. Good luck, adventurer!";
+"Alert.Info.Button.Site" = "View Site";
+
+/* General String Messages */
+"Messages.Ok" = "Ok";
+"Messages.Close" = "Close";
 
 /* Server Responses */
 "Server.Messages.PostScore.Success.Title" = "Score Posted";
@@ -39,6 +48,3 @@
 /* Trading Messages */
 "Trading.Failure.Title" = "Cannot Trade for Item!";
 "Trading.Failure.Desc"  = "You do not have enough birds to trade for this item! Defend your treasure to gather more birds.";
-
-/* General String Messages */
-"Messages.Ok" = "Ok";
