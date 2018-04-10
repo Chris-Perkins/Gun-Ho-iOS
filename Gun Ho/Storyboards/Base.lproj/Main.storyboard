@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina5_5" orientation="landscape">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,11 +17,11 @@
             <objects>
                 <viewController modalPresentationStyle="overCurrentContext" id="hYc-aY-VED" customClass="AuthenticationViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rHm-UI-LQQ">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40p-Js-kq3">
-                                <rect key="frame" x="305.66666666666669" y="273" width="125" height="30"/>
+                                <rect key="frame" x="144.66666666666666" y="444" width="124.99999999999997" height="30"/>
                                 <color key="backgroundColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="HHu-U0-hgE"/>
@@ -35,10 +35,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqe-pi-Ro0">
-                                <rect key="frame" x="92" y="51" width="552" height="212"/>
+                                <rect key="frame" x="51.666666666666657" y="222" width="310.66666666666674" height="212"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score: []" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIp-Na-Bc6">
-                                        <rect key="frame" x="8" y="15.666666666666671" width="536" height="30"/>
+                                        <rect key="frame" x="8" y="15.666666666666657" width="294.66666666666669" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="IOv-we-oAM"/>
                                         </constraints>
@@ -47,7 +47,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NQt-mH-etb" userLabel="Username TextField">
-                                        <rect key="frame" x="16" y="61.666666666666671" width="520" height="40"/>
+                                        <rect key="frame" x="16" y="61.666666666666686" width="278.66666666666669" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="F3l-qK-fQz"/>
@@ -56,7 +56,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="01j-UW-Z4U" userLabel="Password TextField">
-                                        <rect key="frame" x="16" y="109.66666666666666" width="520" height="40"/>
+                                        <rect key="frame" x="16" y="109.66666666666669" width="278.66666666666669" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="es9-sL-9Yk"/>
@@ -65,7 +65,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVu-1T-TlQ" userLabel="Password Confirm TextField">
-                                        <rect key="frame" x="16" y="149.66666666666666" width="520" height="0.0"/>
+                                        <rect key="frame" x="16" y="149.66666666666669" width="278.66666666666669" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="999" constant="40" id="RF1-Xc-1n5"/>
@@ -75,7 +75,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Acj-g4-Reo">
-                                        <rect key="frame" x="8" y="165.66666666666666" width="536" height="30"/>
+                                        <rect key="frame" x="8" y="165.66666666666669" width="294.66666666666669" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="hnX-Hs-c8e"/>
                                         </constraints>
@@ -112,7 +112,7 @@
                                 <viewLayoutGuide key="safeArea" id="VpF-eT-qlb"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfL-ww-sih">
-                                <rect key="frame" x="620" y="43" width="32" height="32"/>
+                                <rect key="frame" x="338.33333333333331" y="214" width="32" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.91000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="nwc-Q3-PCa"/>
@@ -160,27 +160,87 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnm-gd-5PF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nWu-NB-zUe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="802" y="88"/>
+            <point key="canvasLocation" x="803" y="-219"/>
+        </scene>
+        <!--Pause View Controller-->
+        <scene sceneID="7M0-gg-pLf">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8yb-FC-gt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController modalPresentationStyle="overCurrentContext" id="vwb-Kj-dXd" customClass="PauseViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Lw-tx-Ptg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUI-8m-j2V">
+                                <rect key="frame" x="78" y="194" width="258" height="368"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPU-zs-0tt">
+                                        <rect key="frame" x="0.0" y="0.0" width="258" height="168"/>
+                                        <color key="backgroundColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <state key="normal" title="Resume">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonPress:" destination="vwb-Kj-dXd" eventType="touchUpInside" id="FBv-Dt-bjG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-fc-ZXY">
+                                        <rect key="frame" x="0.0" y="200" width="258" height="168"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.91000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <state key="normal" title="Quit">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonPress:" destination="vwb-Kj-dXd" eventType="touchUpInside" id="Gxe-56-RCN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aPU-zs-0tt" firstAttribute="top" secondItem="AUI-8m-j2V" secondAttribute="top" id="M5F-Kv-tBk"/>
+                                    <constraint firstItem="aPU-zs-0tt" firstAttribute="height" secondItem="AUI-8m-j2V" secondAttribute="height" multiplier="0.5" constant="-16" id="aZy-0Z-4EF"/>
+                                    <constraint firstAttribute="trailing" secondItem="aPU-zs-0tt" secondAttribute="trailing" id="dQ9-H9-g1R"/>
+                                    <constraint firstItem="aPU-zs-0tt" firstAttribute="leading" secondItem="AUI-8m-j2V" secondAttribute="leading" id="noX-Cj-OHA"/>
+                                    <constraint firstAttribute="width" constant="258" id="xeT-AT-Rea"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="AUI-8m-j2V" firstAttribute="height" secondItem="1Lw-tx-Ptg" secondAttribute="height" multiplier="0.5" id="Eup-y1-83S"/>
+                            <constraint firstItem="AUI-8m-j2V" firstAttribute="centerX" secondItem="Dn3-ZU-bbn" secondAttribute="centerX" id="dSD-5P-6hh"/>
+                            <constraint firstItem="AUI-8m-j2V" firstAttribute="centerY" secondItem="Dn3-ZU-bbn" secondAttribute="centerY" id="wo6-G2-lOd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dn3-ZU-bbn"/>
+                    </view>
+                    <connections>
+                        <outlet property="quitButton" destination="OCf-fc-ZXY" id="dC0-Es-bSS"/>
+                        <outlet property="resumeButton" destination="aPU-zs-0tt" id="sCh-cx-kbV"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="802.89855072463774" y="441.84782608695656"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sBt-Tc-OmU">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVO-k1-xv9">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </arscnView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-Ay-5Og" customClass="GuideView" customModule="Gun_Ho" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="334" width="736" height="80"/>
+                                <rect key="frame" x="0.0" y="656" width="414" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="pmB-yM-tK4"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b30-fj-A4Y">
-                                <rect key="frame" x="20" y="20" width="48" height="48"/>
+                                <rect key="frame" x="20" y="40" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="6Au-9f-Grh"/>
                                     <constraint firstAttribute="width" secondItem="b30-fj-A4Y" secondAttribute="height" multiplier="1:1" id="ywo-y5-zoP"/>
@@ -188,10 +248,11 @@
                                 <state key="normal" image="pause"/>
                                 <connections>
                                     <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="K1b-So-3Hl"/>
+                                    <segue destination="vwb-Kj-dXd" kind="show" id="fmg-ux-gYh"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3a-9Y-d8j" userLabel="Bird Counter">
-                                <rect key="frame" x="596" y="20" width="120" height="48"/>
+                                <rect key="frame" x="274" y="40" width="120" height="48"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bird" translatesAutoresizingMaskIntoConstraints="NO" id="g6c-KT-bZt">
                                         <rect key="frame" x="72" y="0.0" width="48" height="48"/>
@@ -221,7 +282,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fkp-4W-blX">
-                                <rect key="frame" x="20" y="20" width="48" height="48"/>
+                                <rect key="frame" x="20" y="40" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fkp-4W-blX" secondAttribute="height" multiplier="1:1" id="KwL-XH-OiJ"/>
                                     <constraint firstAttribute="width" constant="48" id="PRC-1j-8U7"/>
@@ -232,7 +293,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZ9-lz-REX" userLabel="Bottom View Left">
-                                <rect key="frame" x="288" y="325" width="64" height="64"/>
+                                <rect key="frame" x="127" y="647" width="64" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtr-eW-SVE">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
@@ -242,7 +303,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMa-Vv-7Df" userLabel="Watermine Toggle" customClass="ToggleableButton" customModule="Gun_Ho" customModuleProvider="target">
-                                        <rect key="frame" x="-0.33333333333331439" y="0.0" width="64" height="64"/>
+                                        <rect key="frame" x="-0.3333333333333286" y="0.0" width="64" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="HMa-Vv-7Df" secondAttribute="height" multiplier="1:1" id="Cc9-OB-hZz"/>
                                         </constraints>
@@ -287,7 +348,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzf-Tc-auY" userLabel="Bottom View Right">
-                                <rect key="frame" x="384" y="325" width="64" height="64"/>
+                                <rect key="frame" x="223" y="647" width="64" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzf-Lt-dxm">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
@@ -297,7 +358,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyY-0V-CAr" userLabel="Whale Toggle" customClass="ToggleableButton" customModule="Gun_Ho" customModuleProvider="target">
-                                        <rect key="frame" x="-0.33333333333331439" y="0.0" width="64" height="64"/>
+                                        <rect key="frame" x="-0.33333333333334281" y="0.0" width="64" height="64"/>
                                         <size key="titleShadowOffset" width="1" height="2"/>
                                         <state key="normal" image="whale-select">
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

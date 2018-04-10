@@ -119,8 +119,8 @@ class GameViewController: UIViewController {
         sceneView.session.run(configuration)
         
         // Hide the gameView by default, show uiview
-        for view in gameViews { view.alpha = 0 }
-        for view in startViews { view.alpha = 1 }
+        for view in gameViews { view.isHidden = true }
+        for view in startViews { view.isHidden = false }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -152,9 +152,6 @@ class GameViewController: UIViewController {
             CDAlertView.createInfoAlert().show()
         case pauseButton:
             GameManager.shared.togglePauseState()
-            // Show a button to denote the other state (e.g. if paused, show play)
-            pauseButton.setImage(GameManager.shared.getPauseState() ? #imageLiteral(resourceName: "play") : #imageLiteral(resourceName: "pause"),
-                                 for: .normal)
         case buyWhaleButton:
             attemptItemBuy(ofBirdPrice: Whale.birdPrice) {
                 setWhaleCount(to: currentWhaleCount + 1)
@@ -186,10 +183,12 @@ class GameViewController: UIViewController {
     
     // MARK: Custom functions
     
+    // Called by notifications
     private func setBirdLabelToTotalBirdsCount() {
         birdCountLabel.text = "\(currentBirdsCount)"
     }
     
+    // Attempts ot buy an item with the given price
     private func attemptItemBuy(ofBirdPrice price: Int, withSuccessCompletion successCompletion: @escaping () -> ()) {
         if price <= currentBirdsCount {
             setBirdCount(to: currentBirdsCount - price)
@@ -240,8 +239,13 @@ extension GameViewController: GameManagerDelegate {
         birdCountLabel.text = "+\(0)"
         
         // show the gameView, but hide the start buttons
-        for view in gameViews { view.alpha = 1 }
-        for view in startViews { view.alpha = 0 }
+        for view in gameViews { view.isHidden = false }
+        for view in startViews { view.isHidden = true }
+    }
+    
+    @objc func gamePauseStateChanged(toState state: Bool) {
+        // Hide the pause button since we have the pause vc open now.
+        pauseButton.isHidden = state
     }
     
     @objc func waveDidComplete(waveNumber: Int) {
@@ -256,8 +260,8 @@ extension GameViewController: GameManagerDelegate {
             GameManager.shared.gameNode.isHidden = true
             
             // Hide the gameViews
-            for view in self.gameViews { view.alpha = 0 }
-            for view in self.startViews { view.alpha = 1 }
+            for view in self.gameViews { view.isHidden = true }
+            for view in self.startViews { view.isHidden = false }
             
             // User should not be toggling any buttons anymore
             self.waterMineToggleButton.isToggled = false

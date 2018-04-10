@@ -67,6 +67,7 @@ public class GameManager: NSObject {
             } else {
                 resumeGame()
             }
+            delegate?.gamePauseStateChanged?(toState: paused)
         }
     }
     
@@ -174,6 +175,9 @@ extension GameManager {
         Throws if the game was already started */
     public func startGame() {
         if !hasStartedGame {
+            // The game should not be paused at the start
+            paused = false
+            
             // While seemingly arbitrary, this timer prevents an asynchronous crash
             // caused by objects still deleting in a previous game's thread.
             Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
@@ -232,8 +236,16 @@ extension GameManager {
         curPoints   = 0
         curWave     = wave
         
+        paused = false
         startCurrentWave()
         delegate?.gameDidStart?()
+    }
+    
+    // Called by interfaces to force a game quit
+    public func forceQuitSession() {
+        if hasStartedGame {
+            performGameOverSequence()
+        }
     }
     
     // Should be called whenever the game should end

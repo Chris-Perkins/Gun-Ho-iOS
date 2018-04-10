@@ -138,7 +138,7 @@ class AuthenticationViewController: UIViewController {
                                               forKey: self.userNameKey)
                     
                     // Unwind back to the main view
-                    self.performSegue(withIdentifier: "unwind", sender: self)
+                    self.dismiss(animated: true, completion: nil)
                 } else {
                     // Unsuccessful score post; tell the user.
                     
