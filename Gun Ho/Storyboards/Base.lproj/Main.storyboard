@@ -15,47 +15,109 @@
         <!--Info View Controller-->
         <scene sceneID="gx8-hQ-ROh">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="wbB-Qc-O0E" customClass="InfoViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wbB-Qc-O0E" customClass="InfoViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wXl-D5-Mcd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gg-IB-j1O">
-                                <rect key="frame" x="20" y="40" width="48" height="48"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fu-Yc-PX4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gg-IB-j1O">
+                                        <rect key="frame" x="16" y="16" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="2Gg-IB-j1O" secondAttribute="height" multiplier="1:1" id="gQE-61-HzU"/>
+                                            <constraint firstAttribute="width" constant="48" id="ipB-KQ-whM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="RJk-t9-Nhy" kind="unwind" unwindAction="unwindWithSegue:" id="T5z-u7-m32"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XUl-wh-TeI">
+                                        <rect key="frame" x="84" y="28" width="207" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="cRZ-lq-dDc"/>
+                                        </constraints>
+                                        <string key="text">HELP NEEDED!
+PIRATES ARE INVADING!</string>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.40332847833633423" blue="0.38081318140029907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="2Gg-IB-j1O" secondAttribute="height" multiplier="1:1" id="gQE-61-HzU"/>
-                                    <constraint firstAttribute="width" constant="48" id="ipB-KQ-whM"/>
+                                    <constraint firstItem="2Gg-IB-j1O" firstAttribute="top" secondItem="7fu-Yc-PX4" secondAttribute="top" constant="16" id="6Ue-VW-LxU"/>
+                                    <constraint firstItem="XUl-wh-TeI" firstAttribute="centerX" secondItem="7fu-Yc-PX4" secondAttribute="centerX" id="FZD-sz-CQU"/>
+                                    <constraint firstItem="2Gg-IB-j1O" firstAttribute="leading" secondItem="7fu-Yc-PX4" secondAttribute="leading" constant="16" id="Osb-Yx-wZg"/>
+                                    <constraint firstItem="XUl-wh-TeI" firstAttribute="top" secondItem="7fu-Yc-PX4" secondAttribute="top" constant="28" id="R9m-W5-TKk"/>
+                                    <constraint firstItem="XUl-wh-TeI" firstAttribute="width" secondItem="7fu-Yc-PX4" secondAttribute="width" constant="-168" id="X30-ue-taU"/>
+                                    <constraint firstAttribute="height" constant="104" id="xzJ-0i-OgK"/>
                                 </constraints>
-                                <state key="normal" title="Back"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWf-kM-jC3">
+                                <rect key="frame" x="187.5" y="613" width="187.5" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="View on GitHub">
+                                    <color key="titleColor" red="0.226419907" green="0.27255566910000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <segue destination="RJk-t9-Nhy" kind="unwind" unwindAction="unwindWithSegue:" id="T5z-u7-m32"/>
+                                    <action selector="buttonPress:" destination="wbB-Qc-O0E" eventType="touchUpInside" id="rez-PV-CzH"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xPu-IP-87B">
-                                <rect key="frame" x="67.5" y="279.5" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTx-eL-gFH">
+                                <rect key="frame" x="0.0" y="104" width="375" height="501"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="J2e-d9-5zQ"/>
-                                    <constraint firstAttribute="height" constant="128" id="pBh-JI-FfY"/>
-                                </constraints>
-                                <string key="text">The main objective of Gun Ho is to protect to the island from invading pirates coming to steal your loot. Tap on ships to do damage to them.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l78-mg-GTG">
+                                <rect key="frame" x="0.0" y="613" width="187.5" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="Email Us">
+                                    <color key="titleColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPress:" destination="wbB-Qc-O0E" eventType="touchUpInside" id="oP9-BH-riF"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xPu-IP-87B" firstAttribute="centerY" secondItem="PIE-AF-AlW" secondAttribute="centerY" id="7BJ-MP-3zq"/>
-                            <constraint firstItem="xPu-IP-87B" firstAttribute="centerX" secondItem="PIE-AF-AlW" secondAttribute="centerX" id="Wf3-2W-Oyy"/>
-                            <constraint firstItem="2Gg-IB-j1O" firstAttribute="top" secondItem="PIE-AF-AlW" secondAttribute="top" constant="20" id="j3T-Zd-7fK"/>
-                            <constraint firstItem="2Gg-IB-j1O" firstAttribute="leading" secondItem="PIE-AF-AlW" secondAttribute="leading" constant="20" id="kIh-If-9DX"/>
+                            <constraint firstItem="PIE-AF-AlW" firstAttribute="trailing" secondItem="DWf-kM-jC3" secondAttribute="trailing" id="0Cj-rb-I3o"/>
+                            <constraint firstItem="l78-mg-GTG" firstAttribute="width" secondItem="wXl-D5-Mcd" secondAttribute="width" multiplier="0.5" id="0ia-Ba-TsW"/>
+                            <constraint firstItem="DWf-kM-jC3" firstAttribute="top" secondItem="NTx-eL-gFH" secondAttribute="bottom" constant="8" id="2Vs-Tt-9zA"/>
+                            <constraint firstItem="l78-mg-GTG" firstAttribute="leading" secondItem="PIE-AF-AlW" secondAttribute="leading" id="510-6N-xnG"/>
+                            <constraint firstItem="7fu-Yc-PX4" firstAttribute="top" secondItem="wXl-D5-Mcd" secondAttribute="top" id="7KT-D7-RCf"/>
+                            <constraint firstItem="NTx-eL-gFH" firstAttribute="trailing" secondItem="PIE-AF-AlW" secondAttribute="trailing" id="FAf-9t-6Km"/>
+                            <constraint firstItem="l78-mg-GTG" firstAttribute="top" secondItem="NTx-eL-gFH" secondAttribute="bottom" constant="8" id="Gat-bj-rpI"/>
+                            <constraint firstItem="NTx-eL-gFH" firstAttribute="leading" secondItem="PIE-AF-AlW" secondAttribute="leading" id="LVh-8E-1SR"/>
+                            <constraint firstItem="DWf-kM-jC3" firstAttribute="width" secondItem="wXl-D5-Mcd" secondAttribute="width" multiplier="0.5" id="Wbj-1L-xiF"/>
+                            <constraint firstItem="PIE-AF-AlW" firstAttribute="bottom" secondItem="DWf-kM-jC3" secondAttribute="bottom" constant="20" id="aW2-7S-K33"/>
+                            <constraint firstItem="7fu-Yc-PX4" firstAttribute="leading" secondItem="PIE-AF-AlW" secondAttribute="leading" id="gGF-sy-IG0"/>
+                            <constraint firstItem="7fu-Yc-PX4" firstAttribute="width" secondItem="wXl-D5-Mcd" secondAttribute="width" id="jXR-Gh-3fd"/>
+                            <constraint firstItem="PIE-AF-AlW" firstAttribute="bottom" secondItem="l78-mg-GTG" secondAttribute="bottom" constant="20" id="l56-nV-G3d"/>
+                            <constraint firstItem="NTx-eL-gFH" firstAttribute="top" secondItem="7fu-Yc-PX4" secondAttribute="bottom" id="wLu-pd-8S0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PIE-AF-AlW"/>
                     </view>
+                    <connections>
+                        <outlet property="emailUsButton" destination="l78-mg-GTG" id="KOh-Wl-sK8"/>
+                        <outlet property="githubButton" destination="DWf-kM-jC3" id="9Pn-mv-iJm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6i-3s-bqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="RJk-t9-Nhy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="817" y="454"/>
+            <point key="canvasLocation" x="816.79999999999995" y="453.82308845577217"/>
         </scene>
         <!--Authentication View Controller-->
         <scene sceneID="CXv-pE-ja5">
