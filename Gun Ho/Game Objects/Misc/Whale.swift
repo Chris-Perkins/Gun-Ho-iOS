@@ -36,6 +36,11 @@ public class Whale: GameObject {
             whalePhysicsBody.categoryBitMask    = CollisionType.whale
             whalePhysicsBody.collisionBitMask   = CollisionType.whale
         }
+        
+        // Remove the whale's tail animation
+        if let animationKey = whaleNode.childNodes.first?.childNodes.first?.animationKeys.first {
+            whaleNode.childNodes[0].childNodes[0].removeAnimation(forKey: animationKey)
+        }
     }
     
     required public init?(coder aDecoder: NSCoder) {
