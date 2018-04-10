@@ -185,9 +185,8 @@
                                             <action selector="buttonPress:" destination="vwb-Kj-dXd" eventType="touchUpInside" id="FBv-Dt-bjG"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-fc-ZXY">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-fc-ZXY">
                                         <rect key="frame" x="0.0" y="200" width="258" height="168"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.91000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Quit">
@@ -199,17 +198,21 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="OCf-fc-ZXY" secondAttribute="bottom" id="6HT-PP-jCz"/>
+                                    <constraint firstItem="OCf-fc-ZXY" firstAttribute="leading" secondItem="AUI-8m-j2V" secondAttribute="leading" id="87d-eb-HqY"/>
                                     <constraint firstItem="aPU-zs-0tt" firstAttribute="top" secondItem="AUI-8m-j2V" secondAttribute="top" id="M5F-Kv-tBk"/>
+                                    <constraint firstItem="OCf-fc-ZXY" firstAttribute="height" secondItem="AUI-8m-j2V" secondAttribute="height" multiplier="0.5" constant="-16" id="O44-tw-Yle"/>
                                     <constraint firstItem="aPU-zs-0tt" firstAttribute="height" secondItem="AUI-8m-j2V" secondAttribute="height" multiplier="0.5" constant="-16" id="aZy-0Z-4EF"/>
                                     <constraint firstAttribute="trailing" secondItem="aPU-zs-0tt" secondAttribute="trailing" id="dQ9-H9-g1R"/>
                                     <constraint firstItem="aPU-zs-0tt" firstAttribute="leading" secondItem="AUI-8m-j2V" secondAttribute="leading" id="noX-Cj-OHA"/>
+                                    <constraint firstAttribute="trailing" secondItem="OCf-fc-ZXY" secondAttribute="trailing" id="tid-Bx-G0c"/>
                                     <constraint firstAttribute="width" constant="258" id="xeT-AT-Rea"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="AUI-8m-j2V" firstAttribute="height" secondItem="1Lw-tx-Ptg" secondAttribute="height" multiplier="0.5" id="Eup-y1-83S"/>
                             <constraint firstItem="AUI-8m-j2V" firstAttribute="centerX" secondItem="Dn3-ZU-bbn" secondAttribute="centerX" id="dSD-5P-6hh"/>
+                            <constraint firstItem="AUI-8m-j2V" firstAttribute="height" secondItem="1Lw-tx-Ptg" secondAttribute="height" multiplier="0.5" id="mji-oI-VoS"/>
                             <constraint firstItem="AUI-8m-j2V" firstAttribute="centerY" secondItem="Dn3-ZU-bbn" secondAttribute="centerY" id="wo6-G2-lOd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dn3-ZU-bbn"/>
@@ -248,7 +251,6 @@
                                 <state key="normal" image="pause"/>
                                 <connections>
                                     <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="K1b-So-3Hl"/>
-                                    <segue destination="vwb-Kj-dXd" kind="show" id="fmg-ux-gYh"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3a-9Y-d8j" userLabel="Bird Counter">
@@ -445,11 +447,12 @@
                         <outletCollection property="gameViews" destination="SH2-Nj-vYV" collectionClass="NSMutableArray" id="BT3-uT-vg4"/>
                         <outletCollection property="gameViews" destination="c1I-aY-XTD" collectionClass="NSMutableArray" id="t2a-e2-tsQ"/>
                         <segue destination="hYc-aY-VED" kind="show" identifier="showAuthSegue" id="4bh-K1-j0A"/>
+                        <segue destination="vwb-Kj-dXd" kind="show" identifier="showPauseSegue" id="N0m-rL-cn6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.799999999999997" y="88.605697151424295"/>
+            <point key="canvasLocation" x="33" y="96"/>
         </scene>
     </scenes>
     <resources>

@@ -59,6 +59,11 @@ public class GameManager: NSObject {
     // Whether or not the game has started
     private var hasStartedGame = false
     
+    // Returns whether or not the game is active
+    public var inActiveGame: Bool {
+        return hasStartedGame
+    }
+    
     // Whether or not the game is paused
     private var paused = false {
         didSet {
@@ -191,6 +196,11 @@ extension GameManager {
     
     /* Note: logic for pausing is handled by the didSet handler */
     public func setPauseState(to state: Bool) {
+        /* NOTE: reasoning for this line seems dumb.
+            If we unpause all objects if they're already unpaused,
+            then they will attempt to perform their movement operations
+            TWICE. This causes issues with birds since they'll look
+            like spazzy gremlins. */
         if paused != state {
             paused = state
         }

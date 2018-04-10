@@ -24,7 +24,7 @@
 
 /* Info Alert Strings */
 "Alert.Info.Title" = "Adventurers Needed!";
-"Alert.Info.Desc"  = "Pirates are invading for our treasure! Scare them off by tapping on them or by using watermines and whales. Good luck, adventurer!";
+"Alert.Info.Desc"  = "Pirate ships are invading for our treasure! Scare them off by tapping, or blow them away using watermines and whales. Good luck, adventurer!";
 "Alert.Info.Button.Site" = "View Site";
 
 /* General String Messages */

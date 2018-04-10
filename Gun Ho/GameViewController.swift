@@ -244,8 +244,14 @@ extension GameViewController: GameManagerDelegate {
     }
     
     @objc func gamePauseStateChanged(toState state: Bool) {
-        // Hide the pause button since we have the pause vc open now.
-        pauseButton.isHidden = state
+        // We only need to modify the storyboard if we're in an active game
+        if GameManager.shared.inActiveGame {
+            // Hide the pause button since we have the pause vc open now.
+            pauseButton.isHidden = state
+            if state {
+                performSegue(withIdentifier: "showPauseSegue", sender: self)
+            }
+        }
     }
     
     @objc func waveDidComplete(waveNumber: Int) {
@@ -331,8 +337,7 @@ extension GameViewController: UIGestureRecognizerDelegate {
         let hits = sceneView.hitTest(location, options: nil)
         
         // If we hit a node and the game isn't paused...
-        if let hitObject = hits.first?.node,
-           !GameManager.shared.getPauseState() {
+        if let hitObject = hits.first?.node {
             
             if let boat = hitObject.boatParent {
                 boat.decrementHealth()

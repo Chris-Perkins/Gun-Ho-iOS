@@ -9,7 +9,7 @@
 import UIKit
 import CDAlertView
 
-class AuthenticationViewController: UIViewController {
+class AuthenticationViewController: BlurredViewController {
     // MARK: View Properties
     
     // Light-status bar display
@@ -104,14 +104,6 @@ class AuthenticationViewController: UIViewController {
         
         // Attempts to load the username from a previous login
         usernameTextField.text = UserDefaults.standard.object(forKey: userNameKey) as? String ?? ""
-        
-        // Creates a blur and sends it to the back
-        let blurView = UIVisualEffectView(effect:
-            UIBlurEffect(style: UIBlurEffectStyle.light))
-        blurView.alpha = 0.5
-        view.addSubview(blurView)
-        NSLayoutConstraint.clingViewToView(view: blurView, toView: view)
-        view.sendSubview(toBack: blurView)
     }
     
     // MARK: View actions

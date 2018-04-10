@@ -39,6 +39,7 @@
 		22BB2EB8204390A400CA71B3 /* MathExpressionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */; };
 		22C9F378207BE49E00AFE586 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9F377207BE49E00AFE586 /* NotificationNames.swift */; };
 		22E1A184207D2EAE00EAD597 /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1A183207D2EAE00EAD597 /* PauseViewController.swift */; };
+		22E1A186207D501C00EAD597 /* BlurredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1A185207D501C00EAD597 /* BlurredViewController.swift */; };
 		22E1A875202AAB5E009A5BFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E1A874202AAB5E009A5BFC /* AppDelegate.swift */; };
 		22E1A877202AAB5E009A5BFC /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A876202AAB5E009A5BFC /* art.scnassets */; };
 		22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E1A87A202AAB5E009A5BFC /* Main.storyboard */; };
@@ -86,6 +87,7 @@
 		22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExpressionExtensions.swift; sourceTree = "<group>"; };
 		22C9F377207BE49E00AFE586 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		22E1A183207D2EAE00EAD597 /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
+		22E1A185207D501C00EAD597 /* BlurredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredViewController.swift; sourceTree = "<group>"; };
 		22E1A871202AAB5E009A5BFC /* Gun Ho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gun Ho.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E1A874202AAB5E009A5BFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E1A876202AAB5E009A5BFC /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -222,8 +224,9 @@
 				2245B60E20336A4B00F1369B /* Assets.xcassets */,
 				2245B61120336A9800F1369B /* Storyboards */,
 				222D6404206457930030196C /* Views */,
-				2245B60F20336A8B00F1369B /* GameViewController.swift */,
 				221F87B32077068A00EA464C /* AuthenticationViewController.swift */,
+				2245B60F20336A8B00F1369B /* GameViewController.swift */,
+				22E1A185207D501C00EAD597 /* BlurredViewController.swift */,
 				22E1A183207D2EAE00EAD597 /* PauseViewController.swift */,
 				22AE4EC6206819EB0012089D /* WebRequestHandler.swift */,
 				225282B4207A9C1900DE958B /* UserDefaultsVariables.swift */,
@@ -416,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22AE4EC7206819EB0012089D /* WebRequestHandler.swift in Sources */,
+				22E1A186207D501C00EAD597 /* BlurredViewController.swift in Sources */,
 				221F87B62077CEAD00EA464C /* ToggleableButton.swift in Sources */,
 				227F984C2034CA7D007FF294 /* SCNNodeExtensions.swift in Sources */,
 				22A3F5E62045D5AB00D89358 /* BoatSpawner.swift in Sources */,

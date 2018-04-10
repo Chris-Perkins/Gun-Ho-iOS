@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PauseViewController: UIViewController {
+class PauseViewController: BlurredViewController{
     
     // MARK: Properties
     
@@ -20,7 +20,7 @@ class PauseViewController: UIViewController {
     @IBAction func buttonPress(_ sender: UIButton) {
         switch sender {
         case resumeButton:
-            GameManager.shared.togglePauseState()
+            GameManager.shared.setPauseState(to: false)
             dismiss(animated: true, completion: nil)
         case quitButton:
             GameManager.shared.forceQuitSession()
