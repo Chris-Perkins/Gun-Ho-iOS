@@ -133,7 +133,7 @@ class Boat: GameObject {
     // Causes boat to look at the island, pop up, then move towards the island
     public func performSpawnOperations() {
         // Keep a reference to the original scale for popping boat up
-        let originalScale = GameManager.shared.gameNode.scale
+        let originalScale = scale
         
         // Set the boat to be invisble and then "pop" it out.
         scale = SCNVector3(0, 0, 0)
@@ -163,8 +163,6 @@ class Boat: GameObject {
             SCNTransaction.animationDuration = CFTimeInterval(timeToCenter)
             self.position = SCNVector3(0, self.position.y, 0)
         }
-        
-        attachBoatSpawnParticle()
     }
     
     // MARK: Particle adding
@@ -176,16 +174,6 @@ class Boat: GameObject {
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
             self.removeParticleSystem(woodParticles)
-        }
-    }
-    
-    // Used to identify newly spawned boats
-    private func attachBoatSpawnParticle() {
-        let spawnParticles = SCNParticleSystem(named: "boat-spawn", inDirectory: nil)!
-        addParticleSystem(spawnParticles)
-        
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
-            self.removeParticleSystem(spawnParticles)
         }
     }
 }

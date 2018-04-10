@@ -37,9 +37,16 @@ public class Whale: GameObject {
             whalePhysicsBody.collisionBitMask   = CollisionType.whale
         }
         
-        // Remove the whale's tail animation
-        if let animationKey = whaleNode.childNodes.first?.childNodes.first?.animationKeys.first {
-            whaleNode.childNodes[0].childNodes[0].removeAnimation(forKey: animationKey)
+        // Remove the whale's tail animation (if it exists)
+        if let animatedNode = whaleNode.childNodes.first?.childNodes.first,
+            animatedNode.animationKeys.first != nil {
+            
+            animatedNode.removeAllAnimations()
+        }
+        
+        // Destroy the whale after it's been alive for it's duration
+        Timer.scheduledTimer(withTimeInterval: Whale.longevity, repeats: false) { (timer) in
+            self.destroy()
         }
     }
     

@@ -341,10 +341,6 @@ extension GameManager {
         whale.position = spawnPosition
         worldScene.addChildNode(whale)
         whale.look(at: island.worldPosition)
-        
-        Timer.scheduledTimer(withTimeInterval: Whale.longevity, repeats: false) { (timer) in
-            whale.destroy()
-        }
     }
     
     public func spawnWaterMine(atWorldScenePosition spawnPosition: SCNVector3 = SCNVector3(0, 0, 0)) {

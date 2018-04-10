@@ -31,8 +31,7 @@ public func appendNewScore(_ score: Int) {
 // MARK: Whales Count Getter/Setter
 
 public var currentWhaleCount: Int {
-    return 100
-    //return UserDefaults.standard.object(forKey: whalesKey) as? Int ?? 0
+    return UserDefaults.standard.object(forKey: whalesKey) as? Int ?? 0
 }
 
 public func setWhaleCount(to value: Int) {

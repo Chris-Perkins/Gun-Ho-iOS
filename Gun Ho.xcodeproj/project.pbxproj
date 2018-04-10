@@ -47,7 +47,7 @@
 		22F212772073E8EB00518DAF /* WaterMine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F212762073E8EB00518DAF /* WaterMine.swift */; };
 		22F2127D2073EEB500518DAF /* boat-damage.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 22F2127B2073EEB500518DAF /* boat-damage.scnp */; };
 		22F2127F2073EFE500518DAF /* wood.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F2127E2073EFE500518DAF /* wood.png */; };
-		22F2128120746A7500518DAF /* boat-spawn.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 22F2128020746A7400518DAF /* boat-spawn.scnp */; };
+		22F2128120746A7500518DAF /* spawn.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 22F2128020746A7400518DAF /* spawn.scnp */; };
 		22F2128320746A8400518DAF /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 22F2128220746A8400518DAF /* spark.png */; };
 		6916399EB0EF7D759FD33A5B /* Pods_Gun_Ho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */; };
 /* End PBXBuildFile section */
@@ -96,7 +96,7 @@
 		22F212762073E8EB00518DAF /* WaterMine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterMine.swift; sourceTree = "<group>"; };
 		22F2127B2073EEB500518DAF /* boat-damage.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = "boat-damage.scnp"; sourceTree = "<group>"; };
 		22F2127E2073EFE500518DAF /* wood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood.png; sourceTree = "<group>"; };
-		22F2128020746A7400518DAF /* boat-spawn.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = "boat-spawn.scnp"; sourceTree = "<group>"; };
+		22F2128020746A7400518DAF /* spawn.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = spawn.scnp; sourceTree = "<group>"; };
 		22F2128220746A8400518DAF /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		4A73BA3E658AB3189835D6AB /* Pods-Gun Ho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gun Ho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gun Ho/Pods-Gun Ho.release.xcconfig"; sourceTree = "<group>"; };
 		74EB10B75494D1E989EAD7E7 /* Pods_Gun_Ho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gun_Ho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,7 +251,7 @@
 				22F2128220746A8400518DAF /* spark.png */,
 				22F2127E2073EFE500518DAF /* wood.png */,
 				22F2127B2073EEB500518DAF /* boat-damage.scnp */,
-				22F2128020746A7400518DAF /* boat-spawn.scnp */,
+				22F2128020746A7400518DAF /* spawn.scnp */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 				22F2127D2073EEB500518DAF /* boat-damage.scnp in Resources */,
 				22F2127F2073EFE500518DAF /* wood.png in Resources */,
 				222D640E2064ACBE0030196C /* Localizable.strings in Resources */,
-				22F2128120746A7500518DAF /* boat-spawn.scnp in Resources */,
+				22F2128120746A7500518DAF /* spawn.scnp in Resources */,
 				22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */,
 				22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */,
 				224C5DFF20718CCE006ED4BE /* Assets.xcassets in Resources */,

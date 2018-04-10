@@ -33,6 +33,7 @@ public class GameObject: SCNNode {
         
         name = UUID().uuidString
         GameManager.shared.gameObjects.append(self)
+        attachSpawnParticles()
     }
     
     public required init?(coder aDecoder: NSCoder) {

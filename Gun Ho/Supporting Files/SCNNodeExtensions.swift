@@ -20,4 +20,14 @@ extension SCNNode {
             completionHandler()
         }
     }
+    
+    // Used to identify newly spawned boats
+    public func attachSpawnParticles() {
+        let spawnParticles = SCNParticleSystem(named: "spawn", inDirectory: nil)!
+        addParticleSystem(spawnParticles)
+        
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+            self.removeParticleSystem(spawnParticles)
+        }
+    }
 }
