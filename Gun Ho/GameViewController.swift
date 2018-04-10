@@ -14,16 +14,27 @@ class GameViewController: UIViewController {
     
     // MARK: Properties
     
+    // Light-status bar display
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // An enum to signify what spawn state we're currently in.
     public enum SpawningMode {
         case whale
         case watermine
         case none
     }
+    // The mode we currently spawn in
+    private var currentSpawningMode: SpawningMode = .none
     
-    @IBOutlet var sceneView: ARSCNView!
-    @IBOutlet weak var guideView: GuideView!
+    // The following arrays are used to help us hide and display views as necessary.
     @IBOutlet var gameViews: [UIView]!
     @IBOutlet var startViews: [UIView]!
+    
+    // The following are references to storyboard views for use in ease of passing information.
+    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var guideView: GuideView!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var birdCountLabel: UILabel!
     @IBOutlet weak var waterMineToggleButton: ToggleableButton!
@@ -45,9 +56,6 @@ class GameViewController: UIViewController {
             }
         }
     }
-    
-    // The mode we currently spawn in
-    private var currentSpawningMode: SpawningMode = .none
     
     // MARK: Life cycle
     
@@ -121,19 +129,18 @@ class GameViewController: UIViewController {
         sceneView.session.pause()
     }
     
+    /* Whenever we're segueing from this storyboard to the auth vc,
+        We must have ended the game. Set the display score to whatever score this is. */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let authVC = segue.destination as? AuthenticationViewController {
             // Sets the score for the authentication controller
             if previousScoresReference.count != 0 {
                 authVC.displayScore = previousScoresReference[previousScoresReference.count - 1]
             } else {
+                // Simply catching out of bounds errors. this shouldn't happen.
                 authVC.displayScore = -1
             }
         }
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
     
     // MARK: Actions

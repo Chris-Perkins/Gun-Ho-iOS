@@ -12,13 +12,14 @@ class InfoViewController: UIViewController {
     
     // MARK: Properties
     
-    @IBOutlet weak var emailUsButton: UIButton!
-    @IBOutlet weak var githubButton: UIButton!
-    
-    
+    // Light-status bar display
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    // IBOutlets
+    @IBOutlet weak var emailUsButton: UIButton!
+    @IBOutlet weak var githubButton: UIButton!
     
     // MARK: Actions
     

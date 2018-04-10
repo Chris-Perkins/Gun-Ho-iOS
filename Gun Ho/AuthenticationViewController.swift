@@ -12,6 +12,11 @@ import CDAlertView
 class AuthenticationViewController: UIViewController {
     // MARK: View Properties
     
+    // Light-status bar display
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // Constraints active when the login state is toggled
     @IBOutlet var loginConstraints: [NSLayoutConstraint]!
     // Constraints active when the signup state is toggled
@@ -26,6 +31,10 @@ class AuthenticationViewController: UIViewController {
     // The toggle state button reference
     @IBOutlet weak var toggleStateButton: UIButton!
     @IBOutlet weak var postScoreButton: UIButton!
+    
+    // A key we use to access UserDefault's stored username
+    // This value is stored upon a successful login or signup.
+    private let userNameKey: String = "StoredUsername"
     
     // Start out on the login screen
     private var isLoginState: Bool = true {
@@ -52,13 +61,12 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
+    // The score we're displaying in the score label
     public var displayScore: Int = 0 {
         didSet {
             setScoreLabelTitle()
         }
     }
-    
-    // MARK: Computed variables
     
     // Determines if we can login based on username textfield & password textfield
     private var canLogin: Bool {
@@ -80,6 +88,32 @@ class AuthenticationViewController: UIViewController {
         return false
     }
     
+    // MARK: View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Sets the title labels appropriately
+        setScoreLabelTitle()
+        setToggleTitle()
+        
+        // Used for determining if the textfields should return
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        passwordConfirmTextField.delegate = self
+        
+        // Attempts to load the username from a previous login
+        usernameTextField.text = UserDefaults.standard.object(forKey: userNameKey) as? String ?? ""
+        
+        // Creates a blur and sends it to the back
+        let blurView = UIVisualEffectView(effect:
+            UIBlurEffect(style: UIBlurEffectStyle.light))
+        blurView.alpha = 0.5
+        view.addSubview(blurView)
+        NSLayoutConstraint.clingViewToView(view: blurView, toView: view)
+        view.sendSubview(toBack: blurView)
+    }
+    
     // MARK: View actions
     
     // Called whenever the toggle button is pressed
@@ -88,6 +122,7 @@ class AuthenticationViewController: UIViewController {
         case toggleStateButton:
             isLoginState = !isLoginState
         case postScoreButton:
+            // This is the logic that will be used when the user wants to post their score
             let postScoreHandler: (Bool, Error?) -> () = { (success, error) in
                 if success {
                     // Successful post; let the user know they're good.
@@ -97,6 +132,12 @@ class AuthenticationViewController: UIViewController {
                                 message: NSLocalizedString("Server.Messages.PostScore.Success.Desc",
                                                            comment: ""),
                                 type: CDAlertViewType.success).showAfterAddingOkayAction()
+                    
+                    // Successful login = saved username
+                    UserDefaults.standard.set(self.usernameTextField.text,
+                                              forKey: self.userNameKey)
+                    
+                    // Unwind back to the main view
                     self.performSegue(withIdentifier: "unwind", sender: self)
                 } else {
                     // Unsuccessful score post; tell the user.
@@ -208,33 +249,6 @@ class AuthenticationViewController: UIViewController {
         
     }
     
-    // MARK: Life-cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Sets the
-        setScoreLabelTitle()
-        setToggleTitle()
-        
-        usernameTextField.delegate = self
-        passwordTextField.delegate = self
-        passwordConfirmTextField.delegate = self
-        
-        // Creates a blur and sends it to the back
-        let blurView = UIVisualEffectView(effect:
-            UIBlurEffect(style: UIBlurEffectStyle.light))
-        blurView.alpha = 0.5
-        view.addSubview(blurView)
-        NSLayoutConstraint.clingViewToView(view: blurView, toView: view)
-        
-        view.sendSubview(toBack: blurView)
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     // MARK: Misc helper functions
     
     // Sets the toggle button's title based on login state
@@ -247,6 +261,7 @@ class AuthenticationViewController: UIViewController {
                                    for: .normal)
     }
     
+    // Sets the score label's title to the displayScore
     private func setScoreLabelTitle() {
         let scoreString = NSLocalizedString("Authentication.ScoreLabel.Text", comment: "")
         
