@@ -12,7 +12,7 @@ public class WaterMine: GameObject {
     
     // MARK: Properties
     
-    public static let birdPricePerFive = 3
+    public static let birdPricePerFive = 1
     
     // MARK: Life Cycle
     

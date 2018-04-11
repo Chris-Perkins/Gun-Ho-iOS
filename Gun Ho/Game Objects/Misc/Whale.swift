@@ -13,7 +13,7 @@ public class Whale: GameObject {
     // MARK: Properties
     
     public static let longevity: CFTimeInterval = 15
-    public static let birdPrice = 5
+    public static let birdPrice = 1
     
     // MARK: Life Cycle
     
