@@ -172,10 +172,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUI-8m-j2V">
-                                <rect key="frame" x="78" y="194" width="258" height="368"/>
+                                <rect key="frame" x="41.333333333333343" y="194" width="331.33333333333326" height="368"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPU-zs-0tt">
-                                        <rect key="frame" x="0.0" y="0.0" width="258" height="168"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="168"/>
                                         <color key="backgroundColor" red="0.35361720730000001" green="0.3627888963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Resume">
@@ -186,7 +186,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-fc-ZXY">
-                                        <rect key="frame" x="0.0" y="200" width="258" height="168"/>
+                                        <rect key="frame" x="0.0" y="200" width="331.33333333333331" height="168"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.91000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Quit">
@@ -206,11 +206,11 @@
                                     <constraint firstAttribute="trailing" secondItem="aPU-zs-0tt" secondAttribute="trailing" id="dQ9-H9-g1R"/>
                                     <constraint firstItem="aPU-zs-0tt" firstAttribute="leading" secondItem="AUI-8m-j2V" secondAttribute="leading" id="noX-Cj-OHA"/>
                                     <constraint firstAttribute="trailing" secondItem="OCf-fc-ZXY" secondAttribute="trailing" id="tid-Bx-G0c"/>
-                                    <constraint firstAttribute="width" constant="258" id="xeT-AT-Rea"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="AUI-8m-j2V" firstAttribute="width" secondItem="1Lw-tx-Ptg" secondAttribute="width" multiplier="0.8" id="BxL-Yb-759"/>
                             <constraint firstItem="AUI-8m-j2V" firstAttribute="centerX" secondItem="Dn3-ZU-bbn" secondAttribute="centerX" id="dSD-5P-6hh"/>
                             <constraint firstItem="AUI-8m-j2V" firstAttribute="height" secondItem="1Lw-tx-Ptg" secondAttribute="height" multiplier="0.5" id="mji-oI-VoS"/>
                             <constraint firstItem="AUI-8m-j2V" firstAttribute="centerY" secondItem="Dn3-ZU-bbn" secondAttribute="centerY" id="wo6-G2-lOd"/>
@@ -283,13 +283,13 @@
                                     <constraint firstAttribute="trailing" secondItem="g6c-KT-bZt" secondAttribute="trailing" id="tvV-lb-mOR"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fkp-4W-blX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fkp-4W-blX">
                                 <rect key="frame" x="20" y="40" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fkp-4W-blX" secondAttribute="height" multiplier="1:1" id="KwL-XH-OiJ"/>
                                     <constraint firstAttribute="width" constant="48" id="PRC-1j-8U7"/>
                                 </constraints>
-                                <state key="normal" title="info"/>
+                                <state key="normal" image="help"/>
                                 <connections>
                                     <action selector="buttonPress:" destination="BV1-FR-VrT" eventType="touchUpInside" id="mCt-MQ-uqT"/>
                                 </connections>
@@ -455,7 +455,8 @@
     </scenes>
     <resources>
         <image name="bird" width="700" height="700"/>
-        <image name="pause" width="42" height="42"/>
+        <image name="help" width="170" height="170"/>
+        <image name="pause" width="170" height="170"/>
         <image name="watermine-buy" width="170" height="170"/>
         <image name="watermine-select" width="170" height="170"/>
         <image name="whale-buy" width="170" height="170"/>

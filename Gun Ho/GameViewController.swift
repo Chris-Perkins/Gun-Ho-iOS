@@ -151,33 +151,39 @@ class GameViewController: UIViewController {
         case infoButton:
             // Shows the info screen
             CDAlertView.createInfoAlert().show()
+            
         case pauseButton:
-            // Toggles the pause state of the game
-            GameManager.shared.togglePauseState()
+            // Pauses the game
+            GameManager.shared.setPauseState(to: true)
+            
         case buyWhaleButton:
             // Attempts to buy a whale
             attemptItemBuy(ofBirdPrice: Whale.birdPrice) {
                 setWhaleCount(to: currentWhaleCount + 1)
                 self.setBirdLabelToTotalBirdsCount()
             }
+            
         case buyWaterMineButton:
             // Attempts to buy a watermine
             attemptItemBuy(ofBirdPrice: WaterMine.birdPricePerFive) {
                 setWaterMineCount(to: currentWaterMineCount + 5)
                 self.setBirdLabelToTotalBirdsCount()
             }
+            
         case waterMineToggleButton:
             // Can't spawn both whales and watermines
             if whaleToggleButton.isToggled {
                 whaleToggleButton.isToggled = false
             }
             currentSpawningMode = waterMineToggleButton.isToggled ? .watermine : .none
+            
         case whaleToggleButton:
             // Can't spawn both whales and watermines
             if waterMineToggleButton.isToggled {
                 waterMineToggleButton.isToggled = false
             }
             currentSpawningMode = whaleToggleButton.isToggled ? .whale : .none
+            
         default:
             fatalError("Button press unhandled in GameViewController")
         }
