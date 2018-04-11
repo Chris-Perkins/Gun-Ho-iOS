@@ -444,8 +444,6 @@
                         <outletCollection property="gameViews" destination="DyY-0V-CAr" collectionClass="NSMutableArray" id="2Yu-J1-bAE"/>
                         <outletCollection property="startViews" destination="lzf-Lt-dxm" collectionClass="NSMutableArray" id="229-XX-I8N"/>
                         <outletCollection property="startViews" destination="mtr-eW-SVE" collectionClass="NSMutableArray" id="992-jM-dG4"/>
-                        <outletCollection property="gameViews" destination="SH2-Nj-vYV" collectionClass="NSMutableArray" id="BT3-uT-vg4"/>
-                        <outletCollection property="gameViews" destination="c1I-aY-XTD" collectionClass="NSMutableArray" id="t2a-e2-tsQ"/>
                         <segue destination="hYc-aY-VED" kind="show" identifier="showAuthSegue" id="4bh-K1-j0A"/>
                         <segue destination="vwb-Kj-dXd" kind="show" identifier="showPauseSegue" id="N0m-rL-cn6"/>
                     </connections>
