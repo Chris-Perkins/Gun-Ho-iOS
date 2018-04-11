@@ -149,15 +149,19 @@ class GameViewController: UIViewController {
     @IBAction func buttonPress(_ sender: UIButton) {
         switch sender {
         case infoButton:
+            // Shows the info screen
             CDAlertView.createInfoAlert().show()
         case pauseButton:
+            // Toggles the pause state of the game
             GameManager.shared.togglePauseState()
         case buyWhaleButton:
+            // Attempts to buy a whale
             attemptItemBuy(ofBirdPrice: Whale.birdPrice) {
                 setWhaleCount(to: currentWhaleCount + 1)
                 self.setBirdLabelToTotalBirdsCount()
             }
         case buyWaterMineButton:
+            // Attempts to buy a watermine
             attemptItemBuy(ofBirdPrice: WaterMine.birdPricePerFive) {
                 setWaterMineCount(to: currentWaterMineCount + 5)
                 self.setBirdLabelToTotalBirdsCount()
@@ -272,6 +276,8 @@ extension GameViewController: GameManagerDelegate {
             // User should not be toggling any buttons anymore
             self.waterMineToggleButton.isToggled = false
             self.whaleToggleButton.isToggled = false
+            // The spawn state is none since we have nothing selected
+            self.currentSpawningMode = .none
             
             // Reset the bird score
             self.setBirdLabelToTotalBirdsCount()
@@ -338,48 +344,49 @@ extension GameViewController: UIGestureRecognizerDelegate {
         
         // If we hit a node and the game isn't paused...
         if let hitObject = hits.first?.node {
-            
-            if let boat = hitObject.boatParent {
-                boat.decrementHealth()
-                boat.shake()
-            }
-            if let selectedPlane = hitObject as? HorizontalPlane {
-                // TODO: Put this into a function...
-                self.selectedPlane?.isHidden = false
-                self.selectedPlane = selectedPlane
-                self.selectedPlane?.isHidden = true
-                GameManager.shared.gameNode.isHidden = false
-                
-                addToNode(rootNode: selectedPlane.parent!)
-                updateGameSceneForAnchor(anchor: selectedPlane.anchor)
-                GameManager.shared.startGame()
-            }
-            if hitObject == GameManager.shared.ocean {
-                // Gets the tapped position relative to the worldScene so we can add the whale there
-                let tapPos = GameManager.shared.ocean.convertPosition(hits.first!.localCoordinates,
-                                                                      to: GameManager.shared.worldScene)
-                switch currentSpawningMode {
-                case .watermine:
-                    if currentWaterMineCount > 0 {
-                        GameManager.shared.spawnWaterMine(atWorldScenePosition: tapPos)
-                        setWaterMineCount(to: currentWaterMineCount - 1)
-                        
-                        if currentWaterMineCount <= 0 {
-                            waterMineToggleButton.isToggled = false
+            if GameManager.shared.inActiveGame {
+                if let boat = hitObject.boatParent {
+                    boat.decrementHealth()
+                    boat.shake()
+                } else if hitObject == GameManager.shared.ocean {
+                    // Gets the tapped position relative to the worldScene so we can add the whale there
+                    let tapPos = GameManager.shared.ocean.convertPosition(hits.first!.localCoordinates,
+                                                                          to: GameManager.shared.worldScene)
+                    switch currentSpawningMode {
+                    case .watermine:
+                        if currentWaterMineCount > 0 {
+                            GameManager.shared.spawnWaterMine(atWorldScenePosition: tapPos)
+                            setWaterMineCount(to: currentWaterMineCount - 1)
+                            
+                            if currentWaterMineCount <= 0 {
+                                waterMineToggleButton.isToggled = false
+                            }
                         }
-                    }
-                case .whale:
-                    if currentWhaleCount > 0 {
-                        GameManager.shared.spawnWhale(atWorldScenePosition: tapPos)
-                        setWhaleCount(to: currentWhaleCount - 1)
-                        
-                        if currentWhaleCount <= 0 {
-                            whaleToggleButton.isToggled = false
+                    case .whale:
+                        if currentWhaleCount > 0 {
+                            GameManager.shared.spawnWhale(atWorldScenePosition: tapPos)
+                            setWhaleCount(to: currentWhaleCount - 1)
+                            
+                            if currentWhaleCount <= 0 {
+                                whaleToggleButton.isToggled = false
+                            }
                         }
+                    default:
+                        // Do nothing (no spawning state called)
+                        break
                     }
-                default:
-                    // Do nothing (no spawning state called)
-                    break
+                }
+            } else {
+                if let selectedPlane = hitObject as? HorizontalPlane {
+                    // TODO: Put this into a function...
+                    self.selectedPlane?.isHidden = false
+                    self.selectedPlane = selectedPlane
+                    self.selectedPlane?.isHidden = true
+                    GameManager.shared.gameNode.isHidden = false
+                    
+                    addToNode(rootNode: selectedPlane.parent!)
+                    updateGameSceneForAnchor(anchor: selectedPlane.anchor)
+                    GameManager.shared.startGame()
                 }
             }
         }

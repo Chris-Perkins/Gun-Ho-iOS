@@ -40,19 +40,6 @@ public class GameManager: NSObject {
     // The delegate we inform of game state changes
     internal var delegate: GameManagerDelegate?
     
-    // The root node for use in spawning and finding the worldScene node
-    public var rootNode: SCNNode? {
-        didSet {
-            guard let islandEnvironment = island.childNode(withName: "environment",
-                                                           recursively: false),
-                let islandPhysicsBody = islandEnvironment.physicsBody else {
-                fatalError("Could not get island/it's physics body!")
-            }
-            islandPhysicsBody.categoryBitMask    = CollisionType.island
-            islandPhysicsBody.collisionBitMask   = CollisionType.island | CollisionType.boat
-        }
-    }
-    
     // Stores all game objects so we can check logic for each frame
     public var gameObjects = [GameObject]()
     
@@ -68,9 +55,9 @@ public class GameManager: NSObject {
     private var paused = false {
         didSet {
             if paused {
-                pauseGame()
+                pauseGameMovement()
             } else {
-                resumeGame()
+                resumeGameMovement()
             }
             delegate?.gamePauseStateChanged?(toState: paused)
         }
@@ -115,6 +102,19 @@ public class GameManager: NSObject {
         }
     }
     
+    // The root node for use in spawning and finding the worldScene node
+    public var rootNode: SCNNode? {
+        didSet {
+            guard let islandEnvironment = island.childNode(withName: "environment",
+                                                           recursively: false),
+                let islandPhysicsBody = islandEnvironment.physicsBody else {
+                    fatalError("Could not get island/it's physics body!")
+            }
+            islandPhysicsBody.categoryBitMask    = CollisionType.island
+            islandPhysicsBody.collisionBitMask   = CollisionType.island | CollisionType.boat
+        }
+    }
+    
     /* The object which holds all objects relevant to the game
         Throws if the gameNode cannot be retrieved */
     lazy public var gameNode: SCNNode = {
@@ -126,13 +126,31 @@ public class GameManager: NSObject {
     
     /* Gets the lights in the scene
         Throws if the lights cannot be retrieved */
-    lazy public var lights: [SCNLight]? = {
-        guard let lightsNode = gameNode.childNode(withName: "lights", recursively: true) else {
-            return nil
+    lazy public var lightParentNode: SCNNode = {
+        guard let lightParentNode = gameNode.childNode(withName: "lights", recursively: true) else {
+            fatalError("Could not get Light Node!")
         }
-        return lightsNode.childNodes.map({ (node) -> SCNLight in
-            return node.light!
-        })
+        return lightParentNode
+    }()
+    
+    /* Gets the center light of the scene */
+    lazy public var centerLightNode: SCNNode = {
+        guard let centerLightNode = self.lightParentNode.childNode(withName: "center-light",
+                                                                   recursively: true) else {
+            fatalError("Could not get center light!")
+        }
+        
+        return centerLightNode
+    }()
+    
+    /* Gets the spotlight node */
+    lazy public var spotlightNode: SCNNode = {
+        guard let spotlightNode = self.lightParentNode.childNode(withName: "spotlight",
+                                                                 recursively: true) else {
+            fatalError("Could not get center light!")
+        }
+        
+        return spotlightNode
     }()
     
     /* Gets the worldScene from the rootnode
@@ -169,10 +187,8 @@ extension GameManager {
     
     // Called on every frame to update the lighting to the provided lighting intensity
     public func updateLightingIntensity(toLightIntensity lightIntensity: CGFloat) {
-        if let lights = lights {
-            for light in lights {
-                light.intensity = lightIntensity
-            }
+        for lightNode in lightParentNode.childNodes {
+            lightNode.light?.intensity = lightIntensity
         }
     }
     
@@ -216,9 +232,9 @@ extension GameManager {
         return paused
     }
     
-    /* Pauses the game; all objects stop moving.
+    /* Pauses the game movement; all objects stop moving.
         NOTE: This does not stop active timers or non-movement animations */
-    private func pauseGame() {
+    private func pauseGameMovement() {
         for object in gameObjects {
             object.pauseMovement()
         }
@@ -227,7 +243,7 @@ extension GameManager {
     }
     
     /* Resumes the game; all objects resume their original movement */
-    private func resumeGame() {
+    private func resumeGameMovement() {
         for object in gameObjects {
             object.resumeMovement()
         }
@@ -341,7 +357,8 @@ extension GameManager {
         Throws if curWave is nil */
     private func createAndStartCurrentWaveBoatSpawner() {
         guard let curWave = curWave else {
-                fatalError("Cannot create a spawner without the wave number")
+            print("Possible error: could not get curWave in boatSpawner start?")
+            return
         }
         
         boatSpawner = BoatSpawner(withPoints: pointsPerWave(curWave),
@@ -381,8 +398,35 @@ extension GameManager: SCNPhysicsContactDelegate {
         
         switch collisionMask {
         case CollisionType.boat | CollisionType.island:
-            OperationQueue.main.addOperation {
-                self.performGameOverSequence()
+            // The game has ended; so we can say the game has not started
+            hasStartedGame = false
+            
+            DispatchQueue.main.async {
+                // Get the boat of contact
+                let boat = (contact.nodeA.parent as? Boat) ?? (contact.nodeB.parent as? Boat) ?? Boat()
+                
+                // Stop all node movement
+                self.pauseGameMovement()
+                
+                // Turn off the center light
+                self.centerLightNode.isHidden = true
+                
+                // Turn on the center light and reposition it
+                self.spotlightNode.isHidden = false
+                self.spotlightNode.worldPosition = boat.worldPosition + SCNVector3(0, 0.1, 0)
+                
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+                    // Turn the lights back on
+                    self.centerLightNode.isHidden = false
+                    
+                    // Turn on the center light and reposition it
+                    self.spotlightNode.isHidden = true
+                    
+                    OperationQueue.main.addOperation {
+                        // Finally, end the game
+                        self.performGameOverSequence()
+                    }
+                }
             }
         case CollisionType.boat | CollisionType.boat:
             OperationQueue.main.addOperation {
