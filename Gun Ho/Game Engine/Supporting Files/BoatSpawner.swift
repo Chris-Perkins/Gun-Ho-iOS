@@ -70,8 +70,8 @@ public class BoatSpawner {
         performingSpawnCycle = true
         
         // Speed up the time between boats depending on current wave
-        Timer.scheduledTimer(withTimeInterval: Double.random(min: 0.1 + 2.5 / Double(Int(1 + wave / 3)),
-                                                             max: 0.5 + 3.5 / Double(Int(1 + wave / 3))),
+        Timer.scheduledTimer(withTimeInterval: Double.random(min: 0.1 + 1.5 / Double(Int(1 + wave / 3)),
+                                                             max: 0.5 + 2.5 / Double(Int(1 + wave / 3))),
                              repeats: false)
         { (timer) in
             // If we reached the end or are no longer spawning...

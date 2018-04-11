@@ -329,10 +329,11 @@ extension GameManager {
     
     // Returns the number of points necessary to pass a wave
     private func pointsPerWave(_ wave: Int) -> Int {
+        let constantFactor    = 10
         let linearFactor      = 3 * wave
         let exponentialFactor = 3^^(wave / 10 - 3)
         
-        return linearFactor + exponentialFactor
+        return exponentialFactor + linearFactor + constantFactor
     }
     
     /* Creates a boat spawner from the current wave's info.
