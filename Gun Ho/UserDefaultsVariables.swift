@@ -15,6 +15,7 @@ fileprivate let whalesKey  = "WhalesCount"
 fileprivate let wMinesKey  = "WaterMinesCount"
 fileprivate let tBirdsKey  = "TotalBirdsCount"
 fileprivate let sawWarnKey = "SawWarningKey"
+fileprivate let demoActKey = "DemoModeActiveKey"
 
 // MARK: Scores Getter/Appender
 
@@ -78,4 +79,10 @@ public var userSawBuyWarning: Bool {
 public func setUserSawBuyWarning(to value: Bool) {
     UserDefaults.standard.set(value, forKey: sawWarnKey)
     UserDefaults.standard.synchronize()
+}
+
+// MARK: is Demo Mode Getter
+
+public var demoModeIsActive: Bool {
+    return UserDefaults.standard.object(forKey: demoActKey) as? Bool ?? false
 }

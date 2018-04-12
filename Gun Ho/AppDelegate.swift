@@ -23,9 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
         if GameManager.shared.inActiveGame {
             GameManager.shared.setPauseState(to: true)
         }
