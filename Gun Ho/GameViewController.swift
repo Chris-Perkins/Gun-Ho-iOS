@@ -189,6 +189,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    // Allows view controllers to unwind back here from segues
     @IBAction func unwind(segue: UIStoryboardSegue) { }
     
     // MARK: Custom functions
@@ -200,6 +201,16 @@ class GameViewController: UIViewController {
     
     // Attempts ot buy an item with the given price
     private func attemptItemBuy(ofBirdPrice price: Int, withSuccessCompletion successCompletion: @escaping () -> ()) {
+        // If the user hasn't seen the buy warning, then show it.
+        if !userSawBuyWarning {
+            // Make them see the buy warning.
+            setUserSawBuyWarning(to: true)
+            CDAlertView.createBuyWarningAlert().show()
+            
+            // Don't actually attempt the transaction now; user has to press again.
+            return
+        }
+        
         if price <= currentBirdsCount {
             setBirdCount(to: currentBirdsCount - price)
             successCompletion()

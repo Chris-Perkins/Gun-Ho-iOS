@@ -10,12 +10,14 @@ import Foundation
 
 // MARK: Constant Key Strings
 
-private let scoresKey = "PreviousScores"
-private let whalesKey = "WhalesCount"
-private let wMinesKey = "WaterMinesCount"
-private let tBirdsKey = "TotalBirdsCount"
+fileprivate let scoresKey  = "PreviousScores"
+fileprivate let whalesKey  = "WhalesCount"
+fileprivate let wMinesKey  = "WaterMinesCount"
+fileprivate let tBirdsKey  = "TotalBirdsCount"
+fileprivate let sawWarnKey = "SawWarningKey"
 
 // MARK: Scores Getter/Appender
+
 public var previousScoresReference: [Int] {
     return UserDefaults.standard.object(forKey: scoresKey) as? [Int] ?? [Int]()
 }
@@ -67,3 +69,13 @@ public func setBirdCount(to value: Int) {
     NotificationCenter.default.post(Notification(name: birdCountSet))
 }
 
+// MARK: User Saw Buy Warning Getter/Setters
+
+public var userSawBuyWarning: Bool {
+    return UserDefaults.standard.object(forKey: sawWarnKey) as? Bool ?? false
+}
+
+public func setUserSawBuyWarning(to value: Bool) {
+    UserDefaults.standard.set(value, forKey: sawWarnKey)
+    UserDefaults.standard.synchronize()
+}

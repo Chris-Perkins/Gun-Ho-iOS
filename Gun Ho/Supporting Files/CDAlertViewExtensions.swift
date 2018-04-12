@@ -9,6 +9,19 @@
 import CDAlertView
 
 extension CDAlertView {
+    public static func createBuyWarningAlert() -> CDAlertView {
+        let buyWarningAlert = CDAlertView(title: NSLocalizedString("Alert.BuyWarning.Title",
+                                                                   comment: ""),
+                                          message: NSLocalizedString("Alert.BuyWarning.Desc",
+                                                                     comment: ""),
+                                          type: CDAlertViewType.warning)
+        buyWarningAlert.add(action: CDAlertViewAction(title: NSLocalizedString("Alert.Button.Ok",
+                                                                               comment: "")))
+        
+        return buyWarningAlert
+    }
+    
+    // Creates an alert to display info about the app
     public static func createInfoAlert() -> CDAlertView {
         let infoAlert = CDAlertView(title: NSLocalizedString("Alert.Info.Title",
                                                              comment: ""),
@@ -16,7 +29,7 @@ extension CDAlertView {
                                                                comment: ""),
                                     type: CDAlertViewType.custom(image: #imageLiteral(resourceName: "bird")))
         
-        infoAlert.add(action: CDAlertViewAction(title: NSLocalizedString("Messages.Close",
+        infoAlert.add(action: CDAlertViewAction(title: NSLocalizedString("Alert.Button.Close",
                                                                          comment: ""),
                                                 font: nil,
                                                 textColor: nil,
@@ -39,8 +52,10 @@ extension CDAlertView {
         return infoAlert
     }
     
+    // Shows this alert after an OK action was added.
     public func showAfterAddingOkayAction() {
-        add(action: CDAlertViewAction(title: NSLocalizedString("Messages.Ok", comment: "")))
+        add(action: CDAlertViewAction(title: NSLocalizedString("Alert.Button.Ok",
+                                                               comment: "")))
         
         show()
     }
