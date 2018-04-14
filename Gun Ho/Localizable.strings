@@ -6,6 +6,17 @@
   Copyright © 2018 Christopher Perkins. All rights reserved.
 */
 
+/* Info Alert Strings */
+"Alert.Button.Ok"    = "Ok";
+"Alert.Button.Close" = "Close";
+
+"Alert.BuyWarning.Title" = "Trades Require One Bird!";
+"Alert.BuyWarning.Desc"  = "All trades are final. Tap the button again to attempt to trade.";
+
+"Alert.Info.Title" = "Adventurers Needed!";
+"Alert.Info.Desc"  = "Pirate ships are invading for our treasure! Scare them off by tapping, or blow them away using watermines and whales. Good luck, adventurer!";
+"Alert.Info.Button.Site" = "View Site";
+
 /* Authentication View Strings */
 "Authentication.ScoreLabel.Text" = "Your Score: {0}";
 
@@ -17,21 +28,14 @@
 "Authentication.Login"  = "I want to login";
 "Authentication.SignUp" = "New? Sign Up!";
 
+/* GameOverViewController Strings */
+
+"GameOver.Labels.New" = " (new!)";
+
 /* Guide Strings */
 "Guide.SelectPlane" = "Before you can begin, scan the room for a flat surface.\nSelect the surface by tapping it.";
 "Guide.StartGame"   = "Start the game by tapping anywhere on the island.";
 "Guide.DestroyBoat" = "An invader!\nDestroy it before it gets to your treasure by tapping it!";
-
-/* Info Alert Strings */
-"Alert.Button.Ok"    = "Ok";
-"Alert.Button.Close" = "Close";
-
-"Alert.BuyWarning.Title" = "Trades Require One Bird!";
-"Alert.BuyWarning.Desc"  = "All trades are final. Tap the button again to attempt to trade.";
-
-"Alert.Info.Title" = "Adventurers Needed!";
-"Alert.Info.Desc"  = "Pirate ships are invading for our treasure! Scare them off by tapping, or blow them away using watermines and whales. Good luck, adventurer!";
-"Alert.Info.Button.Site" = "View Site";
 
 /* Server Responses */
 "Server.Messages.PostScore.Success.Title" = "Score Posted";
