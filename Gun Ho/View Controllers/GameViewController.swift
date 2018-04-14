@@ -31,6 +31,7 @@ class GameViewController: UIViewController {
     // The following arrays are used to help us hide and display views as necessary.
     @IBOutlet var gameViews: [UIView]!
     @IBOutlet var startViews: [UIView]!
+    @IBOutlet weak var guideViewBottomConstraint: NSLayoutConstraint!
     
     // The following are references to storyboard views for use in ease of passing information.
     @IBOutlet var sceneView: ARSCNView!
@@ -102,6 +103,7 @@ class GameViewController: UIViewController {
         
         // Update the bird label
         setBirdLabelToTotalBirdsCount()
+        
         // Update the labels to be what is currently stored
         updateWaterMineCountLabel()
         updateWhaleCountLabel()
@@ -119,8 +121,7 @@ class GameViewController: UIViewController {
         sceneView.session.run(configuration)
         
         // Hide the gameView by default, show uiview
-        for view in gameViews { view.isHidden = true }
-        for view in startViews { view.isHidden = false }
+        changeViewVisibilityToState(ofGameStarted: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -222,6 +223,17 @@ class GameViewController: UIViewController {
                         type: CDAlertViewType.error).showAfterAddingOkayAction()
         }
     }
+    
+    // Changes the visibility of the game views to the given state.
+    private func changeViewVisibilityToState(ofGameStarted gameStarted: Bool) {
+        for view in gameViews { view.isHidden = !gameStarted }
+        for view in startViews { view.isHidden = gameStarted }
+        
+        UIView.animate(withDuration: 0.25) {
+            self.guideViewBottomConstraint.constant = gameStarted ? self.guideView.frame.height : 0
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
 // MARK: NotificationCenter Listening
@@ -260,8 +272,7 @@ extension GameViewController: GameManagerDelegate {
         birdCountLabel.text = "+\(0)"
         
         // show the gameView, but hide the start buttons
-        for view in gameViews { view.isHidden = false }
-        for view in startViews { view.isHidden = true }
+        changeViewVisibilityToState(ofGameStarted: true)
     }
     
     @objc func gamePauseStateChanged(toState state: Bool) {
@@ -286,9 +297,8 @@ extension GameViewController: GameManagerDelegate {
             self.showHorizontalPlanes = true
             GameManager.shared.gameNode.isHidden = true
             
-            // Hide the gameViews
-            for view in self.gameViews { view.isHidden = true }
-            for view in self.startViews { view.isHidden = false }
+            // Hide views related to the game
+            self.changeViewVisibilityToState(ofGameStarted: false)
             
             // User should not be toggling any buttons anymore
             self.waterMineToggleButton.isToggled = false
@@ -323,6 +333,8 @@ extension GameViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let anchor = anchor as? ARPlaneAnchor {
+            guideView.setLabelTextToStep(type: .selectPlane)
+            
             let plane = HorizontalPlane(anchor: anchor)
             plane.isHidden = !showHorizontalPlanes
             planeForAnchor[anchor] = plane

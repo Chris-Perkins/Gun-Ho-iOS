@@ -15,8 +15,8 @@ class GuideView: UIView {
     @IBOutlet weak var guideLabel: UILabel!
 
     public enum GuideType {
+        case scanPlanes
         case selectPlane
-        case startGame
         case destroyBoat
     }
     
@@ -29,7 +29,7 @@ class GuideView: UIView {
             fatalError("Could not get the guide view from the xib. Does it exist?")
         }
         
-        setLabelTextToStep(type: .selectPlane)
+        setLabelTextToStep(type: .scanPlanes)
     
         return guideView
     }
@@ -53,14 +53,16 @@ class GuideView: UIView {
         var guideText: String?
         
         switch(type) {
+        case .scanPlanes:
+            guideText = NSLocalizedString("Guide.ScanPlanes", comment: "")
         case .selectPlane:
             guideText = NSLocalizedString("Guide.SelectPlane", comment: "")
-        case .startGame:
-            guideText = NSLocalizedString("Guide.StartGame", comment: "")
         case .destroyBoat:
             guideText = NSLocalizedString("Guide.DestroyBoat", comment: "")
         }
         
-        guideLabel.text = guideText
+        OperationQueue.main.addOperation {
+            self.guideLabel.text = guideText
+        }
     }
 }

@@ -359,7 +359,7 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVO-k1-xv9">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </arscnView>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-Ay-5Og" customClass="GuideView" customModule="Gun_Ho" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFS-Ay-5Og" customClass="GuideView" customModule="Gun_Ho" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="295" width="667" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="pmB-yM-tK4"/>
@@ -418,7 +418,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZ9-lz-REX" userLabel="Bottom View Left">
-                                <rect key="frame" x="253.5" y="286" width="64" height="64"/>
+                                <rect key="frame" x="253.5" y="211" width="64" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtr-eW-SVE">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
@@ -473,7 +473,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzf-Tc-auY" userLabel="Bottom View Right">
-                                <rect key="frame" x="349.5" y="286" width="64" height="64"/>
+                                <rect key="frame" x="349.5" y="211" width="64" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzf-Lt-dxm">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
@@ -530,14 +530,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="epb-T0-NZ5" firstAttribute="trailing" secondItem="n3a-9Y-d8j" secondAttribute="trailing" constant="20" id="0yc-pI-BUe"/>
-                            <constraint firstItem="epb-T0-NZ5" firstAttribute="bottom" secondItem="cZ9-lz-REX" secondAttribute="bottom" constant="25" id="1BM-hw-FOD"/>
+                            <constraint firstItem="oFS-Ay-5Og" firstAttribute="top" secondItem="cZ9-lz-REX" secondAttribute="bottom" constant="20" id="1Rs-PQ-UbX"/>
                             <constraint firstItem="b30-fj-A4Y" firstAttribute="top" secondItem="epb-T0-NZ5" secondAttribute="top" constant="20" id="3dC-9E-83z"/>
                             <constraint firstItem="cZ9-lz-REX" firstAttribute="centerX" secondItem="EVO-k1-xv9" secondAttribute="centerX" constant="-48" id="3xk-Za-1lc"/>
                             <constraint firstItem="oFS-Ay-5Og" firstAttribute="leading" secondItem="epb-T0-NZ5" secondAttribute="leading" id="4Ai-XU-DVJ"/>
-                            <constraint firstItem="epb-T0-NZ5" firstAttribute="bottom" secondItem="dzf-Tc-auY" secondAttribute="bottom" constant="25" id="GNl-8F-OqM"/>
                             <constraint firstItem="Fkp-4W-blX" firstAttribute="top" secondItem="epb-T0-NZ5" secondAttribute="top" constant="20" id="Gxu-t5-ZTh"/>
                             <constraint firstItem="Fkp-4W-blX" firstAttribute="leading" secondItem="epb-T0-NZ5" secondAttribute="leading" constant="20" id="SjD-op-AV0"/>
                             <constraint firstItem="n3a-9Y-d8j" firstAttribute="top" secondItem="epb-T0-NZ5" secondAttribute="top" constant="20" id="Ykb-Jl-3LX"/>
+                            <constraint firstItem="oFS-Ay-5Og" firstAttribute="top" secondItem="dzf-Tc-auY" secondAttribute="bottom" constant="20" id="c1W-Uk-DGz"/>
                             <constraint firstItem="EVO-k1-xv9" firstAttribute="trailing" secondItem="epb-T0-NZ5" secondAttribute="trailing" id="dOF-Eu-XT0"/>
                             <constraint firstItem="dzf-Tc-auY" firstAttribute="centerX" secondItem="epb-T0-NZ5" secondAttribute="centerX" constant="48" id="erv-Ii-6Pj"/>
                             <constraint firstItem="oFS-Ay-5Og" firstAttribute="bottom" secondItem="epb-T0-NZ5" secondAttribute="bottom" id="f5c-AY-BJo"/>
@@ -554,6 +554,7 @@
                         <outlet property="buyWaterMineButton" destination="mtr-eW-SVE" id="iMm-Jz-hi3"/>
                         <outlet property="buyWhaleButton" destination="lzf-Lt-dxm" id="erR-Hx-CUT"/>
                         <outlet property="guideView" destination="oFS-Ay-5Og" id="L6s-PF-A1W"/>
+                        <outlet property="guideViewBottomConstraint" destination="f5c-AY-BJo" id="bPf-iN-5bf"/>
                         <outlet property="infoButton" destination="Fkp-4W-blX" id="hfd-sS-4Ys"/>
                         <outlet property="pauseButton" destination="b30-fj-A4Y" id="Bj6-8A-23g"/>
                         <outlet property="sceneView" destination="EVO-k1-xv9" id="ucI-lo-EhQ"/>
@@ -567,6 +568,7 @@
                         <outletCollection property="gameViews" destination="DyY-0V-CAr" collectionClass="NSMutableArray" id="2Yu-J1-bAE"/>
                         <outletCollection property="startViews" destination="lzf-Lt-dxm" collectionClass="NSMutableArray" id="229-XX-I8N"/>
                         <outletCollection property="startViews" destination="mtr-eW-SVE" collectionClass="NSMutableArray" id="992-jM-dG4"/>
+                        <outletCollection property="startViews" destination="oFS-Ay-5Og" collectionClass="NSMutableArray" id="kyx-J6-hs7"/>
                         <segue destination="hYc-aY-VED" kind="show" identifier="showGameOverDemoSegue" id="4bh-K1-j0A"/>
                         <segue destination="vwb-Kj-dXd" kind="show" identifier="showPauseSegue" id="N0m-rL-cn6"/>
                         <segue destination="rs1-r4-8jp" kind="show" identifier="showGameOverLiveSegue" id="vjK-C1-onB"/>

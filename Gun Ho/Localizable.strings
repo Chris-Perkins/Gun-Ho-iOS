@@ -33,8 +33,8 @@
 "GameOver.Labels.New" = " (new!)";
 
 /* Guide Strings */
-"Guide.SelectPlane" = "Before you can begin, scan the room for a flat surface.\nSelect the surface by tapping it.";
-"Guide.StartGame"   = "Start the game by tapping anywhere on the island.";
+"Guide.ScanPlanes" = "Before you can begin, scan the room for a flat surface.";
+"Guide.SelectPlane" = "A flat surface has been found!\nTap it to begin the game.";
 "Guide.DestroyBoat" = "An invader!\nDestroy it before it gets to your treasure by tapping it!";
 
 /* Server Responses */
