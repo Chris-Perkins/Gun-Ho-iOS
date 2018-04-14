@@ -146,7 +146,7 @@
                         <outlet property="passwordConfirmTextField" destination="wVu-1T-TlQ" id="xl9-2N-rA7"/>
                         <outlet property="passwordTextField" destination="01j-UW-Z4U" id="0Tr-rd-YNl"/>
                         <outlet property="postScoreButton" destination="40p-Js-kq3" id="CeG-Am-h5r"/>
-                        <outlet property="scoreLabel" destination="RIp-Na-Bc6" id="8Nf-pV-MHd"/>
+                        <outlet property="scoreLabel" destination="RIp-Na-Bc6" id="dES-jP-Qxv"/>
                         <outlet property="toggleStateButton" destination="Acj-g4-Reo" id="XS0-Wc-YXn"/>
                         <outlet property="usernameTextField" destination="NQt-mH-etb" id="jFY-K1-wBd"/>
                         <outletCollection property="signupConstraints" destination="XWo-kf-PSa" collectionClass="NSMutableArray" id="alF-CX-Qss"/>
@@ -160,12 +160,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lnm-gd-5PF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nWu-NB-zUe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="803" y="-219"/>
+            <point key="canvasLocation" x="803" y="-382"/>
+        </scene>
+        <!--Game Over View Controller-->
+        <scene sceneID="b9g-RR-j3t">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="rs1-r4-8jp" customClass="GameOverViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aDI-WW-Yuc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fF-Hp-Cyx">
+                                <rect key="frame" x="188" y="363" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5Te-z9-6rZ"/>
+                                    <constraint firstAttribute="width" constant="39" id="QNS-fl-NLb"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="buttonPress:" destination="rs1-r4-8jp" eventType="touchUpInside" id="8w4-CY-eGG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTB-Vk-lXX">
+                                <rect key="frame" x="186" y="326" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="JDw-GB-P8i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="4fF-Hp-Cyx" firstAttribute="top" secondItem="hTB-Vk-lXX" secondAttribute="bottom" constant="16" id="Kqa-xN-IFM"/>
+                            <constraint firstItem="hTB-Vk-lXX" firstAttribute="centerX" secondItem="ScE-te-7P1" secondAttribute="centerX" id="SOh-z0-vSI"/>
+                            <constraint firstItem="4fF-Hp-Cyx" firstAttribute="centerX" secondItem="ScE-te-7P1" secondAttribute="centerX" id="bl5-vc-fsy"/>
+                            <constraint firstItem="4fF-Hp-Cyx" firstAttribute="centerY" secondItem="ScE-te-7P1" secondAttribute="centerY" id="md7-bJ-XT2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ScE-te-7P1"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="4fF-Hp-Cyx" id="hO4-LF-Znn"/>
+                        <outlet property="scoreLabel" destination="hTB-Vk-lXX" id="6Rj-h6-mnK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ct-gJ-WT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1471" y="96"/>
         </scene>
         <!--Pause View Controller-->
         <scene sceneID="7M0-gg-pLf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8yb-FC-gt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController modalPresentationStyle="overCurrentContext" id="vwb-Kj-dXd" customClass="PauseViewController" customModule="Gun_Ho" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Lw-tx-Ptg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -222,8 +267,9 @@
                         <outlet property="resumeButton" destination="aPU-zs-0tt" id="sCh-cx-kbV"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8yb-FC-gt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802.89855072463774" y="441.84782608695656"/>
+            <point key="canvasLocation" x="803" y="582"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -444,8 +490,9 @@
                         <outletCollection property="gameViews" destination="DyY-0V-CAr" collectionClass="NSMutableArray" id="2Yu-J1-bAE"/>
                         <outletCollection property="startViews" destination="lzf-Lt-dxm" collectionClass="NSMutableArray" id="229-XX-I8N"/>
                         <outletCollection property="startViews" destination="mtr-eW-SVE" collectionClass="NSMutableArray" id="992-jM-dG4"/>
-                        <segue destination="hYc-aY-VED" kind="show" identifier="showAuthSegue" id="4bh-K1-j0A"/>
+                        <segue destination="hYc-aY-VED" kind="show" identifier="showGameOverDemoSegue" id="4bh-K1-j0A"/>
                         <segue destination="vwb-Kj-dXd" kind="show" identifier="showPauseSegue" id="N0m-rL-cn6"/>
+                        <segue destination="rs1-r4-8jp" kind="show" identifier="showGameOverLiveSegue" id="vjK-C1-onB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

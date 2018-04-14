@@ -299,11 +299,12 @@ extension GameManager {
         createAndStartCurrentWaveBoatSpawner()
     }
     
-    /* Should be called whenever the user defeats a wave
-        Throws if curWave is nil */
+    /* Should be called whenever the user defeats a wave */
     private func performWaveCompleteSequence() {
         guard let wave = curWave else {
-            fatalError("Wave cannot be complete; the game was never started!")
+            /* Not an error; we may have asynchronously ended the wave
+                after the game was quit. */
+            return
         }
         
         // Inform the delegate that we completed the wave
@@ -328,8 +329,7 @@ extension GameManager {
         }
     }
     
-    /* Adds the input points to the current and totalPoints variables
-        Throws if curPoints or totalPoints is nil */
+    /* Adds the input points to the current and totalPoints variables */
     public func addPoints(_ points: Int) {
         guard let curPoints = curPoints,
             let totalPoints = totalPoints
@@ -353,8 +353,7 @@ extension GameManager {
     }
     
     /* Creates a boat spawner from the current wave's info.
-        Requires a node to spawn on
-        Throws if curWave is nil */
+        Requires a node to spawn on */
     private func createAndStartCurrentWaveBoatSpawner() {
         guard let curWave = curWave else {
             print("Possible error: could not get curWave in boatSpawner start?")

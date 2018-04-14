@@ -130,10 +130,10 @@ class GameViewController: UIViewController {
         sceneView.session.pause()
     }
     
-    /* Whenever we're segueing from this storyboard to the auth vc,
+    /* Whenever we're segueing from this storyboard to the score displayer,
         We must have ended the game. Set the display score to whatever score this is. */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let authVC = segue.destination as? AuthenticationViewController {
+        if let authVC = segue.destination as? ScoreDisplayViewController {
             // Sets the score for the authentication controller
             if previousScoresReference.count != 0 {
                 authVC.displayScore = previousScoresReference[previousScoresReference.count - 1]
@@ -299,7 +299,7 @@ extension GameViewController: GameManagerDelegate {
             // Reset the bird score
             self.setBirdLabelToTotalBirdsCount()
             
-            self.performSegue(withIdentifier: "showAuthSegue", sender: self)
+            self.performSegue(withIdentifier: "showGameOver\(demoModeIsActive ? "Demo" : "Live")Segue", sender: self)
         }
     }
 }

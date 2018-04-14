@@ -83,6 +83,8 @@ public func setUserSawBuyWarning(to value: Bool) {
 
 // MARK: is Demo Mode Getter
 
+/* Demo mode is activated in the settings application itself,
+    so there is no programmatic setter necessary. */
 public var demoModeIsActive: Bool {
     return UserDefaults.standard.object(forKey: demoActKey) as? Bool ?? false
 }

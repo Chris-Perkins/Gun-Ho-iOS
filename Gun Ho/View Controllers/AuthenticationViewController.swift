@@ -9,7 +9,7 @@
 import UIKit
 import CDAlertView
 
-class AuthenticationViewController: BlurredViewController {
+class AuthenticationViewController: ScoreDisplayViewController {
     // MARK: View Properties
     
     // Light-status bar display
@@ -23,7 +23,6 @@ class AuthenticationViewController: BlurredViewController {
     @IBOutlet var signupConstraints: [NSLayoutConstraint]!
     
     // Username/Password/Confirm fields; just references for validation.
-    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmTextField: UITextField!
@@ -61,13 +60,6 @@ class AuthenticationViewController: BlurredViewController {
         }
     }
     
-    // The score we're displaying in the score label
-    public var displayScore: Int = 0 {
-        didSet {
-            setScoreLabelTitle()
-        }
-    }
-    
     // Determines if we can login based on username textfield & password textfield
     private var canLogin: Bool {
         if let userText = usernameTextField.text,
@@ -93,8 +85,7 @@ class AuthenticationViewController: BlurredViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Sets the title labels appropriately
-        setScoreLabelTitle()
+        // Sets the toggle button's label appropriately
         setToggleTitle()
         
         // Used for determining if the textfields should return
@@ -251,14 +242,6 @@ class AuthenticationViewController: BlurredViewController {
             NSLocalizedString("Authentication.Login",
                               comment: ""),
                                    for: .normal)
-    }
-    
-    // Sets the score label's title to the displayScore
-    private func setScoreLabelTitle() {
-        let scoreString = NSLocalizedString("Authentication.ScoreLabel.Text", comment: "")
-        
-        scoreLabel?.text = scoreString.replacingOccurrences(of: "{0}",
-                                                           with: "\(displayScore)")
     }
 }
 

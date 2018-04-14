@@ -24,7 +24,6 @@
 		225282B5207A9C1900DE958B /* UserDefaultsVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225282B4207A9C1900DE958B /* UserDefaultsVariables.swift */; };
 		225815FA20328EA900F546DD /* MediumBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815F920328EA900F546DD /* MediumBoat.swift */; };
 		225815FC20328F3D00F546DD /* VikingBoat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225815FB20328F3D00F546DD /* VikingBoat.swift */; };
-		2261C1092037D805003E580C /* SceneViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C1082037D805003E580C /* SceneViewExtensions.swift */; };
 		2261C10B2037D960003E580C /* SCNTransactionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */; };
 		226D9D0C205EE47A002F05DD /* CollisionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D9D0B205EE47A002F05DD /* CollisionType.swift */; };
 		226D9D0E205EFAB4002F05DD /* SCNVector4Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */; };
@@ -35,6 +34,8 @@
 		22AC2AF320535F7700645CC5 /* HorizontalPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC2AF220535F7700645CC5 /* HorizontalPlane.swift */; };
 		22AE4EC7206819EB0012089D /* WebRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4EC6206819EB0012089D /* WebRequestHandler.swift */; };
 		22AE4EC920681C120012089D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4EC820681C120012089D /* StringExtensions.swift */; };
+		22B0FC3A20827752001317E0 /* ScoreDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0FC3920827752001317E0 /* ScoreDisplayViewController.swift */; };
+		22B0FC3C20827A0E001317E0 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0FC3B20827A0E001317E0 /* GameOverViewController.swift */; };
 		22B301D5203C9FDA0020CA46 /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B301D4203C9FDA0020CA46 /* SCNVector3Extensions.swift */; };
 		22BB2EB8204390A400CA71B3 /* MathExpressionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */; };
 		22C9F378207BE49E00AFE586 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9F377207BE49E00AFE586 /* NotificationNames.swift */; };
@@ -72,7 +73,6 @@
 		225282B4207A9C1900DE958B /* UserDefaultsVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsVariables.swift; sourceTree = "<group>"; };
 		225815F920328EA900F546DD /* MediumBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumBoat.swift; sourceTree = "<group>"; };
 		225815FB20328F3D00F546DD /* VikingBoat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VikingBoat.swift; sourceTree = "<group>"; };
-		2261C1082037D805003E580C /* SceneViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewExtensions.swift; sourceTree = "<group>"; };
 		2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNTransactionExtensions.swift; sourceTree = "<group>"; };
 		226D9D0B205EE47A002F05DD /* CollisionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionType.swift; sourceTree = "<group>"; };
 		226D9D0D205EFAB4002F05DD /* SCNVector4Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector4Extensions.swift; sourceTree = "<group>"; };
@@ -84,6 +84,8 @@
 		22AE4EC6206819EB0012089D /* WebRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestHandler.swift; sourceTree = "<group>"; };
 		22AE4EC820681C120012089D /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		22AE4ECA20681D620012089D /* Gun-Ho-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gun-Ho-Bridging-Header.h"; sourceTree = "<group>"; };
+		22B0FC3920827752001317E0 /* ScoreDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDisplayViewController.swift; sourceTree = "<group>"; };
+		22B0FC3B20827A0E001317E0 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		22B301D4203C9FDA0020CA46 /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
 		22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExpressionExtensions.swift; sourceTree = "<group>"; };
 		22C9F377207BE49E00AFE586 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
@@ -167,7 +169,6 @@
 				22AC2AF220535F7700645CC5 /* HorizontalPlane.swift */,
 				22BB2EB7204390A400CA71B3 /* MathExpressionExtensions.swift */,
 				222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */,
-				2261C1082037D805003E580C /* SceneViewExtensions.swift */,
 				227F984B2034CA7D007FF294 /* SCNNodeExtensions.swift */,
 				2261C10A2037D960003E580C /* SCNTransactionExtensions.swift */,
 				22B301D4203C9FDA0020CA46 /* SCNVector3Extensions.swift */,
@@ -202,9 +203,11 @@
 			isa = PBXGroup;
 			children = (
 				221F87B32077068A00EA464C /* AuthenticationViewController.swift */,
-				2245B60F20336A8B00F1369B /* GameViewController.swift */,
 				22E1A185207D501C00EAD597 /* BlurredViewController.swift */,
+				2245B60F20336A8B00F1369B /* GameViewController.swift */,
+				22B0FC3B20827A0E001317E0 /* GameOverViewController.swift */,
 				22E1A183207D2EAE00EAD597 /* PauseViewController.swift */,
+				22B0FC3920827752001317E0 /* ScoreDisplayViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -443,10 +446,11 @@
 				222BE22E203605D40036E867 /* GameObject.swift in Sources */,
 				2229133620655C3E0044CF0F /* GameManagerDelegate.swift in Sources */,
 				225815FA20328EA900F546DD /* MediumBoat.swift in Sources */,
+				22B0FC3A20827752001317E0 /* ScoreDisplayViewController.swift in Sources */,
 				22454653206D4D4E00F85ADA /* ActionQueue.swift in Sources */,
 				22BB2EB8204390A400CA71B3 /* MathExpressionExtensions.swift in Sources */,
 				228AB9352030D28500FEC484 /* Boat.swift in Sources */,
-				2261C1092037D805003E580C /* SceneViewExtensions.swift in Sources */,
+				22B0FC3C20827A0E001317E0 /* GameOverViewController.swift in Sources */,
 				2261C10B2037D960003E580C /* SCNTransactionExtensions.swift in Sources */,
 				22E1A184207D2EAE00EAD597 /* PauseViewController.swift in Sources */,
 				22AC2AF320535F7700645CC5 /* HorizontalPlane.swift in Sources */,
