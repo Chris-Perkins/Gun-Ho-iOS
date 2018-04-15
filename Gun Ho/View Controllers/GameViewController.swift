@@ -47,7 +47,15 @@ class GameViewController: UIViewController {
     @IBOutlet weak var whaleCountLabel: UILabel!
     
     // The planes we're showing
-    private var planeForAnchor: [ARAnchor: HorizontalPlane] = [:]
+    private var planeForAnchor: [ARAnchor: HorizontalPlane] = [:] {
+        didSet {
+            if planeForAnchor.count > 0 {
+                guideView?.setLabelTextToStep(type: .selectPlane)
+            } else {
+                guideView?.setLabelTextToStep(type: .scanPlanes)
+            }
+        }
+    }
     // The selected planes we have
     private var selectedPlane: HorizontalPlane?
     // Whether or not we should show horizontal planes
@@ -333,8 +341,6 @@ extension GameViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let anchor = anchor as? ARPlaneAnchor {
-            guideView.setLabelTextToStep(type: .selectPlane)
-            
             let plane = HorizontalPlane(anchor: anchor)
             plane.isHidden = !showHorizontalPlanes
             planeForAnchor[anchor] = plane
