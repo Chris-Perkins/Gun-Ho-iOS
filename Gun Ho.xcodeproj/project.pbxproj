@@ -11,6 +11,7 @@
 		221F87B42077068A00EA464C /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F87B32077068A00EA464C /* AuthenticationViewController.swift */; };
 		221F87B62077CEAD00EA464C /* ToggleableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F87B52077CEAD00EA464C /* ToggleableButton.swift */; };
 		2225307B2082FBC6002C20B1 /* boat-explosion.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 2225307A2082FBC6002C20B1 /* boat-explosion.scnp */; };
+		2225307D20830605002C20B1 /* watermine-explosion.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 2225307C20830604002C20B1 /* watermine-explosion.scnp */; };
 		2229133620655C3E0044CF0F /* GameManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229133520655C3E0044CF0F /* GameManagerDelegate.swift */; };
 		222BE22E203605D40036E867 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE22C203605D40036E867 /* GameObject.swift */; };
 		222BE22F203605D40036E867 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE22D203605D40036E867 /* GameManager.swift */; };
@@ -61,6 +62,7 @@
 		221F87B32077068A00EA464C /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		221F87B52077CEAD00EA464C /* ToggleableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleableButton.swift; sourceTree = "<group>"; };
 		2225307A2082FBC6002C20B1 /* boat-explosion.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = "boat-explosion.scnp"; sourceTree = "<group>"; };
+		2225307C20830604002C20B1 /* watermine-explosion.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = "watermine-explosion.scnp"; sourceTree = "<group>"; };
 		2229133520655C3E0044CF0F /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
 		222BE22C203605D40036E867 /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameObject.swift; path = "Gun Ho/Game Engine/Supporting Files/GameObject.swift"; sourceTree = SOURCE_ROOT; };
 		222BE22D203605D40036E867 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameManager.swift; path = "Gun Ho/Game Engine/GameManager.swift"; sourceTree = SOURCE_ROOT; };
@@ -272,6 +274,7 @@
 				22F2127B2073EEB500518DAF /* boat-damage.scnp */,
 				22F2128020746A7400518DAF /* spawn.scnp */,
 				2225307A2082FBC6002C20B1 /* boat-explosion.scnp */,
+				2225307C20830604002C20B1 /* watermine-explosion.scnp */,
 			);
 			path = Particles;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				22F2127F2073EFE500518DAF /* wood.png in Resources */,
 				222D640E2064ACBE0030196C /* Localizable.strings in Resources */,
 				22F2128120746A7500518DAF /* spawn.scnp in Resources */,
+				2225307D20830605002C20B1 /* watermine-explosion.scnp in Resources */,
 				22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */,
 				22E1A87C202AAB5E009A5BFC /* Main.storyboard in Resources */,
 				224C5DFF20718CCE006ED4BE /* Assets.xcassets in Resources */,
