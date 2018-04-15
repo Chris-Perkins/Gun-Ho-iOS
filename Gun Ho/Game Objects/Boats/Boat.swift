@@ -119,11 +119,20 @@ class Boat: GameObject {
     override public func destroy() {
         // Check if the boat was previously marked as dead...
         if !didDie {
+            // Pause the moment so the gameobject doesn't asynchronously collide
             pauseMovement()
+            
+            // Add the value for killing to boat to GameManager
             GameManager.shared.addPoints(pointValue)
+            
+            // Memory leak prevention...
             removeAllParticleSystems()
-            removeFromParentNode()
+            
+            // Mark this boat as "dead" so this function isn't called twice accidentally.
             didDie = true
+            
+            // Add a signifier to the user that the boat died
+            attachBoatDestroyedParticleToWorld()
             
             super.destroy()
         }
@@ -166,6 +175,26 @@ class Boat: GameObject {
     }
     
     // MARK: Particle adding
+    
+    // Used to let the user know that the boat was destroyed
+    private func attachBoatDestroyedParticleToWorld() {
+        // Retrieves the particle system
+        let boatExplosionParticle = SCNParticleSystem(named: "boat-explosion", inDirectory: nil)!
+        
+        // Adds the particle system to the scene
+        GameManager.shared.scene?.addParticleSystem(boatExplosionParticle,
+                                                    transform: presentation.worldTransform)
+        
+        // Retrieves the time the particle system displays for
+        let totalParticleTime = boatExplosionParticle.particleLifeSpan +
+            boatExplosionParticle.emissionDuration
+        
+        // removes the particle system after this time
+        Timer.scheduledTimer(withTimeInterval: TimeInterval(totalParticleTime), repeats: false) {
+            (timer) in
+            GameManager.shared.scene?.removeParticleSystem(boatExplosionParticle)
+        }
+    }
     
     // Used intuitively to denote that the boat took damage
     private func attachWoodRemoveParticle() {

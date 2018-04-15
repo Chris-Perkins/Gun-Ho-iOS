@@ -83,7 +83,7 @@ class GameViewController: UIViewController {
         
         // Sets up the GameManager to host the game
         GameManager.shared.delegate = self
-        GameManager.shared.rootNode = sceneView.scene.rootNode
+        GameManager.shared.scene = sceneView.scene
         GameManager.shared.gameNode.isHidden = true
         
         // Giving the toggle buttons toggle conditions

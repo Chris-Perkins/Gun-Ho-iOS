@@ -102,9 +102,10 @@ public class GameManager: NSObject {
         }
     }
     
-    // The root node for use in spawning and finding the worldScene node
-    public var rootNode: SCNNode? {
+    // The scene that we'll be displaying. Set up in GameViewController
+    public var scene: SCNScene? {
         didSet {
+            // Done so we immediately set the island up for collisions
             guard let islandEnvironment = island.childNode(withName: "environment",
                                                            recursively: false),
                 let islandPhysicsBody = islandEnvironment.physicsBody else {
@@ -115,10 +116,19 @@ public class GameManager: NSObject {
         }
     }
     
+    // The root node for use in spawning and finding the worldScene node
+    lazy public var rootNode: SCNNode = {
+        guard let scene = scene else {
+            fatalError("Scene is nil! Could not get the rootnode.")
+        }
+        
+        return scene.rootNode
+    }()
+    
     /* The object which holds all objects relevant to the game
         Throws if the gameNode cannot be retrieved */
     lazy public var gameNode: SCNNode = {
-        guard let gameNode = rootNode?.childNode(withName: "gameNode", recursively: false) else {
+        guard let gameNode = rootNode.childNode(withName: "gameNode", recursively: false) else {
             fatalError("Could not get gameNode!")
         }
         return gameNode
