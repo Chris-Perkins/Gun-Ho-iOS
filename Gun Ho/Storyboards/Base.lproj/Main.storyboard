@@ -172,7 +172,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yh-cw-kju">
-                                <rect key="frame" x="47" y="237.5" width="281" height="212"/>
+                                <rect key="frame" x="47" y="187.5" width="281" height="212"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score: []" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTB-Vk-lXX">
                                         <rect key="frame" x="53.5" y="16" width="174" height="30"/>
@@ -244,7 +244,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fF-Hp-Cyx">
-                                <rect key="frame" x="304" y="229.5" width="32" height="32"/>
+                                <rect key="frame" x="304" y="179.5" width="32" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.91000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4fF-Hp-Cyx" secondAttribute="height" multiplier="1:1" id="4TV-S0-H1g"/>
@@ -269,7 +269,7 @@
                             <constraint firstItem="1yh-cw-kju" firstAttribute="width" secondItem="aDI-WW-Yuc" secondAttribute="width" multiplier="0.75" id="fXR-F7-rCX"/>
                             <constraint firstItem="1yh-cw-kju" firstAttribute="top" secondItem="4fF-Hp-Cyx" secondAttribute="bottom" constant="-24" id="pLn-1y-68t"/>
                             <constraint firstItem="4fF-Hp-Cyx" firstAttribute="leading" secondItem="1yh-cw-kju" secondAttribute="trailing" constant="-24" id="sg7-9w-o4I"/>
-                            <constraint firstItem="1yh-cw-kju" firstAttribute="centerY" secondItem="ScE-te-7P1" secondAttribute="centerY" id="wZL-zN-XFu"/>
+                            <constraint firstItem="1yh-cw-kju" firstAttribute="centerY" secondItem="ScE-te-7P1" secondAttribute="centerY" constant="-50" id="wZL-zN-XFu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ScE-te-7P1"/>
                     </view>
