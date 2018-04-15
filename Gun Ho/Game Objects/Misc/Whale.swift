@@ -53,4 +53,38 @@ public class Whale: GameObject {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // Causes boat to look at the island, pop up, then move towards the island
+    public func performSpawnOperations() {
+        // Causes the whale's model to look perpendicular to the island
+        // This is because the whale model itself is rotated 90 degrees.
+        look(at: GameManager.shared.island.worldPosition)
+        
+        // The amount of time it takes for the whale to scale up/down
+        let scaleTime = 0.5
+        
+        // Keep a reference to the original scale for popping boat up
+        let originalScale = scale
+        
+        // Set the boat to be invisible (by size) and then "pop" it out.
+        scale = SCNVector3(0, 0, 0)
+        
+        // Causes the whale to "grow"
+        SCNTransaction.perform {
+            SCNTransaction.animationDuration = scaleTime
+            scale = originalScale
+        }
+        
+        // Right before the whale is about to be destroyed, it begins to scale down
+        Timer.scheduledTimer(withTimeInterval: Whale.longevity - 2 * scaleTime, repeats: false) { (timer) in
+            DispatchQueue.main.async {
+                SCNTransaction.perform {
+                    SCNTransaction.animationDuration = 0.5
+                    // NOTE: Animating to SCNVector3(0,0,0) causes a crash sometimes.
+                    // Nothing I can do to change that. Instead, we scale down to 0.01.
+                    self.scale = SCNVector3(0.01, 0.01, 0.01)
+                }
+            }
+        }
+    }
 }

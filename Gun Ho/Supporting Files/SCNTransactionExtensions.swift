@@ -13,6 +13,5 @@ extension SCNTransaction {
         SCNTransaction.begin()
         action()
         SCNTransaction.commit()
-        SCNTransaction.flush()
     }
 }

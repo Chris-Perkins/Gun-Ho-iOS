@@ -1,5 +1,5 @@
 //
-//  SmallBoat.swift
+//  Boat.swift
 //  Gun Ho
 //
 //  Created by Christopher Perkins on 2/11/18.
@@ -156,7 +156,7 @@ class Boat: GameObject {
         
         SCNTransaction.perform {
             SCNTransaction.animationDuration = 1
-            self.scale = originalScale
+            scale = originalScale
         }
         
         performMovementOperation {

@@ -289,7 +289,6 @@ extension GameManager {
         appendNewScore(totalPoints ?? 0)
         
         delegate?.gameWillEnd?()
-        print(delegate)
         
         totalPoints = nil
         curWave     = nil
@@ -390,7 +389,9 @@ extension GameManager {
         let whale = Whale()
         whale.position = spawnPosition
         worldScene.addChildNode(whale)
-        whale.look(at: island.worldPosition)
+        
+        // We just created a whale; make it look at the island
+        whale.performSpawnOperations()
     }
     
     public func spawnWaterMine(atWorldScenePosition spawnPosition: SCNVector3 = SCNVector3(0, 0, 0)) {
