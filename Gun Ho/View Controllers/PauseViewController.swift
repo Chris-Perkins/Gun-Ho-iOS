@@ -20,11 +20,13 @@ class PauseViewController: BlurredViewController{
     @IBAction func buttonPress(_ sender: UIButton) {
         switch sender {
         case resumeButton:
-            GameManager.shared.setPauseState(to: false)
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: false) {
+                GameManager.shared.setPauseState(to: false)
+            }
         case quitButton:
-            GameManager.shared.forceQuitSession()
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: false) {
+                GameManager.shared.forceQuitSession()
+            }
         default:
             fatalError("Unhandled button press in PauseViewController")
         }

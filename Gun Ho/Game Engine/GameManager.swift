@@ -289,6 +289,7 @@ extension GameManager {
         appendNewScore(totalPoints ?? 0)
         
         delegate?.gameWillEnd?()
+        print(delegate)
         
         totalPoints = nil
         curWave     = nil

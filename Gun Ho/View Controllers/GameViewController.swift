@@ -317,6 +317,7 @@ extension GameViewController: GameManagerDelegate {
             // Reset the bird score
             self.setBirdLabelToTotalBirdsCount()
             
+            // Go to the correct game over view controller
             self.performSegue(withIdentifier: "showGameOver\(demoModeIsActive ? "Demo" : "Live")Segue", sender: self)
         }
     }
