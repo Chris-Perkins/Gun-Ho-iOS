@@ -12,13 +12,13 @@
 		221F87B62077CEAD00EA464C /* ToggleableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F87B52077CEAD00EA464C /* ToggleableButton.swift */; };
 		2225307B2082FBC6002C20B1 /* boat-explosion.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 2225307A2082FBC6002C20B1 /* boat-explosion.scnp */; };
 		2225307D20830605002C20B1 /* watermine-explosion.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 2225307C20830604002C20B1 /* watermine-explosion.scnp */; };
+		222771B22084247500C6F09D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 222771B42084247500C6F09D /* Localizable.strings */; };
 		2229133620655C3E0044CF0F /* GameManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229133520655C3E0044CF0F /* GameManagerDelegate.swift */; };
 		222BE22E203605D40036E867 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE22C203605D40036E867 /* GameObject.swift */; };
 		222BE22F203605D40036E867 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE22D203605D40036E867 /* GameManager.swift */; };
 		222D640820645DEE0030196C /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */; };
 		222D640A2064A6700030196C /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D64092064A6700030196C /* GuideView.swift */; };
 		222D640C2064A7020030196C /* GuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222D640B2064A7020030196C /* GuideView.xib */; };
-		222D640E2064ACBE0030196C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 222D640D2064ACBE0030196C /* Localizable.strings */; };
 		22454653206D4D4E00F85ADA /* ActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22454652206D4D4D00F85ADA /* ActionQueue.swift */; };
 		22454657206D5A6600F85ADA /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22454656206D5A6600F85ADA /* Bird.swift */; };
 		2245B61020336A8B00F1369B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2245B60F20336A8B00F1369B /* GameViewController.swift */; };
@@ -63,13 +63,16 @@
 		221F87B52077CEAD00EA464C /* ToggleableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleableButton.swift; sourceTree = "<group>"; };
 		2225307A2082FBC6002C20B1 /* boat-explosion.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = "boat-explosion.scnp"; sourceTree = "<group>"; };
 		2225307C20830604002C20B1 /* watermine-explosion.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = "watermine-explosion.scnp"; sourceTree = "<group>"; };
+		222771AE208421F900C6F09D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		222771AF208421F900C6F09D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		222771B32084247500C6F09D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		222771B52084248400C6F09D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2229133520655C3E0044CF0F /* GameManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerDelegate.swift; sourceTree = "<group>"; };
 		222BE22C203605D40036E867 /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameObject.swift; path = "Gun Ho/Game Engine/Supporting Files/GameObject.swift"; sourceTree = SOURCE_ROOT; };
 		222BE22D203605D40036E867 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameManager.swift; path = "Gun Ho/Game Engine/GameManager.swift"; sourceTree = SOURCE_ROOT; };
 		222D640720645DEE0030196C /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
 		222D64092064A6700030196C /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		222D640B2064A7020030196C /* GuideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuideView.xib; sourceTree = "<group>"; };
-		222D640D2064ACBE0030196C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		22454652206D4D4D00F85ADA /* ActionQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionQueue.swift; sourceTree = "<group>"; };
 		22454656206D5A6600F85ADA /* Bird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
 		2245B60E20336A4B00F1369B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -249,7 +252,7 @@
 				22AE4EC6206819EB0012089D /* WebRequestHandler.swift */,
 				225282B4207A9C1900DE958B /* UserDefaultsVariables.swift */,
 				22C9F377207BE49E00AFE586 /* NotificationNames.swift */,
-				222D640D2064ACBE0030196C /* Localizable.strings */,
+				222771B42084247500C6F09D /* Localizable.strings */,
 				22E1A882202AAB5E009A5BFC /* Info.plist */,
 				2245B60D20336A2B00F1369B /* Supporting Files */,
 			);
@@ -342,6 +345,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 22E1A868202AAB5E009A5BFC;
 			productRefGroup = 22E1A872202AAB5E009A5BFC /* Products */;
@@ -362,7 +366,7 @@
 				22F2128320746A8400518DAF /* spark.png in Resources */,
 				22F2127D2073EEB500518DAF /* boat-damage.scnp in Resources */,
 				22F2127F2073EFE500518DAF /* wood.png in Resources */,
-				222D640E2064ACBE0030196C /* Localizable.strings in Resources */,
+				222771B22084247500C6F09D /* Localizable.strings in Resources */,
 				22F2128120746A7500518DAF /* spawn.scnp in Resources */,
 				2225307D20830605002C20B1 /* watermine-explosion.scnp in Resources */,
 				22E1A881202AAB5E009A5BFC /* LaunchScreen.storyboard in Resources */,
@@ -481,10 +485,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		222771B42084247500C6F09D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				222771B32084247500C6F09D /* en */,
+				222771B52084248400C6F09D /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		22E1A87A202AAB5E009A5BFC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				22E1A87B202AAB5E009A5BFC /* Base */,
+				222771AE208421F900C6F09D /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -493,6 +507,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				22E1A880202AAB5E009A5BFC /* Base */,
+				222771AF208421F900C6F09D /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -504,6 +519,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -563,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

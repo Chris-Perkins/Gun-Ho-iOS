@@ -1,0 +1,54 @@
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "01j-UW-Z4U"; */
+"01j-UW-Z4U.placeholder" = "password";
+
+/* Class = "UIButton"; normalTitle = "Post Score"; ObjectID = "40p-Js-kq3"; */
+"40p-Js-kq3.normalTitle" = "Post Score";
+
+/* Class = "UIButton"; normalTitle = "✕"; ObjectID = "4fF-Hp-Cyx"; */
+"4fF-Hp-Cyx.normalTitle" = "✕";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "Acj-g4-Reo"; */
+"Acj-g4-Reo.normalTitle" = "Sign Up";
+
+/* Class = "UILabel"; text = "Your Top Scores:"; ObjectID = "KkL-7u-xaV"; */
+"KkL-7u-xaV.text" = "Your Top Scores:";
+
+/* Class = "UITextField"; placeholder = "username"; ObjectID = "NQt-mH-etb"; */
+"NQt-mH-etb.placeholder" = "username";
+
+/* Class = "UIButton"; normalTitle = "Quit"; ObjectID = "OCf-fc-ZXY"; */
+"OCf-fc-ZXY.normalTitle" = "Quit";
+
+/* Class = "UILabel"; text = "Your Score: []"; ObjectID = "RIp-Na-Bc6"; */
+"RIp-Na-Bc6.text" = "Your Score: []";
+
+/* Class = "UILabel"; text = "Water Count"; ObjectID = "SH2-Nj-vYV"; */
+"SH2-Nj-vYV.text" = "Water Count";
+
+/* Class = "UILabel"; text = "[Score 2]"; ObjectID = "Tx6-sG-YkQ"; */
+"Tx6-sG-YkQ.text" = "[Score 2]";
+
+/* Class = "UIButton"; normalTitle = "Resume"; ObjectID = "aPU-zs-0tt"; */
+"aPU-zs-0tt.normalTitle" = "Resume";
+
+/* Class = "UILabel"; text = "Whale Count"; ObjectID = "c1I-aY-XTD"; */
+"c1I-aY-XTD.text" = "Whale Count";
+
+/* Class = "UILabel"; text = "Your Score: []"; ObjectID = "hTB-Vk-lXX"; */
+"hTB-Vk-lXX.text" = "Your Score: []";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "j6L-ac-ixO"; */
+"j6L-ac-ixO.text" = "0";
+
+/* Class = "UILabel"; text = "[Score 3]"; ObjectID = "jHJ-rc-ZQm"; */
+"jHJ-rc-ZQm.text" = "[Score 3]";
+
+/* Class = "UILabel"; text = "[Score 1]"; ObjectID = "pcv-BD-DF4"; */
+"pcv-BD-DF4.text" = "[Score 1]";
+
+/* Class = "UIButton"; normalTitle = "✕"; ObjectID = "pfL-ww-sih"; */
+"pfL-ww-sih.normalTitle" = "✕";
+
+/* Class = "UITextField"; placeholder = "confirm password"; ObjectID = "wVu-1T-TlQ"; */
+"wVu-1T-TlQ.placeholder" = "confirm password";
