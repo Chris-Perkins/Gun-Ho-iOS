@@ -1,5 +1,6 @@
 # Gun Ho
 
+![app_icon](readme_imgs/app_icon.png)
 ![img_1](readme_imgs/img_1.png)
 
 ## About
