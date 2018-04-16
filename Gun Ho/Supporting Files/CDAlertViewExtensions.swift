@@ -27,7 +27,7 @@ extension CDAlertView {
                                                              comment: ""),
                                     message: NSLocalizedString("Alert.Info.Desc",
                                                                comment: ""),
-                                    type: CDAlertViewType.custom(image: #imageLiteral(resourceName: "bird")))
+                                    type: CDAlertViewType.custom(image: #imageLiteral(resourceName: "icon")))
         
         infoAlert.add(action: CDAlertViewAction(title: NSLocalizedString("Alert.Button.Close",
                                                                          comment: ""),
@@ -41,7 +41,8 @@ extension CDAlertView {
                                              textColor: nil,
                                              backgroundColor: nil,
                                              handler: { (action) in
-            if let url = URL(string: "https:////github.com//Chris-Perkins//Gun-Ho-iOS") {
+            let gitHubAddress = "https://github.com/Chris-Perkins/Gun-Ho-iOS/blob/master/README.md"
+            if let url = URL(string: gitHubAddress) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         })

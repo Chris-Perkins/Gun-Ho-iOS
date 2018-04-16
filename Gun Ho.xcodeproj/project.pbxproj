@@ -638,7 +638,7 @@
 				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = "Gun Ho/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.temporaryID.Gun-Ho";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ChrisPerkins.GunHo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$PROJECT_DIR/Gun-Ho-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -656,7 +656,7 @@
 				IBSC_WARNINGS = NO;
 				INFOPLIST_FILE = "Gun Ho/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.temporaryID.Gun-Ho";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ChrisPerkins.GunHo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$PROJECT_DIR/Gun-Ho-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
