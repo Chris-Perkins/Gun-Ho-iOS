@@ -51,13 +51,6 @@ public class WaterMine: GameObject {
         super.destroy()
     }
     
-    // Scales the object up
-    override public func performSpawnOperations() {
-        // Causes the watermine to "pop" out of the ocean
-        scale(fromScale: SCNVector3(0, 0, 0),
-              toScale: scale)
-    }
-    
     // MARK: Custom functions
     
     // Used to let the user know that the boat was destroyed

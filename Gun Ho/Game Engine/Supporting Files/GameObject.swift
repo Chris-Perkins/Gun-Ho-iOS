@@ -81,7 +81,8 @@ public class GameObject: SCNNode {
     
     // Called when the object spawns
     public func performSpawnOperations() {
-        // Override me!
+        scale(fromScale: SCNVector3(0, 0, 0),
+              toScale: scale)
     }
     
     // Used to identify newly spawned nodes

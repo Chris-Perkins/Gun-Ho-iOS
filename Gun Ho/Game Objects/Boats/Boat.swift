@@ -95,12 +95,12 @@ class Boat: GameObject {
     // Should be called when the boat is spawned
     // Causes boat to look at the island, pop up, then move towards the island
     override public func performSpawnOperations() {
+        super.performSpawnOperations()
+        
         // The boat looks at the island on spawn for realistic movement
         look(at: GameManager.shared.island.worldPosition)
         
         // Causes the boat to "pop" out of the ocean
-        scale(fromScale: SCNVector3(0, 0, 0),
-              toScale: scale)
         
         // Move the boat towards the ocean
         performMovementOperation {
@@ -108,7 +108,7 @@ class Boat: GameObject {
             SCNTransaction.animationTimingFunction =
                 CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
             
-            // The 69 just says that the island has a radius of 60 (chosen arbitrarily).
+            // The 60 just says that the island has a radius of 60 (chosen arbitrarily).
             // Note: It doesn't a radius of 60
             let distanceToCenter = 60 * self.position.distance(vector: GameManager.shared.island.position)
             let timeToCenter = distanceToCenter / Float(self.speed)
