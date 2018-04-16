@@ -35,7 +35,6 @@
 /* Guide Strings */
 "Guide.ScanPlanes" = "Before you can begin, scan the room for a flat surface.";
 "Guide.SelectPlane" = "A flat surface has been found!\nTap it to begin the game.";
-"Guide.DestroyBoat" = "An invader!\nDestroy it before it gets to your treasure by tapping it!";
 
 /* Server Responses */
 "Server.Messages.PostScore.Success.Title" = "Score Posted";
