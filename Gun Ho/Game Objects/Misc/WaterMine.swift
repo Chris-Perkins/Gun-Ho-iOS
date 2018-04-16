@@ -41,13 +41,21 @@ public class WaterMine: GameObject {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Game Object overrides
+    // MARK: GameObject overrides
     
+    // Before dying, attach the explosion particle
     override public func destroy() {
         // Used to notify the user that the watermine was destroyed
         attachWatermineDestroyedParticleToWorld()
         
         super.destroy()
+    }
+    
+    // Scales the object up
+    override public func performSpawnOperations() {
+        // Causes the watermine to "pop" out of the ocean
+        scale(fromScale: SCNVector3(0, 0, 0),
+              toScale: scale)
     }
     
     // MARK: Custom functions

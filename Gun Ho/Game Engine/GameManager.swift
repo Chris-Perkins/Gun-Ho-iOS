@@ -390,7 +390,7 @@ extension GameManager {
         whale.position = spawnPosition
         worldScene.addChildNode(whale)
         
-        // We just created a whale; make it look at the island
+        // Causes the whale to scale up and look perpendicular to the island
         whale.performSpawnOperations()
     }
     
@@ -398,6 +398,9 @@ extension GameManager {
         let waterMine = WaterMine()
         waterMine.position = spawnPosition
         worldScene.addChildNode(waterMine)
+        
+        // Causes the watermine to scale up
+        waterMine.performSpawnOperations()
     }
 }
 

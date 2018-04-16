@@ -70,11 +70,27 @@ public class GameObject: SCNNode {
         currentMovementAction?()
     }
     
+    // Called when the object should be considered "dead"
     public func destroy() {
         removeFromParentNode()
         
         if let objectIndex = GameManager.shared.gameObjects.index(of: self) {
             GameManager.shared.gameObjects.remove(at: objectIndex)
+        }
+    }
+    
+    // Called when the object spawns
+    public func performSpawnOperations() {
+        // Override me!
+    }
+    
+    // Used to identify newly spawned nodes
+    public func attachSpawnParticles() {
+        let spawnParticles = SCNParticleSystem(named: "spawn", inDirectory: nil)!
+        addParticleSystem(spawnParticles)
+        
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+            self.removeParticleSystem(spawnParticles)
         }
     }
 }

@@ -67,6 +67,57 @@ class Boat: GameObject {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: GameObject overrides
+    
+    // Should be called whenever the boat should be deleted
+    override public func destroy() {
+        // Check if the boat was previously marked as dead...
+        if !didDie {
+            // Pause the moment so the gameobject doesn't asynchronously collide
+            pauseMovement()
+            
+            // Add the value for killing to boat to GameManager
+            GameManager.shared.addPoints(pointValue)
+            
+            // Memory leak prevention...
+            removeAllParticleSystems()
+            
+            // Mark this boat as "dead" so this function isn't called twice accidentally.
+            didDie = true
+            
+            // Add a signifier to the user that the boat died
+            attachBoatDestroyedParticleToWorld()
+            
+            super.destroy()
+        }
+    }
+    
+    // Should be called when the boat is spawned
+    // Causes boat to look at the island, pop up, then move towards the island
+    override public func performSpawnOperations() {
+        // The boat looks at the island on spawn for realistic movement
+        look(at: GameManager.shared.island.worldPosition)
+        
+        // Causes the boat to "pop" out of the ocean
+        scale(fromScale: SCNVector3(0, 0, 0),
+              toScale: scale)
+        
+        // Move the boat towards the ocean
+        performMovementOperation {
+            // Move linearly (default is ease in/out)
+            SCNTransaction.animationTimingFunction =
+                CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            
+            // The 69 just says that the island has a radius of 60 (chosen arbitrarily).
+            // Note: It doesn't a radius of 60
+            let distanceToCenter = 60 * self.position.distance(vector: GameManager.shared.island.position)
+            let timeToCenter = distanceToCenter / Float(self.speed)
+            
+            SCNTransaction.animationDuration = CFTimeInterval(timeToCenter)
+            self.position = SCNVector3(0, self.position.y, 0)
+        }
+    }
+    
     // MARK: Boat operations
     
     public func decrementHealth() {
@@ -113,65 +164,6 @@ class Boat: GameObject {
                         }
             })
         ]).start()
-    }
-    
-    // Should be called whenever the boat should be deleted
-    override public func destroy() {
-        // Check if the boat was previously marked as dead...
-        if !didDie {
-            // Pause the moment so the gameobject doesn't asynchronously collide
-            pauseMovement()
-            
-            // Add the value for killing to boat to GameManager
-            GameManager.shared.addPoints(pointValue)
-            
-            // Memory leak prevention...
-            removeAllParticleSystems()
-            
-            // Mark this boat as "dead" so this function isn't called twice accidentally.
-            didDie = true
-            
-            // Add a signifier to the user that the boat died
-            attachBoatDestroyedParticleToWorld()
-            
-            super.destroy()
-        }
-    }
-    
-    // Should be called when the boat is spawned
-    // Causes boat to look at the island, pop up, then move towards the island
-    public func performSpawnOperations() {
-        // Keep a reference to the original scale for popping boat up
-        let originalScale = scale
-        
-        // Set the boat to be invisble and then "pop" it out.
-        scale = SCNVector3(0, 0, 0)
-        // The boat looks at the island on spawn for realistic movement
-        look(at: GameManager.shared.island.worldPosition)
-        
-        /*
-         Springs the boat up. After the boat is at the original scale,
-         it moves towards the island.
-         */
-        
-        SCNTransaction.perform {
-            SCNTransaction.animationDuration = 1
-            scale = originalScale
-        }
-        
-        performMovementOperation {
-            // Move linearly (default is ease in/out)
-            SCNTransaction.animationTimingFunction =
-                CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-            
-            // The 69 just says that the island has a radius of 60 (chosen arbitrarily).
-            // Note: It doesn't a radius of 60
-            let distanceToCenter = 60 * self.position.distance(vector: GameManager.shared.island.position)
-            let timeToCenter = distanceToCenter / Float(self.speed)
-            
-            SCNTransaction.animationDuration = CFTimeInterval(timeToCenter)
-            self.position = SCNVector3(0, self.position.y, 0)
-        }
     }
     
     // MARK: Particle adding

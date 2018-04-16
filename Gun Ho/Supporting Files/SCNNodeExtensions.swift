@@ -21,13 +21,18 @@ extension SCNNode {
         }
     }
     
-    // Used to identify newly spawned boats
-    public func attachSpawnParticles() {
-        let spawnParticles = SCNParticleSystem(named: "spawn", inDirectory: nil)!
-        addParticleSystem(spawnParticles)
+    /* Used to help us make objects grow or shrink with some transition time */
+    public func scale(fromScale: SCNVector3,
+                      toScale: SCNVector3,
+                      withAnimationTime animationTime: CFTimeInterval = 0.5) {
         
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
-            self.removeParticleSystem(spawnParticles)
+        // Set the scale to whatever scale we want to start from
+        scale = fromScale
+        
+        // Causes the object to scale appropriately
+        SCNTransaction.perform {
+            SCNTransaction.animationDuration = animationTime
+            scale = toScale
         }
     }
 }
