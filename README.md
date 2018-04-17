@@ -53,10 +53,10 @@ To build this application:
 1. Update the code-signing certificate
 1. Run the project on a physical device
 
-NOTE: While testing this device on a Simulator is possible, it is not recommended.
+NOTE: While testing this application on a Simulator is possible, it is not recommended.
 
 ## Credits
 
 App Icon: Bryce Bridgeman  
 3D Models: [Quaternius](http://quaternius.com/?i=1)  
-Everything Else: Chris Perkins  
+Everything Else: [Chris Perkins](http://ChrisPerkins.me)  
