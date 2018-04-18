@@ -390,8 +390,10 @@ extension GameViewController: UIGestureRecognizerDelegate {
                     switch currentSpawningMode {
                     case .watermine:
                         if currentWaterMineCount > 0 {
-                            GameManager.shared.spawnWaterMine(atWorldScenePosition: tapPos)
-                            setWaterMineCount(to: currentWaterMineCount - 1)
+                            OperationQueue.main.addOperation {
+                                GameManager.shared.spawnWaterMine(atWorldScenePosition: tapPos)
+                                setWaterMineCount(to: currentWaterMineCount - 1)
+                            }
                             
                             if currentWaterMineCount <= 0 {
                                 waterMineToggleButton.isToggled = false
@@ -399,9 +401,10 @@ extension GameViewController: UIGestureRecognizerDelegate {
                         }
                     case .whale:
                         if currentWhaleCount > 0 {
-                            GameManager.shared.spawnWhale(atWorldScenePosition: tapPos)
-                            setWhaleCount(to: currentWhaleCount - 1)
-                            
+                            OperationQueue.main.addOperation {
+                                GameManager.shared.spawnWhale(atWorldScenePosition: tapPos)
+                                setWhaleCount(to: currentWhaleCount - 1)
+                            }
                             if currentWhaleCount <= 0 {
                                 whaleToggleButton.isToggled = false
                             }
@@ -413,7 +416,6 @@ extension GameViewController: UIGestureRecognizerDelegate {
                 }
             } else {
                 if let selectedPlane = hitObject as? HorizontalPlane {
-                    // TODO: Put this into a function...
                     self.selectedPlane?.isHidden = false
                     self.selectedPlane = selectedPlane
                     self.selectedPlane?.isHidden = true
