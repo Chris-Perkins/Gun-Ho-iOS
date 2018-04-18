@@ -132,10 +132,13 @@ class Boat: GameObject {
         // Is this even worth doing?
         
         let shakeTime = 0.2
-        let shakeMax  = (10 / 180) * 3.14159
-        let shakeAmount = SCNVector3(Double.random * shakeMax * 1/2,
-                                     Double.random * shakeMax * 1/2,
-                                     Double.random * shakeMax)
+        let shakeMax  = (15 / 180) * 3.14159
+        /* A vector representing how much we should rotate the node in
+            one shake cycle using quaternions */
+        let shakeAmount = SCNQuaternion(Double.random * shakeMax * 1/2,
+                                        Double.random * shakeMax * 1/2,
+                                        Double.random * shakeMax,
+                                        1)
         
         ActionQueue(withActions: [
             // Tip the boat
@@ -143,7 +146,7 @@ class Boat: GameObject {
                             withActions: {
                                 SCNTransaction.perform {
                                     SCNTransaction.animationDuration = shakeTime
-                                    self.eulerAngles += shakeAmount
+                                    self.rotation += shakeAmount
                                 }
             }),
             // Tip the boat back to the other side
@@ -152,7 +155,7 @@ class Boat: GameObject {
                    withActions: {
                         SCNTransaction.perform {
                             SCNTransaction.animationDuration = shakeTime * 2
-                            self.eulerAngles -= shakeAmount * 2
+                            self.rotation -= shakeAmount * 2
                         }
             }),
             // Bring back to neutral position
@@ -160,7 +163,7 @@ class Boat: GameObject {
                    withActions: {
                         SCNTransaction.perform {
                             SCNTransaction.animationDuration = shakeTime
-                            self.eulerAngles += shakeAmount
+                            self.rotation += shakeAmount
                         }
             })
         ]).start()

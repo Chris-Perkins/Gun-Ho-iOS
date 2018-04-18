@@ -362,10 +362,9 @@ extension GameViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
         if let plane = planeForAnchor.removeValue(forKey: anchor) {
             if plane == self.selectedPlane {
-                let nextPlane = planeForAnchor.values.first!
-                addToNode(rootNode: nextPlane)
-                updateGameSceneForAnchor(anchor: nextPlane.anchor)
+                GameManager.shared.forceQuitSession()
             }
+            
             plane.removeFromParentNode()
         }
     }

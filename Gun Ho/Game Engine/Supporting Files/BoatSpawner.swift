@@ -92,7 +92,11 @@ public class BoatSpawner {
     // Spawns a boat and gives it the proper properties for navigation
     private func spawnBoat(ofType boatType: Boat.Type) {
         let boat = boatType.init()
+        
         let randomNum = Double(arc4random())
+        
+        // Returns a vector that has a random x and z element.
+        // Used to help place the boat around the ocean
         let randomUnitVector = SCNVector3(sin(randomNum), 0, cos(randomNum))
         
         // Spawns the boat on a random edge of the ocean
