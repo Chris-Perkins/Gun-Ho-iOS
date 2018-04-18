@@ -81,7 +81,7 @@ public class GameObject: SCNNode {
     
     // Called when the object spawns
     public func performSpawnOperations() {
-        scale(fromScale: SCNVector3(0, 0, 0),
+        scale(fromScale: SCNVector3(0.01, 0.01, 0.01),
               toScale: scale)
     }
     
