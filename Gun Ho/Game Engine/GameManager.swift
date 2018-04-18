@@ -44,11 +44,11 @@ public class GameManager: NSObject {
     public var gameObjects = [GameObject]()
     
     // Whether or not the game has started
-    private var hasStartedGame = false
+    private var gameLogicActive = false
     
     // Returns whether or not the game is active
     public var inActiveGame: Bool {
-        return hasStartedGame
+        return gameLogicActive
     }
     
     // Whether or not the game is paused
@@ -205,7 +205,7 @@ extension GameManager {
     /* Starts the game if it hasn't been started
         Throws if the game was already started */
     public func startGame() {
-        if !hasStartedGame {
+        if !gameLogicActive {
             // The game should not be paused at the start
             paused = false
             
@@ -214,7 +214,7 @@ extension GameManager {
             Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
                 self.performGameStartSequence(atWave: 1)
             }
-            hasStartedGame = true
+            gameLogicActive = true
         } else {
             fatalError("Game was declared to start twice, but this cannot happen.")
         }
@@ -279,7 +279,7 @@ extension GameManager {
     
     // Called by interfaces to force a game quit
     public func forceQuitSession() {
-        if hasStartedGame {
+        if gameLogicActive {
             performGameOverSequence()
         }
     }
@@ -288,8 +288,7 @@ extension GameManager {
     private func performGameOverSequence() {
         appendNewScore(totalPoints ?? 0)
         
-        delegate?.gameWillEnd?()
-        
+        gameLogicActive = false
         totalPoints = nil
         curWave     = nil
         curPoints   = nil
@@ -301,7 +300,7 @@ extension GameManager {
             object.destroy()
         }
         
-        hasStartedGame = false
+        delegate?.gameDidEnd?()
     }
     
     // Starts the current wave
@@ -412,33 +411,37 @@ extension GameManager: SCNPhysicsContactDelegate {
         
         switch collisionMask {
         case CollisionType.boat | CollisionType.island:
-            // The game has ended; so we can say the game has not started
-            hasStartedGame = false
-            
-            DispatchQueue.main.async {
-                // Get the boat of contact
-                let boat = (contact.nodeA.parent as? Boat) ?? (contact.nodeB.parent as? Boat) ?? Boat()
+            // If the game is currently active...
+            // NOTE: Done due to asynchronous calls messing this up.
+            if gameLogicActive {
+                // Then set the game to currently ended.
+                gameLogicActive = false
                 
-                // Stop all node movement
-                self.pauseGameMovement()
-                
-                // Turn off the center light
-                self.centerLightNode.isHidden = true
-                
-                // Turn on the center light and reposition it
-                self.spotlightNode.isHidden = false
-                self.spotlightNode.worldPosition = boat.worldPosition + SCNVector3(0, 0.1, 0)
-                
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
-                    // Turn the lights back on
-                    self.centerLightNode.isHidden = false
+                DispatchQueue.main.async {
+                    // Get the boat of contact
+                    let boat = (contact.nodeA.parent as? Boat) ?? (contact.nodeB.parent as? Boat) ?? Boat()
+                    
+                    // Stop all node movement
+                    self.pauseGameMovement()
+                    
+                    // Turn off the center light
+                    self.centerLightNode.isHidden = true
                     
                     // Turn on the center light and reposition it
-                    self.spotlightNode.isHidden = true
+                    self.spotlightNode.isHidden = false
+                    self.spotlightNode.worldPosition = boat.worldPosition + SCNVector3(0, 0.1, 0)
                     
-                    OperationQueue.main.addOperation {
-                        // Finally, end the game
-                        self.performGameOverSequence()
+                    Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+                        // Turn the lights back on
+                        self.centerLightNode.isHidden = false
+                        
+                        // Turn on the center light and reposition it
+                        self.spotlightNode.isHidden = true
+                        
+                        OperationQueue.main.addOperation {
+                            // Finally, end the game
+                            self.performGameOverSequence()
+                        }
                     }
                 }
             }

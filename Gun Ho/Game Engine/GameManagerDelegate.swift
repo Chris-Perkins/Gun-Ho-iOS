@@ -12,5 +12,5 @@ import Foundation
     @objc optional func gameDidStart()
     @objc optional func gamePauseStateChanged(toState state: Bool)
     @objc optional func waveDidComplete(waveNumber: Int)
-    @objc optional func gameWillEnd()
+    @objc optional func gameDidEnd()
 }

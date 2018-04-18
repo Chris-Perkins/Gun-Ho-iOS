@@ -299,7 +299,7 @@ extension GameViewController: GameManagerDelegate {
         birdCountLabel.text = "+\(waveNumber)"
     }
     
-    @objc func gameWillEnd() {
+    @objc func gameDidEnd() {
         DispatchQueue.main.async {
             // Show the horizontal planes for anchor selection
             self.showHorizontalPlanes = true
