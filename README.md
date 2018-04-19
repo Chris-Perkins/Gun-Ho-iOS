@@ -9,7 +9,7 @@ Gun Ho is an Augmented Reality (AR) game for iOS. The goal of the game is to def
 
 The application is not yet available on the App Store.
 
-![img_2](readme_imgs/img_2.png)
+![img_2](readme_imgs/img_2.gif)
 
 ## Supported Devices
 
