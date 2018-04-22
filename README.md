@@ -7,7 +7,7 @@
 
 Gun Ho is an Augmented Reality (AR) game for iOS. The goal of the game is to defend your treasure for as long as possible before invaders inevitably take the loot as their plunder. You can defend against these invaders by tapping on their ships or by using whales or watermines to hinder their progress.
 
-The application is not yet available on the App Store.
+[Link to the App Store page](https://itunes.apple.com/us/app/gun-ho/id1372619208)
 
 ![img_2](readme_imgs/img_2.gif)
 
@@ -57,6 +57,7 @@ NOTE: While testing this application on a Simulator is possible, it is not recom
 
 ## Credits
 
-App Icon: Bryce Bridgeman  
 3D Models: [Quaternius](http://quaternius.com/?i=1)  
+App Icon: Bryce Bridgeman  
+Spanish Translations: Lilly Nava  
 Everything Else: [Chris Perkins](http://ChrisPerkins.me)  
